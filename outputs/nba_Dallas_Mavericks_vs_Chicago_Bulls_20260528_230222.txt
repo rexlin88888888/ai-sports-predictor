@@ -1,0 +1,43 @@
+Match: Chicago Bulls at Dallas Mavericks
+Date: 2026-04-12
+Predicted winner: Chicago Bulls
+Predicted score: Dallas Mavericks 114 - 117 Chicago Bulls
+Home win probability: 42.3%
+Away win probability: 57.7%
+Draw probability: N/A
+Confidence: Low
+
+Key factors:
+- Model favors Chicago Bulls mainly because of recent form (+3.6 rating edge).
+- Model favors Chicago Bulls mainly because of team strength (+1.9 rating edge).
+- Model favors Chicago Bulls mainly because of home/away split (-1.7 rating edge).
+- Dallas Mavericks injury impact: team_injury_penalty=-9.7, missing_starters=1, top=Kyrie Irving Out (4.8), Cooper Flagg Out (0.7), Brandon Williams Out (0.7)
+- Chicago Bulls injury impact: team_injury_penalty=-7.0, missing_starters=0, top=Josh Giddey Out (0.7), Rob Dillingham Out (0.7), Isaac Okoro Out (0.7)
+- home_elo=1285, away_elo=1298, elo_diff=-13, elo_win_probability=0.567
+- home_momentum=LLLWL, away_momentum=LWWLL, momentum_score_edge=-3.0
+- home_fatigue_score=0.3, away_fatigue_score=0.9, rest_advantage=+0.6, travel_penalty_home=0.3, travel_penalty_away=0.9
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.48
+- AI analysis: model leans Chicago Bulls after combining Elo, form, availability, rest, and venue context.
+- home_elo=1285, away_elo=1298, elo_diff=-13, elo_win_probability=0.567
+- home_momentum=LLLWL, away_momentum=LWWLL, momentum_score_edge=-3.0
+- home_fatigue_score=0.3, away_fatigue_score=0.9, rest_advantage=+0.6, travel_penalty_home=0.3, travel_penalty_away=0.9
+- home_advantage_score=2.1
+- Main risk: Dallas Mavericks has high injury impact (-9.7).
+
+Risk factors:
+- Dallas Mavericks injury penalty -9.7.
+- Chicago Bulls injury penalty -10.0.
+- Win probability is close to 50/50, so confidence is naturally limited.
+- favorite_risk_reason=Chicago Bulls is an away favorite.
+- favorite_risk_reason=Chicago Bulls has unstable recent momentum.
+- favorite_risk_reason=rating edge is not large enough for high confidence.
+- confidence_cap=0.70, upset_risk_score=0.48.
+- Dallas Mavericks injury API failed; using injury_cache.csv fallback
+- Dallas Mavericks missing_starters=1
+- Chicago Bulls injury API failed; using injury_cache.csv fallback
+- Dallas Mavericks has high injury impact (-9.7).
+- Chicago Bulls has high injury impact (-7.0).
+- favorite_risk_reason=Chicago Bulls is an away favorite.
+- favorite_risk_reason=Chicago Bulls has unstable momentum.
+- favorite_risk_reason=Elo gap is not large enough for high confidence.

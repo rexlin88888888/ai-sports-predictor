@@ -1,0 +1,65 @@
+AI Sports Predictor - Deployment Ready Report
+Generated at: 2026-05-28 23:59 Australia/Sydney
+
+Status:
+READY FOR GITHUB + STREAMLIT CLOUD DEPLOYMENT
+
+Entry point:
+app.py
+
+Local startup test:
+Command:
+py -m streamlit run app.py --server.port 8503
+
+Result:
+- HTTP status: 200 OK
+- Page title: AI Sports Predictor
+- ModuleNotFoundError: none observed
+- Browser console errors: 0
+- Dashboard: PASS
+- Charts: PASS
+- NBA section: PASS
+- Football section: PASS
+- Football fallback predictions: PASS
+
+Backend import test:
+- from sports.football.football_model import FootballPredictor: PASS
+- from sports.nba.nba_model import NBAPredictor: PASS
+- Football direct prediction: PASS
+- NBA date prediction: PASS
+
+GitHub upload:
+Upload the ai_sports_predictor/ folder as the repository root.
+
+Required files/folders:
+- app.py
+- requirements.txt
+- README.md
+- Dockerfile
+- .env.example
+- .streamlit/config.toml
+- core/
+- sports/
+- models/
+- ui/
+- data/
+- outputs/
+- cache/
+
+Streamlit Cloud settings:
+- Repository root: ai_sports_predictor
+- Main file path: app.py
+- Secrets: optional
+
+Optional secrets:
+- NEWS_API_KEY
+- FOOTBALL_DATA_KEY
+- ODDS_API_KEY
+
+Fallback behavior:
+The app starts without a .env file and without API keys. Missing live APIs use local cache/demo fallback mode.
+
+Most likely deployment issue:
+If Streamlit Cloud still shows ModuleNotFoundError, the uploaded GitHub root is probably the parent folder instead of ai_sports_predictor/. Fix by either:
+1. Uploading ai_sports_predictor/ as the repository root, or
+2. Setting Streamlit main file path to ai_sports_predictor/app.py if uploading the parent folder.

@@ -1,0 +1,5 @@
+bucket,games,avg_predicted_probability,actual_win_rate,calibration_error
+0.5-0.6,16,0.5436,0.375,0.1686
+0.6-0.7,16,0.6554,0.375,0.2804
+0.7-0.8,57,0.7099,0.7368,0.027
+0.8-0.9,11,0.8,0.5455,0.2545

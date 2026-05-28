@@ -1,0 +1,22 @@
+Sample output fields:
+
+sport: nba
+match: Away Team at Home Team
+prediction_date: YYYY-MM-DD
+home_team: Home Team
+away_team: Away Team
+predicted_winner: Home Team
+win_probability_home: 61.5%
+win_probability_away: 38.5%
+draw_probability:
+predicted_score: Home Team 116 - 110 Away Team
+confidence: Medium
+key_factors:
+  - Elo: Home Team 1540, Away Team 1490, elo_diff=+50
+  - Momentum: Home Team WWLWW (+2.4), Away Team LLLWW (-1.1)
+  - Fatigue: Home Team rest=2, b2b=False, travel_penalty=0.0; Away Team rest=1, b2b=True, travel_penalty=2.3
+  - Home advantage score: 2.1
+risk_factors:
+  - Away Team back-to-back fatigue risk.
+  - WARNING: missing injury data for Away Team
+

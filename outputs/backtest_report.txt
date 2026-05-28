@@ -1,0 +1,21 @@
+NBA HISTORICAL BACKTEST
+============================================================
+total_predictions: 100
+accuracy: 0.6000
+average_confidence: 0.6845
+ROI simulation: {'bets': 91, 'profit_units': -9.929, 'roi': -0.1091}
+confidence_distribution: {'High': 0, 'Medium': 74, 'Low': 26}
+upset_analysis: {'upset_rate': 0.26, 'high_probability_failures': 26, 'largest_prediction_error': 'Cleveland Cavaliers at Toronto Raptors: predicted Cleveland Cavaliers, actual Toronto Raptors'}
+auto_tuned_weights: {'elo_weight': 0.0, 'fatigue_weight': 0.0, 'injury_weight': 0.0, 'momentum_weight': 0.15, 'home_advantage_weight': 0.0}
+current_biggest_weakness: High-probability favorites are failing too often.
+
+FOOTBALL HISTORICAL BACKTEST
+============================================================
+total_predictions: 100
+accuracy: 0.5600
+average_confidence: 0.4975
+ROI simulation: {'bets': 34, 'profit_units': 2.914, 'roi': 0.0857}
+confidence_distribution: {'High': 3, 'Medium': 31, 'Low': 66}
+upset_analysis: {'upset_rate': 0.02, 'high_probability_failures': 2, 'largest_prediction_error': 'Tunisia at Brazil: predicted Brazil, actual Draw'}
+auto_tuned_weights: {'elo_weight': 0.15, 'fatigue_weight': 0.0, 'injury_weight': 0.0, 'momentum_weight': 0.0, 'home_advantage_weight': 0.0}
+current_biggest_weakness: draw prediction weak

@@ -1,0 +1,36 @@
+Match: Milwaukee Bucks at Philadelphia 76ers
+Date: 2026-04-12
+Predicted winner: Philadelphia 76ers
+Predicted score: Philadelphia 76ers 124 - 100 Milwaukee Bucks
+Home win probability: 70.0%
+Away win probability: 30.0%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors Philadelphia 76ers mainly because of injury availability (+15.9 rating edge).
+- Model favors Philadelphia 76ers mainly because of home/away split (+6.4 rating edge).
+- Model favors Philadelphia 76ers mainly because of team strength (+6.2 rating edge).
+- Philadelphia 76ers no confirmed injury records available; penalty 0.0
+- Milwaukee Bucks injury impact: team_injury_penalty=-11.9, missing_starters=1, top=Giannis Antetokounmpo Out (6.3), Pete Nance Out (0.7), Gary Harris Out (0.7)
+- home_elo=1541, away_elo=1329, elo_diff=+212, elo_win_probability=0.827
+- home_momentum=WLLLW, away_momentum=WLLWL, momentum_score_edge=-0.7
+- home_fatigue_score=0.7, away_fatigue_score=0.8, rest_advantage=+0.1, travel_penalty_home=0.7, travel_penalty_away=0.8
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.16
+- AI analysis: model leans Philadelphia 76ers after combining Elo, form, availability, rest, and venue context.
+- home_elo=1541, away_elo=1329, elo_diff=+212, elo_win_probability=0.827
+- home_momentum=WLLLW, away_momentum=WLLWL, momentum_score_edge=-0.7
+- home_fatigue_score=0.7, away_fatigue_score=0.8, rest_advantage=+0.1, travel_penalty_home=0.7, travel_penalty_away=0.8
+- home_advantage_score=2.1
+- Main risk: Milwaukee Bucks has high injury impact (-11.9).
+
+Risk factors:
+- Milwaukee Bucks injury penalty -15.9.
+- favorite_risk_reason=Philadelphia 76ers has unstable recent momentum.
+- confidence_cap=0.70, upset_risk_score=0.16.
+- WARNING: missing injury data for Philadelphia 76ers
+- Milwaukee Bucks injury API failed; using injury_cache.csv fallback
+- Milwaukee Bucks missing_starters=1
+- Milwaukee Bucks has high injury impact (-11.9).
+- favorite_risk_reason=Philadelphia 76ers has unstable momentum.

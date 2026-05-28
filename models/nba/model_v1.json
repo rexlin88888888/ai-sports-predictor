@@ -1,0 +1,67 @@
+{
+  "sport": "nba",
+  "created_at": "2026-05-28T20:43:16",
+  "metrics": {
+    "sport": "nba",
+    "games": 40,
+    "accuracy": 0.625,
+    "average_score_error": 10.275,
+    "average_total_points_error": 14.8,
+    "MAE": 10.275,
+    "RMSE": 12.894766380202473,
+    "calibration_report": "data/nba/calibration_report.csv",
+    "confidence_validation": {
+      "high_games": 30,
+      "high_accuracy": 0.7,
+      "medium_games": 6,
+      "medium_accuracy": 0.3333333333333333,
+      "low_games": 4,
+      "low_accuracy": 0.5
+    },
+    "upset_analysis": {
+      "upset_rate": 0.25,
+      "high_probability_failures": 10,
+      "largest_prediction_error": "Detroit Pistons at Orlando Magic: predicted Orlando Magic, actual Detroit Pistons"
+    },
+    "feature_importance": [
+      {
+        "feature": "fatigue",
+        "importance": 0.0987,
+        "direction": 0.0987
+      },
+      {
+        "feature": "elo_difference",
+        "importance": 0.0737,
+        "direction": 0.0737
+      },
+      {
+        "feature": "defensive_rating",
+        "importance": 0.0349,
+        "direction": 0.0349
+      },
+      {
+        "feature": "home_advantage",
+        "importance": 0.0322,
+        "direction": 0.0322
+      },
+      {
+        "feature": "recent_form",
+        "importance": 0.0223,
+        "direction": -0.0223
+      },
+      {
+        "feature": "offensive_rating",
+        "importance": 0.0123,
+        "direction": 0.0123
+      }
+    ],
+    "prediction_drift": {
+      "recent_30d_games": 40,
+      "recent_30d_accuracy": 0.625,
+      "previous_accuracy": 0.0,
+      "trend": "stable_or_better"
+    },
+    "report": "reports/nba_report.txt",
+    "weakness": "High-probability favorites are failing too often."
+  }
+}

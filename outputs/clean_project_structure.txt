@@ -1,0 +1,64 @@
+AI Sports Predictor - Clean Project Structure
+Generated at: 2026-05-28 23:59 Australia/Sydney
+
+Deployment root:
+ai_sports_predictor/
+
+Standard structure:
+ai_sports_predictor/
+|-- app.py
+|-- requirements.txt
+|-- README.md
+|-- Dockerfile
+|-- .env.example
+|-- .streamlit/
+|   `-- config.toml
+|-- core/
+|   |-- base_model.py
+|   |-- backtest.py
+|   |-- data_loader.py
+|   |-- metrics.py
+|   |-- prediction_result.py
+|   |-- tuning.py
+|   `-- utils.py
+|-- sports/
+|   |-- football/
+|   |   |-- football_backtest.py
+|   |   |-- football_data.py
+|   |   `-- football_model.py
+|   `-- nba/
+|       |-- injury_data.py
+|       |-- nba_backtest.py
+|       |-- nba_data.py
+|       |-- nba_history.py
+|       |-- nba_model.py
+|       |-- nba_scoring_model.py
+|       `-- nba_utils.py
+|-- models/
+|-- utils/
+|-- ui/
+|   `-- streamlit_app.py
+|-- data/
+|   |-- football/
+|   `-- nba/
+|-- outputs/
+|-- cache/
+|-- reports/
+|-- config.py
+|-- elo.py
+|-- fatigue.py
+|-- injuries.py
+|-- momentum.py
+`-- predictor.py
+
+Import cleanup completed:
+- Streamlit entrypoint is app.py.
+- app.py imports ui.streamlit_app.main.
+- UI imports use top-level modules from this deployment root.
+- NBA wrapper no longer imports external nba_predictor package.
+- NBA helper code was moved under sports/nba/.
+- NBA data paths now use data/nba/.
+- Football data paths use data/football/.
+
+Run command:
+streamlit run app.py

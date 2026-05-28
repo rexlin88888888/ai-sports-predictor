@@ -1,0 +1,37 @@
+Match: Sacramento Kings at Portland Trail Blazers
+Date: 2026-04-12
+Predicted winner: Portland Trail Blazers
+Predicted score: Portland Trail Blazers 126 - 98 Sacramento Kings
+Home win probability: 70.0%
+Away win probability: 30.0%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors Portland Trail Blazers mainly because of team strength (+11.3 rating edge).
+- Model favors Portland Trail Blazers mainly because of injury availability (+8.7 rating edge).
+- Model favors Portland Trail Blazers mainly because of home/away split (+8.5 rating edge).
+- Portland Trail Blazers injury impact: team_injury_penalty=-0.7, missing_starters=0, top=Damian Lillard Out (0.7)
+- Sacramento Kings injury impact: team_injury_penalty=-9.4, missing_starters=1, top=Zach LaVine Out (3.8), Keegan Murray Out (0.7), Isaiah Stevens Out (0.7)
+- home_elo=1558, away_elo=1335, elo_diff=+223, elo_win_probability=0.836
+- home_momentum=WLLWW, away_momentum=WLLWW, momentum_score_edge=-1.1
+- home_fatigue_score=0.0, away_fatigue_score=0.6, rest_advantage=+0.6, travel_penalty_home=0.0, travel_penalty_away=0.6
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.16
+- AI analysis: model leans Portland Trail Blazers after combining Elo, form, availability, rest, and venue context.
+- home_elo=1558, away_elo=1335, elo_diff=+223, elo_win_probability=0.836
+- home_momentum=WLLWW, away_momentum=WLLWW, momentum_score_edge=-1.1
+- home_fatigue_score=0.0, away_fatigue_score=0.6, rest_advantage=+0.6, travel_penalty_home=0.0, travel_penalty_away=0.6
+- home_advantage_score=2.1
+- Main risk: Sacramento Kings has high injury impact (-9.4).
+
+Risk factors:
+- Portland Trail Blazers injury penalty -0.7.
+- Sacramento Kings injury penalty -9.4.
+- favorite_risk_reason=Portland Trail Blazers has unstable recent momentum.
+- confidence_cap=0.70, upset_risk_score=0.16.
+- Portland Trail Blazers injury API failed; using injury_cache.csv fallback
+- Sacramento Kings injury API failed; using injury_cache.csv fallback
+- Sacramento Kings missing_starters=1
+- Sacramento Kings has high injury impact (-9.4).
+- favorite_risk_reason=Portland Trail Blazers has unstable momentum.

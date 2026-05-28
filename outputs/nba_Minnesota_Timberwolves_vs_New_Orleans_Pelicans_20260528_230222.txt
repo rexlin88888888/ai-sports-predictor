@@ -1,0 +1,35 @@
+Match: New Orleans Pelicans at Minnesota Timberwolves
+Date: 2026-04-12
+Predicted winner: Minnesota Timberwolves
+Predicted score: Minnesota Timberwolves 125 - 105 New Orleans Pelicans
+Home win probability: 70.0%
+Away win probability: 30.0%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors Minnesota Timberwolves mainly because of recent form (+13.2 rating edge).
+- Model favors Minnesota Timberwolves mainly because of defense (+6.6 rating edge).
+- Model favors Minnesota Timberwolves mainly because of home/away split (+5.4 rating edge).
+- Minnesota Timberwolves injury impact: team_injury_penalty=-0.7, missing_starters=0, top=Donte DiVincenzo Out (0.7)
+- New Orleans Pelicans injury impact: team_injury_penalty=-4.2, missing_starters=0, top=Trey Murphy III Out (0.7), Dejounte Murray Out (0.7), Bryce McGowens Out (0.7)
+- home_elo=1552, away_elo=1387, elo_diff=+164, elo_win_probability=0.784
+- home_momentum=WLWLL, away_momentum=LWLLL, momentum_score_edge=+2.0
+- home_fatigue_score=1.2, away_fatigue_score=1.3, rest_advantage=+0.1, travel_penalty_home=1.2, travel_penalty_away=1.3
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.16
+- AI analysis: model leans Minnesota Timberwolves after combining Elo, form, availability, rest, and venue context.
+- home_elo=1552, away_elo=1387, elo_diff=+164, elo_win_probability=0.784
+- home_momentum=WLWLL, away_momentum=LWLLL, momentum_score_edge=+2.0
+- home_fatigue_score=1.2, away_fatigue_score=1.3, rest_advantage=+0.1, travel_penalty_home=1.2, travel_penalty_away=1.3
+- home_advantage_score=2.1
+- Main risk: favorite_risk_reason=Minnesota Timberwolves has unstable momentum.
+
+Risk factors:
+- Minnesota Timberwolves injury penalty -0.7.
+- New Orleans Pelicans injury penalty -4.2.
+- favorite_risk_reason=Minnesota Timberwolves has unstable recent momentum.
+- confidence_cap=0.70, upset_risk_score=0.16.
+- Minnesota Timberwolves injury API failed; using injury_cache.csv fallback
+- New Orleans Pelicans injury API failed; using injury_cache.csv fallback
+- favorite_risk_reason=Minnesota Timberwolves has unstable momentum.

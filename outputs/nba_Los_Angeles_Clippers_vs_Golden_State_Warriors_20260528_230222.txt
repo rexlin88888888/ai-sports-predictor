@@ -1,0 +1,37 @@
+Match: Golden State Warriors at Los Angeles Clippers
+Date: 2026-04-12
+Predicted winner: Los Angeles Clippers
+Predicted score: Los Angeles Clippers 121 - 104 Golden State Warriors
+Home win probability: 70.0%
+Away win probability: 30.0%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors Los Angeles Clippers mainly because of recent form (+8.4 rating edge).
+- Model favors Los Angeles Clippers mainly because of team strength (+8.0 rating edge).
+- Model favors Los Angeles Clippers mainly because of injury availability (+5.5 rating edge).
+- Los Angeles Clippers injury impact: team_injury_penalty=-1.4, missing_starters=0, top=Yanic Konan Niederhauser Out (0.7), Bradley Beal Out (0.7)
+- Golden State Warriors injury impact: team_injury_penalty=-6.9, missing_starters=1, top=Jimmy Butler III Out (4.8), Quinten Post Out (0.7), LJ Cryer Out (0.7)
+- home_elo=1500, away_elo=1352, elo_diff=+148, elo_win_probability=0.768
+- home_momentum=LLWWL, away_momentum=LLWLL, momentum_score_edge=-0.8
+- home_fatigue_score=1.0, away_fatigue_score=0.4, rest_advantage=-0.5, travel_penalty_home=1.0, travel_penalty_away=0.4
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.16
+- AI analysis: model leans Los Angeles Clippers after combining Elo, form, availability, rest, and venue context.
+- home_elo=1500, away_elo=1352, elo_diff=+148, elo_win_probability=0.768
+- home_momentum=LLWWL, away_momentum=LLWLL, momentum_score_edge=-0.8
+- home_fatigue_score=1.0, away_fatigue_score=0.4, rest_advantage=-0.5, travel_penalty_home=1.0, travel_penalty_away=0.4
+- home_advantage_score=2.1
+- Main risk: Golden State Warriors has high injury impact (-6.9).
+
+Risk factors:
+- Los Angeles Clippers injury penalty -1.4.
+- Golden State Warriors injury penalty -6.9.
+- favorite_risk_reason=Los Angeles Clippers has unstable recent momentum.
+- confidence_cap=0.70, upset_risk_score=0.16.
+- Los Angeles Clippers injury API failed; using injury_cache.csv fallback
+- Golden State Warriors injury API failed; using injury_cache.csv fallback
+- Golden State Warriors missing_starters=1
+- Golden State Warriors has high injury impact (-6.9).
+- favorite_risk_reason=Los Angeles Clippers has unstable momentum.

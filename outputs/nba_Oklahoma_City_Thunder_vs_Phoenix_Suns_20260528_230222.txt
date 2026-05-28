@@ -1,0 +1,37 @@
+Match: Phoenix Suns at Oklahoma City Thunder
+Date: 2026-04-12
+Predicted winner: Oklahoma City Thunder
+Predicted score: Oklahoma City Thunder 123 - 103 Phoenix Suns
+Home win probability: 65.9%
+Away win probability: 34.1%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors Oklahoma City Thunder mainly because of recent form (+14.4 rating edge).
+- Model favors Oklahoma City Thunder mainly because of team strength (+10.3 rating edge).
+- Model favors Oklahoma City Thunder mainly because of home/away split (+6.0 rating edge).
+- Oklahoma City Thunder injury impact: team_injury_penalty=-5.4, missing_starters=1, top=Jalen Williams Out (4.0), Ajay Mitchell Out (0.7), Thomas Sorber Out (0.7)
+- Phoenix Suns injury impact: team_injury_penalty=-1.4, missing_starters=0, top=Jordan Goodwin Out (0.7), Mark Williams Out (0.7)
+- home_elo=1812, away_elo=1476, elo_diff=+336, elo_win_probability=0.907
+- home_momentum=LWWWW, away_momentum=LWLWL, momentum_score_edge=+1.8
+- home_fatigue_score=0.6, away_fatigue_score=1.4, rest_advantage=+0.8, travel_penalty_home=0.6, travel_penalty_away=1.4
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.16
+- AI analysis: model leans Oklahoma City Thunder after combining Elo, form, availability, rest, and venue context.
+- home_elo=1812, away_elo=1476, elo_diff=+336, elo_win_probability=0.907
+- home_momentum=LWWWW, away_momentum=LWLWL, momentum_score_edge=+1.8
+- home_fatigue_score=0.6, away_fatigue_score=1.4, rest_advantage=+0.8, travel_penalty_home=0.6, travel_penalty_away=1.4
+- home_advantage_score=2.1
+- Main risk: Oklahoma City Thunder has high injury impact (-5.4).
+
+Risk factors:
+- Oklahoma City Thunder injury penalty -6.4.
+- Phoenix Suns injury penalty -1.4.
+- favorite_risk_reason=Oklahoma City Thunder has injury risk despite high favorite probability.
+- confidence_cap=0.68, upset_risk_score=0.24.
+- Oklahoma City Thunder injury API failed; using injury_cache.csv fallback
+- Oklahoma City Thunder missing_starters=1
+- Phoenix Suns injury API failed; using injury_cache.csv fallback
+- Oklahoma City Thunder has high injury impact (-5.4).
+- favorite_risk_reason=Oklahoma City Thunder has unstable momentum.

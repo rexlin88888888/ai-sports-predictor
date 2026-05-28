@@ -1,0 +1,46 @@
+NBA MODEL REPORT
+============================================================
+Metrics:
+- sport: nba
+- games: 100
+- accuracy: 0.6
+- average_score_error: 10.44
+- average_total_points_error: 15.5
+- MAE: 10.44
+- RMSE: 13.260090497428742
+- average_confidence: 0.6844709999999999
+- favorite_accuracy: 0.6
+- underdog_accuracy: 0.0
+
+Confidence validation:
+- high_games: 0
+- high_accuracy: 0.0
+- medium_games: 74
+- medium_accuracy: 0.6891891891891891
+- low_games: 26
+- low_accuracy: 0.34615384615384615
+
+Upset analysis:
+- upset_rate: 0.26
+- high_probability_failures: 26
+- largest_prediction_error: Cleveland Cavaliers at Toronto Raptors: predicted Cleveland Cavaliers, actual Toronto Raptors
+
+Feature importance:
+- {'feature': 'elo_difference', 'importance': 0.1418, 'direction': 0.1418}
+- {'feature': 'defensive_rating', 'importance': 0.1366, 'direction': 0.1366}
+- {'feature': 'home_advantage', 'importance': 0.111, 'direction': 0.111}
+- {'feature': 'recent_form', 'importance': 0.0857, 'direction': 0.0857}
+- {'feature': 'offensive_rating', 'importance': 0.0592, 'direction': -0.0592}
+- {'feature': 'fatigue', 'importance': 0.0386, 'direction': -0.0386}
+- {'feature': 'injury_edge', 'importance': 0.005, 'direction': 0.005}
+
+Prediction drift:
+- recent_30d_games: 52
+- recent_30d_accuracy: 0.5961538461538461
+- previous_accuracy: 0.6041666666666666
+- trend: worse
+
+Most stable teams: requires longer team-level history in future versions.
+Hardest teams to predict: inspect largest_prediction_error and team-level residuals.
+
+Biggest weakness: High-probability favorites are failing too often.

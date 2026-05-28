@@ -1,0 +1,33 @@
+Match: Denver Nuggets at San Antonio Spurs
+Date: 2026-04-12
+Predicted winner: San Antonio Spurs
+Predicted score: San Antonio Spurs 127 - 116 Denver Nuggets
+Home win probability: 74.8%
+Away win probability: 25.2%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors San Antonio Spurs mainly because of team strength (+9.0 rating edge).
+- Model favors San Antonio Spurs mainly because of home/away split (+6.9 rating edge).
+- Model favors San Antonio Spurs mainly because of defense (+6.7 rating edge).
+- San Antonio Spurs injury impact: team_injury_penalty=-0.7, missing_starters=0, top=David Jones Garcia Out (0.7)
+- Denver Nuggets injury impact: team_injury_penalty=-3.7, missing_starters=1, top=Aaron Gordon Out (3.0), Peyton Watson Out (0.7)
+- home_elo=1856, away_elo=1712, elo_diff=+144, elo_win_probability=0.764
+- home_momentum=WWWLW, away_momentum=WWWWW, momentum_score_edge=-3.3
+- home_fatigue_score=0.0, away_fatigue_score=0.9, rest_advantage=+0.9, travel_penalty_home=0.0, travel_penalty_away=0.9
+- home_advantage_score=2.1
+- confidence_cap=0.80, upset_risk_score=0.00
+- AI analysis: model leans San Antonio Spurs after combining Elo, form, availability, rest, and venue context.
+- home_elo=1856, away_elo=1712, elo_diff=+144, elo_win_probability=0.764
+- home_momentum=WWWLW, away_momentum=WWWWW, momentum_score_edge=-3.3
+- home_fatigue_score=0.0, away_fatigue_score=0.9, rest_advantage=+0.9, travel_penalty_home=0.0, travel_penalty_away=0.9
+- home_advantage_score=2.1
+
+Risk factors:
+- San Antonio Spurs injury penalty -0.7.
+- Denver Nuggets injury penalty -3.7.
+- confidence_cap=0.80, upset_risk_score=0.00.
+- San Antonio Spurs injury API failed; using injury_cache.csv fallback
+- Denver Nuggets injury API failed; using injury_cache.csv fallback
+- Denver Nuggets missing_starters=1

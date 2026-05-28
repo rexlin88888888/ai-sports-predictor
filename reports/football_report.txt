@@ -1,0 +1,41 @@
+FOOTBALL MODEL REPORT
+============================================================
+Metrics:
+- sport: football
+- games: 100
+- accuracy: 0.56
+- draw_accuracy: 0.2413793103448276
+- over_under_accuracy: 0.57
+- average_goal_error: 0.915
+- log_loss: 0.9755335960073229
+- brier_score: 0.19465924933333334
+- average_confidence: 0.49749900000000014
+
+Confidence validation:
+- high_games: 3
+- high_accuracy: 1.0
+- medium_games: 31
+- medium_accuracy: 0.6451612903225806
+- low_games: 66
+- low_accuracy: 0.5
+
+Upset analysis:
+- upset_rate: 0.02
+- high_probability_failures: 2
+- largest_prediction_error: Tunisia at Brazil: predicted Brazil, actual Draw
+
+Feature importance:
+- {'feature': 'recent_form', 'importance': 0.1419, 'direction': -0.1419}
+- {'feature': 'home_advantage', 'importance': 0.1315, 'direction': -0.1315}
+- {'feature': 'elo_difference', 'importance': 0.0571, 'direction': 0.0571}
+
+Prediction drift:
+- recent_30d_games: 70
+- recent_30d_accuracy: 0.5714285714285714
+- previous_accuracy: 0.5333333333333333
+- trend: stable_or_better
+
+Most stable teams: requires longer team-level history in future versions.
+Hardest teams to predict: inspect largest_prediction_error and team-level residuals.
+
+Biggest weakness: draw prediction weak

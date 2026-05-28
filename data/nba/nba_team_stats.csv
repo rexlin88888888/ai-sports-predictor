@@ -1,0 +1,61 @@
+run_date,game_date,team,opponent,is_home,games_used,recent5_win_pct,recent10_win_pct,season_win_pct,avg_points_for,avg_points_against,recent_off_eff,recent_def_eff,home_win_pct,away_win_pct,rest_days,back_to_back,injury_penalty
+2026-05-28T20:31:14,2026-04-12,Boston Celtics,Orlando Magic,True,40,0.8,0.8,0.725,112.65,104.1,120.2,108.5,0.8095,0.6316,2,False,0.0
+2026-05-28T20:31:14,2026-04-12,Orlando Magic,Boston Celtics,False,40,1.0,0.7,0.55,115.4,115.38,118.7,119.8,0.5714,0.5263,2,False,0.0
+2026-05-28T20:31:15,2026-04-12,Cleveland Cavaliers,Washington Wizards,True,40,0.8,0.7,0.725,119.03,113.03,122.4,120.4,0.75,0.7083,2,False,0.0
+2026-05-28T20:31:15,2026-04-12,Washington Wizards,Cleveland Cavaliers,False,40,0.0,0.1,0.175,113.0,125.75,115.3,129.8,0.2273,0.1111,2,False,-3.5
+2026-05-28T20:31:16,2026-04-12,Indiana Pacers,Detroit Pistons,True,40,0.2,0.4,0.25,114.1,122.25,118.8,119.0,0.2353,0.2609,2,False,0.0
+2026-05-28T20:31:16,2026-04-12,Detroit Pistons,Indiana Pacers,False,40,0.8,0.7,0.7,117.83,108.85,119.5,109.0,0.7368,0.6667,2,False,0.0
+2026-05-28T20:31:17,2026-04-12,Miami Heat,Atlanta Hawks,True,40,0.4,0.4,0.525,121.8,119.3,122.6,128.1,0.5789,0.4762,2,False,0.0
+2026-05-28T20:31:17,2026-04-12,Atlanta Hawks,Miami Heat,False,40,0.6,0.7,0.65,118.6,113.0,122.9,110.0,0.7391,0.5294,2,False,0.0
+2026-05-28T20:31:18,2026-04-12,New York Knicks,Charlotte Hornets,True,40,1.0,0.7,0.7,114.5,105.0,116.1,108.6,0.7368,0.6667,2,False,0.0
+2026-05-28T20:31:18,2026-04-12,Charlotte Hornets,New York Knicks,False,40,0.6,0.6,0.7,115.58,105.95,115.8,106.5,0.6364,0.7778,2,False,0.0
+2026-05-28T20:31:20,2026-04-12,Philadelphia 76ers,Milwaukee Bucks,True,40,0.4,0.5,0.525,114.78,117.03,115.7,116.5,0.6111,0.4545,2,False,0.0
+2026-05-28T20:31:20,2026-04-12,Milwaukee Bucks,Philadelphia 76ers,False,40,0.4,0.3,0.375,108.92,117.72,110.1,119.1,0.4545,0.2778,2,False,-4.0
+2026-05-28T20:31:20,2026-04-12,Toronto Raptors,Brooklyn Nets,True,40,0.6,0.5,0.525,114.9,111.53,115.6,109.4,0.5556,0.5,2,False,0.0
+2026-05-28T20:31:20,2026-04-12,Brooklyn Nets,Toronto Raptors,False,40,0.4,0.3,0.2,102.95,117.05,103.2,116.9,0.3158,0.0952,2,False,0.0
+2026-05-28T20:31:52,2026-04-12,Dallas Mavericks,Chicago Bulls,True,40,0.2,0.2,0.25,114.53,122.28,115.0,125.2,0.2222,0.2727,2,False,0.0
+2026-05-28T20:31:52,2026-04-12,Chicago Bulls,Dallas Mavericks,False,40,0.4,0.2,0.3,115.03,121.65,117.1,127.6,0.3,0.3,2,False,-3.0
+2026-05-28T20:31:53,2026-04-12,Houston Rockets,Memphis Grizzlies,True,40,0.8,0.8,0.625,113.05,109.7,121.2,109.3,0.6364,0.6111,2,False,0.0
+2026-05-28T20:31:53,2026-04-12,Memphis Grizzlies,Houston Rockets,False,40,0.0,0.1,0.175,114.58,125.15,111.3,131.1,0.2,0.15,2,False,0.0
+2026-05-28T20:31:54,2026-04-12,Minnesota Timberwolves,New Orleans Pelicans,True,40,0.4,0.5,0.525,115.25,114.45,112.2,112.1,0.5263,0.5238,2,False,0.0
+2026-05-28T20:31:54,2026-04-12,New Orleans Pelicans,Minnesota Timberwolves,False,40,0.2,0.1,0.425,115.92,117.28,113.9,124.2,0.6111,0.2727,2,False,0.0
+2026-05-28T20:31:55,2026-04-12,Oklahoma City Thunder,Phoenix Suns,True,40,0.8,0.8,0.75,117.05,106.95,123.1,107.6,0.7778,0.7273,2,False,-1.0
+2026-05-28T20:31:55,2026-04-12,Phoenix Suns,Oklahoma City Thunder,False,40,0.4,0.5,0.5,109.97,110.38,113.6,111.6,0.5,0.5,2,False,0.0
+2026-05-28T20:31:56,2026-04-12,San Antonio Spurs,Denver Nuggets,True,40,0.8,0.9,0.85,122.12,110.12,126.0,108.9,0.9,0.8,2,False,0.0
+2026-05-28T20:31:56,2026-04-12,Denver Nuggets,San Antonio Spurs,False,40,1.0,1.0,0.625,121.4,116.58,131.2,120.1,0.7083,0.5,2,False,0.0
+2026-05-28T20:32:27,2026-04-12,Los Angeles Lakers,Utah Jazz,True,40,0.4,0.6,0.675,116.0,112.62,114.1,112.8,0.75,0.6,2,False,0.0
+2026-05-28T20:32:27,2026-04-12,Utah Jazz,Los Angeles Lakers,False,40,0.2,0.1,0.2,116.05,124.47,120.6,134.0,0.25,0.15,2,False,0.0
+2026-05-28T20:32:28,2026-04-12,Los Angeles Clippers,Golden State Warriors,True,40,0.4,0.6,0.575,115.08,111.95,115.3,110.4,0.55,0.6,2,False,0.0
+2026-05-28T20:32:28,2026-04-12,Golden State Warriors,Los Angeles Clippers,False,40,0.2,0.4,0.375,113.8,117.17,114.1,118.9,0.381,0.3684,2,False,0.0
+2026-05-28T20:32:29,2026-04-12,Portland Trail Blazers,Sacramento Kings,True,40,0.6,0.6,0.55,114.95,112.75,117.3,107.0,0.65,0.45,2,False,0.0
+2026-05-28T20:32:29,2026-04-12,Sacramento Kings,Portland Trail Blazers,False,40,0.6,0.4,0.275,111.85,121.28,112.3,121.0,0.35,0.2,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Boston Celtics,Orlando Magic,True,40,0.8,0.8,0.725,112.65,104.1,120.2,108.5,0.8095,0.6316,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Orlando Magic,Boston Celtics,False,40,1.0,0.7,0.575,115.88,115.17,118.7,119.8,0.5909,0.5556,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Cleveland Cavaliers,Washington Wizards,True,40,0.8,0.7,0.725,119.03,113.03,122.4,120.4,0.75,0.7083,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Washington Wizards,Cleveland Cavaliers,False,40,0.0,0.1,0.175,113.0,125.75,115.3,129.8,0.2273,0.1111,2,False,-3.5
+2026-05-28T20:33:10,2026-04-12,Indiana Pacers,Detroit Pistons,True,40,0.2,0.4,0.25,114.1,122.25,118.8,119.0,0.2353,0.2609,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Detroit Pistons,Indiana Pacers,False,40,0.8,0.7,0.7,117.83,108.85,119.5,109.0,0.7368,0.6667,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Miami Heat,Atlanta Hawks,True,40,0.4,0.4,0.525,121.8,119.3,122.6,128.1,0.5789,0.4762,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Atlanta Hawks,Miami Heat,False,40,0.6,0.7,0.65,118.6,113.0,122.9,110.0,0.7391,0.5294,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,New York Knicks,Charlotte Hornets,True,40,1.0,0.7,0.7,114.5,105.0,116.1,108.6,0.7368,0.6667,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Charlotte Hornets,New York Knicks,False,40,0.6,0.6,0.7,115.58,105.95,115.8,106.5,0.6364,0.7778,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Philadelphia 76ers,Milwaukee Bucks,True,40,0.4,0.5,0.525,114.78,117.03,115.7,116.5,0.6111,0.4545,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Milwaukee Bucks,Philadelphia 76ers,False,40,0.4,0.3,0.375,108.92,117.72,110.1,119.1,0.4545,0.2778,2,False,-4.0
+2026-05-28T20:33:10,2026-04-12,Toronto Raptors,Brooklyn Nets,True,40,0.6,0.5,0.525,114.9,111.53,115.6,109.4,0.5556,0.5,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Brooklyn Nets,Toronto Raptors,False,40,0.4,0.3,0.2,102.95,117.05,103.2,116.9,0.3158,0.0952,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Dallas Mavericks,Chicago Bulls,True,40,0.2,0.2,0.25,114.53,122.28,115.0,125.2,0.2222,0.2727,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Chicago Bulls,Dallas Mavericks,False,40,0.4,0.2,0.3,115.03,121.65,117.1,127.6,0.3,0.3,2,False,-3.0
+2026-05-28T20:33:10,2026-04-12,Houston Rockets,Memphis Grizzlies,True,40,0.8,0.8,0.625,113.05,109.7,121.2,109.3,0.6364,0.6111,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Memphis Grizzlies,Houston Rockets,False,40,0.0,0.1,0.175,114.58,125.15,111.3,131.1,0.2,0.15,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Minnesota Timberwolves,New Orleans Pelicans,True,40,0.4,0.5,0.525,115.25,114.45,112.2,112.1,0.5263,0.5238,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,New Orleans Pelicans,Minnesota Timberwolves,False,40,0.2,0.1,0.425,115.92,117.28,113.9,124.2,0.6111,0.2727,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Oklahoma City Thunder,Phoenix Suns,True,40,0.8,0.8,0.75,117.05,106.95,123.1,107.6,0.7778,0.7273,2,False,-1.0
+2026-05-28T20:33:10,2026-04-12,Phoenix Suns,Oklahoma City Thunder,False,40,0.4,0.5,0.5,109.97,110.38,113.6,111.6,0.5,0.5,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,San Antonio Spurs,Denver Nuggets,True,40,0.8,0.9,0.85,122.12,110.12,126.0,108.9,0.9,0.8,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Denver Nuggets,San Antonio Spurs,False,40,1.0,1.0,0.625,121.4,116.58,131.2,120.1,0.7083,0.5,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Los Angeles Lakers,Utah Jazz,True,40,0.4,0.6,0.675,116.0,112.6,114.1,112.8,0.75,0.6,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Utah Jazz,Los Angeles Lakers,False,40,0.2,0.1,0.2,116.05,124.47,120.6,134.0,0.25,0.15,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Los Angeles Clippers,Golden State Warriors,True,40,0.4,0.6,0.575,115.08,111.95,115.3,110.4,0.55,0.6,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Golden State Warriors,Los Angeles Clippers,False,40,0.2,0.4,0.375,113.8,117.17,114.1,118.9,0.381,0.3684,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Portland Trail Blazers,Sacramento Kings,True,40,0.6,0.6,0.55,114.95,112.75,117.3,107.0,0.65,0.45,2,False,0.0
+2026-05-28T20:33:10,2026-04-12,Sacramento Kings,Portland Trail Blazers,False,40,0.6,0.4,0.275,111.85,121.28,112.3,121.0,0.35,0.2,2,False,0.0

@@ -1,0 +1,127 @@
+team,player,status,injury,comment,source,updated_at,player_impact_score,weighted_impact,is_projected_starter
+Golden State Warriors,Quinten Post,Out,Foot Leg Not Specified,"Post (foot) averaged 7.7 points, 4.0 rebounds, 1.4 assists, 0.5 blocks and 0.4 steals in 17.3 minutes per game across 67 regular-season appearances (35 starts) in 2025-26.",ESPN,2026-04-18T16:31Z,0.7,0.7,False
+Golden State Warriors,LJ Cryer,Out,Ankle Leg Sprain,Cryer (ankle) will be re-evaluated in one week after an MRI confirmed a right-ankle sprain.,ESPN,2026-04-11T01:19Z,0.7,0.7,False
+Golden State Warriors,Moses Moody,Out,Knee Leg Surgery,"Moody has been diagnosed with a torn patellar tendon in his left knee, Shams Charania of ESPN reports.",ESPN,2026-03-24T20:48Z,0.7,0.7,False
+Golden State Warriors,Jimmy Butler III,Out,Knee Leg Surgery,Butler underwent successful surgery Monday to repair a torn right anterior cruciate ligament.,ESPN,2026-02-10T00:49Z,0.7,0.7,False
+Boston Celtics,Jayson Tatum,Out,Knee Leg Soreness,"Tatum (knee) has been ruled out for Saturday's Game 7 against the 76ers, Shams Charania of ESPN reports.",ESPN,2026-05-02T21:43Z,5.7,5.7,True
+Orlando Magic,Jonathan Isaac,Out,Knee Leg Sprain,Isaac (knee) is listed as out for Sunday's Game 7 of the Eastern Conference first-round series against the Pistons.,ESPN,2026-05-03T18:02Z,0.7,0.7,False
+Orlando Magic,Franz Wagner,Out,Calf Leg Strain,"Wagner (calf) has been ruled out for Game 7 of the first round of the Eastern Conference playoffs Sunday against the Pistons, Jason Beede of the Orlando Sentinel reports.",ESPN,2026-05-02T19:05Z,0.7,0.7,False
+Cleveland Cavaliers,Dennis Schroder,Out,Illness Other Not Specified,"Schroder (illness) has been ruled out for Game 4 of the Eastern Conference Finals against the Knicks on Monday, independent journalist Tom Withers  reports.",ESPN,2026-05-26T13:02Z,0.7,0.7,False
+Washington Wizards,Tristan Vukcevic,Out,Knee Leg Bruise,Vukcevic (knee) is out for Sunday's game in Cleveland.,ESPN,2026-04-11T22:00Z,0.7,0.7,False
+Washington Wizards,Alex Sarr,Out,Toe Leg Inflammation,Sarr (toe) has been ruled out for Sunday's regular-season finale against Cleveland.,ESPN,2026-04-11T21:58Z,0.7,0.7,False
+Washington Wizards,Bilal Coulibaly,Out,Heel Leg Inflammation,Coulibaly (heel) won't play Sunday against the Cavs.,ESPN,2026-04-11T21:56Z,0.7,0.7,False
+Washington Wizards,Tre Johnson,Out,Foot Leg Sprain,Johnson (foot) has been ruled out for Sunday's regular-season finale against the Cavaliers.,ESPN,2026-04-11T21:53Z,0.7,0.7,False
+Washington Wizards,Anthony Davis,Out,Finger Arm Sprain,"Head coach Brian Keefe said Tuesday that Davis (finger) is not expected to play again this season, Chase Hughes of Monumental Sports Network reports.",ESPN,2026-04-07T21:33Z,5.4,5.4,True
+Washington Wizards,Trae Young,Out,Quadriceps Leg Bruise,"Young (quadriceps, back) isn't expected to play again in 2025-26, per Chase Hughes of Monumental Sports Network.",ESPN,2026-04-07T21:31Z,0.7,0.7,False
+Washington Wizards,Kyshawn George,Out,Elbow Arm Sprain,"George (elbow) will miss the rest of the 2025-26 season, Chase Hughes of Monumental Sports Network reports.",ESPN,2026-04-02T16:49Z,0.7,0.7,False
+Washington Wizards,D'Angelo Russell,Out,Not Injury Related  Not Specified,Russell (not injury related) has been ruled out for Tuesday's game against the Magic.,ESPN,2026-03-03T18:04Z,0.7,0.7,False
+Washington Wizards,Cam Whitmore,Out,Shoulder Arm Not Specified,Whitmore has begun the recovery process for a diagnosed venous condition and he will miss the remainder of the 2025-26 season.,ESPN,2026-01-15T22:15Z,0.7,0.7,False
+Indiana Pacers,Ben Sheppard,Out,Hip Torso Strain,"Sheppard (hip) won't play in Sunday's game against Detroit, Tony East of Forbes.com reports.",ESPN,2026-04-12T20:54Z,0.7,0.7,False
+Indiana Pacers,Jarace Walker,Out,Foot Leg Sprain,"Walker (foot) won't play in Sunday's game against Detroit, Tony East of Forbes.com reports.",ESPN,2026-04-12T20:47Z,0.7,0.7,False
+Indiana Pacers,Andrew Nembhard,Out,Back Torso Soreness,Nembhard (back) has been ruled out for Sunday's game against the Pistons.,ESPN,2026-04-12T00:31Z,0.7,0.7,False
+Indiana Pacers,Aaron Nesmith,Out,Neck Head Strain,Nesmith (neck) won't play Sunday against the Pistons.,ESPN,2026-04-12T00:26Z,0.7,0.7,False
+Indiana Pacers,Pascal Siakam,Out,Ankle Leg Sprain,Siakam (ankle) has been ruled out for Sunday's meeting with the Pistons.,ESPN,2026-04-12T00:23Z,0.7,0.7,False
+Indiana Pacers,T.J. McConnell,Out,Hamstring Leg Not Specified,McConnell (hamstring) has been ruled out for Sunday's game against the Pistons.,ESPN,2026-04-12T00:06Z,0.7,0.7,False
+Indiana Pacers,Tyrese Haliburton,Out,Achilles Leg Surgery,Haliburton announced via his personal X account that he participated in 5-on-5 work Wednesday.,ESPN,2026-04-08T23:43Z,5.2,5.2,True
+Indiana Pacers,Ivica Zubac,Out,Ribs Torso Fracture,"Zubac will miss the rest of the season with a fractured rib, Dustin Dopirak of The Indianapolis Star reports.",ESPN,2026-03-20T14:52Z,0.7,0.7,False
+Indiana Pacers,Johnny Furphy,Out,Knee Leg Surgery,"Furphy was diagnosed with a torn right ACL on Monday and will miss the remainder of the season, Michael Scotto of USA Today reports.",ESPN,2026-02-09T21:43Z,0.7,0.7,False
+Miami Heat,Tyler Herro,Out,Foot Leg,"Herro is expected to undergo a minor procedure on his foot this week, according to Five Reasons Sports Network.",ESPN,2026-04-27T16:59Z,0.7,0.7,False
+Miami Heat,Bam Adebayo,Out,Back Torso,Adebayo (back) won't return to Tuesday's Play-In game against the Hornets.,ESPN,2026-04-15T02:28Z,0.7,0.7,False
+Miami Heat,Dru Smith,Out,Foot Leg Soreness,Smith (foot) has been ruled out for Tuesday's Play-In Tournament game against the Hornets.,ESPN,2026-04-13T21:40Z,0.7,0.7,False
+Miami Heat,Nikola Jovic,Out,Ankle Leg Sprain,Jovic (ankle) is out for Tuesday's Play-In Game against the Hornets.,ESPN,2026-04-13T21:39Z,0.7,0.7,False
+Atlanta Hawks,Keshon Gilbert,Out,Abdomen Torso Surgery,"Gilbert signed a two-way contract with the Hawks on Tuesday, according to Jake Fischer of BleacherReport.com.",ESPN,2026-04-22T21:37Z,0.7,0.7,False
+Atlanta Hawks,Jock Landale,Out,Ankle Leg Sprain,"Landale (ankle) will be re-evaluated in two weeks, Brad Rowland of the Locked On Podcast Network reports.",ESPN,2026-04-16T14:10Z,0.7,0.7,False
+Charlotte Hornets,Brandon Miller,Out,Shoulder Arm Surgery,"The Hornets announced Wednesday that Miller underwent successful surgery to address left shoulder instability, per Owen O'Connor of SI.com.",ESPN,2026-05-06T20:49Z,0.7,0.7,False
+Charlotte Hornets,PJ Hall,Out,Ankle Leg Surgery,The Hornets announced Thursday that Hall underwent a procedure to address a fractured right ankle and will miss the remainder of the 2025-26 campaign.,ESPN,2026-04-09T20:12Z,0.7,0.7,False
+Milwaukee Bucks,Giannis Antetokounmpo,Out,Knee Leg Bruise,"The Bucks are officially open to trade discussions involving Antetokounmpo (knee), with sides aligned on moving toward a potential separation this offseason, Shams Charania of ESPN reports.",ESPN,2026-05-11T16:41Z,6.3,6.3,True
+Milwaukee Bucks,Pete Nance,Out,Knee Leg Sprain,"Nance (knee) will suit up for Sunday's game against the Sixers but will not play, Ky Carlin of USA Today reports.",ESPN,2026-04-12T21:10Z,0.7,0.7,False
+Milwaukee Bucks,Gary Harris,Out,Groin Groin Soreness,"Harris (groin) has been ruled out for Sunday's game against the 76ers, Ky Carlin of USA Today reports.",ESPN,2026-04-12T20:42Z,0.7,0.7,False
+Milwaukee Bucks,Myles Turner,Out,Ankle Leg Sprain,Turner (ankle) has been ruled out for Sunday's game versus the 76ers.,ESPN,2026-04-11T23:35Z,0.7,0.7,False
+Milwaukee Bucks,Gary Trent Jr.,Out,Oblique Torso Strain,Trent (oblique) is out for Sunday's game in Philadelphia.,ESPN,2026-04-11T23:32Z,0.7,0.7,False
+Milwaukee Bucks,Ryan Rollins,Out,Thumb Arm Sprain,Rollins (hip) has been ruled out for Sunday's meeting with the 76ers.,ESPN,2026-04-11T23:28Z,0.7,0.7,False
+Milwaukee Bucks,Bobby Portis,Out,Wrist Arm Sprain,Portis (wrist) will remain on the inactive list for Sunday's game in Philadelphia.,ESPN,2026-04-11T23:22Z,0.7,0.7,False
+Milwaukee Bucks,Kyle Kuzma,Out,Achilles Leg Tendinitis,Kuzma (Achilles) won't play Sunday against the 76ers.,ESPN,2026-04-11T23:18Z,0.7,0.7,False
+Milwaukee Bucks,Kevin Porter Jr.,Out,Knee Leg Surgery,The Bucks announced that Porter underwent arthroscopic surgery on his right knee Tuesday and will miss the remainder of the 2025-26 campaign.,ESPN,2026-04-07T21:52Z,0.7,0.7,False
+Toronto Raptors,Brandon Ingram,Out,Heel Leg Surgery,"Ingram underwent successful surgery Friday to address ongoing heel pain, Michael Scotto of USA Today reports.",ESPN,2026-05-08T19:03Z,0.7,0.7,False
+Toronto Raptors,Immanuel Quickley,Out,Hamstring Leg Strain,"Quickley (hamstring) is out for the remainder of Toronto's first-round series against Cleveland, per NBA reporter Marc Stein.",ESPN,2026-04-24T20:50Z,0.7,0.7,False
+Toronto Raptors,Chucky Hepburn,Out,Knee Leg Surgery,"Hepburn (knee) has been ruled out for Sunday's regular-season finale against Brooklyn, Esfandiar Baraheni of The Athletic reports.",ESPN,2026-04-11T21:08Z,0.7,0.7,False
+Brooklyn Nets,Nolan Traore,Out,Illness Other Not Specified,Traore (illness) has been ruled out for Sunday's game against the Raptors.,ESPN,2026-04-12T20:51Z,0.7,0.7,False
+Brooklyn Nets,Nic Claxton,Out,Finger Arm Sprain,"Claxton (finger) is out for Sunday's game in Toronto, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-11T22:55Z,0.7,0.7,False
+Brooklyn Nets,Ziaire Williams,Out,Foot Leg Inflammation,"Williams (foot) will miss Sunday's regular-season finale against the Raptors, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-11T22:48Z,0.7,0.7,False
+Brooklyn Nets,Noah Clowney,Out,Ankle Leg Not Specified,"Clowney (ankle) won't play Sunday in Toronto, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-11T22:43Z,0.7,0.7,False
+Brooklyn Nets,Terance Mann,Out,Knee Leg Tendinitis,"Mann (knee) is out for Sunday's game against the Raptors, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-11T22:38Z,0.7,0.7,False
+Brooklyn Nets,Josh Minott,Out,Ankle Leg Soreness,"Minott (ankle) won't play Sunday in Toronto, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-11T22:34Z,0.7,0.7,False
+Brooklyn Nets,Michael Porter Jr.,Out,Hamstring Leg Strain,"Porter (hamstring) has been ruled out for the remainder of the 2025-26 season, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-03T21:55Z,0.7,0.7,False
+Brooklyn Nets,Danny Wolf,Out,Ankle Leg Sprain,"The Nets announced Friday that Wolf (ankle) is being shut down for the rest of the season, Erik Slater of ClutchPoints.com reports.",ESPN,2026-04-03T21:55Z,0.7,0.7,False
+Brooklyn Nets,Egor Demin,Out,Foot Leg Surgery,"Demin underwent a non-surgical procedure to address plantar fasciitis in his left foot, and there's hope he will make a full recovery in time for NBA Summer League, Brian Lewis of the New York Post reports",ESPN,2026-03-18T21:57Z,0.7,0.7,False
+Brooklyn Nets,Day'Ron Sharpe,Out,Thumb Arm Surgery,"Sharpe has been diagnosed with an ulnar collateral ligament tear in his left thumb and will require season-ending surgery, Erik Slater of ClutchPoints.com reports.",ESPN,2026-03-12T21:43Z,0.7,0.7,False
+Dallas Mavericks,Cooper Flagg,Out,Ankle Leg Sprain,"Flagg was named to the NBA All-Rookie First Team for the 2025-26 season Wednesday, Shams Charania of ESPN reports",ESPN,2026-05-21T00:31Z,0.7,0.7,False
+Dallas Mavericks,Brandon Williams,Out,Illness Other Not Specified,Williams (illness) is unavailable for Sunday's game against Chicago.,ESPN,2026-04-12T23:03Z,0.7,0.7,False
+Dallas Mavericks,Marvin Bagley III,Out,Shoulder Arm Pinched Nerve,Bagley (shoulder) has been ruled out for Sunday's game against the Bulls.,ESPN,2026-04-12T23:02Z,0.7,0.7,False
+Dallas Mavericks,P.J. Washington,Out,Elbow Arm Sprain,Washington (elbow) is listed as out for Sunday's game against the Bulls.,ESPN,2026-04-12T23:00Z,0.7,0.7,False
+Dallas Mavericks,Caleb Martin,Out,Heel Leg Strain,Martin (heel) is listed as out for Sunday's game against Chicago.,ESPN,2026-04-12T23:00Z,0.7,0.7,False
+Dallas Mavericks,Naji Marshall,Out,Hip Torso Bruise,Marshall (hip) is listed as out for Sunday's game against Chicago.,ESPN,2026-04-12T22:58Z,0.7,0.7,False
+Dallas Mavericks,Kyrie Irving,Out,Knee Leg Surgery,"Irving (knee) will miss the remainder of the 2025-26 season, ESPN's Shams Charania reports.",ESPN,2026-02-18T15:04Z,4.8,4.8,True
+Dallas Mavericks,Dereck Lively II,Out,Foot Leg Surgery,Lively successfully underwent surgery on his right foot Sunday.,ESPN,2025-12-21T18:06Z,0.7,0.7,False
+Chicago Bulls,Josh Giddey,Out,Ankle Leg Not Specified,"Giddey recently underwent a successful right ankle arthroscopy, the Bulls announced Wednesday.",ESPN,2026-05-13T16:03Z,0.7,0.7,False
+Chicago Bulls,Rob Dillingham,Out,Wrist Arm Surgery,"Dillingham recently underwent successful minor surgery to have a ganglion cyst removed from his right wrist, the Bulls announced Wednesday.",ESPN,2026-04-23T14:06Z,0.7,0.7,False
+Chicago Bulls,Isaac Okoro,Out,Quadriceps Leg Bruise,Okoro (quad) is out for Sunday's game in Dallas.,ESPN,2026-04-12T00:37Z,0.7,0.7,False
+Chicago Bulls,Matas Buzelis,Out,Ankle Leg Sprain,Buzelis (ankle) won't play Sunday in Dallas.,ESPN,2026-04-12T00:30Z,0.7,0.7,False
+Chicago Bulls,Anfernee Simons,Out,Wrist Arm Fracture,"Simons (wrist) will not play in Chicago's final two games of the regular season, per K.C. Johnson of Chicago Sports Network.",ESPN,2026-04-10T22:33Z,0.7,0.7,False
+Chicago Bulls,Guerschon Yabusele,Out,Shoulder Arm Sprain,"Head coach Billy Donovan said Friday that Yabusele (shoulder/elbow) will not play in Chicago's final two regular-season games, K.C. Johnson of Chicago Sports Network reports.",ESPN,2026-04-10T22:29Z,0.7,0.7,False
+Chicago Bulls,Nick Richards,Out,Elbow Arm Sprain,"Richards (elbow) will not play in Chicago's final two games of the regular season, per K.C. Johnson of Chicago Sports Network.",ESPN,2026-04-10T22:29Z,0.7,0.7,False
+Chicago Bulls,Jalen Smith,Out,Calf Leg Strain,"Smith (calf) will miss the remainder of the season, Joel Lorenzi of The Athletic reports.",ESPN,2026-03-26T16:50Z,0.7,0.7,False
+Chicago Bulls,Zach Collins,Out,Toe Leg Surgery,Collins will undergo surgery for a sprain right toe and will be sidelined for the rest of the 2025-26 season.,ESPN,2026-02-21T16:42Z,0.7,0.7,False
+Chicago Bulls,Noa Essengue,Out,Shoulder Arm Surgery,"Essengue will undergo left shoulder surgery and will miss the remainder of the 2025-26 season, K.C. Johnson of Chicago Sports Network reports.",ESPN,2025-12-03T23:24Z,0.7,0.7,False
+Houston Rockets,Kevin Durant,Out,Ankle Leg Sprain,Durant (ankle) is listed out for Friday's Game 6 versus the Lakers.,ESPN,2026-05-01T15:48Z,5.2,5.2,True
+Houston Rockets,Steven Adams,Out,Ankle Leg Surgery,"The Rockets announced Wednesday that Adams has undergone season-ending left ankle surgery, per Shams Charania of ESPN.",ESPN,2026-01-28T20:34Z,0.7,0.7,False
+Houston Rockets,Fred VanVleet,Out,Knee Leg Surgery,"VanVleet suffered a torn ACL and may be out for the entire 2025-26 campaign, Shams Charania of ESPN reports.",ESPN,2025-09-22T20:02Z,0.7,0.7,False
+Memphis Grizzlies,Walter Clayton Jr.,Out,Hip Torso Pinched Nerve,Clayton (hip) is out for Sunday's game against the Rockets.,ESPN,2026-04-12T23:46Z,0.7,0.7,False
+Memphis Grizzlies,Adama Bal,Out,Ankle Leg Sprain,Bal (ankle) is out for Sunday's game in Houston.,ESPN,2026-04-12T23:46Z,0.7,0.7,False
+Memphis Grizzlies,Cedric Coward,Out,Back Torso Soreness,Coward (back) has been ruled out for Sunday's game against Houston.,ESPN,2026-04-12T02:10Z,0.7,0.7,False
+Memphis Grizzlies,Cam Spencer,Out,Back Torso Not Specified,Spencer (back) will not play in Sunday's season finale against the Rockets.,ESPN,2026-04-12T01:52Z,0.7,0.7,False
+Memphis Grizzlies,GG Jackson,Out,Knee Leg Not Specified,Jackson (knee) is out for Sunday's season finale against the Rockets.,ESPN,2026-04-12T01:50Z,0.7,0.7,False
+Memphis Grizzlies,Taylor Hendricks,Out,Thumb Arm Sprain,Hendricks (thumb) will not play Sunday against the Rockets.,ESPN,2026-04-12T01:27Z,0.7,0.7,False
+Memphis Grizzlies,Ty Jerome,Out,Ankle Leg Sprain,Jerome (ankle) is out for Sunday's season finale against the Rockets.,ESPN,2026-04-12T01:21Z,0.7,0.7,False
+Memphis Grizzlies,Jaylen Wells,Out,Toe Leg Surgery,Wells (toe) underwent a successful procedure Tuesday to stabilize his right great toe.,ESPN,2026-03-31T21:14Z,0.7,0.7,False
+Memphis Grizzlies,Zach Edey,Out,Ankle Leg Surgery,The Grizzlies announced that Edey (ankle) underwent a procedure Tuesday to address lingering discomfort in his left elbow.,ESPN,2026-03-25T16:06Z,0.7,0.7,False
+Memphis Grizzlies,Ja Morant,Out,Elbow Arm Sprain,"The Grizzlies announced Tuesday that Morant is progressing in his recovery from a UCL sprain in his left elbow and recently received a platelet-rich plasma injection, though he'll miss the remainder of the 2025-26 campaign.",ESPN,2026-03-25T02:26Z,5.0,5.0,True
+Memphis Grizzlies,Santi Aldama,Out,Knee Leg Surgery,"Aldama will undergo a season-ending arthroscopic procedure and receive an orthobiologic injection to address discomfort in his right knee, Brett Siegel of ClutchPoints.com reports.",ESPN,2026-03-16T00:10Z,0.7,0.7,False
+Memphis Grizzlies,Scotty Pippen Jr.,Out,Toe Leg Surgery,"Pippen will miss the remainder of the season after undergoing a sesamoidectomy to address ongoing discomfort in his right big toe, Michael Scotto of USA Today reports Friday.",ESPN,2026-03-13T14:51Z,0.7,0.7,False
+Memphis Grizzlies,Kentavious Caldwell-Pope,Out,Finger Arm Surgery,The Grizzlies announced Thursday that Caldwell-Pope underwent surgery to address the misalignment of his right pinky finger and will miss the remainder of the 2025-26 campaign.,ESPN,2026-02-20T00:01Z,0.7,0.7,False
+Minnesota Timberwolves,Donte DiVincenzo,Out,Achilles Leg Surgery,DiVincenzo will undergo surgery Sunday to repair a ruptured right Achilles tendon that he suffered during the Timberwolves Game 4 win over the Nuggets on Saturday.,ESPN,2026-04-26T17:52Z,0.7,0.7,False
+New Orleans Pelicans,Trey Murphy III,Out,Ankle Leg Sprain,Murphy (ankle) is listed as out for Friday's game against Minnesota.,ESPN,2026-04-12T01:10Z,0.7,0.7,False
+New Orleans Pelicans,Dejounte Murray,Out,Hand Arm Bruise,Murray (hand)J is out for Sunday's game against the Timberwolves.,ESPN,2026-04-12T01:05Z,0.7,0.7,False
+New Orleans Pelicans,Bryce McGowens,Out,Toe Leg Fracture,McGowens (toe) is out for Sunday's game against the Timberwolves.,ESPN,2026-04-12T01:03Z,0.7,0.7,False
+New Orleans Pelicans,Yves Missi,Out,Hand Arm Sprain,Missi (hand) is listed as out for Sunday's game against Minnesota.,ESPN,2026-04-12T01:03Z,0.7,0.7,False
+New Orleans Pelicans,Karlo Matkovic,Out,Back Torso Not Specified,Matkovic (back) is out for Sunday's game against the Timberwolves.,ESPN,2026-04-12T01:01Z,0.7,0.7,False
+New Orleans Pelicans,Zion Williamson,Out,Knee Leg Not Specified,Williamson (knee) is listed as out for Sunday's game against Minnesota.,ESPN,2026-04-12T00:56Z,0.7,0.7,False
+Oklahoma City Thunder,Jalen Williams,Out,Hamstring Leg Soreness,Williams (hamstring) is questionable for Thursday's Game 6 of the Western Conference Finals against the Spurs.,ESPN,2026-05-27T22:25Z,4.0,4.0,True
+Oklahoma City Thunder,Ajay Mitchell,Out,Calf Leg Strain,Mitchell (calf) has been ruled out for Thursday's Game 6 of the Western Conference Finals against the Spurs.,ESPN,2026-05-27T22:21Z,0.7,0.7,False
+Oklahoma City Thunder,Thomas Sorber,Out,Knee Leg Surgery,"The Thunder announced Friday that Sorber has sustained a torn ACL in his right knee during an offseason workout, NBA reporter Marc Stein reports.",ESPN,2025-09-05T21:43Z,0.7,0.7,False
+Phoenix Suns,Jordan Goodwin,Out,Calf Leg Strain,Goodwin (calf) won't play in Game 4 against the Thunder on Monday.,ESPN,2026-04-28T00:36Z,0.7,0.7,False
+Phoenix Suns,Mark Williams,Out,Foot Leg Fracture,"Williams (foot) has been ruled out Game 4 on Monday against the Thunder, Duane Rankin of The Arizona Republic reports.",ESPN,2026-04-26T20:25Z,0.7,0.7,False
+San Antonio Spurs,David Jones Garcia,Out,Ankle Leg Surgery,"Jones Garcia underwent ankle surgery Wednesday and will miss the remainder of the 2025-26 season, Tom Orsborn of the San Antonio Express-News reports.",ESPN,2026-02-04T22:39Z,0.7,0.7,False
+Denver Nuggets,Aaron Gordon,Out,Calf Leg Soreness,"Gordon is out for Thursday's Game 6 against the Timberwolves, Anthony Slater of ESPN.com reports.",ESPN,2026-05-01T14:34Z,3.0,3.0,True
+Denver Nuggets,Peyton Watson,Out,Hamstring Leg Strain,Watson (hamstring) is out for Game 6 on Thursday against Minnesota.,ESPN,2026-04-29T21:49Z,0.7,0.7,False
+Los Angeles Lakers,Luka Doncic,Out,Hamstring Leg Strain,"Doncic said Wednesday that he has begun running, Dan Woike of The Athletic reports.",ESPN,2026-05-06T16:52Z,6.5,6.5,True
+Utah Jazz,Isaiah Collier,Out,Hamstring Leg Strain,Collier (hamstring) has been ruled out for Sunday's game against the Lakers.,ESPN,2026-04-12T00:59Z,0.7,0.7,False
+Utah Jazz,Kyle Filipowski,Out,Back Torso Not Specified,Filipowski (back) will not play in Sunday's season finale against the Lakers.,ESPN,2026-04-12T00:56Z,0.7,0.7,False
+Utah Jazz,Elijah Harkless,Out,Hamstring Leg Strain,Harkless (hamstring) has been ruled out for Sunday's game against the Lakers.,ESPN,2026-04-12T00:56Z,0.7,0.7,False
+Utah Jazz,Keyonte George,Out,Hamstring Leg Strain,George (hamstring) will remain sidelined for Sunday's regular-season finale against the Lakers.,ESPN,2026-04-12T00:54Z,0.7,0.7,False
+Utah Jazz,Lauri Markkanen,Out,Hip Torso Pinched Nerve,Markkanen (hip) will not play in Sunday's season finale against the Lakers.,ESPN,2026-04-12T00:52Z,0.7,0.7,False
+Utah Jazz,Jusuf Nurkic,Out,Nose Head Surgery,"Nurkic is scheduled to undergo season-ending nose surgery Wednesday, Chris Haynes of NBA TV reports.",ESPN,2026-02-23T20:23Z,0.7,0.7,False
+Utah Jazz,Jaren Jackson Jr.,Out,Knee Leg Surgery,"Jackson was diagnosed with a localized PVNS growth in his left knee and will miss the remainder of the season, Chris Haynes of NBA TV reports.",ESPN,2026-02-12T16:09Z,0.7,0.7,False
+Utah Jazz,Walker Kessler,Out,Shoulder Arm Surgery,"Kessler will undergo left shoulder surgery and will miss the remainder of the 2025-26 season, Tony Jones of The Athletic reports.",ESPN,2025-11-05T18:51Z,0.7,0.7,False
+Portland Trail Blazers,Damian Lillard,Out,Achilles Leg Surgery,"Lillard (Achilles) defeated Devin Booker and Kon Knueppel in the final round of Saturday's 2026 State Farm 3-Point Contest, taking home his third title.",ESPN,2026-02-14T23:10Z,0.7,0.7,False
+Sacramento Kings,Keegan Murray,Out,Ankle Leg Sprain,"Murray underwent an arthroscopic procedure to remove loose bodies in his left ankle Tuesday, per James Ham of ESPN 1320 Sacramento.",ESPN,2026-05-13T18:31Z,0.7,0.7,False
+Sacramento Kings,Isaiah Stevens,Out,Ankle Leg Soreness,Stevens (ankle) is listed out for Sunday's game against the Trail Blazers.,ESPN,2026-04-12T23:44Z,0.7,0.7,False
+Sacramento Kings,DeMar DeRozan,Out,Hamstring Leg Strain,DeRozan (hamstring) has been ruled out for Sunday's game against Portland.,ESPN,2026-04-12T01:23Z,0.7,0.7,False
+Sacramento Kings,Malik Monk,Out,Personal Other Not Specified,Monk (personal) has been ruled out for Sunday's game against Portland.,ESPN,2026-04-12T01:17Z,0.7,0.7,False
+Sacramento Kings,Russell Westbrook,Out,Toe Leg Not Specified,Westbrook (toe) is out for Sunday's season finale against the Trail Blazers.,ESPN,2026-04-12T01:12Z,0.7,0.7,False
+Sacramento Kings,Drew Eubanks,Out,Thumb Arm Surgery,"Eubanks underwent successful surgery to repair a torn UCL in his left thumb Wednesday and he will miss the remainder of the season, Sean Cunningham of Fox 40 Sacramento reports.",ESPN,2026-03-18T23:11Z,0.7,0.7,False
+Sacramento Kings,De'Andre Hunter,Out,Eye Head Surgery,"Hunter is set to undergo season-ending eye surgery, Chris Haynes of NBA TV reports.",ESPN,2026-02-20T22:55Z,0.7,0.7,False
+Sacramento Kings,Domantas Sabonis,Out,Knee Leg Surgery,"Sabonis underwent season-ending knee surgery Wednesday to repair a torn left meniscus, Shams Charania of ESPN reports.",ESPN,2026-02-18T21:18Z,0.7,0.7,False
+Sacramento Kings,Zach LaVine,Out,Finger Arm Surgery,"LaVine will undergo season-ending surgery on his right hand after the All-Star break, Chris Haynes of NBA TV reports.",ESPN,2026-02-14T00:50Z,3.8,3.8,True
+Los Angeles Clippers,Yanic Konan Niederhauser,Out,Foot Leg Surgery,"Niederhauser has been diagnosed with a Lisfranc injury in his right foot and will require surgery. He's been ruled out for the remainder of the 2025-26 season, Joey Linn of SI.com reports.",ESPN,2026-03-06T03:59Z,0.7,0.7,False
+Los Angeles Clippers,Bradley Beal,Out,Hip Torso Surgery,"Beal will undergo season-ending surgery on his left hip, ESPN's Shams Charania reports.",ESPN,2025-11-12T20:14Z,0.7,0.7,False

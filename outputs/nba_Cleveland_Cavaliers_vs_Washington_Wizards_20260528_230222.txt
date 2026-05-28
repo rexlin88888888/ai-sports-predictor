@@ -1,0 +1,36 @@
+Match: Washington Wizards at Cleveland Cavaliers
+Date: 2026-04-12
+Predicted winner: Cleveland Cavaliers
+Predicted score: Cleveland Cavaliers 143 - 94 Washington Wizards
+Home win probability: 70.0%
+Away win probability: 30.0%
+Draw probability: N/A
+Confidence: Medium
+
+Key factors:
+- Model favors Cleveland Cavaliers mainly because of recent form (+28.8 rating edge).
+- Model favors Cleveland Cavaliers mainly because of team strength (+22.1 rating edge).
+- Model favors Cleveland Cavaliers mainly because of injury availability (+13.8 rating edge).
+- Cleveland Cavaliers injury impact: team_injury_penalty=-0.7, missing_starters=0, top=Dennis Schroder Out (0.7)
+- Washington Wizards injury impact: team_injury_penalty=-11.0, missing_starters=1, top=Anthony Davis Out (5.4), Tristan Vukcevic Out (0.7), Alex Sarr Out (0.7)
+- home_elo=1641, away_elo=1114, elo_diff=+527, elo_win_probability=0.967
+- home_momentum=LWWWW, away_momentum=LLLLL, momentum_score_edge=+6.0
+- home_fatigue_score=0.6, away_fatigue_score=0.4, rest_advantage=-0.3, travel_penalty_home=0.6, travel_penalty_away=0.4
+- home_advantage_score=2.1
+- confidence_cap=0.70, upset_risk_score=0.16
+- AI analysis: model leans Cleveland Cavaliers after combining Elo, form, availability, rest, and venue context.
+- home_elo=1641, away_elo=1114, elo_diff=+527, elo_win_probability=0.967
+- home_momentum=LWWWW, away_momentum=LLLLL, momentum_score_edge=+6.0
+- home_fatigue_score=0.6, away_fatigue_score=0.4, rest_advantage=-0.3, travel_penalty_home=0.6, travel_penalty_away=0.4
+- home_advantage_score=2.1
+- Main risk: Washington Wizards has high injury impact (-11.0).
+
+Risk factors:
+- Cleveland Cavaliers injury penalty -0.7.
+- Washington Wizards injury penalty -14.5.
+- confidence_cap=0.80, upset_risk_score=0.00.
+- Cleveland Cavaliers injury API failed; using injury_cache.csv fallback
+- Washington Wizards injury API failed; using injury_cache.csv fallback
+- Washington Wizards missing_starters=1
+- Washington Wizards has high injury impact (-11.0).
+- favorite_risk_reason=Cleveland Cavaliers has unstable momentum.

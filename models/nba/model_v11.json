@@ -1,0 +1,105 @@
+{
+  "sport": "nba",
+  "created_at": "2026-05-28T22:08:08",
+  "metrics": {
+    "sport": "nba",
+    "games": 100,
+    "accuracy": 0.6,
+    "average_score_error": 10.44,
+    "average_total_points_error": 15.5,
+    "MAE": 10.44,
+    "RMSE": 13.260090497428742,
+    "average_confidence": 0.6866709999999999,
+    "favorite_accuracy": 0.6,
+    "underdog_accuracy": 0.0,
+    "calibration_report": "data/nba/calibration_report.csv",
+    "confidence_validation": {
+      "high_games": 11,
+      "high_accuracy": 0.5454545454545454,
+      "medium_games": 63,
+      "medium_accuracy": 0.7142857142857143,
+      "low_games": 26,
+      "low_accuracy": 0.34615384615384615
+    },
+    "confidence_distribution": {
+      "High": 11,
+      "Medium": 63,
+      "Low": 26
+    },
+    "upset_analysis": {
+      "upset_rate": 0.26,
+      "high_probability_failures": 26,
+      "largest_prediction_error": "Cleveland Cavaliers at Toronto Raptors: predicted Cleveland Cavaliers, actual Toronto Raptors"
+    },
+    "roi_simulation": {
+      "bets": 91,
+      "profit_units": -10.112,
+      "roi": -0.1111
+    },
+    "weight_tuning": {
+      "sport": "nba",
+      "accuracy": 0.64,
+      "weights": {
+        "elo_weight": 0.0,
+        "fatigue_weight": 0.0,
+        "injury_weight": 0.0,
+        "momentum_weight": 0.15,
+        "home_advantage_weight": 0.0
+      },
+      "available_features": [
+        "elo_difference",
+        "fatigue_edge",
+        "injury_edge",
+        "recent_form_edge",
+        "home_advantage_edge"
+      ],
+      "status": "ok"
+    },
+    "feature_importance": [
+      {
+        "feature": "elo_difference",
+        "importance": 0.1418,
+        "direction": 0.1418
+      },
+      {
+        "feature": "defensive_rating",
+        "importance": 0.1366,
+        "direction": 0.1366
+      },
+      {
+        "feature": "home_advantage",
+        "importance": 0.111,
+        "direction": 0.111
+      },
+      {
+        "feature": "recent_form",
+        "importance": 0.0857,
+        "direction": 0.0857
+      },
+      {
+        "feature": "offensive_rating",
+        "importance": 0.0592,
+        "direction": -0.0592
+      },
+      {
+        "feature": "fatigue",
+        "importance": 0.0386,
+        "direction": -0.0386
+      },
+      {
+        "feature": "injury_edge",
+        "importance": 0.005,
+        "direction": 0.005
+      }
+    ],
+    "prediction_drift": {
+      "recent_30d_games": 52,
+      "recent_30d_accuracy": 0.5961538461538461,
+      "previous_accuracy": 0.6041666666666666,
+      "trend": "worse"
+    },
+    "report": "reports/nba_report.txt",
+    "historical_report": "outputs/backtest_report.txt",
+    "weakness": "High confidence predictions are not more reliable than the average."
+  }
+}

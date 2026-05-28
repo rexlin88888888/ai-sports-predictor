@@ -1,0 +1,67 @@
+{
+  "sport": "nba",
+  "created_at": "2026-05-28T21:13:18",
+  "metrics": {
+    "sport": "nba",
+    "games": 20,
+    "accuracy": 0.55,
+    "average_score_error": 9.325,
+    "average_total_points_error": 12.25,
+    "MAE": 9.325,
+    "RMSE": 11.921619017566364,
+    "calibration_report": "data/nba/calibration_report.csv",
+    "confidence_validation": {
+      "high_games": 13,
+      "high_accuracy": 0.6923076923076923,
+      "medium_games": 6,
+      "medium_accuracy": 0.3333333333333333,
+      "low_games": 1,
+      "low_accuracy": 0.0
+    },
+    "upset_analysis": {
+      "upset_rate": 0.25,
+      "high_probability_failures": 5,
+      "largest_prediction_error": "Oklahoma City Thunder at San Antonio Spurs: predicted Oklahoma City Thunder, actual San Antonio Spurs"
+    },
+    "feature_importance": [
+      {
+        "feature": "offensive_rating",
+        "importance": 0.3593,
+        "direction": -0.3593
+      },
+      {
+        "feature": "defensive_rating",
+        "importance": 0.2911,
+        "direction": 0.2911
+      },
+      {
+        "feature": "recent_form",
+        "importance": 0.2084,
+        "direction": -0.2084
+      },
+      {
+        "feature": "home_advantage",
+        "importance": 0.1406,
+        "direction": -0.1406
+      },
+      {
+        "feature": "fatigue",
+        "importance": 0.0737,
+        "direction": 0.0737
+      },
+      {
+        "feature": "elo_difference",
+        "importance": 0.0378,
+        "direction": -0.0378
+      }
+    ],
+    "prediction_drift": {
+      "recent_30d_games": 20,
+      "recent_30d_accuracy": 0.55,
+      "previous_accuracy": 0.0,
+      "trend": "stable_or_better"
+    },
+    "report": "reports/nba_report.txt",
+    "weakness": "High-probability favorites are failing too often."
+  }
+}
