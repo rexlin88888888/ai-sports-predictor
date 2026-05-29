@@ -277,20 +277,24 @@ def shorts_script(package: DailyPredictionPackage) -> str:
     upset = first_or_none(package.upset_watch)
     draw = first_or_none(package.draw_watch)
     if not lead:
-        return "No games are available today. Check back after the next schedule update.\n"
+        return "Title: No games on the model board today\n\nScript:\nNo games are available today. Check back after the next schedule update.\n\nHashtags: #SportsAI #ModelPick #SportsPredictions\n"
     lines = [
-        "TikTok / YouTube Shorts Script",
+        "Title: Today's model board has one matchup to watch",
         "",
-        "Hook: Today's AI sports board is live, and one matchup stands out.",
-        f"Pick: {lead.predicted_winner} in {lead.match}.",
-        f"Projection: {lead.predicted_score} with {lead.confidence.lower()} confidence.",
-        f"Why: {lead.key_factors[0] if lead.key_factors else 'The model edge comes from form, Elo, and matchup data.'}",
+        "Script:",
+        "Stop scrolling. The model board is live.",
+        f"Top watchlist game: {lead.match}.",
+        f"Model pick: {lead.predicted_winner}.",
+        f"Projected score: {lead.predicted_score}.",
+        f"Why it matters: {short_reason(lead)}",
     ]
     if upset:
-        lines.append(f"Upset watch: {upset.predicted_winner} has a live path in {upset.match}.")
+        lines.append(f"Upset watchlist: {upset.predicted_winner} in {upset.match}.")
     if draw:
-        lines.append(f"Draw watch: {draw.match} carries a {nullable_pct(draw.draw_probability)} draw signal.")
-    lines.append("Close: Follow for the daily prediction card and postgame tracking.")
+        lines.append(f"Draw watchlist: {draw.match} sits at {nullable_pct(draw.draw_probability)}.")
+    lines.append("Follow for the daily prediction card and result recap.")
+    lines.append("")
+    lines.append("Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions")
     return "\n".join(lines) + "\n"
 
 
@@ -298,17 +302,23 @@ def social_posts(package: DailyPredictionPackage) -> str:
     lead = first_or_none(package.highest_confidence) or first_or_none(package.predictions)
     draw = first_or_none(package.draw_watch)
     if not lead:
-        return "No daily posts generated because no games are available today.\n"
+        return "Twitter/X Post\nNo games on today's model board. New predictions will post after the next schedule update.\nHashtags: #SportsAI #ModelPick\n\nYouTube Shorts Title\nNo games on today's AI sports board\n\nInstagram Caption\nNo games on today's model board. Check back after the next schedule update.\nHashtags: #SportsAI #ModelPick\n"
     x_post = (
-        f"Daily AI pick: {lead.predicted_winner} in {lead.match}. "
-        f"Projection: {lead.predicted_score}. Confidence: {lead.confidence}. "
-        f"Model version: {package.model_version}. #SportsAI #Predictions"
+        f"Today's model pick: {lead.predicted_winner} in {lead.match}.\n"
+        f"Projected score: {lead.predicted_score}.\n"
+        f"Watchlist note: {short_reason(lead)}\n"
+        f"Confidence: {lead.confidence}. Model version: {package.model_version}.\n"
+        "Hashtags: #SportsAI #ModelPick #SportsPredictions"
     )
-    title = f"{lead.predicted_winner} is today's top AI sports pick"
+    title = f"{lead.predicted_winner} is today's model pick to watch"
     instagram = (
-        f"Today's model card is live. Top pick: {lead.predicted_winner} in {lead.match}. "
-        f"Projected score: {lead.predicted_score}. "
-        f"{'Draw alert: ' + draw.match + ' at ' + nullable_pct(draw.draw_probability) if draw else 'No major draw alert today.'}"
+        f"Today's AI Sports Predictor board is live.\n\n"
+        f"Top model pick: {lead.predicted_winner}\n"
+        f"Matchup: {lead.match}\n"
+        f"Projection: {lead.predicted_score}\n"
+        f"Signal: {short_reason(lead)}\n\n"
+        f"{'Draw watchlist: ' + draw.match + ' at ' + nullable_pct(draw.draw_probability) if draw else 'No major draw watchlist today.'}\n\n"
+        "Hashtags: #SportsAI #ModelPick #SportsPredictions #DailySports"
     )
     return "\n".join(
         [
@@ -322,6 +332,13 @@ def social_posts(package: DailyPredictionPackage) -> str:
             instagram,
         ]
     ) + "\n"
+
+
+def short_reason(result: PredictionResult) -> str:
+    if not result.key_factors:
+        return "form, Elo, and matchup signals point to a small edge"
+    reason = result.key_factors[0].replace(" | ", ", ")
+    return reason[:132] + ("..." if len(reason) > 132 else "")
 
 
 def highest_confidence_picks(results: list[PredictionResult]) -> list[PredictionResult]:

@@ -23,9 +23,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from config import BACKTEST_REPORT_TXT, CACHE_DIR, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, PERFORMANCE_REPORT_TXT, ensure_project_dirs, load_environment, project_relative  # noqa: E402
+from config import BACKTEST_REPORT_TXT, CACHE_DIR, DAILY_RESULT_RECAP_TXT, DAILY_SHORT_SCRIPT_TXT, DAILY_SOCIAL_POSTS_TXT, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, PERFORMANCE_REPORT_TXT, ensure_project_dirs, load_environment, project_relative  # noqa: E402
 from core.automation_status import read_automation_status  # noqa: E402
-from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package  # noqa: E402
+from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package, generate_daily_predictions  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
 from core.result_updater import update_results  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
@@ -37,6 +37,7 @@ LOGGER = logging.getLogger("sports_predictor")
 NAV_ITEMS = [
     "Dashboard",
     "Live Predictions",
+    "Content Studio",
     "NBA",
     "Football",
     "Team Analysis",
@@ -75,6 +76,8 @@ def main() -> None:
         render_dashboard()
     elif page == "Live Predictions":
         render_live_predictions_page()
+    elif page == "Content Studio":
+        render_content_studio()
     elif page == "NBA":
         render_nba_page()
     elif page == "Football":
@@ -181,7 +184,48 @@ def render_live_predictions_page() -> None:
     render_live_cards(nba_results, "NBA")
     st.markdown("### Today's Football Predictions")
     render_live_cards(football_results, "Football")
+    if st.button("Generate Today's Content", type="primary"):
+        refreshed = generate_daily_predictions()
+        st.success(f"Generated content for {len(refreshed.predictions)} prediction(s). Open Content Studio to copy posts.")
     render_daily_exports(package)
+
+
+def render_content_studio() -> None:
+    st.markdown(
+        """
+        <div class="section-intro">
+            <h2>Content Studio</h2>
+            <p>Copy-ready social content built from today's model board. Posts avoid guarantee language and stay framed as model predictions and watchlists.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    if st.button("Regenerate today's content", type="primary"):
+        package = generate_daily_predictions()
+        st.success(f"Content regenerated for {len(package.predictions)} prediction(s).")
+
+    short_script = read_text_file(DAILY_SHORT_SCRIPT_TXT)
+    social_posts = read_text_file(DAILY_SOCIAL_POSTS_TXT)
+    result_recap = read_text_file(DAILY_RESULT_RECAP_TXT)
+    social = parse_social_posts(social_posts)
+    generated = latest_generated_time([DAILY_SHORT_SCRIPT_TXT, DAILY_SOCIAL_POSTS_TXT, DAILY_RESULT_RECAP_TXT])
+
+    st.markdown("### Copy-Ready Posts")
+    left, right = st.columns(2)
+    with left:
+        render_content_card("Daily Short Script", content_title(short_script, "TikTok / Shorts script"), content_body(short_script), content_hashtags(short_script), generated, "TikTok / Shorts")
+        render_content_card("Twitter/X Post", "Daily model pick post", social.get("Twitter/X Post", ""), hashtags_from_text(social.get("Twitter/X Post", "")), generated, "Caption")
+    with right:
+        render_content_card("YouTube Shorts Title", social.get("YouTube Shorts Title", "Daily model pick to watch"), "", "#SportsAI #ModelPick #Shorts", generated, "Title")
+        render_content_card("Instagram Caption", "Daily model board caption", social.get("Instagram Caption", ""), hashtags_from_text(social.get("Instagram Caption", "")), generated, "Caption")
+    st.markdown("### Yesterday Result Recap")
+    render_content_card("Yesterday Result Recap", "Yesterday's hits and misses", result_recap, "#SportsAI #PredictionRecap", generated, "Recap")
+
+    all_content = all_content_text(short_script, social_posts, result_recap)
+    social_csv = social_posts_csv(social, short_script, result_recap, generated)
+    export_cols = st.columns(2)
+    export_cols[0].download_button("Export all content as TXT", all_content, file_name="daily_content_pack.txt", mime="text/plain")
+    export_cols[1].download_button("Export social posts as CSV", social_csv, file_name="daily_social_posts.csv", mime="text/csv")
 
 
 def render_nba_page() -> None:
@@ -295,6 +339,24 @@ def render_daily_exports(package: DailyPredictionPackage) -> None:
     export_file_button(cols[2], "Shorts script", package.short_script_path, "text/plain")
     export_file_button(cols[3], "Social posts", package.social_posts_path, "text/plain")
     st.caption(f"Daily outputs saved with model version {package.model_version}.")
+
+
+def render_content_card(platform: str, title: str, body: str, hashtags: str, generated: str, body_label: str) -> None:
+    st.markdown(
+        f"""
+        <article class="content-card">
+            <div class="content-meta"><span>{html.escape(platform)}</span><span>Generated {html.escape(generated)}</span></div>
+            <h3>{html.escape(title or platform)}</h3>
+            <div class="content-chip">{html.escape(body_label)}</div>
+        </article>
+        """,
+        unsafe_allow_html=True,
+    )
+    if body:
+        st.text_area(f"{platform} {body_label}", body, height=180 if len(body) > 220 else 120, label_visibility="collapsed")
+    else:
+        st.text_input(f"{platform} title", title, label_visibility="collapsed")
+    st.caption(hashtags or "#SportsAI #ModelPick")
 
 
 def export_file_button(container, label: str, path: Path, mime: str) -> None:
@@ -775,6 +837,92 @@ def html_list(items: list[str]) -> str:
     return "<ul>" + "".join(f"<li>{html.escape(item)}</li>" for item in items) + "</ul>"
 
 
+def read_text_file(path: Path) -> str:
+    if not path.exists():
+        return "Content has not been generated yet. Use Generate Today's Content first."
+    try:
+        return path.read_text(encoding="utf-8")
+    except Exception:
+        return "Content could not be loaded."
+
+
+def parse_social_posts(text: str) -> dict[str, str]:
+    headings = ["Twitter/X Post", "YouTube Shorts Title", "Instagram Caption"]
+    sections: dict[str, str] = {}
+    current: str | None = None
+    buffer: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped in headings:
+            if current:
+                sections[current] = "\n".join(buffer).strip()
+            current = stripped
+            buffer = []
+        elif current:
+            buffer.append(line)
+    if current:
+        sections[current] = "\n".join(buffer).strip()
+    return sections
+
+
+def content_title(text: str, fallback: str) -> str:
+    for line in text.splitlines():
+        if line.lower().startswith("title:"):
+            return line.split(":", 1)[1].strip()
+    return fallback
+
+
+def content_body(text: str) -> str:
+    lines = [line for line in text.splitlines() if not line.lower().startswith("title:") and not line.lower().startswith("hashtags:")]
+    return "\n".join(lines).strip()
+
+
+def content_hashtags(text: str) -> str:
+    for line in text.splitlines():
+        if line.lower().startswith("hashtags:"):
+            return line.split(":", 1)[1].strip()
+    return hashtags_from_text(text)
+
+
+def hashtags_from_text(text: str) -> str:
+    tags = [part for part in text.replace("\n", " ").split(" ") if part.startswith("#")]
+    return " ".join(tags) if tags else "#SportsAI #ModelPick #SportsPredictions"
+
+
+def latest_generated_time(paths: list[Path]) -> str:
+    existing = [path for path in paths if path.exists()]
+    if not existing:
+        return "Not generated"
+    latest = max(path.stat().st_mtime for path in existing)
+    return dt.datetime.fromtimestamp(latest).strftime("%b %d %H:%M")
+
+
+def all_content_text(short_script: str, social_posts: str, result_recap: str) -> str:
+    return "\n\n".join(
+        [
+            "DAILY SHORT SCRIPT",
+            short_script.strip(),
+            "SOCIAL POSTS",
+            social_posts.strip(),
+            "RESULT RECAP",
+            result_recap.strip(),
+        ]
+    ).strip() + "\n"
+
+
+def social_posts_csv(social: dict[str, str], short_script: str, result_recap: str, generated: str) -> str:
+    rows = [
+        {"platform": "TikTok / Shorts", "title": content_title(short_script, "Daily short script"), "content": content_body(short_script), "hashtags": content_hashtags(short_script), "generated_time": generated},
+        {"platform": "Twitter/X", "title": "Daily model pick post", "content": social.get("Twitter/X Post", ""), "hashtags": hashtags_from_text(social.get("Twitter/X Post", "")), "generated_time": generated},
+        {"platform": "YouTube Shorts", "title": social.get("YouTube Shorts Title", ""), "content": "", "hashtags": "#SportsAI #ModelPick #Shorts", "generated_time": generated},
+        {"platform": "Instagram", "title": "Daily model board caption", "content": social.get("Instagram Caption", ""), "hashtags": hashtags_from_text(social.get("Instagram Caption", "")), "generated_time": generated},
+        {"platform": "Result Recap", "title": "Yesterday's hits and misses", "content": result_recap, "hashtags": "#SportsAI #PredictionRecap", "generated_time": generated},
+    ]
+    output = StringIO()
+    pd.DataFrame(rows).to_csv(output, index=False)
+    return output.getvalue()
+
+
 def metric_card(container, label: str, value: str, caption: str, tone: str = "neutral") -> None:
     with container:
         st.markdown(f"""<div class="metric-card {tone}"><div class="metric-label">{html.escape(label)}</div><div class="metric-value">{html.escape(value)}</div><div class="metric-caption">{html.escape(caption)}</div></div>""", unsafe_allow_html=True)
@@ -898,9 +1046,9 @@ def apply_theme(theme_mode: str) -> None:
         h2,h3,h4 {{color:var(--text);letter-spacing:0;}}
         .section-intro {{margin:.5rem 0 1.2rem;}}
         .section-intro h2 {{margin:0;color:var(--text);}}
-        .metric-card,.match-card,.mini-card,.spotlight-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
+        .metric-card,.match-card,.mini-card,.spotlight-card,.content-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
         .metric-card {{padding:1rem;min-height:116px;transition:transform .16s ease,border-color .16s ease;}}
-        .metric-card:hover,.match-card:hover,.spotlight-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
+        .metric-card:hover,.match-card:hover,.spotlight-card:hover,.content-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
         .metric-label {{color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;}}
         .metric-value {{color:var(--text);font-size:1.8rem;font-weight:800;margin-top:.45rem;overflow-wrap:anywhere;}}
         .metric-card.positive .metric-value {{color:var(--green);}} .metric-card.accent .metric-value {{color:var(--blue);}}
@@ -917,6 +1065,10 @@ def apply_theme(theme_mode: str) -> None:
         .spotlight-sub {{color:#9fb0c6;font-size:.78rem;margin-top:.35rem;line-height:1.25;}}
         .spotlight-score {{color:#dbeafe;font-size:.82rem;margin-top:.7rem;line-height:1.25;}}
         .spotlight-prob {{color:var(--green);font-size:1.45rem;font-weight:900;margin-top:.55rem;}}
+        .content-card {{padding:1rem;margin:.85rem 0 .45rem;transition:transform .16s ease,border-color .16s ease;}}
+        .content-card h3 {{margin:.5rem 0;color:var(--text);font-size:1.08rem;line-height:1.2;}}
+        .content-meta {{display:flex;justify-content:space-between;gap:.7rem;color:var(--muted);font-size:.74rem;text-transform:uppercase;font-weight:800;letter-spacing:.04em;}}
+        .content-chip {{display:inline-flex;margin-top:.2rem;padding:.25rem .5rem;border-radius:999px;background:rgba(59,130,246,.16);color:#bfdbfe;font-size:.76rem;font-weight:800;}}
         .match-card {{padding:1rem;margin-bottom:1rem;}}
         .match-topline {{justify-content:space-between;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
         .confidence {{border-radius:999px;padding:.28rem .55rem;background:rgba(59,130,246,.16);color:#93c5fd;}}

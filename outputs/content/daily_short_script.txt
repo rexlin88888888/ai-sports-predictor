@@ -1,9 +1,13 @@
-TikTok / YouTube Shorts Script
+Title: Today's model board has one matchup to watch
 
-Hook: Today's AI sports board is live, and one matchup stands out.
-Pick: Mexico in Mexico vs South Africa.
-Projection: Mexico 2 - 1 South Africa with low confidence.
-Why: Mexico recent goals for 1.20, against 1.20
-Upset watch: Belgium has a live path in United States vs Belgium.
-Draw watch: Mexico vs South Africa carries a 27.5% draw signal.
-Close: Follow for the daily prediction card and postgame tracking.
+Script:
+Stop scrolling. The model board is live.
+Top watchlist game: Mexico vs South Africa.
+Model pick: Mexico.
+Projected score: Mexico 2 - 1 South Africa.
+Why it matters: Mexico recent goals for 1.20, against 1.20
+Upset watchlist: Belgium in United States vs Belgium.
+Draw watchlist: Mexico vs South Africa sits at 27.5%.
+Follow for the daily prediction card and result recap.
+
+Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions
