@@ -38,6 +38,7 @@ NAV_ITEMS = [
     "Dashboard",
     "Live Predictions",
     "Content Studio",
+    "Install App",
     "NBA",
     "Football",
     "Team Analysis",
@@ -52,10 +53,11 @@ def main() -> None:
     ensure_project_dirs()
     load_environment()
     configure_logging(False)
-    st.set_page_config(page_title="AI Sports Predictor", layout="wide", page_icon="🏟️")
+    st.set_page_config(page_title="AI Sports Predictor", layout="wide", page_icon="AI")
 
     theme_mode = st.sidebar.selectbox("Display Mode", ["Dark", "Light", "Auto"], index=0)
     apply_theme(theme_mode)
+    inject_pwa_assets()
     st.sidebar.markdown(
         """
         <div class="brand-block">
@@ -68,7 +70,8 @@ def main() -> None:
         """,
         unsafe_allow_html=True,
     )
-    page = st.sidebar.radio("Navigation", NAV_ITEMS, index=1, label_visibility="collapsed")
+    sync_quick_navigation()
+    page = st.sidebar.radio("Navigation", NAV_ITEMS, index=1, key="nav_choice", label_visibility="collapsed")
     render_sidebar_status()
     render_header(page)
 
@@ -78,6 +81,8 @@ def main() -> None:
         render_live_predictions_page()
     elif page == "Content Studio":
         render_content_studio()
+    elif page == "Install App":
+        render_install_app_page()
     elif page == "NBA":
         render_nba_page()
     elif page == "Football":
@@ -92,6 +97,64 @@ def main() -> None:
         render_backtest_report()
     elif page == "Settings":
         render_model_settings()
+    render_footer()
+
+
+def sync_quick_navigation() -> None:
+    target = st.session_state.pop("quick_nav_target", None)
+    if target in NAV_ITEMS:
+        st.session_state["nav_choice"] = target
+
+
+def go_to_page(page: str) -> None:
+    st.session_state["quick_nav_target"] = page
+    st.rerun()
+
+
+def inject_pwa_assets() -> None:
+    components.html(
+        """
+        <script>
+        const parentDoc = window.parent.document;
+        const manifestHref = "/app/static/manifest.json";
+        const icon192 = "/app/static/assets/icon-192.png";
+        const icon512 = "/app/static/assets/icon-512.png";
+
+        function upsertLink(selector, attrs) {
+          let el = parentDoc.querySelector(selector);
+          if (!el) {
+            el = parentDoc.createElement("link");
+            parentDoc.head.appendChild(el);
+          }
+          Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+        }
+
+        function upsertMeta(name, content) {
+          let el = parentDoc.querySelector(`meta[name="${name}"]`);
+          if (!el) {
+            el = parentDoc.createElement("meta");
+            el.setAttribute("name", name);
+            parentDoc.head.appendChild(el);
+          }
+          el.setAttribute("content", content);
+        }
+
+        parentDoc.title = "AI Sports Predictor";
+        upsertLink('link[rel="manifest"]', { rel: "manifest", href: manifestHref });
+        upsertLink('link[rel="apple-touch-icon"]', { rel: "apple-touch-icon", href: icon192 });
+        upsertLink('link[rel="icon"]', { rel: "icon", type: "image/png", sizes: "192x192", href: icon192 });
+        upsertMeta("theme-color", "#0b1f3a");
+        upsertMeta("apple-mobile-web-app-capable", "yes");
+        upsertMeta("apple-mobile-web-app-title", "Sports AI");
+        upsertMeta("apple-mobile-web-app-status-bar-style", "black-translucent");
+
+        if ("serviceWorker" in window.parent.navigator) {
+          window.parent.navigator.serviceWorker.register("/app/static/service-worker.js").catch(() => undefined);
+        }
+        </script>
+        """,
+        height=0,
+    )
 
 
 def render_header(page: str) -> None:
@@ -145,6 +208,7 @@ def render_dashboard() -> None:
     metric_card(cols[2], "Football Draw Accuracy", percent(football_draw_accuracy(football)), "Draw recall", "neutral")
     metric_card(cols[3], "Average Confidence", percent(average_confidence([nba, football])), "Across backtests", "neutral")
     metric_card(cols[4], "Total Predictions", f"{len(master):,}", "Saved history", "accent")
+    render_quick_actions()
     render_automation_overview()
 
     st.markdown("### Model Overview")
@@ -155,6 +219,30 @@ def render_dashboard() -> None:
         render_confidence_distribution(nba, football)
     st.markdown("### Latest Predictions")
     render_history_table(master.tail(12), compact=True)
+
+
+def render_quick_actions() -> None:
+    st.markdown("### Quick Actions")
+    cols = st.columns(4)
+    actions = [
+        ("Today's Picks", "Live Predictions", "Open today's model board"),
+        ("Highest Confidence", "Live Predictions", "Review top confidence cards"),
+        ("Content Studio", "Content Studio", "Copy social posts"),
+        ("Results Tracker", "Results Tracker", "Check settled picks"),
+    ]
+    for col, (label, target, caption) in zip(cols, actions):
+        with col:
+            st.markdown(
+                f"""
+                <div class="quick-card">
+                    <div class="quick-title">{html.escape(label)}</div>
+                    <div class="quick-caption">{html.escape(caption)}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            if st.button(label, key=f"quick_{target}_{label}"):
+                go_to_page(target)
 
 
 def render_automation_overview() -> None:
@@ -226,6 +314,65 @@ def render_content_studio() -> None:
     export_cols = st.columns(2)
     export_cols[0].download_button("Export all content as TXT", all_content, file_name="daily_content_pack.txt", mime="text/plain")
     export_cols[1].download_button("Export social posts as CSV", social_csv, file_name="daily_social_posts.csv", mime="text/csv")
+
+
+def render_install_app_page() -> None:
+    st.markdown(
+        """
+        <div class="section-intro">
+            <h2>Install App</h2>
+            <p>Add AI Sports Predictor to your phone home screen for a standalone app-style experience.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    cols = st.columns(3)
+    install_cards = [
+        (
+            "iPhone",
+            "Safari",
+            [
+                "Open this site in Safari.",
+                "Tap the Share button.",
+                "Choose Add to Home Screen.",
+                "Confirm the AI Sports Predictor icon.",
+            ],
+        ),
+        (
+            "Android",
+            "Chrome",
+            [
+                "Open this site in Chrome.",
+                "Tap the menu button.",
+                "Choose Add to Home Screen or Install app.",
+                "Confirm the Sports AI shortcut.",
+            ],
+        ),
+        (
+            "PWA Status",
+            "Mobile Ready",
+            [
+                "Standalone display mode is enabled.",
+                "Dark navy theme color is configured.",
+                "Home screen icons are included.",
+                "Offline cache support is registered when the browser allows it.",
+            ],
+        ),
+    ]
+    for col, (title, subtitle, steps) in zip(cols, install_cards):
+        with col:
+            st.markdown(
+                f"""
+                <div class="install-card">
+                    <div class="install-icon">AI</div>
+                    <div class="install-kicker">{html.escape(subtitle)}</div>
+                    <h3>{html.escape(title)}</h3>
+                    {html_list(steps)}
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+    st.info("Tip: if your browser does not show Install immediately, refresh once after the latest deployment finishes.")
 
 
 def render_nba_page() -> None:
@@ -923,6 +1070,26 @@ def social_posts_csv(social: dict[str, str], short_script: str, result_recap: st
     return output.getvalue()
 
 
+def app_version() -> str:
+    try:
+        data = json.loads(MODEL_VERSION_JSON.read_text(encoding="utf-8"))
+        return str(data.get("version") or "v1.0.0")
+    except Exception:
+        return "v1.0.0"
+
+
+def render_footer() -> None:
+    st.markdown(
+        f"""
+        <footer class="app-footer">
+            <div>AI Sports Predictor</div>
+            <div>Version {html.escape(app_version())} · PWA mobile build</div>
+        </footer>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def metric_card(container, label: str, value: str, caption: str, tone: str = "neutral") -> None:
     with container:
         st.markdown(f"""<div class="metric-card {tone}"><div class="metric-label">{html.escape(label)}</div><div class="metric-value">{html.escape(value)}</div><div class="metric-caption">{html.escape(caption)}</div></div>""", unsafe_allow_html=True)
@@ -1046,9 +1213,9 @@ def apply_theme(theme_mode: str) -> None:
         h2,h3,h4 {{color:var(--text);letter-spacing:0;}}
         .section-intro {{margin:.5rem 0 1.2rem;}}
         .section-intro h2 {{margin:0;color:var(--text);}}
-        .metric-card,.match-card,.mini-card,.spotlight-card,.content-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
+        .metric-card,.match-card,.mini-card,.spotlight-card,.content-card,.quick-card,.install-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
         .metric-card {{padding:1rem;min-height:116px;transition:transform .16s ease,border-color .16s ease;}}
-        .metric-card:hover,.match-card:hover,.spotlight-card:hover,.content-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
+        .metric-card:hover,.match-card:hover,.spotlight-card:hover,.content-card:hover,.quick-card:hover,.install-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
         .metric-label {{color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;}}
         .metric-value {{color:var(--text);font-size:1.8rem;font-weight:800;margin-top:.45rem;overflow-wrap:anywhere;}}
         .metric-card.positive .metric-value {{color:var(--green);}} .metric-card.accent .metric-value {{color:var(--blue);}}
@@ -1069,6 +1236,14 @@ def apply_theme(theme_mode: str) -> None:
         .content-card h3 {{margin:.5rem 0;color:var(--text);font-size:1.08rem;line-height:1.2;}}
         .content-meta {{display:flex;justify-content:space-between;gap:.7rem;color:var(--muted);font-size:.74rem;text-transform:uppercase;font-weight:800;letter-spacing:.04em;}}
         .content-chip {{display:inline-flex;margin-top:.2rem;padding:.25rem .5rem;border-radius:999px;background:rgba(59,130,246,.16);color:#bfdbfe;font-size:.76rem;font-weight:800;}}
+        .quick-card {{padding:.9rem;margin:.7rem 0 .45rem;min-height:92px;transition:transform .16s ease,border-color .16s ease;}}
+        .quick-title {{font-size:1rem;font-weight:900;color:var(--text);line-height:1.15;}}
+        .quick-caption {{font-size:.82rem;color:var(--muted);margin-top:.45rem;line-height:1.28;}}
+        .install-card {{padding:1.15rem;min-height:290px;transition:transform .16s ease,border-color .16s ease;}}
+        .install-icon {{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;color:white;font-weight:900;background:linear-gradient(135deg,#2563eb,#22c55e);box-shadow:0 10px 30px rgba(37,99,235,.3);margin-bottom:1rem;}}
+        .install-kicker {{color:var(--green);font-size:.76rem;text-transform:uppercase;font-weight:900;letter-spacing:.06em;}}
+        .install-card h3 {{margin:.45rem 0 .7rem;color:var(--text);}}
+        .install-card ul {{margin:.3rem 0 0;padding-left:1.1rem;color:var(--muted);line-height:1.45;font-size:.9rem;}}
         .match-card {{padding:1rem;margin-bottom:1rem;}}
         .match-topline {{justify-content:space-between;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
         .confidence {{border-radius:999px;padding:.28rem .55rem;background:rgba(59,130,246,.16);color:#93c5fd;}}
@@ -1087,8 +1262,33 @@ def apply_theme(theme_mode: str) -> None:
         .factor-columns {{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}} .factor-columns ul {{margin:.2rem 0 0;padding-left:1rem;color:var(--muted);font-size:.8rem;line-height:1.35;}}
         .form-strip {{font-size:1.4rem;letter-spacing:.35rem;color:var(--green);background:rgba(15,23,42,.4);border:1px solid var(--border);border-radius:16px;padding:1rem;margin-bottom:1rem;}}
         div.stButton>button,div[data-testid="stDownloadButton"]>button {{width:100%;border-radius:10px;border:1px solid rgba(59,130,246,.35);}}
-        div[data-testid="stDataFrame"] {{border-radius:14px;overflow:hidden;}} div[data-testid="stAlert"] {{border-radius:14px;}}
-        @media (max-width:768px) {{.block-container{{padding:.8rem .7rem 1.5rem;}}.top-header,.teams-row,.factor-columns{{flex-direction:column;display:flex;align-items:flex-start;}}.header-meta{{justify-content:flex-start;}}.probability-grid,.signal-grid{{grid-template-columns:1fr;}}.score-box{{width:100%;}}.team-block.right{{text-align:left;flex-direction:row-reverse;}}.metric-card,.spotlight-card{{min-height:auto;margin-bottom:.75rem;}}.top-header h1{{font-size:1.35rem;}}}}
+        div[data-testid="stDataFrame"] {{border-radius:14px;overflow:hidden;overflow-x:auto;}} div[data-testid="stAlert"] {{border-radius:14px;}}
+        .app-footer {{display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 .5rem;padding:1rem 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);}}
+        @media (max-width:768px) {{
+            .block-container{{padding:.65rem .55rem 1.25rem;max-width:100%;}}
+            section[data-testid="stSidebar"] div[role="radiogroup"] label{{padding:.5rem .55rem;margin:.08rem 0;}}
+            .brand-block{{padding:.6rem .25rem .8rem;}}
+            .top-header,.teams-row,.factor-columns,.app-footer{{flex-direction:column;display:flex;align-items:flex-start;}}
+            .top-header{{padding:.9rem;border-radius:16px;margin-bottom:1rem;}}
+            .header-left{{gap:.75rem;}}
+            .header-meta{{justify-content:flex-start;gap:.45rem;}}
+            .status-pill,.updated-pill{{font-size:.76rem;padding:.4rem .55rem;}}
+            .probability-grid,.signal-grid{{grid-template-columns:1fr;gap:.5rem;margin:.7rem 0;}}
+            .score-box{{width:100%;padding:.65rem;}}
+            .team-logo{{width:40px;height:40px;}}
+            .team-name{{font-size:.94rem;}}
+            .team-block.right{{text-align:left;flex-direction:row-reverse;}}
+            .metric-card,.spotlight-card,.content-card,.install-card,.quick-card{{min-height:auto;margin-bottom:.65rem;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.18);}}
+            .match-card{{padding:.85rem;margin-bottom:.75rem;border-radius:14px;}}
+            .content-card{{padding:.85rem;margin:.65rem 0 .35rem;}}
+            .content-meta{{font-size:.68rem;align-items:flex-start;}}
+            textarea,input{{font-size:16px !important;}}
+            .top-header h1{{font-size:1.22rem;}}
+            .section-intro h2{{font-size:1.55rem;}}
+            .spotlight-prob{{font-size:1.25rem;}}
+            .install-card{{padding:1rem;}}
+            div[data-testid="stHorizontalBlock"]{{gap:.55rem;}}
+        }}
         </style>
         """,
         unsafe_allow_html=True,
