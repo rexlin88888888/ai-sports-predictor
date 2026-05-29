@@ -16,7 +16,9 @@ try:
         OUTPUT_PREDICTIONS_CSV,
         PERFORMANCE_REPORT_TXT,
         ensure_project_dirs,
+        project_relative,
     )
+    from .automation_status import update_automation_status
     from .utils import names_match
 except ImportError:
     from config import (
@@ -27,7 +29,9 @@ except ImportError:
         OUTPUT_PREDICTIONS_CSV,
         PERFORMANCE_REPORT_TXT,
         ensure_project_dirs,
+        project_relative,
     )
+    from core.automation_status import update_automation_status
     from core.utils import names_match
 
 
@@ -65,13 +69,22 @@ def update_results() -> dict[str, Any]:
     PERFORMANCE_REPORT_TXT.write_text(report, encoding="utf-8")
     DAILY_RESULT_RECAP_TXT.write_text(build_result_recap(updated), encoding="utf-8")
     settled = settled_frame(updated)
-    return {
+    summary = {
         "updated": int((updated["actual_result"].astype(str) != "").sum()),
         "settled": len(settled),
         "pending": int((updated["actual_result"].astype(str) == "").sum()),
-        "performance_report": str(PERFORMANCE_REPORT_TXT),
-        "recap": str(DAILY_RESULT_RECAP_TXT),
+        "performance_report": project_relative(PERFORMANCE_REPORT_TXT),
+        "recap": project_relative(DAILY_RESULT_RECAP_TXT),
     }
+    update_automation_status(
+        last_result_update=dt.datetime.now().isoformat(timespec="seconds"),
+        last_result_status="success",
+        settled_predictions=summary["settled"],
+        pending_predictions=summary["pending"],
+        performance_report=summary["performance_report"],
+        result_recap=summary["recap"],
+    )
+    return summary
 
 
 def update_prediction_frame(frame: pd.DataFrame) -> pd.DataFrame:

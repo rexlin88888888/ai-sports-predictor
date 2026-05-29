@@ -24,6 +24,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from config import BACKTEST_REPORT_TXT, CACHE_DIR, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, PERFORMANCE_REPORT_TXT, ensure_project_dirs, load_environment, project_relative  # noqa: E402
+from core.automation_status import read_automation_status  # noqa: E402
 from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
 from core.result_updater import update_results  # noqa: E402
@@ -116,6 +117,7 @@ def render_header(page: str) -> None:
 def render_sidebar_status() -> None:
     nba = read_csv(NBA_DATA_DIR / "nba_backtest_results.csv")
     football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
+    automation = read_automation_status()
     st.sidebar.markdown(
         f"""
         <div class="sidebar-panel">
@@ -123,6 +125,7 @@ def render_sidebar_status() -> None:
             <div class="sidebar-row"><span>NBA accuracy</span><b>{percent(accuracy(nba))}</b></div>
             <div class="sidebar-row"><span>Football accuracy</span><b>{percent(accuracy(football))}</b></div>
             <div class="sidebar-row"><span>Draw model</span><b>{percent(football_draw_accuracy(football))}</b></div>
+            <div class="sidebar-row"><span>Automation</span><b>{html.escape(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"))}</b></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -139,6 +142,7 @@ def render_dashboard() -> None:
     metric_card(cols[2], "Football Draw Accuracy", percent(football_draw_accuracy(football)), "Draw recall", "neutral")
     metric_card(cols[3], "Average Confidence", percent(average_confidence([nba, football])), "Across backtests", "neutral")
     metric_card(cols[4], "Total Predictions", f"{len(master):,}", "Saved history", "accent")
+    render_automation_overview()
 
     st.markdown("### Model Overview")
     left, right = st.columns(2)
@@ -148,6 +152,14 @@ def render_dashboard() -> None:
         render_confidence_distribution(nba, football)
     st.markdown("### Latest Predictions")
     render_history_table(master.tail(12), compact=True)
+
+
+def render_automation_overview() -> None:
+    automation = read_automation_status()
+    cols = st.columns(3)
+    metric_card(cols[0], "Last Daily Run", short_datetime(automation.get("last_daily_run")), "Prediction generation", "neutral")
+    metric_card(cols[1], "Last Result Update", short_datetime(automation.get("last_result_update")), "Actual result sync", "neutral")
+    metric_card(cols[2], "Automation Status", str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"), "GitHub Actions / local", "accent")
 
 
 def render_live_predictions_page() -> None:
@@ -433,6 +445,7 @@ def render_prediction_history_page() -> None:
 
 def render_results_tracker() -> None:
     st.markdown("### Results Tracker")
+    render_automation_overview()
     frame = read_prediction_history()
     if frame.empty:
         st.info("No saved predictions are available yet.")
@@ -464,6 +477,7 @@ def render_model_settings() -> None:
     tuning_path = OUTPUTS_DIR / "model_weight_tuning.json"
     tuning = tuning_path.read_text(encoding="utf-8") if tuning_path.exists() else "{}"
     model_version = MODEL_VERSION_JSON.read_text(encoding="utf-8") if MODEL_VERSION_JSON.exists() else "{}"
+    automation = read_automation_status()
     api_rows = [
         {"Service": "News API", "Mode": "Live" if os.getenv("NEWS_API_KEY") else "Fallback"},
         {"Service": "Football Data", "Mode": "Live" if os.getenv("FOOTBALL_DATA_KEY") else "Fallback"},
@@ -493,6 +507,8 @@ def render_model_settings() -> None:
         st.code(json.dumps(json.loads(model_version), indent=2), language="json")
     except Exception:
         st.code(model_version, language="json")
+    st.markdown("#### Automation Status")
+    st.code(json.dumps(automation, indent=2, ensure_ascii=False), language="json")
     st.markdown("#### Calibration Status")
     render_draw_calibration()
 
@@ -819,6 +835,17 @@ def percent(value: float | None) -> str:
     if value is None:
         return "N/A"
     return f"{value * 100:.1f}%"
+
+
+def short_datetime(value) -> str:
+    if not value:
+        return "Not run"
+    text = str(value)
+    try:
+        parsed = dt.datetime.fromisoformat(text)
+        return parsed.strftime("%b %d %H:%M")
+    except ValueError:
+        return text[:16]
 
 
 def read_csv(path: Path) -> pd.DataFrame:

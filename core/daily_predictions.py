@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+from argparse import Namespace
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable
@@ -18,9 +19,13 @@ try:
         OUTPUT_PREDICTIONS_CSV,
         WEIGHT_TUNING_JSON,
         ensure_project_dirs,
+        project_relative,
     )
+    from .automation_status import update_automation_status
     from .prediction_result import PredictionResult, current_model_version
     from .utils import append_csv_row
+    from ..sports.football.football_model import FootballPredictor
+    from ..sports.nba.nba_model import NBAPredictor
 except ImportError:
     from config import (
         DAILY_PREDICTIONS_CSV,
@@ -31,9 +36,13 @@ except ImportError:
         OUTPUT_PREDICTIONS_CSV,
         WEIGHT_TUNING_JSON,
         ensure_project_dirs,
+        project_relative,
     )
+    from core.automation_status import update_automation_status
     from core.prediction_result import PredictionResult, current_model_version
     from core.utils import append_csv_row
+    from sports.football.football_model import FootballPredictor
+    from sports.nba.nba_model import NBAPredictor
 
 
 CONFIDENCE_SCORES = {"Low": 0.42, "Medium": 0.62, "High": 0.78}
@@ -72,7 +81,54 @@ def build_daily_prediction_package(predictions: Iterable[PredictionResult]) -> D
     write_daily_outputs(package)
     write_content_outputs(package)
     save_tracking_rows(package)
+    update_automation_status(
+        last_daily_run=package.generated_at.isoformat(timespec="seconds"),
+        last_daily_status="success",
+        daily_prediction_count=len(package.predictions),
+        daily_predictions_csv=project_relative(package.csv_path),
+        daily_predictions_txt=project_relative(package.txt_path),
+    )
     return package
+
+
+def generate_daily_predictions() -> DailyPredictionPackage:
+    target_date = dt.date.today()
+    predictions: list[PredictionResult] = []
+    nba_args = Namespace(
+        sport="nba",
+        date=target_date.isoformat(),
+        home="",
+        away="",
+        mode="",
+        backtest=False,
+        evaluate=False,
+        injuries=False,
+        season="2025-26",
+        limit=100,
+        verbose=False,
+    )
+    football_args = Namespace(
+        sport="football",
+        date=target_date.isoformat(),
+        home="",
+        away="",
+        mode="WORLD_CUP",
+        backtest=False,
+        evaluate=False,
+        injuries=False,
+        season="2025-26",
+        limit=100,
+        verbose=False,
+    )
+    try:
+        predictions.extend(NBAPredictor().predict(nba_args))
+    except Exception as exc:
+        update_automation_status(last_daily_status=f"nba_failed: {exc}")
+    try:
+        predictions.extend(FootballPredictor().predict_live(football_args))
+    except Exception as exc:
+        update_automation_status(last_daily_status=f"football_failed: {exc}")
+    return build_daily_prediction_package(predictions)
 
 
 def ensure_model_version() -> str:
@@ -119,9 +175,34 @@ def write_content_outputs(package: DailyPredictionPackage) -> None:
 
 
 def save_tracking_rows(package: DailyPredictionPackage) -> None:
-    for result in package.predictions:
-        row = daily_row(result, package)
-        append_csv_row(OUTPUT_PREDICTIONS_CSV, row, list(row.keys()))
+    rows = [daily_row(result, package) for result in package.predictions]
+    if not rows:
+        return
+    if OUTPUT_PREDICTIONS_CSV.exists():
+        try:
+            existing = pd.read_csv(OUTPUT_PREDICTIONS_CSV).fillna("")
+        except Exception:
+            existing = pd.DataFrame()
+    else:
+        existing = pd.DataFrame()
+    incoming = pd.DataFrame(rows).fillna("")
+    if not existing.empty:
+        for column in incoming.columns:
+            if column not in existing.columns:
+                existing[column] = ""
+        for _, row in incoming.iterrows():
+            duplicate = (
+                (existing.get("date", "").astype(str) == str(row.get("date", "")))
+                & (existing.get("sport", "").astype(str) == str(row.get("sport", "")))
+                & (existing.get("home_team", "").astype(str) == str(row.get("home_team", "")))
+                & (existing.get("away_team", "").astype(str) == str(row.get("away_team", "")))
+            )
+            existing = existing[~duplicate]
+        combined = pd.concat([existing, incoming], ignore_index=True)
+    else:
+        combined = incoming
+    OUTPUT_PREDICTIONS_CSV.parent.mkdir(parents=True, exist_ok=True)
+    combined.to_csv(OUTPUT_PREDICTIONS_CSV, index=False)
 
 
 def daily_row(result: PredictionResult, package: DailyPredictionPackage) -> dict[str, object]:
