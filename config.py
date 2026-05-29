@@ -13,13 +13,19 @@ REPORTS_DIR = PROJECT_ROOT / "reports"
 MODELS_DIR = PROJECT_ROOT / "models"
 CACHE_DIR = PROJECT_ROOT / "cache"
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+CONTENT_OUTPUTS_DIR = OUTPUTS_DIR / "content"
 UI_DIR = PROJECT_ROOT / "ui"
 UTILS_DIR = PROJECT_ROOT / "utils"
 
 MASTER_PREDICTIONS_CSV = DATA_DIR / "predictions_master.csv"
 OUTPUT_PREDICTIONS_CSV = OUTPUTS_DIR / "predictions.csv"
+DAILY_PREDICTIONS_CSV = OUTPUTS_DIR / "daily_predictions.csv"
+DAILY_PREDICTIONS_TXT = OUTPUTS_DIR / "daily_predictions.txt"
+DAILY_SHORT_SCRIPT_TXT = CONTENT_OUTPUTS_DIR / "daily_short_script.txt"
+DAILY_SOCIAL_POSTS_TXT = CONTENT_OUTPUTS_DIR / "daily_social_posts.txt"
 BACKTEST_REPORT_TXT = OUTPUTS_DIR / "backtest_report.txt"
 WEIGHT_TUNING_JSON = OUTPUTS_DIR / "model_weight_tuning.json"
+MODEL_VERSION_JSON = PROJECT_ROOT / "model_version.json"
 ELO_RATINGS_CSV = DATA_DIR / "elo_ratings.csv"
 NBA_PREDICTIONS_CSV = NBA_DATA_DIR / "nba_predictions.csv"
 FOOTBALL_PREDICTIONS_CSV = FOOTBALL_DATA_DIR / "football_predictions.csv"
@@ -73,6 +79,7 @@ def ensure_project_dirs() -> None:
         MODELS_DIR / "football",
         CACHE_DIR,
         OUTPUTS_DIR,
+        CONTENT_OUTPUTS_DIR,
         UI_DIR,
         UTILS_DIR,
     ):

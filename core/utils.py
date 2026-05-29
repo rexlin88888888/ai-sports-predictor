@@ -54,12 +54,36 @@ def season_from_date(target_date: dt.date) -> str:
 
 def append_csv_row(path: Path, row: dict[str, Any], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    exists = path.exists()
+    existing_rows: list[dict[str, Any]] = []
+    existing_fields: list[str] = []
+    if path.exists():
+        try:
+            with path.open("r", newline="", encoding="utf-8") as handle:
+                reader = csv.DictReader(handle)
+                existing_fields = list(reader.fieldnames or [])
+                existing_rows = list(reader)
+        except Exception:
+            existing_fields = []
+            existing_rows = []
+    merged_fields = list(existing_fields)
+    for field in fieldnames:
+        if field not in merged_fields:
+            merged_fields.append(field)
+    for field in row:
+        if field not in merged_fields:
+            merged_fields.append(field)
+    if existing_rows and merged_fields != existing_fields:
+        with path.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=merged_fields)
+            writer.writeheader()
+            for existing in existing_rows:
+                writer.writerow({key: existing.get(key, "") for key in merged_fields})
+    exists = path.exists() and path.stat().st_size > 0
     with path.open("a", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=merged_fields or fieldnames)
         if not exists:
             writer.writeheader()
-        writer.writerow({key: row.get(key, "") for key in fieldnames})
+        writer.writerow({key: row.get(key, "") for key in (merged_fields or fieldnames)})
 
 
 def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:

@@ -1,0 +1,24 @@
+AI Sports Predictor Daily Report
+Generated: 2026-05-29T21:21:15
+Model version: v1.0.0
+
+Today's NBA Predictions
+- No games available.
+
+Today's Football Predictions
+- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+
+Highest Confidence Picks
+- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+
+Upset Watch
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+
+Draw Watch
+- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+
+Injury Risk Games
+- No games available.

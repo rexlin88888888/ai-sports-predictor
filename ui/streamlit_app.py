@@ -23,7 +23,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from config import BACKTEST_REPORT_TXT, CACHE_DIR, DATA_DIR, FOOTBALL_DATA_DIR, NBA_DATA_DIR, OUTPUTS_DIR, ensure_project_dirs, load_environment, project_relative  # noqa: E402
+from config import BACKTEST_REPORT_TXT, CACHE_DIR, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, ensure_project_dirs, load_environment, project_relative  # noqa: E402
+from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
@@ -147,6 +148,9 @@ def render_dashboard() -> None:
 
 def render_live_predictions_page() -> None:
     enable_auto_refresh()
+    nba_results = safe_live_results("nba")
+    football_results = safe_live_results("football")
+    package = build_daily_prediction_package(nba_results + football_results)
     st.markdown(
         """
         <div class="section-intro">
@@ -156,10 +160,12 @@ def render_live_predictions_page() -> None:
         """,
         unsafe_allow_html=True,
     )
+    render_daily_spotlights(package)
     st.markdown("### Today's NBA Predictions")
-    render_live_cards(safe_live_results("nba"), "NBA")
+    render_live_cards(nba_results, "NBA")
     st.markdown("### Today's Football Predictions")
-    render_live_cards(safe_live_results("football"), "Football")
+    render_live_cards(football_results, "Football")
+    render_daily_exports(package)
 
 
 def render_nba_page() -> None:
@@ -220,6 +226,76 @@ def render_live_cards(results: list[PredictionResult], sport_label: str) -> None
         for col, result in zip(cols, row):
             with col:
                 render_match_card(result)
+
+
+def render_daily_spotlights(package: DailyPredictionPackage) -> None:
+    st.markdown("### Daily Board")
+    cards = [
+        ("Highest Confidence Pick", first_result(package.highest_confidence), "confidence"),
+        ("Best Value Pick", first_result(package.best_value), "value"),
+        ("Upset Alert", first_result(package.upset_watch), "upset"),
+        ("Draw Alert", first_result(package.draw_watch), "draw"),
+        ("Injury Watch", first_result(package.injury_risk_games), "injury"),
+    ]
+    cols = st.columns(5)
+    for col, (label, result, tone) in zip(cols, cards):
+        with col:
+            render_spotlight_card(label, result, tone)
+
+
+def render_spotlight_card(label: str, result: PredictionResult | None, tone: str) -> None:
+    if result is None:
+        st.markdown(
+            f"""
+            <div class="spotlight-card empty">
+                <div class="spotlight-label">{html.escape(label)}</div>
+                <div class="spotlight-main">No signal</div>
+                <div class="spotlight-sub">Waiting for today's schedule.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+    probability = result.draw_probability if tone == "draw" and result.draw_probability is not None else top_probability(result)
+    st.markdown(
+        f"""
+        <div class="spotlight-card {tone}">
+            <div class="spotlight-label">{html.escape(label)}</div>
+            <div class="spotlight-main">{html.escape(result.predicted_winner)}</div>
+            <div class="spotlight-sub">{html.escape(result.match)}</div>
+            <div class="spotlight-score">{html.escape(result.predicted_score)}</div>
+            <div class="spotlight-prob">{percent(probability)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_daily_exports(package: DailyPredictionPackage) -> None:
+    st.markdown("### Daily Exports")
+    cols = st.columns(4)
+    export_file_button(cols[0], "Download daily CSV", package.csv_path, "text/csv")
+    export_file_button(cols[1], "Download daily TXT", package.txt_path, "text/plain")
+    export_file_button(cols[2], "Shorts script", package.short_script_path, "text/plain")
+    export_file_button(cols[3], "Social posts", package.social_posts_path, "text/plain")
+    st.caption(f"Daily outputs saved with model version {package.model_version}.")
+
+
+def export_file_button(container, label: str, path: Path, mime: str) -> None:
+    with container:
+        if path.exists():
+            st.download_button(label, path.read_text(encoding="utf-8"), file_name=path.name, mime=mime)
+        else:
+            st.button(label, disabled=True)
+
+
+def first_result(results: list[PredictionResult]) -> PredictionResult | None:
+    return results[0] if results else None
+
+
+def top_probability(result: PredictionResult) -> float:
+    values = [value for value in (result.win_probability_home, result.win_probability_away, result.draw_probability) if value is not None]
+    return max(values) if values else 0.0
 
 
 def render_match_card(result: PredictionResult) -> None:
@@ -355,6 +431,7 @@ def render_model_settings() -> None:
     st.markdown("### Settings")
     tuning_path = OUTPUTS_DIR / "model_weight_tuning.json"
     tuning = tuning_path.read_text(encoding="utf-8") if tuning_path.exists() else "{}"
+    model_version = MODEL_VERSION_JSON.read_text(encoding="utf-8") if MODEL_VERSION_JSON.exists() else "{}"
     api_rows = [
         {"Service": "News API", "Mode": "Live" if os.getenv("NEWS_API_KEY") else "Fallback"},
         {"Service": "Football Data", "Mode": "Live" if os.getenv("FOOTBALL_DATA_KEY") else "Fallback"},
@@ -379,6 +456,11 @@ def render_model_settings() -> None:
         st.code(json.dumps(json.loads(tuning), indent=2), language="json")
     except Exception:
         st.code(tuning, language="json")
+    st.markdown("#### Model Version")
+    try:
+        st.code(json.dumps(json.loads(model_version), indent=2), language="json")
+    except Exception:
+        st.code(model_version, language="json")
     st.markdown("#### Calibration Status")
     render_draw_calibration()
 
@@ -726,13 +808,25 @@ def apply_theme(theme_mode: str) -> None:
         h2,h3,h4 {{color:var(--text);letter-spacing:0;}}
         .section-intro {{margin:.5rem 0 1.2rem;}}
         .section-intro h2 {{margin:0;color:var(--text);}}
-        .metric-card,.match-card,.mini-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
+        .metric-card,.match-card,.mini-card,.spotlight-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
         .metric-card {{padding:1rem;min-height:116px;transition:transform .16s ease,border-color .16s ease;}}
-        .metric-card:hover,.match-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
+        .metric-card:hover,.match-card:hover,.spotlight-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
         .metric-label {{color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;}}
         .metric-value {{color:var(--text);font-size:1.8rem;font-weight:800;margin-top:.45rem;overflow-wrap:anywhere;}}
         .metric-card.positive .metric-value {{color:var(--green);}} .metric-card.accent .metric-value {{color:var(--blue);}}
         .metric-caption {{color:var(--muted);font-size:.84rem;margin-top:.35rem;}}
+        .spotlight-card {{padding:1rem;min-height:174px;margin-bottom:1rem;position:relative;overflow:hidden;transition:transform .16s ease,border-color .16s ease;}}
+        .spotlight-card::before {{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--blue),var(--green));}}
+        .spotlight-card.value::before {{background:linear-gradient(90deg,#fbbf24,#22c55e);}}
+        .spotlight-card.upset::before {{background:linear-gradient(90deg,#ff5f64,#fbbf24);}}
+        .spotlight-card.draw::before {{background:linear-gradient(90deg,#a78bfa,#60a5fa);}}
+        .spotlight-card.injury::before {{background:linear-gradient(90deg,#fb7185,#f97316);}}
+        .spotlight-card.empty {{opacity:.72;}}
+        .spotlight-label {{color:var(--muted);font-size:.72rem;text-transform:uppercase;font-weight:800;letter-spacing:.04em;}}
+        .spotlight-main {{color:var(--text);font-size:1.05rem;font-weight:900;margin-top:.55rem;line-height:1.15;}}
+        .spotlight-sub {{color:#9fb0c6;font-size:.78rem;margin-top:.35rem;line-height:1.25;}}
+        .spotlight-score {{color:#dbeafe;font-size:.82rem;margin-top:.7rem;line-height:1.25;}}
+        .spotlight-prob {{color:var(--green);font-size:1.45rem;font-weight:900;margin-top:.55rem;}}
         .match-card {{padding:1rem;margin-bottom:1rem;}}
         .match-topline {{justify-content:space-between;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
         .confidence {{border-radius:999px;padding:.28rem .55rem;background:rgba(59,130,246,.16);color:#93c5fd;}}
@@ -752,7 +846,7 @@ def apply_theme(theme_mode: str) -> None:
         .form-strip {{font-size:1.4rem;letter-spacing:.35rem;color:var(--green);background:rgba(15,23,42,.4);border:1px solid var(--border);border-radius:16px;padding:1rem;margin-bottom:1rem;}}
         div.stButton>button,div[data-testid="stDownloadButton"]>button {{width:100%;border-radius:10px;border:1px solid rgba(59,130,246,.35);}}
         div[data-testid="stDataFrame"] {{border-radius:14px;overflow:hidden;}} div[data-testid="stAlert"] {{border-radius:14px;}}
-        @media (max-width:768px) {{.block-container{{padding:.8rem .7rem 1.5rem;}}.top-header,.teams-row,.factor-columns{{flex-direction:column;display:flex;align-items:flex-start;}}.header-meta{{justify-content:flex-start;}}.probability-grid,.signal-grid{{grid-template-columns:1fr;}}.score-box{{width:100%;}}.team-block.right{{text-align:left;flex-direction:row-reverse;}}.metric-card{{min-height:auto;margin-bottom:.75rem;}}.top-header h1{{font-size:1.35rem;}}}}
+        @media (max-width:768px) {{.block-container{{padding:.8rem .7rem 1.5rem;}}.top-header,.teams-row,.factor-columns{{flex-direction:column;display:flex;align-items:flex-start;}}.header-meta{{justify-content:flex-start;}}.probability-grid,.signal-grid{{grid-template-columns:1fr;}}.score-box{{width:100%;}}.team-block.right{{text-align:left;flex-direction:row-reverse;}}.metric-card,.spotlight-card{{min-height:auto;margin-bottom:.75rem;}}.top-header h1{{font-size:1.35rem;}}}}
         </style>
         """,
         unsafe_allow_html=True,
