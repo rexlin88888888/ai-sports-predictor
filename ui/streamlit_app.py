@@ -31,6 +31,7 @@ from core.result_updater import update_results  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
 from sports.nba.nba_model import NBAPredictor  # noqa: E402
+from utils.team_translations import canonical_team_name, t, translate_team_name, translate_text  # noqa: E402
 
 
 LOGGER = logging.getLogger("sports_predictor")
@@ -192,9 +193,37 @@ ZH_TEXT = {
 
 
 def tr(text: str) -> str:
-    if st.session_state.get("language_choice") == "中文":
-        return ZH_TEXT.get(text, text)
+    if is_zh():
+        return decode_mojibake(ZH_TEXT.get(text, t(text, current_language())))
     return text
+
+
+def current_language() -> str:
+    return st.session_state.get("language_choice", "English")
+
+
+def is_zh() -> bool:
+    return current_language() in {"中文", "ä¸­æ–‡"}
+
+
+def decode_mojibake(text: object) -> str:
+    value = "" if text is None else str(text)
+    try:
+        return value.encode("latin1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return value
+
+
+def tx(text: object) -> str:
+    return translate_text(text, current_language())
+
+
+def team_display(name: object) -> str:
+    return translate_team_name(name, current_language())
+
+
+def confidence_display(value: object) -> str:
+    return t(str(value or "").strip(), current_language())
 
 
 def main() -> None:
@@ -203,6 +232,8 @@ def main() -> None:
     configure_logging(False)
     st.set_page_config(page_title="AI Sports Predictor", layout="wide", page_icon="AI")
 
+    if st.session_state.get("language_choice") == "ä¸­æ–‡":
+        st.session_state["language_choice"] = "中文"
     st.sidebar.selectbox("Language / 语言", ["English", "中文"], index=0, key="language_choice")
     theme_mode = st.sidebar.selectbox(tr("Display Mode"), ["Dark", "Light", "Auto"], index=0)
     apply_theme(theme_mode)
@@ -340,7 +371,7 @@ def render_sidebar_status() -> None:
             <div class="sidebar-row"><span>{html.escape(tr("NBA accuracy"))}</span><b>{percent(accuracy(nba))}</b></div>
             <div class="sidebar-row"><span>{html.escape(tr("Football accuracy"))}</span><b>{percent(accuracy(football))}</b></div>
             <div class="sidebar-row"><span>{html.escape(tr("Draw model"))}</span><b>{percent(football_draw_accuracy(football))}</b></div>
-            <div class="sidebar-row"><span>{html.escape(tr("Automation"))}</span><b>{html.escape(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"))}</b></div>
+            <div class="sidebar-row"><span>{html.escape(tr("Automation"))}</span><b>{html.escape(tx(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready")))}</b></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -399,7 +430,7 @@ def render_automation_overview() -> None:
     cols = st.columns(3)
     metric_card(cols[0], tr("Last Daily Run"), short_datetime(automation.get("last_daily_run")), tr("Prediction generation"), "neutral")
     metric_card(cols[1], tr("Last Result Update"), short_datetime(automation.get("last_result_update")), tr("Actual result sync"), "neutral")
-    metric_card(cols[2], tr("Automation Status"), str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"), tr("GitHub Actions / local"), "accent")
+    metric_card(cols[2], tr("Automation Status"), tx(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready")), tr("GitHub Actions / local"), "accent")
 
 
 def render_live_predictions_page() -> None:
@@ -423,7 +454,7 @@ def render_live_predictions_page() -> None:
     render_live_cards(football_results, "Football")
     if st.button(tr("Generate Today's Content"), type="primary"):
         refreshed = generate_daily_predictions()
-        st.success(f"{len(refreshed.predictions)} prediction(s) updated. {tr('Content Studio')}")
+        st.success(tx(f"{len(refreshed.predictions)} prediction(s) updated. {tr('Content Studio')}"))
     render_daily_exports(package)
 
 
@@ -439,7 +470,7 @@ def render_content_studio() -> None:
     )
     if st.button(tr("Regenerate today's content"), type="primary"):
         package = generate_daily_predictions()
-        st.success(f"Content regenerated for {len(package.predictions)} prediction(s).")
+        st.success(tx(f"Content regenerated for {len(package.predictions)} prediction(s)."))
 
     short_script = read_text_file(DAILY_SHORT_SCRIPT_TXT)
     social_posts = read_text_file(DAILY_SOCIAL_POSTS_TXT)
@@ -458,8 +489,8 @@ def render_content_studio() -> None:
     st.markdown("### " + tr("Yesterday Result Recap"))
     render_content_card(tr("Yesterday Result Recap"), "Yesterday's hits and misses", result_recap, "#SportsAI #PredictionRecap", generated, "Recap")
 
-    all_content = all_content_text(short_script, social_posts, result_recap)
-    social_csv = social_posts_csv(social, short_script, result_recap, generated)
+    all_content = tx(all_content_text(short_script, social_posts, result_recap))
+    social_csv = tx(social_posts_csv(social, short_script, result_recap, generated))
     export_cols = st.columns(2)
     export_cols[0].download_button(tr("Export all content as TXT"), all_content, file_name="daily_content_pack.txt", mime="text/plain")
     export_cols[1].download_button(tr("Export social posts as CSV"), social_csv, file_name="daily_social_posts.csv", mime="text/csv")
@@ -551,13 +582,13 @@ def render_football_page() -> None:
     st.markdown("#### " + tr("Run Football Match Prediction"))
     with st.form("football_prediction_form"):
         cols = st.columns(4)
-        home = cols[0].text_input(tr("Home Team"), "Mexico")
-        away = cols[1].text_input(tr("Away Team"), "South Africa")
+        home = cols[0].text_input(tr("Home Team"), team_display("Mexico"))
+        away = cols[1].text_input(tr("Away Team"), team_display("South Africa"))
         date_value = cols[2].text_input(tr("Date"), "today")
         mode = cols[3].text_input(tr("Mode"), "WORLD_CUP")
         submitted = st.form_submit_button(tr("Run Football Prediction"), type="primary")
     if submitted:
-        for result in run_prediction("football", date_value, home, away, mode, False):
+        for result in run_prediction("football", date_value, canonical_team_name(home), canonical_team_name(away), mode, False):
             render_prediction_card(result)
 
 
@@ -575,7 +606,10 @@ def render_sport_summary(sport: str) -> None:
 
 def render_live_cards(results: list[PredictionResult], sport_label: str) -> None:
     if not results:
-        st.info(f"No {sport_label} games found today. Cached reports and manual predictions are still available.")
+        if is_zh():
+            st.info(f"今日没有{t(sport_label, current_language())}比赛。仍可查看缓存报告和手动预测。")
+        else:
+            st.info(f"No {sport_label} games found today. Cached reports and manual predictions are still available.")
         return
     for row in chunked(results[:8], 2):
         cols = st.columns(len(row))
@@ -617,9 +651,9 @@ def render_spotlight_card(label: str, result: PredictionResult | None, tone: str
         f"""
         <div class="spotlight-card {tone}">
             <div class="spotlight-label">{html.escape(tr(label))}</div>
-            <div class="spotlight-main">{html.escape(result.predicted_winner)}</div>
-            <div class="spotlight-sub">{html.escape(result.match)}</div>
-            <div class="spotlight-score">{html.escape(result.predicted_score)}</div>
+            <div class="spotlight-main">{html.escape(tx(result.predicted_winner))}</div>
+            <div class="spotlight-sub">{html.escape(tx(result.match))}</div>
+            <div class="spotlight-score">{html.escape(tx(result.predicted_score))}</div>
             <div class="spotlight-prob">{percent(probability)}</div>
         </div>
         """,
@@ -634,25 +668,28 @@ def render_daily_exports(package: DailyPredictionPackage) -> None:
     export_file_button(cols[1], tr("Download daily TXT"), package.txt_path, "text/plain")
     export_file_button(cols[2], tr("Shorts script"), package.short_script_path, "text/plain")
     export_file_button(cols[3], tr("Social posts"), package.social_posts_path, "text/plain")
-    st.caption(f"Daily outputs saved with model version {package.model_version}.")
+    st.caption(tx(f"Daily outputs saved with model version {package.model_version}."))
 
 
 def render_content_card(platform: str, title: str, body: str, hashtags: str, generated: str, body_label: str) -> None:
+    display_title = tx(title or platform)
+    display_body = tx(body)
+    display_hashtags = tx(hashtags or "#SportsAI #ModelPick")
     st.markdown(
         f"""
         <article class="content-card">
             <div class="content-meta"><span>{html.escape(platform)}</span><span>{html.escape(tr("Generated"))} {html.escape(generated)}</span></div>
-            <h3>{html.escape(title or platform)}</h3>
+            <h3>{html.escape(display_title)}</h3>
             <div class="content-chip">{html.escape(body_label)}</div>
         </article>
         """,
         unsafe_allow_html=True,
     )
     if body:
-        st.text_area(f"{platform} {body_label}", body, height=180 if len(body) > 220 else 120, label_visibility="collapsed")
+        st.text_area(f"{platform} {body_label}", display_body, height=180 if len(display_body) > 220 else 120, label_visibility="collapsed")
     else:
-        st.text_input(f"{platform} title", title, label_visibility="collapsed")
-    st.caption(hashtags or "#SportsAI #ModelPick")
+        st.text_input(f"{platform} title", display_title, label_visibility="collapsed")
+    st.caption(display_hashtags)
 
 
 def export_file_button(container, label: str, path: Path, mime: str) -> None:
@@ -679,22 +716,28 @@ def render_match_card(result: PredictionResult) -> None:
     away_width = max(4, min(96, int(away_prob * 100)))
     confidence_class = result.confidence.lower() if result.confidence else "low"
     factors = split_factors(result)
+    home_name = team_display(result.home_team)
+    away_name = team_display(result.away_team)
+    sport_name = t(result.sport.upper(), current_language())
+    score_text = tx(result.predicted_score)
+    confidence_text = confidence_display(result.confidence)
+    confidence_separator = "：" if is_zh() else ": "
     st.markdown(
         f"""
         <article class="match-card">
             <div class="match-topline">
-                <span>{html.escape(result.sport.upper())}</span>
-                <span class="confidence-badge {confidence_class}">{html.escape(tr("Confidence"))}: {html.escape(result.confidence)}</span>
+                <span>{html.escape(sport_name)}</span>
+                <span class="confidence-badge {confidence_class}">{html.escape(tr("Confidence"))}{confidence_separator}{html.escape(confidence_text)}</span>
             </div>
             <div class="teams-row">
                 <div class="team-block">
-                    <div class="team-logo">{team_initials(result.home_team)}</div>
-                    <div><div class="team-name">{html.escape(result.home_team)}</div><div class="team-role">{html.escape(tr("Home"))}</div></div>
+                    <div class="team-logo">{team_initials(home_name)}</div>
+                    <div><div class="team-name">{html.escape(home_name)}</div><div class="team-role">{html.escape(tr("Home"))}</div></div>
                 </div>
-                <div class="score-box">{html.escape(result.predicted_score)}</div>
+                <div class="score-box">{html.escape(score_text)}</div>
                 <div class="team-block right">
-                    <div><div class="team-name">{html.escape(result.away_team)}</div><div class="team-role">{html.escape(tr("Away"))}</div></div>
-                    <div class="team-logo">{team_initials(result.away_team)}</div>
+                    <div><div class="team-name">{html.escape(away_name)}</div><div class="team-role">{html.escape(tr("Away"))}</div></div>
+                    <div class="team-logo">{team_initials(away_name)}</div>
                 </div>
             </div>
             <div class="probability-grid">
@@ -703,14 +746,14 @@ def render_match_card(result: PredictionResult) -> None:
                 <div><div class="prob-label">{html.escape(tr("Draw Probability"))}</div><div class="prob-value">{percent(result.draw_probability)}</div></div>
             </div>
             <div class="signal-grid">
-                <div><b>{html.escape(tr("Injury"))}</b><span>{html.escape(short_signal(factors["injury"]))}</span></div>
-                <div><b>{html.escape(tr("Momentum"))}</b><span>{html.escape(short_signal(factors["momentum"]))}</span></div>
-                <div><b>{html.escape(tr("Elo"))}</b><span>{html.escape(short_signal(factors["elo"]))}</span></div>
-                <div><b>{html.escape(tr("Fatigue"))}</b><span>{html.escape(short_signal(factors["fatigue"]))}</span></div>
+                <div><b>{html.escape(tr("Injury"))}</b><span>{html.escape(tx(short_signal(factors["injury"])))}</span></div>
+                <div><b>{html.escape(tr("Momentum"))}</b><span>{html.escape(tx(short_signal(factors["momentum"])))}</span></div>
+                <div><b>{html.escape(tr("Elo"))}</b><span>{html.escape(tx(short_signal(factors["elo"])))}</span></div>
+                <div><b>{html.escape(tr("Fatigue"))}</b><span>{html.escape(tx(short_signal(factors["fatigue"])))}</span></div>
             </div>
             <div class="factor-columns">
-                <div><b>{html.escape(tr("Key Factors"))}</b>{html_list(factor_preview(result.key_factors, 3))}</div>
-                <div><b>{html.escape(tr("Risk Factors"))}</b>{html_list(factor_preview(result.risk_factors, 3))}</div>
+                <div><b>{html.escape(tr("Key Factors"))}</b>{html_list([tx(item) for item in factor_preview(result.key_factors, 3)])}</div>
+                <div><b>{html.escape(tr("Risk Factors"))}</b>{html_list([tx(item) for item in factor_preview(result.risk_factors, 3)])}</div>
             </div>
         </article>
         """,
@@ -722,20 +765,20 @@ def render_prediction_card(result: PredictionResult) -> None:
     render_match_card(result)
     csv_path, txt_path = export_prediction(result)
     export_cols = st.columns(3)
-    export_cols[0].download_button("Export prediction as CSV", csv_path.read_text(encoding="utf-8"), file_name=csv_path.name, mime="text/csv")
-    export_cols[1].download_button("Export prediction as TXT", txt_path.read_text(encoding="utf-8"), file_name=txt_path.name, mime="text/plain")
-    export_cols[2].success(f"Saved to outputs/{csv_path.name} and outputs/{txt_path.name}")
+    export_cols[0].download_button(tr("Export prediction as CSV"), csv_path.read_text(encoding="utf-8"), file_name=csv_path.name, mime="text/csv")
+    export_cols[1].download_button(tr("Export prediction as TXT"), txt_path.read_text(encoding="utf-8"), file_name=txt_path.name, mime="text/plain")
+    export_cols[2].success(tx(f"Saved to outputs/{csv_path.name} and outputs/{txt_path.name}"))
 
 
 def render_backtest_report() -> None:
     st.markdown("### " + tr("Backtest Reports"))
     report = BACKTEST_REPORT_TXT.read_text(encoding="utf-8") if BACKTEST_REPORT_TXT.exists() else ""
     if not report:
-        st.info("No backtest report is available yet. Run the backtest commands from the terminal first.")
+        st.info(tx("No backtest report is available yet. Run the backtest commands from the terminal first."))
         return
-    st.download_button("Export backtest report", report, file_name="backtest_report.txt", mime="text/plain")
-    with st.expander("Historical performance report", expanded=True):
-        st.text_area("Report text", report, height=320, label_visibility="collapsed")
+    st.download_button(tr("Export backtest report"), tx(report), file_name="backtest_report.txt", mime="text/plain")
+    with st.expander(tr("Historical performance report"), expanded=True):
+        st.text_area(tr("Report text"), tx(report), height=320, label_visibility="collapsed")
     nba = read_csv(NBA_DATA_DIR / "nba_backtest_results.csv")
     football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
     col1, col2 = st.columns(2)
@@ -747,23 +790,24 @@ def render_backtest_report() -> None:
 
 def render_team_analysis() -> None:
     st.markdown("### " + tr("Team Analysis"))
-    query = st.text_input("Search team", "Mexico")
+    query = st.text_input(tr("Search team"), team_display("Mexico"))
+    query_key = canonical_team_name(query)
     history = all_history_frames()
     if history.empty:
-        st.info("No prediction or backtest history is available yet.")
+        st.info(tr("No prediction or backtest history is available yet."))
         return
-    filtered = filter_team_history(history, query)
+    filtered = filter_team_history(history, query_key)
     if filtered.empty:
-        st.info("No matching team records found.")
+        st.info(tr("No matching team records found."))
         return
     elo = read_csv(DATA_DIR / "elo_ratings.csv")
-    team_elo = team_elo_value(elo, query)
+    team_elo = team_elo_value(elo, query_key)
     cols = st.columns(5)
-    metric_card(cols[0], "Matched Records", f"{len(filtered):,}", "History rows", "accent")
-    metric_card(cols[1], "Win Rate", percent(accuracy(filtered)), "Rows with result", "positive")
-    metric_card(cols[2], "Avg Confidence", percent(frame_average_confidence(filtered)), "Model confidence", "neutral")
-    metric_card(cols[3], "Current Elo", f"{team_elo:.0f}" if team_elo else "N/A", "Latest rating", "accent")
-    metric_card(cols[4], "Injury Impact", injury_summary(query), "NBA cache", "neutral")
+    metric_card(cols[0], tr("Matched Records"), f"{len(filtered):,}", tr("History rows"), "accent")
+    metric_card(cols[1], tr("Win Rate"), percent(accuracy(filtered)), tr("Rows with result"), "positive")
+    metric_card(cols[2], tr("Avg Confidence"), percent(frame_average_confidence(filtered)), tr("Model confidence"), "neutral")
+    metric_card(cols[3], tr("Current Elo"), f"{team_elo:.0f}" if team_elo else "N/A", tr("Latest rating"), "accent")
+    metric_card(cols[4], tr("Injury Impact"), tx(injury_summary(query_key)), tr("NBA cache"), "neutral")
     left, right = st.columns(2)
     with left:
         st.markdown("#### " + tr("Confidence Trend"))
@@ -779,25 +823,30 @@ def render_prediction_history_page() -> None:
     st.markdown("### " + tr("Prediction History"))
     frame = read_prediction_history()
     if frame.empty:
-        st.info("No saved prediction history yet.")
+        st.info(tr("No saved prediction history yet."))
         return
     controls = st.columns([1.4, 1.0, 1.0, 1.0])
-    search = controls[0].text_input("Search team or match", "")
+    search = controls[0].text_input(tr("Search team or match"), "")
     sport_options = ["All"] + sorted(frame["sport"].dropna().astype(str).unique().tolist()) if "sport" in frame else ["All"]
-    sport = controls[1].selectbox("Sport", sport_options)
+    sport = controls[1].selectbox(tr("Sport"), sport_options, format_func=lambda value: t(value, current_language()))
     confidence_options = ["All"] + sorted(frame["confidence"].dropna().astype(str).unique().tolist()) if "confidence" in frame else ["All"]
-    confidence = controls[2].selectbox("Confidence", confidence_options)
-    date_filter = controls[3].text_input("Date contains", "")
+    confidence = controls[2].selectbox(tr("Confidence"), confidence_options, format_func=lambda value: t(value, current_language()))
+    date_filter = controls[3].text_input(tr("Date contains"), "")
     filtered = frame.copy()
     if search:
-        filtered = filtered[filtered.astype(str).apply(lambda col: col.str.contains(search, case=False, na=False)).any(axis=1)]
+        search_key = canonical_team_name(search)
+        localized = localize_frame_for_display(filtered)
+        filtered = filtered[
+            filtered.astype(str).apply(lambda col: col.str.contains(search_key, case=False, na=False)).any(axis=1)
+            | localized.astype(str).apply(lambda col: col.str.contains(search, case=False, na=False)).any(axis=1)
+        ]
     if sport != "All" and "sport" in filtered:
         filtered = filtered[filtered["sport"].astype(str) == sport]
     if confidence != "All" and "confidence" in filtered:
         filtered = filtered[filtered["confidence"].astype(str) == confidence]
     if date_filter:
         filtered = filtered[filtered.astype(str).apply(lambda col: col.str.contains(date_filter, case=False, na=False)).any(axis=1)]
-    st.caption(f"{len(filtered):,} matching predictions")
+    st.caption(tx(f"{len(filtered):,} matching predictions"))
     render_history_table(filtered.tail(250), compact=False)
 
 
@@ -806,26 +855,26 @@ def render_results_tracker() -> None:
     render_automation_overview()
     frame = read_prediction_history()
     if frame.empty:
-        st.info("No saved predictions are available yet.")
+        st.info(tr("No saved predictions are available yet."))
         return
     frame = normalize_history_columns(frame)
     settled = settled_predictions(frame)
     pending = frame[frame.get("actual_result", "").astype(str) == ""] if "actual_result" in frame else frame
     today = dt.date.today()
     cols = st.columns(5)
-    metric_card(cols[0], "Pending Predictions", f"{len(pending):,}", "Waiting for result", "neutral")
-    metric_card(cols[1], "Settled Predictions", f"{len(settled):,}", "Actual result found", "accent")
-    metric_card(cols[2], "Accuracy Today", percent(period_accuracy(settled, today, today)), "Settled today", "positive")
-    metric_card(cols[3], "Accuracy This Week", percent(period_accuracy(settled, today - dt.timedelta(days=7), today)), "Last 7 days", "positive")
-    metric_card(cols[4], "Accuracy This Month", percent(period_accuracy(settled, today.replace(day=1), today)), "Current month", "positive")
-    if st.button("Update actual results now", type="primary"):
+    metric_card(cols[0], tr("Pending Predictions"), f"{len(pending):,}", tr("Waiting for result"), "neutral")
+    metric_card(cols[1], tr("Settled Predictions"), f"{len(settled):,}", tr("Actual result found"), "accent")
+    metric_card(cols[2], tr("Accuracy Today"), percent(period_accuracy(settled, today, today)), tr("Settled today"), "positive")
+    metric_card(cols[3], tr("Accuracy This Week"), percent(period_accuracy(settled, today - dt.timedelta(days=7), today)), tr("Last 7 days"), "positive")
+    metric_card(cols[4], tr("Accuracy This Month"), percent(period_accuracy(settled, today.replace(day=1), today)), tr("Current month"), "positive")
+    if st.button(tr("Update actual results now"), type="primary"):
         summary = update_results()
-        st.success(f"Results updated. Settled: {summary.get('settled', 0)} · Pending: {summary.get('pending', 0)}")
+        st.success(tx(f"Results updated. Settled: {summary.get('settled', 0)} · Pending: {summary.get('pending', 0)}"))
     st.markdown("#### " + tr("Recent Wins / Losses"))
     render_recent_result_form(settled)
     st.markdown("#### " + tr("Performance Report"))
     report = PERFORMANCE_REPORT_TXT.read_text(encoding="utf-8") if PERFORMANCE_REPORT_TXT.exists() else "Run update-results to generate a performance report."
-    st.text_area("Performance report", report, height=260, label_visibility="collapsed")
+    st.text_area(tr("Performance report"), tx(report), height=260, label_visibility="collapsed")
     st.markdown("#### " + tr("Settled Predictions"))
     render_history_table(settled.tail(100), compact=False)
 
@@ -851,22 +900,22 @@ def render_model_settings() -> None:
     cols = st.columns(2)
     with cols[0]:
         st.markdown("#### " + tr("API Mode"))
-        st.dataframe(pd.DataFrame(api_rows), use_container_width=True, hide_index=True)
+        st.dataframe(localize_frame_for_display(pd.DataFrame(api_rows)), use_container_width=True, hide_index=True)
     with cols[1]:
         st.markdown("#### " + tr("Cache Status"))
-        st.dataframe(pd.DataFrame(cache_rows), use_container_width=True, hide_index=True)
+        st.dataframe(localize_frame_for_display(pd.DataFrame(cache_rows)), use_container_width=True, hide_index=True)
     st.markdown("#### " + tr("Current Model Weights"))
     try:
-        st.code(json.dumps(json.loads(tuning), indent=2), language="json")
+        st.code(tx(json.dumps(json.loads(tuning), indent=2)), language="json")
     except Exception:
-        st.code(tuning, language="json")
+        st.code(tx(tuning), language="json")
     st.markdown("#### " + tr("Model Version"))
     try:
-        st.code(json.dumps(json.loads(model_version), indent=2), language="json")
+        st.code(tx(json.dumps(json.loads(model_version), indent=2)), language="json")
     except Exception:
-        st.code(model_version, language="json")
+        st.code(tx(model_version), language="json")
     st.markdown("#### " + tr("Automation Status"))
-    st.code(json.dumps(automation, indent=2, ensure_ascii=False), language="json")
+    st.code(tx(json.dumps(automation, indent=2, ensure_ascii=False)), language="json")
     st.markdown("#### " + tr("Calibration Status"))
     render_draw_calibration()
 
@@ -941,7 +990,7 @@ def render_accuracy_trend(nba: pd.DataFrame, football: pd.DataFrame) -> None:
         local["sport"] = sport
         rows.append(local[["date", "sport", "rolling_accuracy"]])
     if not rows:
-        st.info("Run backtests to populate the accuracy trend.")
+        st.info(tx("Run backtests to populate the accuracy trend."))
         return
     trend = pd.concat(rows, ignore_index=True)
     if px:
@@ -962,7 +1011,7 @@ def render_confidence_distribution(nba: pd.DataFrame, football: pd.DataFrame) ->
         counts["sport"] = sport
         rows.append(counts)
     if not rows:
-        st.info("No confidence data available.")
+        st.info(tx("No confidence data available."))
         return
     data = pd.concat(rows, ignore_index=True)
     if px:
@@ -977,7 +1026,7 @@ def render_draw_calibration() -> None:
     st.markdown("#### " + tr("Draw Probability Calibration"))
     frame = read_csv(FOOTBALL_DATA_DIR / "calibration_report.csv")
     if frame.empty:
-        st.info("Football calibration data is not available.")
+        st.info(tx("Football calibration data is not available."))
         return
     if px:
         fig = px.line(frame, x="bucket", y=["avg_predicted_probability", "actual_win_rate"], template="plotly_dark")
@@ -989,25 +1038,25 @@ def render_draw_calibration() -> None:
 
 def render_confidence_trend(frame: pd.DataFrame) -> None:
     if frame.empty or "date" not in frame:
-        st.info("No confidence trend available.")
+        st.info(tx("No confidence trend available."))
         return
     local = frame.copy()
     local["date"] = pd.to_datetime(local["date"], errors="coerce")
     value_col = "confidence_value" if "confidence_value" in local else "predicted_probability"
     if value_col not in local:
-        st.info("No confidence values available.")
+        st.info(tx("No confidence values available."))
         return
     local[value_col] = pd.to_numeric(local[value_col], errors="coerce")
     local = local.dropna(subset=["date", value_col]).sort_values("date")
     if local.empty:
-        st.info("No confidence trend available.")
+        st.info(tx("No confidence trend available."))
         return
     st.line_chart(local.tail(50), x="date", y=value_col)
 
 
 def render_recent_form_panel(frame: pd.DataFrame) -> None:
     if "correct" not in frame or frame.empty:
-        st.info("Recent form is unavailable.")
+        st.info(tx("Recent form is unavailable."))
         return
     recent = frame.tail(10)
     form = "".join("W" if str(value).lower() in ("true", "1") else "L" for value in recent["correct"].tolist())
@@ -1017,11 +1066,42 @@ def render_recent_form_panel(frame: pd.DataFrame) -> None:
 
 def render_history_table(frame: pd.DataFrame, compact: bool) -> None:
     if frame.empty:
-        st.info("No rows available.")
+        st.info(tr("No rows available."))
         return
     preferred = ["date", "prediction_date", "sport", "match", "home_team", "away_team", "predicted_winner", "predicted_result", "predicted_score", "confidence", "actual_score", "actual_winner", "actual_result", "prediction_correct", "correct", "result_updated_at"]
     cols = [col for col in preferred if col in frame.columns]
-    st.dataframe((frame[cols] if cols else frame).tail(100 if compact else 250), use_container_width=True, hide_index=True)
+    display = localize_frame_for_display((frame[cols] if cols else frame).tail(100 if compact else 250))
+    st.dataframe(display, use_container_width=True, hide_index=True)
+
+
+def localize_frame_for_display(frame: pd.DataFrame) -> pd.DataFrame:
+    if frame.empty or not is_zh():
+        return frame
+    display = frame.copy()
+    text_columns = [
+        "sport",
+        "match",
+        "home_team",
+        "away_team",
+        "predicted_winner",
+        "predicted_result",
+        "predicted_score",
+        "confidence",
+        "actual_score",
+        "actual_winner",
+        "actual_result",
+        "key_factors",
+        "risk_factors",
+        "Service",
+        "Mode",
+        "File",
+        "Available",
+    ]
+    for column in text_columns:
+        if column in display.columns:
+            display[column] = display[column].map(tx)
+    display = display.rename(columns={column: t(column, current_language()) for column in display.columns})
+    return display
 
 
 def read_prediction_history() -> pd.DataFrame:
@@ -1135,11 +1215,11 @@ def html_list(items: list[str]) -> str:
 
 def read_text_file(path: Path) -> str:
     if not path.exists():
-        return "Content has not been generated yet. Use Generate Today's Content first."
+        return tx("Content has not been generated yet. Use Generate Today's Content first.")
     try:
         return path.read_text(encoding="utf-8")
     except Exception:
-        return "Content could not be loaded."
+        return tx("Content could not be loaded.")
 
 
 def parse_social_posts(text: str) -> dict[str, str]:
@@ -1188,7 +1268,7 @@ def hashtags_from_text(text: str) -> str:
 def latest_generated_time(paths: list[Path]) -> str:
     existing = [path for path in paths if path.exists()]
     if not existing:
-        return "Not generated"
+        return tx("Not generated")
     latest = max(path.stat().st_mtime for path in existing)
     return dt.datetime.fromtimestamp(latest).strftime("%b %d %H:%M")
 
