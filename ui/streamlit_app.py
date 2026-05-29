@@ -48,6 +48,154 @@ NAV_ITEMS = [
     "Settings",
 ]
 
+ZH_TEXT = {
+    "Dashboard": "数据看板",
+    "Live Predictions": "今日预测",
+    "Content Studio": "内容工作室",
+    "Copy-ready social content built from today's model board. Posts avoid guarantee language and stay framed as model predictions and watchlists.": "基于今日模型看板生成可直接复制的社媒内容，避免绝对化表达，保持为模型预测和观察名单。",
+    "Install App": "安装到手机",
+    "Football": "足球",
+    "Team Analysis": "球队分析",
+    "Results Tracker": "结果追踪",
+    "Prediction History": "预测历史",
+    "Backtest Reports": "回测报告",
+    "Settings": "设置",
+    "Display Mode": "显示模式",
+    "Live model dashboard": "实时模型看板",
+    "Live APIs enabled": "实时 API 已启用",
+    "Fallback mode ready": "备用模式已就绪",
+    "Last updated": "最后更新",
+    "NBA and Football forecasts with Elo, momentum, fatigue and injury signals.": "结合 Elo、状态、疲劳和伤病信号的 NBA 与足球预测。",
+    "Model status": "模型状态",
+    "NBA accuracy": "NBA 准确率",
+    "Football accuracy": "足球准确率",
+    "Draw model": "平局模型",
+    "Automation": "自动化",
+    "NBA Accuracy": "NBA 准确率",
+    "Football Accuracy": "足球准确率",
+    "Football Draw Accuracy": "足球平局准确率",
+    "Average Confidence": "平均信心",
+    "Total Predictions": "预测总数",
+    "Last backtest sample": "最近回测样本",
+    "Draw recall": "平局召回率",
+    "Draw Accuracy": "平局准确率",
+    "Across backtests": "回测整体",
+    "Saved history": "已保存历史",
+    "Quick Actions": "快捷入口",
+    "Today's Picks": "今日推荐",
+    "Highest Confidence": "最高信心",
+    "Open today's model board": "打开今日模型看板",
+    "Review top confidence cards": "查看最高信心卡片",
+    "Copy social posts": "复制社媒文案",
+    "Check settled picks": "查看已结算预测",
+    "Last Daily Run": "上次每日运行",
+    "Last Result Update": "上次结果更新",
+    "Automation Status": "自动化状态",
+    "Prediction generation": "预测生成",
+    "Actual result sync": "真实赛果同步",
+    "GitHub Actions / local": "GitHub Actions / 本地",
+    "Model Overview": "模型概览",
+    "Latest Predictions": "最新预测",
+    "Live Predictions": "今日预测",
+    "Auto-refreshes every 5 minutes. Cards show model probability, score projection, confidence and strongest model signals.": "每 5 分钟自动刷新。卡片展示模型概率、预测比分、信心指数和主要信号。",
+    "Today's NBA Predictions": "今日 NBA 预测",
+    "Today's Football Predictions": "今日足球预测",
+    "Generate Today's Content": "生成今日内容",
+    "Daily Board": "今日看板",
+    "Highest Confidence Pick": "最高信心预测",
+    "Best Value Pick": "最佳价值预测",
+    "Upset Alert": "冷门提醒",
+    "Draw Alert": "平局提醒",
+    "Injury Watch": "伤病观察",
+    "No signal": "暂无信号",
+    "Waiting for today's schedule.": "等待今日赛程。",
+    "Win Probability": "胜率",
+    "Home Win Probability": "主队胜率",
+    "Away Win Probability": "客队胜率",
+    "Draw Probability": "平局概率",
+    "Predicted Score": "预测比分",
+    "Confidence": "信心指数",
+    "Key Factors": "关键因素",
+    "Risk Factors": "风险因素",
+    "Home": "主队",
+    "Away": "客队",
+    "Injury": "伤病",
+    "Momentum": "状态",
+    "Elo": "Elo",
+    "Fatigue": "疲劳",
+    "Daily Exports": "每日导出",
+    "Download daily CSV": "下载每日 CSV",
+    "Download daily TXT": "下载每日 TXT",
+    "Shorts script": "短视频脚本",
+    "Social posts": "社媒文案",
+    "Content Studio": "内容工作室",
+    "Copy-Ready Posts": "可复制内容",
+    "Daily Short Script": "每日短视频脚本",
+    "Twitter/X Post": "Twitter/X 帖文",
+    "YouTube Shorts Title": "YouTube Shorts 标题",
+    "Instagram Caption": "Instagram 文案",
+    "Yesterday Result Recap": "昨日赛果复盘",
+    "Regenerate today's content": "重新生成今日内容",
+    "Generated": "生成时间",
+    "Export all content as TXT": "导出全部内容 TXT",
+    "Export social posts as CSV": "导出社媒内容 CSV",
+    "Install App": "安装到手机",
+    "Add AI Sports Predictor to your phone home screen for a standalone app-style experience.": "把 AI Sports Predictor 添加到手机桌面，像独立 App 一样使用。",
+    "PWA Status": "PWA 状态",
+    "Mobile Ready": "手机端就绪",
+    "Open this site in Safari.": "用 Safari 打开网站。",
+    "Tap the Share button.": "点击分享按钮。",
+    "Choose Add to Home Screen.": "选择添加到主屏幕。",
+    "Confirm the AI Sports Predictor icon.": "确认 AI Sports Predictor 图标。",
+    "Open this site in Chrome.": "用 Chrome 打开网站。",
+    "Tap the menu button.": "点击菜单按钮。",
+    "Choose Add to Home Screen or Install app.": "选择添加到主屏幕或安装应用。",
+    "Confirm the Sports AI shortcut.": "确认 Sports AI 快捷方式。",
+    "Standalone display mode is enabled.": "已启用独立显示模式。",
+    "Dark navy theme color is configured.": "已配置深蓝主题色。",
+    "Home screen icons are included.": "已包含桌面图标。",
+    "Offline cache support is registered when the browser allows it.": "浏览器允许时会注册离线缓存。",
+    "Tip: if your browser does not show Install immediately, refresh once after the latest deployment finishes.": "提示：如果浏览器没有立即显示安装选项，请在最新部署完成后刷新一次。",
+    "Accuracy": "准确率",
+    "Avg Confidence": "平均信心",
+    "Games Tested": "测试比赛数",
+    "Backtest sample": "回测样本",
+    "Calibration input": "校准输入",
+    "Historical rows": "历史记录",
+    "Football only": "仅足球",
+    "Score Error": "比分误差",
+    "Average points": "平均分差",
+    "Run NBA Date Prediction": "运行 NBA 日期预测",
+    "Run Football Match Prediction": "运行足球比赛预测",
+    "Date": "日期",
+    "Include injury impact": "包含伤病影响",
+    "Run NBA Prediction": "运行 NBA 预测",
+    "Home Team": "主队",
+    "Away Team": "客队",
+    "Mode": "模式",
+    "Run Football Prediction": "运行足球预测",
+    "Confidence Trend": "信心趋势",
+    "Recent Form": "近期状态",
+    "Historical Predictions": "历史预测",
+    "Recent Wins / Losses": "近期命中 / 失误",
+    "Performance Report": "表现报告",
+    "Settled Predictions": "已结算预测",
+    "API Mode": "API 模式",
+    "Cache Status": "缓存状态",
+    "Current Model Weights": "当前模型权重",
+    "Model Version": "模型版本",
+    "Calibration Status": "校准状态",
+    "Accuracy Trend": "准确率趋势",
+    "Confidence Distribution": "信心分布",
+    "Draw Probability Calibration": "平局概率校准",
+}
+
+
+def tr(text: str) -> str:
+    if st.session_state.get("language_choice") == "中文":
+        return ZH_TEXT.get(text, text)
+    return text
+
 
 def main() -> None:
     ensure_project_dirs()
@@ -55,23 +203,24 @@ def main() -> None:
     configure_logging(False)
     st.set_page_config(page_title="AI Sports Predictor", layout="wide", page_icon="AI")
 
-    theme_mode = st.sidebar.selectbox("Display Mode", ["Dark", "Light", "Auto"], index=0)
+    st.sidebar.selectbox("Language / 语言", ["English", "中文"], index=0, key="language_choice")
+    theme_mode = st.sidebar.selectbox(tr("Display Mode"), ["Dark", "Light", "Auto"], index=0)
     apply_theme(theme_mode)
     inject_pwa_assets()
     st.sidebar.markdown(
-        """
+        f"""
         <div class="brand-block">
             <div class="brand-mark">AI</div>
             <div>
                 <div class="brand-title">AI Sports Predictor</div>
-                <div class="brand-subtitle">Live model dashboard</div>
+                <div class="brand-subtitle">{html.escape(tr("Live model dashboard"))}</div>
             </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
     sync_quick_navigation()
-    page = st.sidebar.radio("Navigation", NAV_ITEMS, index=1, key="nav_choice", label_visibility="collapsed")
+    page = st.sidebar.radio("Navigation", NAV_ITEMS, index=1, key="nav_choice", format_func=tr, label_visibility="collapsed")
     render_sidebar_status()
     render_header(page)
 
@@ -167,12 +316,12 @@ def render_header(page: str) -> None:
                 <div class="app-logo">A</div>
                 <div>
                     <h1>AI Sports Predictor</h1>
-                    <p>{html.escape(page)} · NBA and Football forecasts with Elo, momentum, fatigue and injury signals.</p>
+                    <p>{html.escape(tr(page))} · {html.escape(tr("NBA and Football forecasts with Elo, momentum, fatigue and injury signals."))}</p>
                 </div>
             </div>
             <div class="header-meta">
-                <div class="status-pill live-dot">{html.escape(live_status)}</div>
-                <div class="updated-pill">Last updated {html.escape(updated)}</div>
+                <div class="status-pill live-dot">{html.escape(tr(live_status))}</div>
+                <div class="updated-pill">{html.escape(tr("Last updated"))} {html.escape(updated)}</div>
             </div>
         </section>
         """,
@@ -187,11 +336,11 @@ def render_sidebar_status() -> None:
     st.sidebar.markdown(
         f"""
         <div class="sidebar-panel">
-            <div class="panel-label">Model status</div>
-            <div class="sidebar-row"><span>NBA accuracy</span><b>{percent(accuracy(nba))}</b></div>
-            <div class="sidebar-row"><span>Football accuracy</span><b>{percent(accuracy(football))}</b></div>
-            <div class="sidebar-row"><span>Draw model</span><b>{percent(football_draw_accuracy(football))}</b></div>
-            <div class="sidebar-row"><span>Automation</span><b>{html.escape(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"))}</b></div>
+            <div class="panel-label">{html.escape(tr("Model status"))}</div>
+            <div class="sidebar-row"><span>{html.escape(tr("NBA accuracy"))}</span><b>{percent(accuracy(nba))}</b></div>
+            <div class="sidebar-row"><span>{html.escape(tr("Football accuracy"))}</span><b>{percent(accuracy(football))}</b></div>
+            <div class="sidebar-row"><span>{html.escape(tr("Draw model"))}</span><b>{percent(football_draw_accuracy(football))}</b></div>
+            <div class="sidebar-row"><span>{html.escape(tr("Automation"))}</span><b>{html.escape(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"))}</b></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -203,26 +352,26 @@ def render_dashboard() -> None:
     football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
     master = read_prediction_history()
     cols = st.columns(5)
-    metric_card(cols[0], "NBA Accuracy", percent(accuracy(nba)), "Last backtest sample", "positive")
-    metric_card(cols[1], "Football Accuracy", percent(accuracy(football)), "Last backtest sample", "positive")
-    metric_card(cols[2], "Football Draw Accuracy", percent(football_draw_accuracy(football)), "Draw recall", "neutral")
-    metric_card(cols[3], "Average Confidence", percent(average_confidence([nba, football])), "Across backtests", "neutral")
-    metric_card(cols[4], "Total Predictions", f"{len(master):,}", "Saved history", "accent")
+    metric_card(cols[0], tr("NBA Accuracy"), percent(accuracy(nba)), tr("Last backtest sample"), "positive")
+    metric_card(cols[1], tr("Football Accuracy"), percent(accuracy(football)), tr("Last backtest sample"), "positive")
+    metric_card(cols[2], tr("Football Draw Accuracy"), percent(football_draw_accuracy(football)), tr("Draw recall"), "neutral")
+    metric_card(cols[3], tr("Average Confidence"), percent(average_confidence([nba, football])), tr("Across backtests"), "neutral")
+    metric_card(cols[4], tr("Total Predictions"), f"{len(master):,}", tr("Saved history"), "accent")
     render_quick_actions()
     render_automation_overview()
 
-    st.markdown("### Model Overview")
+    st.markdown(f"### {tr('Model Overview')}")
     left, right = st.columns(2)
     with left:
         render_accuracy_trend(nba, football)
     with right:
         render_confidence_distribution(nba, football)
-    st.markdown("### Latest Predictions")
+    st.markdown(f"### {tr('Latest Predictions')}")
     render_history_table(master.tail(12), compact=True)
 
 
 def render_quick_actions() -> None:
-    st.markdown("### Quick Actions")
+    st.markdown(f"### {tr('Quick Actions')}")
     cols = st.columns(4)
     actions = [
         ("Today's Picks", "Live Predictions", "Open today's model board"),
@@ -235,22 +384,22 @@ def render_quick_actions() -> None:
             st.markdown(
                 f"""
                 <div class="quick-card">
-                    <div class="quick-title">{html.escape(label)}</div>
-                    <div class="quick-caption">{html.escape(caption)}</div>
+                    <div class="quick-title">{html.escape(tr(label))}</div>
+                    <div class="quick-caption">{html.escape(tr(caption))}</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
-            if st.button(label, key=f"quick_{target}_{label}"):
+            if st.button(tr(label), key=f"quick_{target}_{label}"):
                 go_to_page(target)
 
 
 def render_automation_overview() -> None:
     automation = read_automation_status()
     cols = st.columns(3)
-    metric_card(cols[0], "Last Daily Run", short_datetime(automation.get("last_daily_run")), "Prediction generation", "neutral")
-    metric_card(cols[1], "Last Result Update", short_datetime(automation.get("last_result_update")), "Actual result sync", "neutral")
-    metric_card(cols[2], "Automation Status", str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"), "GitHub Actions / local", "accent")
+    metric_card(cols[0], tr("Last Daily Run"), short_datetime(automation.get("last_daily_run")), tr("Prediction generation"), "neutral")
+    metric_card(cols[1], tr("Last Result Update"), short_datetime(automation.get("last_result_update")), tr("Actual result sync"), "neutral")
+    metric_card(cols[2], tr("Automation Status"), str(automation.get("automation_status") or automation.get("last_daily_status") or "ready"), tr("GitHub Actions / local"), "accent")
 
 
 def render_live_predictions_page() -> None:
@@ -259,36 +408,36 @@ def render_live_predictions_page() -> None:
     football_results = safe_live_results("football")
     package = build_daily_prediction_package(nba_results + football_results)
     st.markdown(
-        """
+        f"""
         <div class="section-intro">
-            <h2>Live Predictions</h2>
-            <p>Auto-refreshes every 5 minutes. Cards show model probability, score projection, confidence and strongest model signals.</p>
+            <h2>{html.escape(tr("Live Predictions"))}</h2>
+            <p>{html.escape(tr("Auto-refreshes every 5 minutes. Cards show model probability, score projection, confidence and strongest model signals."))}</p>
         </div>
         """,
         unsafe_allow_html=True,
     )
     render_daily_spotlights(package)
-    st.markdown("### Today's NBA Predictions")
+    st.markdown("### " + tr("Today's NBA Predictions"))
     render_live_cards(nba_results, "NBA")
-    st.markdown("### Today's Football Predictions")
+    st.markdown("### " + tr("Today's Football Predictions"))
     render_live_cards(football_results, "Football")
-    if st.button("Generate Today's Content", type="primary"):
+    if st.button(tr("Generate Today's Content"), type="primary"):
         refreshed = generate_daily_predictions()
-        st.success(f"Generated content for {len(refreshed.predictions)} prediction(s). Open Content Studio to copy posts.")
+        st.success(f"{len(refreshed.predictions)} prediction(s) updated. {tr('Content Studio')}")
     render_daily_exports(package)
 
 
 def render_content_studio() -> None:
     st.markdown(
-        """
+        f"""
         <div class="section-intro">
-            <h2>Content Studio</h2>
-            <p>Copy-ready social content built from today's model board. Posts avoid guarantee language and stay framed as model predictions and watchlists.</p>
+            <h2>{html.escape(tr("Content Studio"))}</h2>
+            <p>{html.escape(tr("Copy-ready social content built from today's model board. Posts avoid guarantee language and stay framed as model predictions and watchlists."))}</p>
         </div>
         """,
         unsafe_allow_html=True,
     )
-    if st.button("Regenerate today's content", type="primary"):
+    if st.button(tr("Regenerate today's content"), type="primary"):
         package = generate_daily_predictions()
         st.success(f"Content regenerated for {len(package.predictions)} prediction(s).")
 
@@ -298,30 +447,30 @@ def render_content_studio() -> None:
     social = parse_social_posts(social_posts)
     generated = latest_generated_time([DAILY_SHORT_SCRIPT_TXT, DAILY_SOCIAL_POSTS_TXT, DAILY_RESULT_RECAP_TXT])
 
-    st.markdown("### Copy-Ready Posts")
+    st.markdown("### " + tr("Copy-Ready Posts"))
     left, right = st.columns(2)
     with left:
-        render_content_card("Daily Short Script", content_title(short_script, "TikTok / Shorts script"), content_body(short_script), content_hashtags(short_script), generated, "TikTok / Shorts")
-        render_content_card("Twitter/X Post", "Daily model pick post", social.get("Twitter/X Post", ""), hashtags_from_text(social.get("Twitter/X Post", "")), generated, "Caption")
+        render_content_card(tr("Daily Short Script"), content_title(short_script, "TikTok / Shorts script"), content_body(short_script), content_hashtags(short_script), generated, "TikTok / Shorts")
+        render_content_card(tr("Twitter/X Post"), "Daily model pick post", social.get("Twitter/X Post", ""), hashtags_from_text(social.get("Twitter/X Post", "")), generated, "Caption")
     with right:
-        render_content_card("YouTube Shorts Title", social.get("YouTube Shorts Title", "Daily model pick to watch"), "", "#SportsAI #ModelPick #Shorts", generated, "Title")
-        render_content_card("Instagram Caption", "Daily model board caption", social.get("Instagram Caption", ""), hashtags_from_text(social.get("Instagram Caption", "")), generated, "Caption")
-    st.markdown("### Yesterday Result Recap")
-    render_content_card("Yesterday Result Recap", "Yesterday's hits and misses", result_recap, "#SportsAI #PredictionRecap", generated, "Recap")
+        render_content_card(tr("YouTube Shorts Title"), social.get("YouTube Shorts Title", "Daily model pick to watch"), "", "#SportsAI #ModelPick #Shorts", generated, "Title")
+        render_content_card(tr("Instagram Caption"), "Daily model board caption", social.get("Instagram Caption", ""), hashtags_from_text(social.get("Instagram Caption", "")), generated, "Caption")
+    st.markdown("### " + tr("Yesterday Result Recap"))
+    render_content_card(tr("Yesterday Result Recap"), "Yesterday's hits and misses", result_recap, "#SportsAI #PredictionRecap", generated, "Recap")
 
     all_content = all_content_text(short_script, social_posts, result_recap)
     social_csv = social_posts_csv(social, short_script, result_recap, generated)
     export_cols = st.columns(2)
-    export_cols[0].download_button("Export all content as TXT", all_content, file_name="daily_content_pack.txt", mime="text/plain")
-    export_cols[1].download_button("Export social posts as CSV", social_csv, file_name="daily_social_posts.csv", mime="text/csv")
+    export_cols[0].download_button(tr("Export all content as TXT"), all_content, file_name="daily_content_pack.txt", mime="text/plain")
+    export_cols[1].download_button(tr("Export social posts as CSV"), social_csv, file_name="daily_social_posts.csv", mime="text/csv")
 
 
 def render_install_app_page() -> None:
     st.markdown(
-        """
+        f"""
         <div class="section-intro">
-            <h2>Install App</h2>
-            <p>Add AI Sports Predictor to your phone home screen for a standalone app-style experience.</p>
+            <h2>{html.escape(tr("Install App"))}</h2>
+            <p>{html.escape(tr("Add AI Sports Predictor to your phone home screen for a standalone app-style experience."))}</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -365,26 +514,26 @@ def render_install_app_page() -> None:
                 f"""
                 <div class="install-card">
                     <div class="install-icon">AI</div>
-                    <div class="install-kicker">{html.escape(subtitle)}</div>
-                    <h3>{html.escape(title)}</h3>
-                    {html_list(steps)}
+                    <div class="install-kicker">{html.escape(tr(subtitle))}</div>
+                    <h3>{html.escape(tr(title))}</h3>
+                    {html_list([tr(step) for step in steps])}
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
-    st.info("Tip: if your browser does not show Install immediately, refresh once after the latest deployment finishes.")
+    st.info(tr("Tip: if your browser does not show Install immediately, refresh once after the latest deployment finishes."))
 
 
 def render_nba_page() -> None:
     st.markdown("### NBA")
     render_sport_summary("nba")
-    st.markdown("#### Today's NBA Predictions")
+    st.markdown("#### " + tr("Today's NBA Predictions"))
     render_live_cards(safe_live_results("nba"), "NBA")
-    st.markdown("#### Run NBA Date Prediction")
+    st.markdown("#### " + tr("Run NBA Date Prediction"))
     with st.form("nba_prediction_form"):
-        date_value = st.text_input("Date", "tomorrow")
-        show_injuries = st.checkbox("Include injury impact", value=True)
-        submitted = st.form_submit_button("Run NBA Prediction", type="primary")
+        date_value = st.text_input(tr("Date"), "tomorrow")
+        show_injuries = st.checkbox(tr("Include injury impact"), value=True)
+        submitted = st.form_submit_button(tr("Run NBA Prediction"), type="primary")
     if submitted:
         results = run_prediction("nba", date_value, "", "", "", show_injuries)
         if results:
@@ -395,18 +544,18 @@ def render_nba_page() -> None:
 
 
 def render_football_page() -> None:
-    st.markdown("### Football")
+    st.markdown("### " + tr("Football"))
     render_sport_summary("football")
-    st.markdown("#### Today's Football Predictions")
+    st.markdown("#### " + tr("Today's Football Predictions"))
     render_live_cards(safe_live_results("football"), "Football")
-    st.markdown("#### Run Football Match Prediction")
+    st.markdown("#### " + tr("Run Football Match Prediction"))
     with st.form("football_prediction_form"):
         cols = st.columns(4)
-        home = cols[0].text_input("Home Team", "Mexico")
-        away = cols[1].text_input("Away Team", "South Africa")
-        date_value = cols[2].text_input("Date", "today")
-        mode = cols[3].text_input("Mode", "WORLD_CUP")
-        submitted = st.form_submit_button("Run Football Prediction", type="primary")
+        home = cols[0].text_input(tr("Home Team"), "Mexico")
+        away = cols[1].text_input(tr("Away Team"), "South Africa")
+        date_value = cols[2].text_input(tr("Date"), "today")
+        mode = cols[3].text_input(tr("Mode"), "WORLD_CUP")
+        submitted = st.form_submit_button(tr("Run Football Prediction"), type="primary")
     if submitted:
         for result in run_prediction("football", date_value, home, away, mode, False):
             render_prediction_card(result)
@@ -415,13 +564,13 @@ def render_football_page() -> None:
 def render_sport_summary(sport: str) -> None:
     frame = read_csv(NBA_DATA_DIR / "nba_backtest_results.csv") if sport == "nba" else read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
     cols = st.columns(4)
-    metric_card(cols[0], "Accuracy", percent(accuracy(frame)), "Backtest sample", "positive")
-    metric_card(cols[1], "Avg Confidence", percent(frame_average_confidence(frame)), "Calibration input", "neutral")
-    metric_card(cols[2], "Games Tested", f"{len(frame):,}", "Historical rows", "accent")
+    metric_card(cols[0], tr("Accuracy"), percent(accuracy(frame)), tr("Backtest sample"), "positive")
+    metric_card(cols[1], tr("Avg Confidence"), percent(frame_average_confidence(frame)), tr("Calibration input"), "neutral")
+    metric_card(cols[2], tr("Games Tested"), f"{len(frame):,}", tr("Historical rows"), "accent")
     if sport == "football":
-        metric_card(cols[3], "Draw Accuracy", percent(football_draw_accuracy(frame)), "Football only", "neutral")
+        metric_card(cols[3], tr("Draw Accuracy"), percent(football_draw_accuracy(frame)), tr("Football only"), "neutral")
     else:
-        metric_card(cols[3], "Score Error", f"{safe_mean_column(frame, 'score_error'):.1f}", "Average points", "neutral")
+        metric_card(cols[3], tr("Score Error"), f"{safe_mean_column(frame, 'score_error'):.1f}", tr("Average points"), "neutral")
 
 
 def render_live_cards(results: list[PredictionResult], sport_label: str) -> None:
@@ -436,7 +585,7 @@ def render_live_cards(results: list[PredictionResult], sport_label: str) -> None
 
 
 def render_daily_spotlights(package: DailyPredictionPackage) -> None:
-    st.markdown("### Daily Board")
+    st.markdown("### " + tr("Daily Board"))
     cards = [
         ("Highest Confidence Pick", first_result(package.highest_confidence), "confidence"),
         ("Best Value Pick", first_result(package.best_value), "value"),
@@ -455,9 +604,9 @@ def render_spotlight_card(label: str, result: PredictionResult | None, tone: str
         st.markdown(
             f"""
             <div class="spotlight-card empty">
-                <div class="spotlight-label">{html.escape(label)}</div>
-                <div class="spotlight-main">No signal</div>
-                <div class="spotlight-sub">Waiting for today's schedule.</div>
+                <div class="spotlight-label">{html.escape(tr(label))}</div>
+                <div class="spotlight-main">{html.escape(tr("No signal"))}</div>
+                <div class="spotlight-sub">{html.escape(tr("Waiting for today's schedule."))}</div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -467,7 +616,7 @@ def render_spotlight_card(label: str, result: PredictionResult | None, tone: str
     st.markdown(
         f"""
         <div class="spotlight-card {tone}">
-            <div class="spotlight-label">{html.escape(label)}</div>
+            <div class="spotlight-label">{html.escape(tr(label))}</div>
             <div class="spotlight-main">{html.escape(result.predicted_winner)}</div>
             <div class="spotlight-sub">{html.escape(result.match)}</div>
             <div class="spotlight-score">{html.escape(result.predicted_score)}</div>
@@ -479,12 +628,12 @@ def render_spotlight_card(label: str, result: PredictionResult | None, tone: str
 
 
 def render_daily_exports(package: DailyPredictionPackage) -> None:
-    st.markdown("### Daily Exports")
+    st.markdown("### " + tr("Daily Exports"))
     cols = st.columns(4)
-    export_file_button(cols[0], "Download daily CSV", package.csv_path, "text/csv")
-    export_file_button(cols[1], "Download daily TXT", package.txt_path, "text/plain")
-    export_file_button(cols[2], "Shorts script", package.short_script_path, "text/plain")
-    export_file_button(cols[3], "Social posts", package.social_posts_path, "text/plain")
+    export_file_button(cols[0], tr("Download daily CSV"), package.csv_path, "text/csv")
+    export_file_button(cols[1], tr("Download daily TXT"), package.txt_path, "text/plain")
+    export_file_button(cols[2], tr("Shorts script"), package.short_script_path, "text/plain")
+    export_file_button(cols[3], tr("Social posts"), package.social_posts_path, "text/plain")
     st.caption(f"Daily outputs saved with model version {package.model_version}.")
 
 
@@ -492,7 +641,7 @@ def render_content_card(platform: str, title: str, body: str, hashtags: str, gen
     st.markdown(
         f"""
         <article class="content-card">
-            <div class="content-meta"><span>{html.escape(platform)}</span><span>Generated {html.escape(generated)}</span></div>
+            <div class="content-meta"><span>{html.escape(platform)}</span><span>{html.escape(tr("Generated"))} {html.escape(generated)}</span></div>
             <h3>{html.escape(title or platform)}</h3>
             <div class="content-chip">{html.escape(body_label)}</div>
         </article>
@@ -535,33 +684,33 @@ def render_match_card(result: PredictionResult) -> None:
         <article class="match-card">
             <div class="match-topline">
                 <span>{html.escape(result.sport.upper())}</span>
-                <span class="confidence {confidence_class}">{html.escape(result.confidence)}</span>
+                <span class="confidence {confidence_class}">{html.escape(tr("Confidence"))}: {html.escape(result.confidence)}</span>
             </div>
             <div class="teams-row">
                 <div class="team-block">
                     <div class="team-logo">{team_initials(result.home_team)}</div>
-                    <div><div class="team-name">{html.escape(result.home_team)}</div><div class="team-role">Home</div></div>
+                    <div><div class="team-name">{html.escape(result.home_team)}</div><div class="team-role">{html.escape(tr("Home"))}</div></div>
                 </div>
                 <div class="score-box">{html.escape(result.predicted_score)}</div>
                 <div class="team-block right">
-                    <div><div class="team-name">{html.escape(result.away_team)}</div><div class="team-role">Away</div></div>
+                    <div><div class="team-name">{html.escape(result.away_team)}</div><div class="team-role">{html.escape(tr("Away"))}</div></div>
                     <div class="team-logo">{team_initials(result.away_team)}</div>
                 </div>
             </div>
             <div class="probability-grid">
-                <div><div class="prob-label">Home win</div><div class="prob-value green">{percent(home_prob)}</div><div class="prob-track"><span style="width:{home_width}%"></span></div></div>
-                <div><div class="prob-label">Away win</div><div class="prob-value blue">{percent(away_prob)}</div><div class="prob-track away"><span style="width:{away_width}%"></span></div></div>
-                <div><div class="prob-label">Draw</div><div class="prob-value">{percent(result.draw_probability)}</div></div>
+                <div><div class="prob-label">{html.escape(tr("Home Win Probability"))}</div><div class="prob-value green">{percent(home_prob)}</div><div class="prob-track"><span style="width:{home_width}%"></span></div></div>
+                <div><div class="prob-label">{html.escape(tr("Away Win Probability"))}</div><div class="prob-value blue">{percent(away_prob)}</div><div class="prob-track away"><span style="width:{away_width}%"></span></div></div>
+                <div><div class="prob-label">{html.escape(tr("Draw Probability"))}</div><div class="prob-value">{percent(result.draw_probability)}</div></div>
             </div>
             <div class="signal-grid">
-                <div><b>Injury</b><span>{html.escape(short_signal(factors["injury"]))}</span></div>
-                <div><b>Momentum</b><span>{html.escape(short_signal(factors["momentum"]))}</span></div>
-                <div><b>Elo</b><span>{html.escape(short_signal(factors["elo"]))}</span></div>
-                <div><b>Fatigue</b><span>{html.escape(short_signal(factors["fatigue"]))}</span></div>
+                <div><b>{html.escape(tr("Injury"))}</b><span>{html.escape(short_signal(factors["injury"]))}</span></div>
+                <div><b>{html.escape(tr("Momentum"))}</b><span>{html.escape(short_signal(factors["momentum"]))}</span></div>
+                <div><b>{html.escape(tr("Elo"))}</b><span>{html.escape(short_signal(factors["elo"]))}</span></div>
+                <div><b>{html.escape(tr("Fatigue"))}</b><span>{html.escape(short_signal(factors["fatigue"]))}</span></div>
             </div>
             <div class="factor-columns">
-                <div><b>Key factors</b>{html_list(factor_preview(result.key_factors, 3))}</div>
-                <div><b>Risk factors</b>{html_list(factor_preview(result.risk_factors, 3))}</div>
+                <div><b>{html.escape(tr("Key Factors"))}</b>{html_list(factor_preview(result.key_factors, 3))}</div>
+                <div><b>{html.escape(tr("Risk Factors"))}</b>{html_list(factor_preview(result.risk_factors, 3))}</div>
             </div>
         </article>
         """,
@@ -579,7 +728,7 @@ def render_prediction_card(result: PredictionResult) -> None:
 
 
 def render_backtest_report() -> None:
-    st.markdown("### Backtest Reports")
+    st.markdown("### " + tr("Backtest Reports"))
     report = BACKTEST_REPORT_TXT.read_text(encoding="utf-8") if BACKTEST_REPORT_TXT.exists() else ""
     if not report:
         st.info("No backtest report is available yet. Run the backtest commands from the terminal first.")
@@ -597,7 +746,7 @@ def render_backtest_report() -> None:
 
 
 def render_team_analysis() -> None:
-    st.markdown("### Team Analysis")
+    st.markdown("### " + tr("Team Analysis"))
     query = st.text_input("Search team", "Mexico")
     history = all_history_frames()
     if history.empty:
@@ -617,17 +766,17 @@ def render_team_analysis() -> None:
     metric_card(cols[4], "Injury Impact", injury_summary(query), "NBA cache", "neutral")
     left, right = st.columns(2)
     with left:
-        st.markdown("#### Confidence Trend")
+        st.markdown("#### " + tr("Confidence Trend"))
         render_confidence_trend(filtered)
     with right:
-        st.markdown("#### Recent Form")
+        st.markdown("#### " + tr("Recent Form"))
         render_recent_form_panel(filtered)
-    st.markdown("#### Historical Predictions")
+    st.markdown("#### " + tr("Historical Predictions"))
     render_history_table(filtered.tail(100), compact=False)
 
 
 def render_prediction_history_page() -> None:
-    st.markdown("### Prediction History")
+    st.markdown("### " + tr("Prediction History"))
     frame = read_prediction_history()
     if frame.empty:
         st.info("No saved prediction history yet.")
@@ -653,7 +802,7 @@ def render_prediction_history_page() -> None:
 
 
 def render_results_tracker() -> None:
-    st.markdown("### Results Tracker")
+    st.markdown("### " + tr("Results Tracker"))
     render_automation_overview()
     frame = read_prediction_history()
     if frame.empty:
@@ -672,17 +821,17 @@ def render_results_tracker() -> None:
     if st.button("Update actual results now", type="primary"):
         summary = update_results()
         st.success(f"Results updated. Settled: {summary.get('settled', 0)} · Pending: {summary.get('pending', 0)}")
-    st.markdown("#### Recent Wins / Losses")
+    st.markdown("#### " + tr("Recent Wins / Losses"))
     render_recent_result_form(settled)
-    st.markdown("#### Performance Report")
+    st.markdown("#### " + tr("Performance Report"))
     report = PERFORMANCE_REPORT_TXT.read_text(encoding="utf-8") if PERFORMANCE_REPORT_TXT.exists() else "Run update-results to generate a performance report."
     st.text_area("Performance report", report, height=260, label_visibility="collapsed")
-    st.markdown("#### Settled Predictions")
+    st.markdown("#### " + tr("Settled Predictions"))
     render_history_table(settled.tail(100), compact=False)
 
 
 def render_model_settings() -> None:
-    st.markdown("### Settings")
+    st.markdown("### " + tr("Settings"))
     tuning_path = OUTPUTS_DIR / "model_weight_tuning.json"
     tuning = tuning_path.read_text(encoding="utf-8") if tuning_path.exists() else "{}"
     model_version = MODEL_VERSION_JSON.read_text(encoding="utf-8") if MODEL_VERSION_JSON.exists() else "{}"
@@ -701,24 +850,24 @@ def render_model_settings() -> None:
     ]
     cols = st.columns(2)
     with cols[0]:
-        st.markdown("#### API Mode")
+        st.markdown("#### " + tr("API Mode"))
         st.dataframe(pd.DataFrame(api_rows), use_container_width=True, hide_index=True)
     with cols[1]:
-        st.markdown("#### Cache Status")
+        st.markdown("#### " + tr("Cache Status"))
         st.dataframe(pd.DataFrame(cache_rows), use_container_width=True, hide_index=True)
-    st.markdown("#### Current Model Weights")
+    st.markdown("#### " + tr("Current Model Weights"))
     try:
         st.code(json.dumps(json.loads(tuning), indent=2), language="json")
     except Exception:
         st.code(tuning, language="json")
-    st.markdown("#### Model Version")
+    st.markdown("#### " + tr("Model Version"))
     try:
         st.code(json.dumps(json.loads(model_version), indent=2), language="json")
     except Exception:
         st.code(model_version, language="json")
-    st.markdown("#### Automation Status")
+    st.markdown("#### " + tr("Automation Status"))
     st.code(json.dumps(automation, indent=2, ensure_ascii=False), language="json")
-    st.markdown("#### Calibration Status")
+    st.markdown("#### " + tr("Calibration Status"))
     render_draw_calibration()
 
 
@@ -779,7 +928,7 @@ def prediction_text(result: PredictionResult) -> str:
 
 
 def render_accuracy_trend(nba: pd.DataFrame, football: pd.DataFrame) -> None:
-    st.markdown("#### Accuracy Trend")
+    st.markdown("#### " + tr("Accuracy Trend"))
     rows = []
     for sport, frame in (("NBA", nba), ("Football", football)):
         if frame.empty or "date" not in frame or "correct" not in frame:
@@ -804,7 +953,7 @@ def render_accuracy_trend(nba: pd.DataFrame, football: pd.DataFrame) -> None:
 
 
 def render_confidence_distribution(nba: pd.DataFrame, football: pd.DataFrame) -> None:
-    st.markdown("#### Confidence Distribution")
+    st.markdown("#### " + tr("Confidence Distribution"))
     rows = []
     for sport, frame in (("NBA", nba), ("Football", football)):
         if frame.empty or "confidence" not in frame:
@@ -825,7 +974,7 @@ def render_confidence_distribution(nba: pd.DataFrame, football: pd.DataFrame) ->
 
 
 def render_draw_calibration() -> None:
-    st.markdown("#### Draw Probability Calibration")
+    st.markdown("#### " + tr("Draw Probability Calibration"))
     frame = read_csv(FOOTBALL_DATA_DIR / "calibration_report.csv")
     if frame.empty:
         st.info("Football calibration data is not available.")
