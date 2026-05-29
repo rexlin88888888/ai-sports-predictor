@@ -587,7 +587,7 @@ def render_live_cards(results: list[PredictionResult], sport_label: str) -> None
 def render_daily_spotlights(package: DailyPredictionPackage) -> None:
     st.markdown("### " + tr("Daily Board"))
     cards = [
-        ("Highest Confidence Pick", first_result(package.highest_confidence), "confidence"),
+        ("Highest Confidence Pick", first_result(package.highest_confidence), "confidence-pick"),
         ("Best Value Pick", first_result(package.best_value), "value"),
         ("Upset Alert", first_result(package.upset_watch), "upset"),
         ("Draw Alert", first_result(package.draw_watch), "draw"),
@@ -684,7 +684,7 @@ def render_match_card(result: PredictionResult) -> None:
         <article class="match-card">
             <div class="match-topline">
                 <span>{html.escape(result.sport.upper())}</span>
-                <span class="confidence {confidence_class}">{html.escape(tr("Confidence"))}: {html.escape(result.confidence)}</span>
+                <span class="confidence-badge {confidence_class}">{html.escape(tr("Confidence"))}: {html.escape(result.confidence)}</span>
             </div>
             <div class="teams-row">
                 <div class="team-block">
@@ -1369,8 +1369,9 @@ def apply_theme(theme_mode: str) -> None:
         .metric-value {{color:var(--text);font-size:1.8rem;font-weight:800;margin-top:.45rem;overflow-wrap:anywhere;}}
         .metric-card.positive .metric-value {{color:var(--green);}} .metric-card.accent .metric-value {{color:var(--blue);}}
         .metric-caption {{color:var(--muted);font-size:.84rem;margin-top:.35rem;}}
-        .spotlight-card {{padding:1rem;min-height:174px;margin-bottom:1rem;position:relative;overflow:hidden;transition:transform .16s ease,border-color .16s ease;}}
+        .spotlight-card {{box-sizing:border-box;width:100%;height:174px;padding:1rem;margin-bottom:1rem;position:relative;overflow:hidden;border-radius:18px !important;transition:transform .16s ease,border-color .16s ease;}}
         .spotlight-card::before {{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--blue),var(--green));}}
+        .spotlight-card.confidence-pick::before {{background:linear-gradient(90deg,var(--blue),var(--green));}}
         .spotlight-card.value::before {{background:linear-gradient(90deg,#fbbf24,#22c55e);}}
         .spotlight-card.upset::before {{background:linear-gradient(90deg,#ff5f64,#fbbf24);}}
         .spotlight-card.draw::before {{background:linear-gradient(90deg,#a78bfa,#60a5fa);}}
@@ -1395,8 +1396,8 @@ def apply_theme(theme_mode: str) -> None:
         .install-card ul {{margin:.3rem 0 0;padding-left:1.1rem;color:var(--muted);line-height:1.45;font-size:.9rem;}}
         .match-card {{padding:1rem;margin-bottom:1rem;}}
         .match-topline {{justify-content:space-between;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
-        .confidence {{border-radius:999px;padding:.28rem .55rem;background:rgba(59,130,246,.16);color:#93c5fd;}}
-        .confidence.high {{background:rgba(34,197,94,.14);color:var(--green);}} .confidence.medium {{background:rgba(251,191,36,.14);color:var(--gold);}} .confidence.low {{background:rgba(148,163,184,.14);color:#cbd5e1;}}
+        .confidence-badge {{border-radius:999px;padding:.28rem .55rem;background:rgba(59,130,246,.16);color:#93c5fd;}}
+        .confidence-badge.high {{background:rgba(34,197,94,.14);color:var(--green);}} .confidence-badge.medium {{background:rgba(251,191,36,.14);color:var(--gold);}} .confidence-badge.low {{background:rgba(148,163,184,.14);color:#cbd5e1;}}
         .teams-row {{justify-content:space-between;gap:.8rem;}}
         .team-block {{display:flex;gap:.7rem;align-items:center;min-width:0;}} .team-block.right {{text-align:right;}}
         .team-logo {{flex:0 0 auto;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 25% 20%,rgba(34,197,94,.45),rgba(37,99,235,.35) 48%,rgba(15,23,42,.95));border:1px solid rgba(148,163,184,.24);color:white;font-weight:900;}}
@@ -1427,7 +1428,8 @@ def apply_theme(theme_mode: str) -> None:
             .team-logo{{width:40px;height:40px;}}
             .team-name{{font-size:.94rem;}}
             .team-block.right{{text-align:left;flex-direction:row-reverse;}}
-            .metric-card,.spotlight-card,.content-card,.install-card,.quick-card{{min-height:auto;margin-bottom:.65rem;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.18);}}
+            .metric-card,.content-card,.install-card,.quick-card{{min-height:auto;margin-bottom:.65rem;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.18);}}
+            .spotlight-card{{height:156px;margin-bottom:.65rem;border-radius:14px !important;box-shadow:0 10px 26px rgba(0,0,0,.18);}}
             .match-card{{padding:.85rem;margin-bottom:.75rem;border-radius:14px;}}
             .content-card{{padding:.85rem;margin:.65rem 0 .35rem;}}
             .content-meta{{font-size:.68rem;align-items:flex-start;}}
