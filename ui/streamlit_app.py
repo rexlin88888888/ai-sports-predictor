@@ -23,9 +23,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from config import BACKTEST_REPORT_TXT, CACHE_DIR, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, ensure_project_dirs, load_environment, project_relative  # noqa: E402
+from config import BACKTEST_REPORT_TXT, CACHE_DIR, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, PERFORMANCE_REPORT_TXT, ensure_project_dirs, load_environment, project_relative  # noqa: E402
 from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
+from core.result_updater import update_results  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
 from sports.nba.nba_model import NBAPredictor  # noqa: E402
@@ -38,6 +39,7 @@ NAV_ITEMS = [
     "NBA",
     "Football",
     "Team Analysis",
+    "Results Tracker",
     "Prediction History",
     "Backtest Reports",
     "Settings",
@@ -78,6 +80,8 @@ def main() -> None:
         render_football_page()
     elif page == "Team Analysis":
         render_team_analysis()
+    elif page == "Results Tracker":
+        render_results_tracker()
     elif page == "Prediction History":
         render_prediction_history_page()
     elif page == "Backtest Reports":
@@ -427,6 +431,34 @@ def render_prediction_history_page() -> None:
     render_history_table(filtered.tail(250), compact=False)
 
 
+def render_results_tracker() -> None:
+    st.markdown("### Results Tracker")
+    frame = read_prediction_history()
+    if frame.empty:
+        st.info("No saved predictions are available yet.")
+        return
+    frame = normalize_history_columns(frame)
+    settled = settled_predictions(frame)
+    pending = frame[frame.get("actual_result", "").astype(str) == ""] if "actual_result" in frame else frame
+    today = dt.date.today()
+    cols = st.columns(5)
+    metric_card(cols[0], "Pending Predictions", f"{len(pending):,}", "Waiting for result", "neutral")
+    metric_card(cols[1], "Settled Predictions", f"{len(settled):,}", "Actual result found", "accent")
+    metric_card(cols[2], "Accuracy Today", percent(period_accuracy(settled, today, today)), "Settled today", "positive")
+    metric_card(cols[3], "Accuracy This Week", percent(period_accuracy(settled, today - dt.timedelta(days=7), today)), "Last 7 days", "positive")
+    metric_card(cols[4], "Accuracy This Month", percent(period_accuracy(settled, today.replace(day=1), today)), "Current month", "positive")
+    if st.button("Update actual results now", type="primary"):
+        summary = update_results()
+        st.success(f"Results updated. Settled: {summary.get('settled', 0)} · Pending: {summary.get('pending', 0)}")
+    st.markdown("#### Recent Wins / Losses")
+    render_recent_result_form(settled)
+    st.markdown("#### Performance Report")
+    report = PERFORMANCE_REPORT_TXT.read_text(encoding="utf-8") if PERFORMANCE_REPORT_TXT.exists() else "Run update-results to generate a performance report."
+    st.text_area("Performance report", report, height=260, label_visibility="collapsed")
+    st.markdown("#### Settled Predictions")
+    render_history_table(settled.tail(100), compact=False)
+
+
 def render_model_settings() -> None:
     st.markdown("### Settings")
     tuning_path = OUTPUTS_DIR / "model_weight_tuning.json"
@@ -613,13 +645,13 @@ def render_history_table(frame: pd.DataFrame, compact: bool) -> None:
     if frame.empty:
         st.info("No rows available.")
         return
-    preferred = ["date", "prediction_date", "sport", "match", "home_team", "away_team", "predicted_winner", "predicted_result", "predicted_score", "confidence", "actual_winner", "actual_result", "correct"]
+    preferred = ["date", "prediction_date", "sport", "match", "home_team", "away_team", "predicted_winner", "predicted_result", "predicted_score", "confidence", "actual_score", "actual_winner", "actual_result", "prediction_correct", "correct", "result_updated_at"]
     cols = [col for col in preferred if col in frame.columns]
     st.dataframe((frame[cols] if cols else frame).tail(100 if compact else 250), use_container_width=True, hide_index=True)
 
 
 def read_prediction_history() -> pd.DataFrame:
-    frames = [read_csv(OUTPUTS_DIR / "predictions.csv"), read_csv(DATA_DIR / "predictions_master.csv")]
+    frames = [read_csv(OUTPUTS_DIR / "daily_predictions.csv"), read_csv(OUTPUTS_DIR / "predictions.csv"), read_csv(DATA_DIR / "predictions_master.csv")]
     frames = [frame for frame in frames if not frame.empty]
     if not frames:
         return pd.DataFrame()
@@ -634,7 +666,38 @@ def normalize_history_columns(frame: pd.DataFrame) -> pd.DataFrame:
         local["predicted_result"] = local["predicted_winner"]
     if "run_timestamp" in local and "created_at" not in local:
         local["created_at"] = local["run_timestamp"]
+    for column in ("actual_score", "actual_result", "prediction_correct", "result_updated_at"):
+        if column not in local:
+            local[column] = ""
     return local
+
+
+def settled_predictions(frame: pd.DataFrame) -> pd.DataFrame:
+    if frame.empty or "actual_result" not in frame:
+        return frame.iloc[0:0].copy()
+    return frame[frame["actual_result"].astype(str) != ""].copy()
+
+
+def period_accuracy(frame: pd.DataFrame, start: dt.date, end: dt.date) -> float | None:
+    if frame.empty or "date" not in frame or "prediction_correct" not in frame:
+        return None
+    local = frame.copy()
+    local["date_obj"] = pd.to_datetime(local["date"], errors="coerce").dt.date
+    local = local[(local["date_obj"] >= start) & (local["date_obj"] <= end)]
+    values = local["prediction_correct"].astype(str).str.lower()
+    values = values[values.isin(["true", "false"])]
+    if values.empty:
+        return None
+    return float((values == "true").mean())
+
+
+def render_recent_result_form(frame: pd.DataFrame) -> None:
+    if frame.empty or "prediction_correct" not in frame:
+        st.info("No settled predictions yet.")
+        return
+    recent = frame.tail(12)
+    form = " ".join("W" if str(value).lower() == "true" else "L" for value in recent["prediction_correct"].tolist())
+    st.markdown(f"<div class='form-strip'>{html.escape(form)}</div>", unsafe_allow_html=True)
 
 
 def all_history_frames() -> pd.DataFrame:

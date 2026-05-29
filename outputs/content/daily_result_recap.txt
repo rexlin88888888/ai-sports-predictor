@@ -1,0 +1,12 @@
+Daily Result Recap
+Generated: 2026-05-29T21:28:09
+
+Yesterday's hits
+- None yet.
+
+Missed predictions
+- None yet.
+
+Best call: No settled winning calls yet.
+Biggest upset missed: No missed upsets yet.
+Model learning notes: Keep tracking settled games before changing model weights. Pending games are excluded from accuracy.
