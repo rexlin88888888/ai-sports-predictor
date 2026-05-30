@@ -1,13 +1,13 @@
 AI Sports Predictor Daily Report
-Generated: 2026-05-30T14:42:32
+Generated: 2026-05-30T15:57:04
 Model version: v1.0.0
 
 Today's NBA Predictions
-- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 109 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
+- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 116 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
 
 Today's Football Predictions
 - Scotland vs Curacao: Draw, Scotland 1 - 1 Curacao, home 33.6%, away 29.2%, draw 37.2%, confidence Low
-- India vs Zimbabwe: Zimbabwe, India 1 - 2 Zimbabwe, home 29.7%, away 36.8%, draw 33.5%, confidence Low
+- Zimbabwe vs India: Zimbabwe, Zimbabwe 2 - 1 India, home 57.5%, away 17.7%, draw 24.8%, confidence Medium
 - Jamaica vs Nigeria: Draw, Jamaica 1 - 1 Nigeria, home 33.9%, away 29.4%, draw 36.7%, confidence Low
 - Ecuador vs Saudi Arabia: Ecuador, Ecuador 2 - 0 Saudi Arabia, home 63.9%, away 12.4%, draw 23.7%, confidence Medium
 - South Korea vs Trinidad and Tobago: South Korea, South Korea 2 - 0 Trinidad and Tobago, home 64.9%, away 13.1%, draw 22.0%, confidence Medium
@@ -16,16 +16,15 @@ Today's Football Predictions
 Highest Confidence Picks
 - South Korea vs Trinidad and Tobago: South Korea, South Korea 2 - 0 Trinidad and Tobago, home 64.9%, away 13.1%, draw 22.0%, confidence Medium
 - Ecuador vs Saudi Arabia: Ecuador, Ecuador 2 - 0 Saudi Arabia, home 63.9%, away 12.4%, draw 23.7%, confidence Medium
-- Mexico vs Australia: Mexico, Mexico 2 - 1 Australia, home 53.5%, away 18.7%, draw 27.7%, confidence Low
+- Zimbabwe vs India: Zimbabwe, Zimbabwe 2 - 1 India, home 57.5%, away 17.7%, draw 24.8%, confidence Medium
 
 Upset Watch
-- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 109 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
-- India vs Zimbabwe: Zimbabwe, India 1 - 2 Zimbabwe, home 29.7%, away 36.8%, draw 33.5%, confidence Low
+- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 116 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
 
 Draw Watch
 - Scotland vs Curacao: Draw, Scotland 1 - 1 Curacao, home 33.6%, away 29.2%, draw 37.2%, confidence Low
 - Jamaica vs Nigeria: Draw, Jamaica 1 - 1 Nigeria, home 33.9%, away 29.4%, draw 36.7%, confidence Low
-- India vs Zimbabwe: Zimbabwe, India 1 - 2 Zimbabwe, home 29.7%, away 36.8%, draw 33.5%, confidence Low
+- Mexico vs Australia: Mexico, Mexico 2 - 1 Australia, home 53.5%, away 18.7%, draw 27.7%, confidence Low
 
 Injury Risk Games
-- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 109 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
+- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 116 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
