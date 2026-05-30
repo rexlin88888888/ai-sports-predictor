@@ -9,7 +9,8 @@ try:
     from ...config import FOOTBALL_PREDICTIONS_CSV
     from ...core.base_model import SportPredictor
     from ...core.prediction_result import PredictionResult
-    from ...core.utils import append_csv_row, clamp, mean, names_match
+    from ...core.prediction_store import save_prediction_outputs
+    from ...core.utils import append_csv_row, clamp, mean, names_match, parse_target_date
     from ...elo import EloMatch, EloRatingSystem
     from ...momentum import football_momentum
     from ...predictor import ai_explain, blend_probability, home_advantage_score
@@ -17,7 +18,8 @@ except ImportError:
     from config import FOOTBALL_PREDICTIONS_CSV
     from core.base_model import SportPredictor
     from core.prediction_result import PredictionResult
-    from core.utils import append_csv_row, clamp, mean, names_match
+    from core.prediction_store import save_prediction_outputs
+    from core.utils import append_csv_row, clamp, mean, names_match, parse_target_date
     from elo import EloMatch, EloRatingSystem
     from momentum import football_momentum
     from predictor import ai_explain, blend_probability, home_advantage_score
@@ -51,23 +53,41 @@ class FootballPredictor(SportPredictor):
         if not matches:
             LOGGER.warning("WARNING: missing data for football historical matches")
             return []
-        result = predict_football_match(matches, args.home, args.away, args.mode or "FOOTBALL", dt.date.today())
+        result = predict_football_match(
+            matches,
+            args.home,
+            args.away,
+            args.mode or "FOOTBALL",
+            parse_target_date(getattr(args, "date", None)),
+            data_source="manual_input",
+        )
         self._save_football_prediction(result)
         return [result]
 
     def _save_football_prediction(self, result: PredictionResult) -> None:
         row = result.to_row()
         append_csv_row(FOOTBALL_PREDICTIONS_CSV, row, list(row.keys()))
+        save_prediction_outputs(result)
 
     def predict_live(self, args: Namespace) -> list[PredictionResult]:
-        target_date = dt.date.today()
+        target_date = parse_target_date(getattr(args, "date", None))
         matches = load_matches()
         if not matches:
             LOGGER.warning("WARNING: missing data for football live mode historical matches")
             return []
         fixtures = load_live_fixtures(target_date)
+        if not fixtures:
+            print("No Football games scheduled for this date")
+            return []
         results = [
-            predict_football_match(matches, fixture.home_team, fixture.away_team, fixture.mode, target_date)
+            predict_football_match(
+                matches,
+                fixture.home_team,
+                fixture.away_team,
+                fixture.mode,
+                target_date,
+                data_source=fixture.data_source,
+            )
             for fixture in fixtures
         ]
         for result in results:
@@ -86,6 +106,7 @@ def predict_football_match(
     away: str,
     mode: str,
     prediction_date: dt.date,
+    data_source: str = "unknown",
 ) -> PredictionResult:
     home_history = team_matches(matches, home, prediction_date)
     away_history = team_matches(matches, away, prediction_date)
@@ -136,6 +157,7 @@ def predict_football_match(
     probs = calibrate_football_probabilities(probs)
     likely = max(probs, key=probs.get)
     winner = home if likely == "HOME_WIN" else away if likely == "AWAY_WIN" else "Draw"
+    projected_home_goals, projected_away_goals = projected_score(lambda_home, lambda_away, likely)
     confidence = confidence_level(max(probs.values()), risks)
     key_factors = [
         f"{home} recent goals for {home_stats['goals_for']:.2f}, against {home_stats['goals_against']:.2f}",
@@ -159,11 +181,25 @@ def predict_football_match(
         win_probability_home=probs["HOME_WIN"],
         win_probability_away=probs["AWAY_WIN"],
         draw_probability=probs["DRAW"],
-        predicted_score=f"{home} {round(lambda_home)} - {round(lambda_away)} {away}",
+        predicted_score=f"{home} {projected_home_goals} - {projected_away_goals} {away}",
         confidence=confidence,
         key_factors=key_factors,
         risk_factors=risks or ["No major data completeness risks detected."],
+        data_source=data_source,
     )
+
+
+def projected_score(lambda_home: float, lambda_away: float, likely: str) -> tuple[int, int]:
+    home_goals = int(round(lambda_home))
+    away_goals = int(round(lambda_away))
+    if likely == "DRAW":
+        goals = int(round((lambda_home + lambda_away) / 2.0))
+        return max(0, min(4, goals)), max(0, min(4, goals))
+    if likely == "HOME_WIN" and home_goals <= away_goals:
+        home_goals = away_goals + 1
+    if likely == "AWAY_WIN" and away_goals <= home_goals:
+        away_goals = home_goals + 1
+    return max(0, min(5, home_goals)), max(0, min(5, away_goals))
 
 
 def team_stats(team: str, history: list[FootballMatch]) -> dict[str, float]:

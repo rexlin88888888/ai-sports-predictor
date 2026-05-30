@@ -10,6 +10,11 @@ from typing import Any
 import pandas as pd
 
 try:
+    from core.live_schedule import fetch_nba_schedule_from_espn
+except ImportError:
+    from ...core.live_schedule import fetch_nba_schedule_from_espn
+
+try:
     from .nba_utils import (
         NBA_GAMES_CSV,
         NBA_PREDICTIONS_CSV,
@@ -22,7 +27,7 @@ try:
         season_from_date,
     )
 except ImportError:
-    from nba_utils import (
+    from .nba_utils import (
         NBA_GAMES_CSV,
         NBA_PREDICTIONS_CSV,
         NBA_TEAM_STATS_CSV,
@@ -53,6 +58,7 @@ class ScheduledGame:
     time_text: str
     home_team: str
     away_team: str
+    data_source: str = "unknown"
 
 
 @dataclass(frozen=True)
@@ -102,6 +108,10 @@ class NBADataClient:
         if api_games:
             LOGGER.info("Using NBA Stats API schedule for %s: %s game(s).", target_date, len(api_games))
             return api_games
+        espn_games = self._get_schedule_from_espn(target_date)
+        if espn_games:
+            LOGGER.info("Using ESPN NBA schedule for %s: %s game(s).", target_date, len(espn_games))
+            return espn_games
         csv_games = self._get_schedule_from_csv(target_date, NBA_GAMES_CSV)
         if csv_games:
             LOGGER.warning("NBA schedule API unavailable/empty. Using local CSV schedule: %s.", NBA_GAMES_CSV)
@@ -134,12 +144,27 @@ class NBADataClient:
                         time_text=str(row.get("GAME_STATUS_TEXT") or row.get("GAME_SEQUENCE") or "TBD"),
                         home_team=id_to_name.get(home_id, str(row.get("HOME_TEAM_ABBREVIATION") or home_id)),
                         away_team=id_to_name.get(away_id, str(row.get("VISITOR_TEAM_ABBREVIATION") or away_id)),
+                        data_source="live_api",
                     )
                 )
             return games
         except Exception as exc:
             LOGGER.warning("Could not fetch NBA schedule from NBA Stats API: %s", exc)
             return []
+
+    def _get_schedule_from_espn(self, target_date: dt.date) -> list[ScheduledGame]:
+        fixtures = fetch_nba_schedule_from_espn(target_date)
+        return [
+            ScheduledGame(
+                game_id=fixture.game_id,
+                date=fixture.date,
+                time_text=fixture.time_text,
+                home_team=fixture.home_team,
+                away_team=fixture.away_team,
+                data_source=fixture.data_source,
+            )
+            for fixture in fixtures
+        ]
 
     def _get_schedule_from_csv(self, target_date: dt.date, path: Path) -> list[ScheduledGame]:
         if not path.exists():
@@ -171,6 +196,7 @@ class NBADataClient:
                     time_text=str(row.get("time") or "TBD"),
                     home_team=str(row["home_team"]),
                     away_team=str(row["away_team"]),
+                    data_source="fallback_cache",
                 )
             )
         return games
@@ -389,6 +415,18 @@ class NBADataClient:
             if query in normalize_name(str(team.get("full_name") or "")):
                 return int(team["id"])
         return None
+
+    def canonical_team_name(self, team_name: str) -> str:
+        query = normalize_name(team_name)
+        for team in self._teams():
+            names = [team.get("full_name"), team.get("nickname"), team.get("city"), team.get("abbreviation")]
+            if any(query == normalize_name(str(name or "")) for name in names):
+                return str(team.get("full_name") or team_name)
+        for team in self._teams():
+            full_name = str(team.get("full_name") or "")
+            if query in normalize_name(full_name):
+                return full_name
+        return team_name
 
     def _teams(self) -> list[dict[str, Any]]:
         if self._team_cache is None:

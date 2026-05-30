@@ -7,10 +7,12 @@ from dataclasses import dataclass
 try:
     from ...config import FOOTBALL_DATA_DIR, WORKSPACE_ROOT
     from ...core.data_loader import read_csv_checked
+    from ...core.live_schedule import fetch_football_schedule
     from ...core.utils import names_match, safe_int
 except ImportError:
     from config import FOOTBALL_DATA_DIR, WORKSPACE_ROOT
     from core.data_loader import read_csv_checked
+    from core.live_schedule import fetch_football_schedule
     from core.utils import names_match, safe_int
 
 
@@ -42,6 +44,7 @@ class FootballFixture:
     home_team: str
     away_team: str
     mode: str = "WORLD_CUP"
+    data_source: str = "unknown"
 
 
 def load_matches() -> list[FootballMatch]:
@@ -95,16 +98,19 @@ def team_matches(matches: list[FootballMatch], team: str, before_date: dt.date |
 
 
 def load_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
-    """Load today's football fixtures from cache, falling back to deployment demo fixtures."""
+    """Load football fixtures from live APIs, then local cache."""
 
+    live = fetch_football_schedule(target_date, "WORLD_CUP")
+    if live:
+        return [
+            FootballFixture(item.date, item.home_team, item.away_team, item.mode or "WORLD_CUP", item.data_source)
+            for item in live
+        ]
     fixtures = load_cached_live_fixtures(target_date)
     if fixtures:
         return fixtures
-    LOGGER.warning("Football live fixture cache unavailable; using public demo fixtures.")
-    return [
-        FootballFixture(target_date, "Mexico", "South Africa", "WORLD_CUP"),
-        FootballFixture(target_date, "United States", "Belgium", "WORLD_CUP"),
-    ]
+    LOGGER.warning("No football fixtures available from live APIs or fallback cache for %s.", target_date)
+    return []
 
 
 def load_cached_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
@@ -127,6 +133,7 @@ def load_cached_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
                 str(row["home_team"]),
                 str(row["away_team"]),
                 str(row.get("mode") or "WORLD_CUP"),
+                "fallback_cache",
             )
         )
     return fixtures

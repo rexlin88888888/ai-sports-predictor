@@ -9,6 +9,7 @@ try:
     from ...config import NBA_PREDICTIONS_CSV
     from ...core.base_model import SportPredictor
     from ...core.prediction_result import PredictionResult
+    from ...core.prediction_store import save_prediction_outputs
     from ...core.utils import append_csv_row, clamp, parse_target_date, safe_int, season_from_date
     from ...elo import EloMatch, EloRatingSystem
     from ...fatigue import calculate_nba_fatigue
@@ -18,6 +19,7 @@ except ImportError:
     from config import NBA_PREDICTIONS_CSV
     from core.base_model import SportPredictor
     from core.prediction_result import PredictionResult
+    from core.prediction_store import save_prediction_outputs
     from core.utils import append_csv_row, clamp, parse_target_date, safe_int, season_from_date
     from elo import EloMatch, EloRatingSystem
     from fatigue import calculate_nba_fatigue
@@ -42,9 +44,23 @@ class NBAPredictor(SportPredictor):
 
     def predict(self, args: Namespace) -> list[PredictionResult]:
         target_date = parse_target_date(args.date)
-        games = self.client.get_tomorrow_schedule(target_date)
+        home = str(getattr(args, "home", "") or "").strip()
+        away = str(getattr(args, "away", "") or "").strip()
+        if home and away:
+            games = [
+                ScheduledGame(
+                    game_id=f"manual-{target_date}-{home}-{away}",
+                    date=target_date,
+                    time_text="Manual input",
+                    home_team=self.client.canonical_team_name(home),
+                    away_team=self.client.canonical_team_name(away),
+                    data_source="manual_input",
+                )
+            ]
+        else:
+            games = self.client.get_tomorrow_schedule(target_date)
         if not games:
-            print("No NBA games tomorrow" if target_date == dt.date.today() + dt.timedelta(days=1) else f"No NBA games on {target_date}")
+            print("No NBA games scheduled for this date")
             if getattr(args, "injuries", False):
                 self.print_injury_report([])
             return []
@@ -96,6 +112,7 @@ class NBAPredictor(SportPredictor):
         home_score = int(round(clamp(float(adjusted_prediction["home_score"]) + score_edge, 82.0, 145.0)))
         away_score = int(round(clamp(float(adjusted_prediction["away_score"]) - score_edge, 82.0, 145.0)))
         predicted_winner = game.home_team if common_adjustment.home_probability >= common_adjustment.away_probability else game.away_team
+        home_score, away_score = align_nba_score_with_winner(home_score, away_score, predicted_winner, game.home_team, game.away_team)
         key_factors = list(adjusted_prediction["key_factors"])
         key_factors.extend(common_adjustment.key_factors)
         key_factors.extend(ai_explain(predicted_winner, common_adjustment.key_factors, common_adjustment.risk_factors))
@@ -115,11 +132,13 @@ class NBAPredictor(SportPredictor):
             confidence=common_adjustment.confidence,
             key_factors=key_factors,
             risk_factors=risk_factors,
+            data_source=game.data_source or "unknown",
         )
 
     def _save_nba_prediction(self, result: PredictionResult) -> None:
         row = result.to_row()
         append_csv_row(NBA_PREDICTIONS_CSV, row, list(row.keys()))
+        save_prediction_outputs(result)
 
     def print_injury_report(self, games: list[ScheduledGame]) -> None:
         if games:
@@ -194,6 +213,14 @@ def lower_confidence(value: str) -> str:
     if value == "Medium":
         return "Low"
     return value
+
+
+def align_nba_score_with_winner(home_score: int, away_score: int, predicted_winner: str, home_team: str, away_team: str) -> tuple[int, int]:
+    if predicted_winner == home_team and home_score <= away_score:
+        home_score = away_score + 2
+    elif predicted_winner == away_team and away_score <= home_score:
+        away_score = home_score + 2
+    return int(clamp(home_score, 82, 145)), int(clamp(away_score, 82, 145))
 
 
 def injury_key_factors(home: TeamInjuryImpact, away: TeamInjuryImpact) -> list[str]:

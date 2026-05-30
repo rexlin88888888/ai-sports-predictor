@@ -436,9 +436,6 @@ def render_automation_overview() -> None:
 
 def render_live_predictions_page() -> None:
     enable_auto_refresh()
-    nba_results = safe_live_results("nba")
-    football_results = safe_live_results("football")
-    package = build_daily_prediction_package(nba_results + football_results)
     st.markdown(
         f"""
         <div class="section-intro">
@@ -448,15 +445,40 @@ def render_live_predictions_page() -> None:
         """,
         unsafe_allow_html=True,
     )
-    render_daily_spotlights(package)
-    st.markdown("### " + tr("Today's NBA Predictions"))
-    render_live_cards(nba_results, "NBA")
-    st.markdown("### " + tr("Today's Football Predictions"))
-    render_live_cards(football_results, "Football")
-    if st.button(tr("Generate Today's Content"), type="primary"):
-        refreshed = generate_daily_predictions()
-        st.success(tx(f"{len(refreshed.predictions)} prediction(s) updated. {tr('Content Studio')}"))
-    render_daily_exports(package)
+    auto_tab, manual_tab = st.tabs(["Auto Schedule Mode", "Manual Prediction Mode"])
+    with auto_tab:
+        date_value = st.text_input(tr("Date"), "today", key="live_auto_date")
+        nba_results = safe_live_results("nba", date_value)
+        football_results = safe_live_results("football", date_value)
+        package = build_daily_prediction_package(nba_results + football_results)
+        render_daily_spotlights(package)
+        st.markdown("### " + tr("Today's NBA Predictions"))
+        render_live_cards(nba_results, "NBA")
+        st.markdown("### " + tr("Today's Football Predictions"))
+        render_live_cards(football_results, "Football")
+        if not nba_results and not football_results:
+            st.info("No scheduled games were found for this date. Use Manual Prediction Mode to enter a matchup.")
+        if st.button(tr("Generate Today's Content"), type="primary"):
+            refreshed = generate_daily_predictions()
+            st.success(tx(f"{len(refreshed.predictions)} prediction(s) updated. {tr('Content Studio')}"))
+        render_daily_exports(package)
+    with manual_tab:
+        with st.form("live_manual_prediction_form"):
+            sport = st.selectbox("Sport", ["nba", "football"], format_func=lambda value: t(value.upper(), current_language()))
+            cols = st.columns(3)
+            home = cols[0].text_input(tr("Home Team"), "Lakers" if sport == "nba" else "Mexico")
+            away = cols[1].text_input(tr("Away Team"), "Warriors" if sport == "nba" else "South Africa")
+            manual_date = cols[2].text_input(tr("Date"), "tomorrow")
+            mode = st.text_input(tr("Mode"), "WORLD_CUP") if sport == "football" else ""
+            injuries = st.checkbox(tr("Include injury impact"), value=(sport == "nba"))
+            submitted = st.form_submit_button("Run Manual Prediction", type="primary")
+        if submitted:
+            results = run_prediction(sport, manual_date, canonical_team_name(home), canonical_team_name(away), mode, injuries)
+            if results:
+                for result in results:
+                    render_prediction_card(result)
+            else:
+                st.warning("Manual prediction could not be generated. Check team names and available historical data.")
 
 
 def render_content_studio() -> None:
@@ -723,11 +745,12 @@ def render_match_card(result: PredictionResult) -> None:
     score_text = tx(result.predicted_score)
     confidence_text = confidence_display(result.confidence)
     confidence_separator = "：" if is_zh() else ": "
+    source_text = str(getattr(result, "data_source", "") or "unknown")
     st.markdown(
         f"""
         <article class="match-card">
             <div class="match-topline">
-                <span>{html.escape(sport_name)}</span>
+                <span>{html.escape(sport_name)} · {html.escape(source_text)}</span>
                 <span class="confidence-badge {confidence_class}">{html.escape(tr("Confidence"))}{confidence_separator}{html.escape(confidence_text)}</span>
             </div>
             <div class="match-main">
@@ -939,16 +962,16 @@ def run_prediction(sport: str, date_value: str, home: str, away: str, mode: str,
     return predictor.predict(args)
 
 
-def run_live_prediction_for_ui(sport: str) -> list[PredictionResult]:
-    args = Namespace(sport=sport, date=dt.date.today().isoformat(), home="", away="", mode="WORLD_CUP", backtest=False, evaluate=False, injuries=False, season="2025-26", limit=100, verbose=False)
+def run_live_prediction_for_ui(sport: str, date_value: str = "today") -> list[PredictionResult]:
+    args = Namespace(sport=sport, date=date_value, home="", away="", mode="WORLD_CUP", backtest=False, evaluate=False, injuries=False, season="2025-26", limit=100, verbose=False)
     predictor = NBAPredictor() if sport == "nba" else FootballPredictor()
     LOGGER.info("streamlit_live_prediction_request sport=%s", sport)
     return predictor.predict_live(args) if sport == "football" else predictor.predict(args)
 
 
-def safe_live_results(sport: str) -> list[PredictionResult]:
+def safe_live_results(sport: str, date_value: str = "today") -> list[PredictionResult]:
     try:
-        return run_live_prediction_for_ui(sport)
+        return run_live_prediction_for_ui(sport, date_value)
     except Exception as exc:
         LOGGER.exception("streamlit_live_prediction_error sport=%s error=%s", sport, exc)
         return []

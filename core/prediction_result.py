@@ -22,6 +22,7 @@ class PredictionResult:
     confidence: str
     key_factors: list[str] = field(default_factory=list)
     risk_factors: list[str] = field(default_factory=list)
+    data_source: str = "unknown"
 
     def to_row(self) -> dict[str, Any]:
         created_at = dt.datetime.now().isoformat(timespec="seconds")
@@ -38,6 +39,8 @@ class PredictionResult:
             "predicted_result": self.predicted_winner,
             "win_probability_home": "" if self.win_probability_home is None else round(self.win_probability_home, 4),
             "win_probability_away": "" if self.win_probability_away is None else round(self.win_probability_away, 4),
+            "home_win_probability": "" if self.win_probability_home is None else round(self.win_probability_home, 4),
+            "away_win_probability": "" if self.win_probability_away is None else round(self.win_probability_away, 4),
             "draw_probability": "" if self.draw_probability is None else round(self.draw_probability, 4),
             "predicted_score": self.predicted_score,
             "actual_result": "",
@@ -45,6 +48,7 @@ class PredictionResult:
             "key_factors": " | ".join(self.key_factors),
             "risk_factors": " | ".join(self.risk_factors),
             "model_version": current_model_version(),
+            "data_source": self.data_source,
         }
 
 
@@ -61,6 +65,8 @@ PREDICTION_FIELDNAMES = [
     "predicted_result",
     "win_probability_home",
     "win_probability_away",
+    "home_win_probability",
+    "away_win_probability",
     "draw_probability",
     "predicted_score",
     "actual_result",
@@ -68,6 +74,7 @@ PREDICTION_FIELDNAMES = [
     "key_factors",
     "risk_factors",
     "model_version",
+    "data_source",
 ]
 
 

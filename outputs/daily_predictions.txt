@@ -1,24 +1,31 @@
 AI Sports Predictor Daily Report
-Generated: 2026-05-29T20:42:03
+Generated: 2026-05-30T14:42:32
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 109 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
 
 Today's Football Predictions
-- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+- Scotland vs Curacao: Draw, Scotland 1 - 1 Curacao, home 33.6%, away 29.2%, draw 37.2%, confidence Low
+- India vs Zimbabwe: Zimbabwe, India 1 - 2 Zimbabwe, home 29.7%, away 36.8%, draw 33.5%, confidence Low
+- Jamaica vs Nigeria: Draw, Jamaica 1 - 1 Nigeria, home 33.9%, away 29.4%, draw 36.7%, confidence Low
+- Ecuador vs Saudi Arabia: Ecuador, Ecuador 2 - 0 Saudi Arabia, home 63.9%, away 12.4%, draw 23.7%, confidence Medium
+- South Korea vs Trinidad and Tobago: South Korea, South Korea 2 - 0 Trinidad and Tobago, home 64.9%, away 13.1%, draw 22.0%, confidence Medium
+- Mexico vs Australia: Mexico, Mexico 2 - 1 Australia, home 53.5%, away 18.7%, draw 27.7%, confidence Low
 
 Highest Confidence Picks
-- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+- South Korea vs Trinidad and Tobago: South Korea, South Korea 2 - 0 Trinidad and Tobago, home 64.9%, away 13.1%, draw 22.0%, confidence Medium
+- Ecuador vs Saudi Arabia: Ecuador, Ecuador 2 - 0 Saudi Arabia, home 63.9%, away 12.4%, draw 23.7%, confidence Medium
+- Mexico vs Australia: Mexico, Mexico 2 - 1 Australia, home 53.5%, away 18.7%, draw 27.7%, confidence Low
 
 Upset Watch
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 109 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
+- India vs Zimbabwe: Zimbabwe, India 1 - 2 Zimbabwe, home 29.7%, away 36.8%, draw 33.5%, confidence Low
 
 Draw Watch
-- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 29.7%, away 44.8%, draw 25.5%, confidence Low
+- Scotland vs Curacao: Draw, Scotland 1 - 1 Curacao, home 33.6%, away 29.2%, draw 37.2%, confidence Low
+- Jamaica vs Nigeria: Draw, Jamaica 1 - 1 Nigeria, home 33.9%, away 29.4%, draw 36.7%, confidence Low
+- India vs Zimbabwe: Zimbabwe, India 1 - 2 Zimbabwe, home 29.7%, away 36.8%, draw 33.5%, confidence Low
 
 Injury Risk Games
-- No games available.
+- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 109 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
