@@ -236,6 +236,7 @@ def main() -> None:
         st.session_state["language_choice"] = "中文"
     st.sidebar.selectbox("Language / 语言", ["English", "中文"], index=0, key="language_choice")
     theme_mode = st.sidebar.selectbox(tr("Display Mode"), ["Dark", "Light", "Auto"], index=0)
+    st.session_state["theme_mode"] = theme_mode
     apply_theme(theme_mode)
     inject_pwa_assets()
     st.sidebar.markdown(
@@ -729,21 +730,32 @@ def render_match_card(result: PredictionResult) -> None:
                 <span>{html.escape(sport_name)}</span>
                 <span class="confidence-badge {confidence_class}">{html.escape(tr("Confidence"))}{confidence_separator}{html.escape(confidence_text)}</span>
             </div>
-            <div class="teams-row">
-                <div class="team-block">
+            <div class="match-main">
+                <div class="team-panel home">
                     <div class="team-logo">{team_initials(home_name)}</div>
-                    <div><div class="team-name">{html.escape(home_name)}</div><div class="team-role">{html.escape(tr("Home"))}</div></div>
+                    <div class="team-copy">
+                        <div class="team-role">{html.escape(tr("Home"))}</div>
+                        <div class="team-name">{html.escape(home_name)}</div>
+                        <div class="team-prob green">{percent(home_prob)}</div>
+                    </div>
                 </div>
-                <div class="score-box">{html.escape(score_text)}</div>
-                <div class="team-block right">
-                    <div><div class="team-name">{html.escape(away_name)}</div><div class="team-role">{html.escape(tr("Away"))}</div></div>
+                <div class="score-panel">
+                    <div class="score-label">{html.escape(tr("Predicted Score"))}</div>
+                    <div class="score-box">{html.escape(score_text)}</div>
+                </div>
+                <div class="team-panel away">
                     <div class="team-logo">{team_initials(away_name)}</div>
+                    <div class="team-copy">
+                        <div class="team-role">{html.escape(tr("Away"))}</div>
+                        <div class="team-name">{html.escape(away_name)}</div>
+                        <div class="team-prob blue">{percent(away_prob)}</div>
+                    </div>
                 </div>
             </div>
             <div class="probability-grid">
-                <div><div class="prob-label">{html.escape(tr("Home Win Probability"))}</div><div class="prob-value green">{percent(home_prob)}</div><div class="prob-track"><span style="width:{home_width}%"></span></div></div>
-                <div><div class="prob-label">{html.escape(tr("Away Win Probability"))}</div><div class="prob-value blue">{percent(away_prob)}</div><div class="prob-track away"><span style="width:{away_width}%"></span></div></div>
-                <div><div class="prob-label">{html.escape(tr("Draw Probability"))}</div><div class="prob-value">{percent(result.draw_probability)}</div></div>
+                <div><div class="prob-label">{html.escape(tr("Home Win Probability"))}</div><div class="prob-track"><span style="width:{home_width}%"></span></div></div>
+                <div><div class="prob-label">{html.escape(tr("Draw Probability"))}</div><div class="draw-value">{percent(result.draw_probability)}</div></div>
+                <div><div class="prob-label">{html.escape(tr("Away Win Probability"))}</div><div class="prob-track away"><span style="width:{away_width}%"></span></div></div>
             </div>
             <div class="signal-grid">
                 <div><b>{html.escape(tr("Injury"))}</b><span>{html.escape(tx(short_signal(factors["injury"])))}</span></div>
@@ -994,8 +1006,8 @@ def render_accuracy_trend(nba: pd.DataFrame, football: pd.DataFrame) -> None:
         return
     trend = pd.concat(rows, ignore_index=True)
     if px:
-        fig = px.line(trend, x="date", y="rolling_accuracy", color="sport", template="plotly_dark")
-        fig.update_layout(height=320, margin=dict(l=10, r=10, t=20, b=10), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+        fig = px.line(trend, x="date", y="rolling_accuracy", color="sport", template=plotly_template())
+        apply_chart_style(fig)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.line_chart(trend, x="date", y="rolling_accuracy", color="sport")
@@ -1015,8 +1027,8 @@ def render_confidence_distribution(nba: pd.DataFrame, football: pd.DataFrame) ->
         return
     data = pd.concat(rows, ignore_index=True)
     if px:
-        fig = px.bar(data, x="confidence", y="games", color="sport", barmode="group", template="plotly_dark")
-        fig.update_layout(height=320, margin=dict(l=10, r=10, t=20, b=10), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+        fig = px.bar(data, x="confidence", y="games", color="sport", barmode="group", template=plotly_template())
+        apply_chart_style(fig)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.bar_chart(data, x="confidence", y="games", color="sport")
@@ -1029,8 +1041,9 @@ def render_draw_calibration() -> None:
         st.info(tx("Football calibration data is not available."))
         return
     if px:
-        fig = px.line(frame, x="bucket", y=["avg_predicted_probability", "actual_win_rate"], template="plotly_dark")
-        fig.update_layout(height=300, margin=dict(l=10, r=10, t=20, b=10), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+        fig = px.line(frame, x="bucket", y=["avg_predicted_probability", "actual_win_rate"], template=plotly_template())
+        apply_chart_style(fig)
+        fig.update_layout(height=300)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.line_chart(frame, x="bucket", y=["avg_predicted_probability", "actual_win_rate"])
@@ -1381,6 +1394,29 @@ def percent(value: float | None) -> str:
     return f"{value * 100:.1f}%"
 
 
+def plotly_template() -> str:
+    return "plotly_white" if st.session_state.get("theme_mode") == "Light" else "plotly_dark"
+
+
+def apply_chart_style(fig) -> None:
+    is_light = st.session_state.get("theme_mode") == "Light"
+    grid_color = "rgba(100,116,139,.20)" if is_light else "rgba(148,163,184,.13)"
+    text_color = "#0F172A" if is_light else "#F8FAFC"
+    muted_color = "#64748B" if is_light else "#94A3B8"
+    fig.update_layout(
+        colorway=["#3B82F6", "#22C55E", "#F59E0B", "#EF4444", "#7C3AED"],
+        height=320,
+        margin=dict(l=10, r=10, t=20, b=10),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(color=text_color, size=12),
+        legend=dict(font=dict(color=muted_color), orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        hoverlabel=dict(bgcolor="#0F1B2E" if not is_light else "#FFFFFF", bordercolor="#22324A" if not is_light else "#E2E8F0", font=dict(color=text_color)),
+    )
+    fig.update_xaxes(gridcolor=grid_color, zerolinecolor=grid_color, linecolor=grid_color, tickfont=dict(color=muted_color))
+    fig.update_yaxes(gridcolor=grid_color, zerolinecolor=grid_color, linecolor=grid_color, tickfont=dict(color=muted_color))
+
+
 def short_datetime(value) -> str:
     if not value:
         return "Not run"
@@ -1407,107 +1443,116 @@ def safe_filename(value: str) -> str:
 
 
 def apply_theme(theme_mode: str) -> None:
-    light_scope = "" if theme_mode == "Dark" else ":root {--bg:#f4f7fb;--panel:#ffffff;--panel-2:#f8fafc;--border:#dbe3ef;--text:#0f172a;--muted:#64748b;}"
-    auto_scope = "" if theme_mode != "Auto" else "@media (prefers-color-scheme: light) {:root {--bg:#f4f7fb;--panel:#ffffff;--panel-2:#f8fafc;--border:#dbe3ef;--text:#0f172a;--muted:#64748b;}}"
+    light_scope = "" if theme_mode == "Dark" else ":root {--bg:#F8FAFC;--panel:#FFFFFF;--panel-2:#F8FAFC;--border:#E2E8F0;--text:#0F172A;--muted:#64748B;--primary:#2563EB;--success:#16A34A;--warning:#D97706;--danger:#DC2626;--shadow:0 14px 34px rgba(15,23,42,.09);--card-gradient:linear-gradient(180deg,#FFFFFF,#F8FAFC);--sidebar-bg:#FFFFFF;--sidebar-text:#0F172A;--sidebar-muted:#64748B;}"
+    auto_scope = "" if theme_mode != "Auto" else "@media (prefers-color-scheme: light) {:root {--bg:#F8FAFC;--panel:#FFFFFF;--panel-2:#F8FAFC;--border:#E2E8F0;--text:#0F172A;--muted:#64748B;--primary:#2563EB;--success:#16A34A;--warning:#D97706;--danger:#DC2626;--shadow:0 14px 34px rgba(15,23,42,.09);--card-gradient:linear-gradient(180deg,#FFFFFF,#F8FAFC);--sidebar-bg:#FFFFFF;--sidebar-text:#0F172A;--sidebar-muted:#64748B;}}"
     st.markdown(
         f"""
         <style>
-        :root {{--bg:#07111f;--panel:#0d1b2f;--panel-2:#10243d;--border:rgba(148,163,184,.22);--text:#f8fafc;--muted:#94a3b8;--green:#35d46f;--blue:#3b82f6;--red:#ff5f64;--gold:#fbbf24;}}
+        :root {{--bg:#07111F;--panel:#0F1B2E;--panel-2:#14243A;--border:#22324A;--text:#F8FAFC;--muted:#94A3B8;--primary:#3B82F6;--success:#22C55E;--warning:#F59E0B;--danger:#EF4444;--shadow:0 18px 42px rgba(0,0,0,.28);--card-gradient:linear-gradient(180deg,#102039,#0F1B2E);--sidebar-bg:#081423;--sidebar-text:#E2E8F0;--sidebar-muted:#94A3B8;--radius:16px;}}
         {light_scope}{auto_scope}
-        .stApp {{background:radial-gradient(circle at top left,rgba(37,99,235,.18),transparent 28rem),radial-gradient(circle at top right,rgba(34,197,94,.09),transparent 24rem),var(--bg);color:var(--text);}}
+        .stApp {{background:var(--bg);color:var(--text);font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;}}
         header[data-testid="stHeader"] {{background:transparent;}}
-        .block-container {{padding-top:1.25rem;padding-bottom:2rem;max-width:1440px;}}
-        section[data-testid="stSidebar"] {{background:linear-gradient(180deg,#06101e 0%,#09182c 100%);border-right:1px solid rgba(148,163,184,.14);}}
-        section[data-testid="stSidebar"] label,section[data-testid="stSidebar"] p,section[data-testid="stSidebar"] span {{color:#dbeafe;}}
-        section[data-testid="stSidebar"] div[role="radiogroup"] label {{border:1px solid transparent;border-radius:12px;margin:.12rem 0;padding:.45rem .5rem;transition:background .15s ease,border-color .15s ease;}}
-        section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {{background:rgba(59,130,246,.14);border-color:rgba(96,165,250,.24);}}
-        section[data-testid="stSidebar"] div[role="radiogroup"] label p {{font-weight:700;color:#e5eefc !important;}}
-        section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {{background:linear-gradient(90deg,rgba(37,99,235,.26),rgba(34,197,94,.1));border-color:rgba(96,165,250,.36);}}
-        section[data-testid="stSidebar"] div[data-baseweb="select"] > div {{border-radius:10px;border-color:rgba(148,163,184,.22);}}
-        .brand-block,.header-left,.match-topline,.teams-row,.sidebar-row {{display:flex;align-items:center;}}
-        .brand-block {{gap:.8rem;padding:.85rem .4rem 1.2rem;}}
-        .brand-mark,.app-logo {{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;color:white;font-weight:800;background:linear-gradient(135deg,#2563eb,#22c55e);box-shadow:0 10px 30px rgba(37,99,235,.28);}}
-        .brand-title {{color:white;font-weight:800;line-height:1.05;}}
-        .brand-subtitle,.panel-label {{color:#8aa0bd;font-size:.78rem;margin-top:.25rem;}}
-        .sidebar-panel {{margin-top:1rem;padding:.9rem;border:1px solid rgba(148,163,184,.18);background:rgba(15,23,42,.55);border-radius:14px;}}
-        .sidebar-row {{justify-content:space-between;color:#cbd5e1;padding-top:.55rem;font-size:.86rem;}}
-        .sidebar-row b {{color:var(--green);}}
-        .top-header {{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:1.4rem;padding:1rem 1.1rem;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,rgba(15,31,53,.94),rgba(9,20,36,.82));box-shadow:0 18px 50px rgba(0,0,0,.22);}}
+        .block-container {{padding-top:1.1rem;padding-bottom:2.25rem;max-width:1440px;}}
+        section[data-testid="stSidebar"] {{background:var(--sidebar-bg);border-right:1px solid var(--border);}}
+        section[data-testid="stSidebar"] label,section[data-testid="stSidebar"] p,section[data-testid="stSidebar"] span {{color:var(--sidebar-text);}}
+        section[data-testid="stSidebar"] div[role="radiogroup"] label {{border:1px solid transparent;border-radius:12px;margin:.12rem 0;padding:.42rem .5rem;transition:background .16s ease,border-color .16s ease,transform .16s ease;}}
+        section[data-testid="stSidebar"] div[role="radiogroup"] label:hover {{background:rgba(59,130,246,.10);border-color:color-mix(in srgb,var(--primary) 32%,transparent);transform:translateX(2px);}}
+        section[data-testid="stSidebar"] div[role="radiogroup"] label p {{font-weight:750;color:var(--sidebar-text) !important;}}
+        section[data-testid="stSidebar"] div[role="radiogroup"] label:has(input:checked) {{background:linear-gradient(90deg,color-mix(in srgb,var(--primary) 22%,transparent),transparent);border-color:color-mix(in srgb,var(--primary) 46%,transparent);}}
+        section[data-testid="stSidebar"] div[data-baseweb="select"] > div {{border-radius:12px;border-color:var(--border);background:var(--panel);}}
+        .brand-block,.header-left,.match-topline,.sidebar-row,.match-main,.team-panel {{display:flex;align-items:center;}}
+        .brand-block {{gap:.8rem;padding:.85rem .3rem 1rem;}}
+        .brand-mark,.app-logo {{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;color:white;font-weight:850;background:linear-gradient(135deg,var(--primary),var(--success));box-shadow:0 12px 28px color-mix(in srgb,var(--primary) 28%,transparent);}}
+        .brand-title {{color:var(--sidebar-text);font-weight:850;line-height:1.05;}}
+        .brand-subtitle,.panel-label {{color:var(--sidebar-muted);font-size:.76rem;margin-top:.25rem;}}
+        .sidebar-panel {{margin-top:1rem;padding:.85rem;border:1px solid var(--border);background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);}}
+        .sidebar-row {{justify-content:space-between;color:var(--muted);padding-top:.52rem;font-size:.84rem;}}
+        .sidebar-row b {{color:var(--success);font-weight:850;}}
+        .top-header {{display:flex;justify-content:space-between;gap:1rem;align-items:center;margin-bottom:1.35rem;padding:1.05rem 1.15rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--card-gradient);box-shadow:var(--shadow);}}
         .header-left {{gap:1rem;}}
-        .top-header h1 {{color:white;font-size:1.55rem;margin:0;letter-spacing:0;}}
-        .top-header p,.section-intro p {{margin:.25rem 0 0;color:#9fb0c6;}}
+        .top-header h1 {{color:var(--text);font-size:1.62rem;margin:0;letter-spacing:0;font-weight:850;}}
+        .top-header p,.section-intro p {{margin:.25rem 0 0;color:var(--muted);}}
         .header-meta {{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;justify-content:flex-end;}}
-        .status-pill,.updated-pill {{border-radius:999px;padding:.48rem .72rem;background:rgba(15,23,42,.7);border:1px solid var(--border);color:#dbeafe;font-size:.85rem;}}
-        .live-dot::before {{content:"";display:inline-block;width:8px;height:8px;margin-right:7px;background:var(--green);border-radius:50%;box-shadow:0 0 16px var(--green);}}
+        .status-pill,.updated-pill {{border-radius:999px;padding:.46rem .72rem;background:var(--panel-2);border:1px solid var(--border);color:var(--text);font-size:.83rem;}}
+        .live-dot::before {{content:"";display:inline-block;width:8px;height:8px;margin-right:7px;background:var(--success);border-radius:50%;box-shadow:0 0 16px var(--success);}}
         h2,h3,h4 {{color:var(--text);letter-spacing:0;}}
         .section-intro {{margin:.5rem 0 1.2rem;}}
-        .section-intro h2 {{margin:0;color:var(--text);}}
-        .metric-card,.match-card,.mini-card,.spotlight-card,.content-card,.quick-card,.install-card {{background:linear-gradient(180deg,rgba(17,34,57,.98),rgba(11,26,45,.96));border:1px solid var(--border);border-radius:18px;box-shadow:0 16px 42px rgba(0,0,0,.22);}}
-        .metric-card {{padding:1rem;min-height:116px;transition:transform .16s ease,border-color .16s ease;}}
-        .metric-card:hover,.match-card:hover,.spotlight-card:hover,.content-card:hover,.quick-card:hover,.install-card:hover {{transform:translateY(-2px);border-color:rgba(59,130,246,.52);}}
-        .metric-label {{color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;}}
-        .metric-value {{color:var(--text);font-size:1.8rem;font-weight:800;margin-top:.45rem;overflow-wrap:anywhere;}}
-        .metric-card.positive .metric-value {{color:var(--green);}} .metric-card.accent .metric-value {{color:var(--blue);}}
+        .section-intro h2 {{margin:0;color:var(--text);font-size:1.8rem;font-weight:850;}}
+        .metric-card,.match-card,.mini-card,.spotlight-card,.content-card,.quick-card,.install-card {{background:var(--card-gradient);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}}
+        .metric-card {{padding:1rem;min-height:112px;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;}}
+        .metric-card:hover,.match-card:hover,.spotlight-card:hover,.content-card:hover,.quick-card:hover,.install-card:hover {{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 55%,var(--border));box-shadow:0 20px 48px rgba(0,0,0,.24);}}
+        .metric-label {{color:var(--muted);font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;}}
+        .metric-value {{color:var(--text);font-size:1.95rem;font-weight:900;margin-top:.38rem;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;}}
+        .metric-card.positive .metric-value {{color:var(--success);}} .metric-card.accent .metric-value {{color:var(--primary);}}
         .metric-caption {{color:var(--muted);font-size:.84rem;margin-top:.35rem;}}
-        .spotlight-card {{box-sizing:border-box;width:100%;height:174px;padding:1rem;margin-bottom:1rem;position:relative;overflow:hidden;border-radius:18px !important;transition:transform .16s ease,border-color .16s ease;}}
-        .spotlight-card::before {{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--blue),var(--green));}}
-        .spotlight-card.confidence-pick::before {{background:linear-gradient(90deg,var(--blue),var(--green));}}
-        .spotlight-card.value::before {{background:linear-gradient(90deg,#fbbf24,#22c55e);}}
-        .spotlight-card.upset::before {{background:linear-gradient(90deg,#ff5f64,#fbbf24);}}
-        .spotlight-card.draw::before {{background:linear-gradient(90deg,#a78bfa,#60a5fa);}}
-        .spotlight-card.injury::before {{background:linear-gradient(90deg,#fb7185,#f97316);}}
+        .spotlight-card {{box-sizing:border-box;width:100%;height:176px;padding:1rem;margin-bottom:1rem;position:relative;overflow:hidden;border-radius:var(--radius) !important;transition:transform .16s ease,border-color .16s ease;}}
+        .spotlight-card::before {{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--primary),var(--success));}}
+        .spotlight-card.confidence-pick::before {{background:linear-gradient(90deg,var(--primary),var(--success));}}
+        .spotlight-card.value::before {{background:linear-gradient(90deg,var(--warning),var(--success));}}
+        .spotlight-card.upset::before {{background:linear-gradient(90deg,var(--danger),var(--warning));}}
+        .spotlight-card.draw::before {{background:linear-gradient(90deg,#7C3AED,var(--primary));}}
+        .spotlight-card.injury::before {{background:linear-gradient(90deg,var(--danger),var(--warning));}}
         .spotlight-card.empty {{opacity:.72;}}
-        .spotlight-label {{color:var(--muted);font-size:.72rem;text-transform:uppercase;font-weight:800;letter-spacing:.04em;}}
-        .spotlight-main {{color:var(--text);font-size:1.05rem;font-weight:900;margin-top:.55rem;line-height:1.15;}}
-        .spotlight-sub {{color:#9fb0c6;font-size:.78rem;margin-top:.35rem;line-height:1.25;}}
-        .spotlight-score {{color:#dbeafe;font-size:.82rem;margin-top:.7rem;line-height:1.25;}}
-        .spotlight-prob {{color:var(--green);font-size:1.45rem;font-weight:900;margin-top:.55rem;}}
+        .spotlight-label {{color:var(--muted);font-size:.7rem;text-transform:uppercase;font-weight:850;letter-spacing:.06em;}}
+        .spotlight-main {{color:var(--text);font-size:1.08rem;font-weight:900;margin-top:.55rem;line-height:1.16;}}
+        .spotlight-sub {{color:var(--muted);font-size:.78rem;margin-top:.35rem;line-height:1.25;}}
+        .spotlight-score {{color:var(--text);font-size:.83rem;margin-top:.7rem;line-height:1.25;}}
+        .spotlight-prob {{color:var(--success);font-size:1.55rem;font-weight:950;margin-top:.5rem;font-variant-numeric:tabular-nums;}}
         .content-card {{padding:1rem;margin:.85rem 0 .45rem;transition:transform .16s ease,border-color .16s ease;}}
         .content-card h3 {{margin:.5rem 0;color:var(--text);font-size:1.08rem;line-height:1.2;}}
         .content-meta {{display:flex;justify-content:space-between;gap:.7rem;color:var(--muted);font-size:.74rem;text-transform:uppercase;font-weight:800;letter-spacing:.04em;}}
-        .content-chip {{display:inline-flex;margin-top:.2rem;padding:.25rem .5rem;border-radius:999px;background:rgba(59,130,246,.16);color:#bfdbfe;font-size:.76rem;font-weight:800;}}
+        .content-chip {{display:inline-flex;margin-top:.2rem;padding:.25rem .5rem;border-radius:999px;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary);font-size:.76rem;font-weight:850;}}
         .quick-card {{padding:.9rem;margin:.7rem 0 .45rem;min-height:92px;transition:transform .16s ease,border-color .16s ease;}}
         .quick-title {{font-size:1rem;font-weight:900;color:var(--text);line-height:1.15;}}
         .quick-caption {{font-size:.82rem;color:var(--muted);margin-top:.45rem;line-height:1.28;}}
         .install-card {{padding:1.15rem;min-height:290px;transition:transform .16s ease,border-color .16s ease;}}
-        .install-icon {{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;color:white;font-weight:900;background:linear-gradient(135deg,#2563eb,#22c55e);box-shadow:0 10px 30px rgba(37,99,235,.3);margin-bottom:1rem;}}
-        .install-kicker {{color:var(--green);font-size:.76rem;text-transform:uppercase;font-weight:900;letter-spacing:.06em;}}
+        .install-icon {{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;color:white;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--success));box-shadow:0 10px 30px color-mix(in srgb,var(--primary) 30%,transparent);margin-bottom:1rem;}}
+        .install-kicker {{color:var(--success);font-size:.76rem;text-transform:uppercase;font-weight:900;letter-spacing:.06em;}}
         .install-card h3 {{margin:.45rem 0 .7rem;color:var(--text);}}
         .install-card ul {{margin:.3rem 0 0;padding-left:1.1rem;color:var(--muted);line-height:1.45;font-size:.9rem;}}
-        .match-card {{padding:1rem;margin-bottom:1rem;}}
-        .match-topline {{justify-content:space-between;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
-        .confidence-badge {{border-radius:999px;padding:.28rem .55rem;background:rgba(59,130,246,.16);color:#93c5fd;}}
-        .confidence-badge.high {{background:rgba(34,197,94,.14);color:var(--green);}} .confidence-badge.medium {{background:rgba(251,191,36,.14);color:var(--gold);}} .confidence-badge.low {{background:rgba(148,163,184,.14);color:#cbd5e1;}}
-        .teams-row {{justify-content:space-between;gap:.8rem;}}
-        .team-block {{display:flex;gap:.7rem;align-items:center;min-width:0;}} .team-block.right {{text-align:right;}}
-        .team-logo {{flex:0 0 auto;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 25% 20%,rgba(34,197,94,.45),rgba(37,99,235,.35) 48%,rgba(15,23,42,.95));border:1px solid rgba(148,163,184,.24);color:white;font-weight:900;}}
-        .team-name {{color:var(--text);font-size:1rem;font-weight:800;line-height:1.15;}} .team-role {{color:var(--muted);font-size:.78rem;margin-top:.15rem;}}
-        .score-box {{text-align:center;color:var(--text);min-width:130px;border-radius:14px;padding:.75rem;background:rgba(2,8,23,.35);border:1px solid rgba(148,163,184,.18);font-weight:800;}}
-        .probability-grid {{display:grid;grid-template-columns:1fr 1fr .7fr;gap:.75rem;margin:1rem 0;}}
-        .prob-label {{color:var(--muted);font-size:.75rem;}} .prob-value {{color:var(--text);font-weight:800;font-size:1.3rem;}} .prob-value.green {{color:var(--green);}} .prob-value.blue {{color:#60a5fa;}}
-        .prob-track {{height:7px;border-radius:999px;background:rgba(148,163,184,.25);overflow:hidden;}} .prob-track span {{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#86efac);}} .prob-track.away span {{background:linear-gradient(90deg,#3b82f6,#93c5fd);}}
+        .match-card {{padding:1.05rem;margin-bottom:1rem;}}
+        .match-topline {{justify-content:space-between;color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;font-weight:850;}}
+        .confidence-badge {{border-radius:999px;padding:.34rem .62rem;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary);border:1px solid color-mix(in srgb,var(--primary) 28%,transparent);font-weight:850;}}
+        .confidence-badge.high {{background:color-mix(in srgb,var(--success) 14%,transparent);color:var(--success);border-color:color-mix(in srgb,var(--success) 30%,transparent);}} .confidence-badge.medium {{background:color-mix(in srgb,var(--warning) 14%,transparent);color:var(--warning);border-color:color-mix(in srgb,var(--warning) 30%,transparent);}} .confidence-badge.low {{background:color-mix(in srgb,var(--muted) 12%,transparent);color:var(--muted);border-color:var(--border);}}
+        .match-main {{display:grid;grid-template-columns:1fr minmax(150px,.8fr) 1fr;gap:.9rem;align-items:stretch;}}
+        .team-panel {{gap:.75rem;min-width:0;padding:.85rem;border:1px solid var(--border);border-radius:14px;background:var(--panel-2);}}
+        .team-panel.away {{justify-content:flex-end;text-align:right;}}
+        .team-panel.away .team-logo {{order:2;}}
+        .team-logo {{flex:0 0 auto;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 32%,transparent),color-mix(in srgb,var(--success) 24%,transparent));border:1px solid var(--border);color:var(--text);font-weight:900;}}
+        .team-copy {{min-width:0;}}
+        .team-name {{color:var(--text);font-size:1.02rem;font-weight:850;line-height:1.15;overflow-wrap:anywhere;}} .team-role {{color:var(--muted);font-size:.72rem;margin-bottom:.18rem;text-transform:uppercase;font-weight:850;letter-spacing:.05em;}}
+        .team-prob {{font-size:1.55rem;font-weight:950;margin-top:.38rem;font-variant-numeric:tabular-nums;}}
+        .team-prob.green {{color:var(--success);}} .team-prob.blue {{color:var(--primary);}}
+        .score-panel {{display:grid;place-items:center;text-align:center;border:1px solid var(--border);border-radius:14px;background:color-mix(in srgb,var(--panel-2) 82%,transparent);padding:.85rem;}}
+        .score-label {{color:var(--muted);font-size:.72rem;text-transform:uppercase;font-weight:850;letter-spacing:.05em;margin-bottom:.34rem;}}
+        .score-box {{text-align:center;color:var(--text);font-size:1.05rem;line-height:1.25;font-weight:900;}}
+        .probability-grid {{display:grid;grid-template-columns:1fr .62fr 1fr;gap:.75rem;margin:1rem 0;align-items:end;}}
+        .prob-label {{color:var(--muted);font-size:.73rem;font-weight:750;}} .draw-value {{color:var(--warning);font-weight:900;font-size:1.18rem;text-align:center;font-variant-numeric:tabular-nums;}}
+        .prob-track {{height:8px;border-radius:999px;background:color-mix(in srgb,var(--muted) 20%,transparent);overflow:hidden;margin-top:.45rem;}} .prob-track span {{display:block;height:100%;background:linear-gradient(90deg,var(--success),#86efac);}} .prob-track.away span {{background:linear-gradient(90deg,var(--primary),#93c5fd);}}
         .signal-grid {{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;margin-bottom:.9rem;}}
-        .signal-grid div {{padding:.65rem;border:1px solid rgba(148,163,184,.16);border-radius:12px;background:rgba(15,23,42,.38);min-height:88px;}}
+        .signal-grid div {{padding:.66rem;border:1px solid var(--border);border-radius:12px;background:var(--panel-2);min-height:88px;}}
         .signal-grid b,.factor-columns b {{display:block;color:var(--text);font-size:.78rem;margin-bottom:.35rem;}} .signal-grid span {{color:var(--muted);font-size:.78rem;line-height:1.25;}}
         .factor-columns {{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}} .factor-columns ul {{margin:.2rem 0 0;padding-left:1rem;color:var(--muted);font-size:.8rem;line-height:1.35;}}
-        .form-strip {{font-size:1.4rem;letter-spacing:.35rem;color:var(--green);background:rgba(15,23,42,.4);border:1px solid var(--border);border-radius:16px;padding:1rem;margin-bottom:1rem;}}
-        div.stButton>button,div[data-testid="stDownloadButton"]>button {{width:100%;border-radius:10px;border:1px solid rgba(59,130,246,.35);}}
+        .form-strip {{font-size:1.4rem;letter-spacing:.35rem;color:var(--success);background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem;}}
+        div.stButton>button,div[data-testid="stDownloadButton"]>button {{width:100%;border-radius:10px;border:1px solid color-mix(in srgb,var(--primary) 36%,var(--border));background:var(--panel-2);color:var(--text);font-weight:800;}}
         div[data-testid="stDataFrame"] {{border-radius:14px;overflow:hidden;overflow-x:auto;}} div[data-testid="stAlert"] {{border-radius:14px;}}
         .app-footer {{display:flex;justify-content:space-between;gap:1rem;margin:2rem 0 .5rem;padding:1rem 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);}}
         @media (max-width:768px) {{
             .block-container{{padding:.65rem .55rem 1.25rem;max-width:100%;}}
             section[data-testid="stSidebar"] div[role="radiogroup"] label{{padding:.5rem .55rem;margin:.08rem 0;}}
             .brand-block{{padding:.6rem .25rem .8rem;}}
-            .top-header,.teams-row,.factor-columns,.app-footer{{flex-direction:column;display:flex;align-items:flex-start;}}
+            .top-header,.factor-columns,.app-footer{{flex-direction:column;display:flex;align-items:flex-start;}}
             .top-header{{padding:.9rem;border-radius:16px;margin-bottom:1rem;}}
             .header-left{{gap:.75rem;}}
             .header-meta{{justify-content:flex-start;gap:.45rem;}}
             .status-pill,.updated-pill{{font-size:.76rem;padding:.4rem .55rem;}}
-            .probability-grid,.signal-grid{{grid-template-columns:1fr;gap:.5rem;margin:.7rem 0;}}
-            .score-box{{width:100%;padding:.65rem;}}
-            .team-logo{{width:40px;height:40px;}}
+            .match-main,.probability-grid,.signal-grid{{grid-template-columns:1fr;gap:.55rem;margin:.7rem 0;}}
+            .score-panel{{width:100%;padding:.75rem;}}
+            .team-logo{{width:42px;height:42px;border-radius:12px;}}
             .team-name{{font-size:.94rem;}}
-            .team-block.right{{text-align:left;flex-direction:row-reverse;}}
+            .team-panel.away{{justify-content:flex-start;text-align:left;}}
+            .team-panel.away .team-logo{{order:0;}}
+            .team-prob{{font-size:1.35rem;}}
             .metric-card,.content-card,.install-card,.quick-card{{min-height:auto;margin-bottom:.65rem;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.18);}}
             .spotlight-card{{height:156px;margin-bottom:.65rem;border-radius:14px !important;box-shadow:0 10px 26px rgba(0,0,0,.18);}}
             .match-card{{padding:.85rem;margin-bottom:.75rem;border-radius:14px;}}
