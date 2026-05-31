@@ -1,30 +1,33 @@
 AI Sports Predictor Daily Report
-Generated: 2026-05-30T15:57:04
+Generated: 2026-05-31T15:58:10
 Model version: v1.0.0
 
 Today's NBA Predictions
-- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 116 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
+- No games available.
 
 Today's Football Predictions
-- Scotland vs Curacao: Draw, Scotland 1 - 1 Curacao, home 33.6%, away 29.2%, draw 37.2%, confidence Low
-- Zimbabwe vs India: Zimbabwe, Zimbabwe 2 - 1 India, home 57.5%, away 17.7%, draw 24.8%, confidence Medium
-- Jamaica vs Nigeria: Draw, Jamaica 1 - 1 Nigeria, home 33.9%, away 29.4%, draw 36.7%, confidence Low
-- Ecuador vs Saudi Arabia: Ecuador, Ecuador 2 - 0 Saudi Arabia, home 63.9%, away 12.4%, draw 23.7%, confidence Medium
-- South Korea vs Trinidad and Tobago: South Korea, South Korea 2 - 0 Trinidad and Tobago, home 64.9%, away 13.1%, draw 22.0%, confidence Medium
-- Mexico vs Australia: Mexico, Mexico 2 - 1 Australia, home 53.5%, away 18.7%, draw 27.7%, confidence Low
+- Japan vs Iceland: Japan, Japan 3 - 1 Iceland, home 64.4%, away 13.3%, draw 22.3%, confidence Medium
+- Singapore vs Mongolia: Singapore, Singapore 2 - 1 Mongolia, home 49.8%, away 22.3%, draw 28.0%, confidence Low
+- Switzerland vs Jordan: Switzerland, Switzerland 3 - 1 Jordan, home 62.1%, away 16.1%, draw 21.9%, confidence Medium
+- Czechia vs Kosovo: Draw, Czechia 1 - 1 Kosovo, home 30.2%, away 34.0%, draw 35.8%, confidence Low
+- Cape Verde vs Serbia: Serbia, Cape Verde 1 - 2 Serbia, home 33.9%, away 33.9%, draw 32.2%, confidence Low
+- Poland vs Ukraine: Poland, Poland 2 - 1 Ukraine, home 51.0%, away 20.3%, draw 28.7%, confidence Low
+- Germany vs Finland: Germany, Germany 2 - 1 Finland, home 63.5%, away 15.9%, draw 20.6%, confidence Medium
+- United States vs Senegal: Draw, United States 2 - 2 Senegal, home 33.4%, away 31.2%, draw 35.4%, confidence Low
+- Brazil vs Panama: Brazil, Brazil 3 - 0 Panama, home 71.3%, away 8.0%, draw 20.6%, confidence High
 
 Highest Confidence Picks
-- South Korea vs Trinidad and Tobago: South Korea, South Korea 2 - 0 Trinidad and Tobago, home 64.9%, away 13.1%, draw 22.0%, confidence Medium
-- Ecuador vs Saudi Arabia: Ecuador, Ecuador 2 - 0 Saudi Arabia, home 63.9%, away 12.4%, draw 23.7%, confidence Medium
-- Zimbabwe vs India: Zimbabwe, Zimbabwe 2 - 1 India, home 57.5%, away 17.7%, draw 24.8%, confidence Medium
+- Brazil vs Panama: Brazil, Brazil 3 - 0 Panama, home 71.3%, away 8.0%, draw 20.6%, confidence High
+- Japan vs Iceland: Japan, Japan 3 - 1 Iceland, home 64.4%, away 13.3%, draw 22.3%, confidence Medium
+- Germany vs Finland: Germany, Germany 2 - 1 Finland, home 63.5%, away 15.9%, draw 20.6%, confidence Medium
 
 Upset Watch
-- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 116 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
+- Cape Verde vs Serbia: Serbia, Cape Verde 1 - 2 Serbia, home 33.9%, away 33.9%, draw 32.2%, confidence Low
 
 Draw Watch
-- Scotland vs Curacao: Draw, Scotland 1 - 1 Curacao, home 33.6%, away 29.2%, draw 37.2%, confidence Low
-- Jamaica vs Nigeria: Draw, Jamaica 1 - 1 Nigeria, home 33.9%, away 29.4%, draw 36.7%, confidence Low
-- Mexico vs Australia: Mexico, Mexico 2 - 1 Australia, home 53.5%, away 18.7%, draw 27.7%, confidence Low
+- Czechia vs Kosovo: Draw, Czechia 1 - 1 Kosovo, home 30.2%, away 34.0%, draw 35.8%, confidence Low
+- United States vs Senegal: Draw, United States 2 - 2 Senegal, home 33.4%, away 31.2%, draw 35.4%, confidence Low
+- Cape Verde vs Serbia: Serbia, Cape Verde 1 - 2 Serbia, home 33.9%, away 33.9%, draw 32.2%, confidence Low
 
 Injury Risk Games
-- San Antonio Spurs at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 116 - 114 San Antonio Spurs, home 51.0%, away 49.0%, confidence Low
+- No games available.
