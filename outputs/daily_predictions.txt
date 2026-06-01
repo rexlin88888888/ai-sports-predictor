@@ -1,33 +1,31 @@
 AI Sports Predictor Daily Report
-Generated: 2026-05-31T15:58:10
+Generated: 2026-06-01T22:26:00
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Japan vs Iceland: Japan, Japan 3 - 1 Iceland, home 64.4%, away 13.3%, draw 22.3%, confidence Medium
-- Singapore vs Mongolia: Singapore, Singapore 2 - 1 Mongolia, home 49.8%, away 22.3%, draw 28.0%, confidence Low
-- Switzerland vs Jordan: Switzerland, Switzerland 3 - 1 Jordan, home 62.1%, away 16.1%, draw 21.9%, confidence Medium
-- Czechia vs Kosovo: Draw, Czechia 1 - 1 Kosovo, home 30.2%, away 34.0%, draw 35.8%, confidence Low
-- Cape Verde vs Serbia: Serbia, Cape Verde 1 - 2 Serbia, home 33.9%, away 33.9%, draw 32.2%, confidence Low
-- Poland vs Ukraine: Poland, Poland 2 - 1 Ukraine, home 51.0%, away 20.3%, draw 28.7%, confidence Low
-- Germany vs Finland: Germany, Germany 2 - 1 Finland, home 63.5%, away 15.9%, draw 20.6%, confidence Medium
-- United States vs Senegal: Draw, United States 2 - 2 Senegal, home 33.4%, away 31.2%, draw 35.4%, confidence Low
-- Brazil vs Panama: Brazil, Brazil 3 - 0 Panama, home 71.3%, away 8.0%, draw 20.6%, confidence High
+- Bulgaria vs Montenegro: Draw, Bulgaria 1 - 1 Montenegro, home 37.0%, away 25.8%, draw 37.2%, confidence Low
+- Slovakia vs Malta: Slovakia, Slovakia 2 - 1 Malta, home 67.1%, away 12.3%, draw 20.6%, confidence Medium
+- Norway vs Sweden: Draw, Norway 1 - 1 Sweden, home 28.1%, away 34.7%, draw 37.2%, confidence Low
+- Türkiye vs North Macedonia: Türkiye, Türkiye 2 - 1 North Macedonia, home 41.8%, away 24.8%, draw 33.4%, confidence Low
+- Austria vs Tunisia: Austria, Austria 2 - 1 Tunisia, home 52.8%, away 18.0%, draw 29.2%, confidence Low
+- Colombia vs Costa Rica: Colombia, Colombia 3 - 0 Costa Rica, home 70.4%, away 9.0%, draw 20.6%, confidence High
+- Canada vs Uzbekistan: Draw, Canada 1 - 1 Uzbekistan, home 34.9%, away 27.9%, draw 37.2%, confidence Low
 
 Highest Confidence Picks
-- Brazil vs Panama: Brazil, Brazil 3 - 0 Panama, home 71.3%, away 8.0%, draw 20.6%, confidence High
-- Japan vs Iceland: Japan, Japan 3 - 1 Iceland, home 64.4%, away 13.3%, draw 22.3%, confidence Medium
-- Germany vs Finland: Germany, Germany 2 - 1 Finland, home 63.5%, away 15.9%, draw 20.6%, confidence Medium
+- Colombia vs Costa Rica: Colombia, Colombia 3 - 0 Costa Rica, home 70.4%, away 9.0%, draw 20.6%, confidence High
+- Slovakia vs Malta: Slovakia, Slovakia 2 - 1 Malta, home 67.1%, away 12.3%, draw 20.6%, confidence Medium
+- Austria vs Tunisia: Austria, Austria 2 - 1 Tunisia, home 52.8%, away 18.0%, draw 29.2%, confidence Low
 
 Upset Watch
-- Cape Verde vs Serbia: Serbia, Cape Verde 1 - 2 Serbia, home 33.9%, away 33.9%, draw 32.2%, confidence Low
+- No games available.
 
 Draw Watch
-- Czechia vs Kosovo: Draw, Czechia 1 - 1 Kosovo, home 30.2%, away 34.0%, draw 35.8%, confidence Low
-- United States vs Senegal: Draw, United States 2 - 2 Senegal, home 33.4%, away 31.2%, draw 35.4%, confidence Low
-- Cape Verde vs Serbia: Serbia, Cape Verde 1 - 2 Serbia, home 33.9%, away 33.9%, draw 32.2%, confidence Low
+- Bulgaria vs Montenegro: Draw, Bulgaria 1 - 1 Montenegro, home 37.0%, away 25.8%, draw 37.2%, confidence Low
+- Norway vs Sweden: Draw, Norway 1 - 1 Sweden, home 28.1%, away 34.7%, draw 37.2%, confidence Low
+- Canada vs Uzbekistan: Draw, Canada 1 - 1 Uzbekistan, home 34.9%, away 27.9%, draw 37.2%, confidence Low
 
 Injury Risk Games
 - No games available.
