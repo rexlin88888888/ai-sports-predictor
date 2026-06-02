@@ -1,31 +1,29 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-01T22:26:00
+Generated: 2026-06-02T22:08:15
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Bulgaria vs Montenegro: Draw, Bulgaria 1 - 1 Montenegro, home 37.0%, away 25.8%, draw 37.2%, confidence Low
-- Slovakia vs Malta: Slovakia, Slovakia 2 - 1 Malta, home 67.1%, away 12.3%, draw 20.6%, confidence Medium
-- Norway vs Sweden: Draw, Norway 1 - 1 Sweden, home 28.1%, away 34.7%, draw 37.2%, confidence Low
-- Türkiye vs North Macedonia: Türkiye, Türkiye 2 - 1 North Macedonia, home 41.8%, away 24.8%, draw 33.4%, confidence Low
-- Austria vs Tunisia: Austria, Austria 2 - 1 Tunisia, home 52.8%, away 18.0%, draw 29.2%, confidence Low
-- Colombia vs Costa Rica: Colombia, Colombia 3 - 0 Costa Rica, home 70.4%, away 9.0%, draw 20.6%, confidence High
-- Canada vs Uzbekistan: Draw, Canada 1 - 1 Uzbekistan, home 34.9%, away 27.9%, draw 37.2%, confidence Low
+- Croatia vs Belgium: Draw, Croatia 1 - 1 Belgium, home 28.9%, away 34.9%, draw 36.2%, confidence Low
+- Georgia vs Romania: Georgia, Georgia 2 - 1 Romania, home 47.1%, away 25.1%, draw 27.7%, confidence Low
+- Morocco vs Madagascar: Morocco, Morocco 2 - 1 Madagascar, home 61.4%, away 15.5%, draw 23.1%, confidence Medium
+- Wales vs Ghana: Wales, Wales 2 - 1 Ghana, home 46.0%, away 24.0%, draw 30.0%, confidence Low
+- Haiti vs New Zealand: Haiti, Haiti 2 - 1 New Zealand, home 38.8%, away 27.4%, draw 33.8%, confidence Low
 
 Highest Confidence Picks
-- Colombia vs Costa Rica: Colombia, Colombia 3 - 0 Costa Rica, home 70.4%, away 9.0%, draw 20.6%, confidence High
-- Slovakia vs Malta: Slovakia, Slovakia 2 - 1 Malta, home 67.1%, away 12.3%, draw 20.6%, confidence Medium
-- Austria vs Tunisia: Austria, Austria 2 - 1 Tunisia, home 52.8%, away 18.0%, draw 29.2%, confidence Low
+- Morocco vs Madagascar: Morocco, Morocco 2 - 1 Madagascar, home 61.4%, away 15.5%, draw 23.1%, confidence Medium
+- Georgia vs Romania: Georgia, Georgia 2 - 1 Romania, home 47.1%, away 25.1%, draw 27.7%, confidence Low
+- Wales vs Ghana: Wales, Wales 2 - 1 Ghana, home 46.0%, away 24.0%, draw 30.0%, confidence Low
 
 Upset Watch
 - No games available.
 
 Draw Watch
-- Bulgaria vs Montenegro: Draw, Bulgaria 1 - 1 Montenegro, home 37.0%, away 25.8%, draw 37.2%, confidence Low
-- Norway vs Sweden: Draw, Norway 1 - 1 Sweden, home 28.1%, away 34.7%, draw 37.2%, confidence Low
-- Canada vs Uzbekistan: Draw, Canada 1 - 1 Uzbekistan, home 34.9%, away 27.9%, draw 37.2%, confidence Low
+- Croatia vs Belgium: Draw, Croatia 1 - 1 Belgium, home 28.9%, away 34.9%, draw 36.2%, confidence Low
+- Haiti vs New Zealand: Haiti, Haiti 2 - 1 New Zealand, home 38.8%, away 27.4%, draw 33.8%, confidence Low
+- Wales vs Ghana: Wales, Wales 2 - 1 Ghana, home 46.0%, away 24.0%, draw 30.0%, confidence Low
 
 Injury Risk Games
 - No games available.
