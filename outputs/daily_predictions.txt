@@ -1,29 +1,35 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-02T22:08:15
+Generated: 2026-06-03T22:15:15
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
 
 Today's Football Predictions
-- Croatia vs Belgium: Draw, Croatia 1 - 1 Belgium, home 28.9%, away 34.9%, draw 36.2%, confidence Low
-- Georgia vs Romania: Georgia, Georgia 2 - 1 Romania, home 47.1%, away 25.1%, draw 27.7%, confidence Low
-- Morocco vs Madagascar: Morocco, Morocco 2 - 1 Madagascar, home 61.4%, away 15.5%, draw 23.1%, confidence Medium
-- Wales vs Ghana: Wales, Wales 2 - 1 Ghana, home 46.0%, away 24.0%, draw 30.0%, confidence Low
-- Haiti vs New Zealand: Haiti, Haiti 2 - 1 New Zealand, home 38.8%, away 27.4%, draw 33.8%, confidence Low
+- Philippines vs Guam: Draw, Philippines 1 - 1 Guam, home 32.2%, away 33.9%, draw 34.0%, confidence Low
+- Kyrgyz Republic vs Kenya: Kyrgyz Republic, Kyrgyz Republic 2 - 1 Kenya, home 40.1%, away 26.0%, draw 33.9%, confidence Low
+- Gibraltar vs British Virgin Islands: Draw, Gibraltar 1 - 1 British Virgin Islands, home 30.5%, away 32.3%, draw 37.2%, confidence Low
+- Albania vs Israel: Albania, Albania 2 - 1 Israel, home 43.9%, away 26.5%, draw 29.6%, confidence Low
+- Congo DR vs Denmark: Denmark, Congo DR 1 - 2 Denmark, home 15.3%, away 62.3%, draw 22.4%, confidence Medium
+- Luxembourg vs Italy: Italy, Luxembourg 0 - 2 Italy, home 11.3%, away 68.0%, draw 20.7%, confidence Medium
+- Netherlands vs Algeria: Netherlands, Netherlands 2 - 1 Algeria, home 47.6%, away 26.6%, draw 25.8%, confidence Low
+- Poland vs Nigeria: Poland, Poland 2 - 1 Nigeria, home 60.9%, away 15.5%, draw 23.6%, confidence Medium
+- Panama vs Dominican Republic: Panama, Panama 2 - 1 Dominican Republic, home 48.5%, away 23.7%, draw 27.8%, confidence Low
+- South Korea vs El Salvador: South Korea, South Korea 2 - 0 El Salvador, home 67.2%, away 11.7%, draw 21.1%, confidence Medium
 
 Highest Confidence Picks
-- Morocco vs Madagascar: Morocco, Morocco 2 - 1 Madagascar, home 61.4%, away 15.5%, draw 23.1%, confidence Medium
-- Georgia vs Romania: Georgia, Georgia 2 - 1 Romania, home 47.1%, away 25.1%, draw 27.7%, confidence Low
-- Wales vs Ghana: Wales, Wales 2 - 1 Ghana, home 46.0%, away 24.0%, draw 30.0%, confidence Low
+- Luxembourg vs Italy: Italy, Luxembourg 0 - 2 Italy, home 11.3%, away 68.0%, draw 20.7%, confidence Medium
+- South Korea vs El Salvador: South Korea, South Korea 2 - 0 El Salvador, home 67.2%, away 11.7%, draw 21.1%, confidence Medium
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
 
 Upset Watch
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
+- Congo DR vs Denmark: Denmark, Congo DR 1 - 2 Denmark, home 15.3%, away 62.3%, draw 22.4%, confidence Medium
 
 Draw Watch
-- Croatia vs Belgium: Draw, Croatia 1 - 1 Belgium, home 28.9%, away 34.9%, draw 36.2%, confidence Low
-- Haiti vs New Zealand: Haiti, Haiti 2 - 1 New Zealand, home 38.8%, away 27.4%, draw 33.8%, confidence Low
-- Wales vs Ghana: Wales, Wales 2 - 1 Ghana, home 46.0%, away 24.0%, draw 30.0%, confidence Low
+- Gibraltar vs British Virgin Islands: Draw, Gibraltar 1 - 1 British Virgin Islands, home 30.5%, away 32.3%, draw 37.2%, confidence Low
+- Philippines vs Guam: Draw, Philippines 1 - 1 Guam, home 32.2%, away 33.9%, draw 34.0%, confidence Low
+- Kyrgyz Republic vs Kenya: Kyrgyz Republic, Kyrgyz Republic 2 - 1 Kenya, home 40.1%, away 26.0%, draw 33.9%, confidence Low
 
 Injury Risk Games
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
