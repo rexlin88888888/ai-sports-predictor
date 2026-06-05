@@ -1,37 +1,44 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-04T19:50:11
+Generated: 2026-06-05T18:32:53
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
 
 Today's Football Predictions
-- Maldives vs Pakistan: Maldives, Maldives 2 - 1 Pakistan, home 51.3%, away 20.8%, draw 28.0%, confidence Low
-- Cambodia vs Bhutan: Cambodia, Cambodia 2 - 1 Bhutan, home 44.8%, away 26.7%, draw 28.5%, confidence Low
-- Lesotho vs Kenya: Kenya, Lesotho 1 - 2 Kenya, home 26.2%, away 43.2%, draw 30.6%, confidence Low
-- Burundi vs Equatorial Guinea: Burundi, Burundi 2 - 1 Equatorial Guinea, home 50.0%, away 21.6%, draw 28.4%, confidence Low
-- Northern Ireland vs Guinea: Northern Ireland, Northern Ireland 2 - 1 Guinea, home 47.7%, away 23.0%, draw 29.3%, confidence Low
-- Slovenia vs Cyprus: Slovenia, Slovenia 2 - 1 Cyprus, home 62.5%, away 15.3%, draw 22.2%, confidence Medium
-- Iran vs Mali: Iran, Iran 2 - 1 Mali, home 58.5%, away 17.8%, draw 23.7%, confidence Medium
-- Andorra vs Liechtenstein: Andorra, Andorra 2 - 1 Liechtenstein, home 54.7%, away 16.3%, draw 29.0%, confidence Low
-- Sweden vs Greece: Sweden, Sweden 2 - 1 Greece, home 56.1%, away 19.7%, draw 24.2%, confidence Medium
-- Spain vs Iraq: Spain, Spain 3 - 0 Iraq, home 70.6%, away 8.5%, draw 20.8%, confidence High
-- France vs Ivory Coast: France, France 2 - 1 Ivory Coast, home 61.0%, away 16.9%, draw 22.1%, confidence Medium
-- Czechia vs Guatemala: Czechia, Czechia 2 - 1 Guatemala, home 54.3%, away 17.4%, draw 28.3%, confidence Low
-- Mexico vs Serbia: Mexico, Mexico 2 - 1 Serbia, home 45.3%, away 25.6%, draw 29.1%, confidence Low
+- Singapore vs China: Draw, Singapore 1 - 1 China, home 31.9%, away 32.1%, draw 36.0%, confidence Low
+- Angola vs Botswana: Angola, Angola 2 - 0 Botswana, home 53.6%, away 17.3%, draw 29.1%, confidence Low
+- Hong Kong vs Mongolia: Hong Kong, Hong Kong 2 - 1 Mongolia, home 52.0%, away 19.3%, draw 28.7%, confidence Low
+- Thailand vs Kuwait: Thailand, Thailand 2 - 1 Kuwait, home 54.9%, away 18.5%, draw 26.6%, confidence Low
+- Indonesia vs Oman: Indonesia, Indonesia 2 - 1 Oman, home 45.7%, away 28.5%, draw 25.8%, confidence Low
+- Belarus vs Syria: Belarus, Belarus 2 - 1 Syria, home 55.9%, away 17.0%, draw 27.1%, confidence Medium
+- Georgia vs Bahrain: Georgia, Georgia 2 - 1 Bahrain, home 57.2%, away 15.6%, draw 27.2%, confidence Medium
+- Slovakia vs Montenegro: Slovakia, Slovakia 2 - 1 Montenegro, home 59.2%, away 17.2%, draw 23.6%, confidence Medium
+- Moldova vs Bulgaria: Bulgaria, Moldova 1 - 2 Bulgaria, home 26.1%, away 48.5%, draw 25.4%, confidence Low
+- Russia vs Burkina Faso: Russia, Russia 2 - 1 Burkina Faso, home 59.9%, away 17.1%, draw 23.1%, confidence Medium
+- San Marino vs Bangladesh: Bangladesh, San Marino 1 - 2 Bangladesh, home 25.4%, away 44.1%, draw 30.6%, confidence Low
+- Hungary vs Finland: Hungary, Hungary 2 - 1 Finland, home 47.6%, away 23.2%, draw 29.2%, confidence Low
+- Azerbaijan vs Malta: Azerbaijan, Azerbaijan 2 - 1 Malta, home 45.9%, away 25.2%, draw 29.0%, confidence Low
+- Tanzania vs Uganda: Tanzania, Tanzania 2 - 1 Uganda, home 41.5%, away 24.8%, draw 33.7%, confidence Low
+- Paraguay vs Nicaragua: Paraguay, Paraguay 2 - 1 Nicaragua, home 61.2%, away 16.7%, draw 22.1%, confidence Medium
+- Puerto Rico vs Saudi Arabia: Saudi Arabia, Puerto Rico 1 - 2 Saudi Arabia, home 30.4%, away 37.8%, draw 31.8%, confidence Low
+- Canada vs Republic of Ireland: Draw, Canada 1 - 1 Republic of Ireland, home 33.2%, away 30.2%, draw 36.7%, confidence Low
+- Haiti vs Peru: Peru, Haiti 1 - 2 Peru, home 25.9%, away 43.6%, draw 30.6%, confidence Low
 
 Highest Confidence Picks
-- Spain vs Iraq: Spain, Spain 3 - 0 Iraq, home 70.6%, away 8.5%, draw 20.8%, confidence High
-- Slovenia vs Cyprus: Slovenia, Slovenia 2 - 1 Cyprus, home 62.5%, away 15.3%, draw 22.2%, confidence Medium
-- France vs Ivory Coast: France, France 2 - 1 Ivory Coast, home 61.0%, away 16.9%, draw 22.1%, confidence Medium
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
+- Paraguay vs Nicaragua: Paraguay, Paraguay 2 - 1 Nicaragua, home 61.2%, away 16.7%, draw 22.1%, confidence Medium
+- Russia vs Burkina Faso: Russia, Russia 2 - 1 Burkina Faso, home 59.9%, away 17.1%, draw 23.1%, confidence Medium
 
 Upset Watch
-- Lesotho vs Kenya: Kenya, Lesotho 1 - 2 Kenya, home 26.2%, away 43.2%, draw 30.6%, confidence Low
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium
+- Moldova vs Bulgaria: Bulgaria, Moldova 1 - 2 Bulgaria, home 26.1%, away 48.5%, draw 25.4%, confidence Low
+- San Marino vs Bangladesh: Bangladesh, San Marino 1 - 2 Bangladesh, home 25.4%, away 44.1%, draw 30.6%, confidence Low
 
 Draw Watch
-- Lesotho vs Kenya: Kenya, Lesotho 1 - 2 Kenya, home 26.2%, away 43.2%, draw 30.6%, confidence Low
-- Northern Ireland vs Guinea: Northern Ireland, Northern Ireland 2 - 1 Guinea, home 47.7%, away 23.0%, draw 29.3%, confidence Low
-- Mexico vs Serbia: Mexico, Mexico 2 - 1 Serbia, home 45.3%, away 25.6%, draw 29.1%, confidence Low
+- Canada vs Republic of Ireland: Draw, Canada 1 - 1 Republic of Ireland, home 33.2%, away 30.2%, draw 36.7%, confidence Low
+- Singapore vs China: Draw, Singapore 1 - 1 China, home 31.9%, away 32.1%, draw 36.0%, confidence Low
+- Tanzania vs Uganda: Tanzania, Tanzania 2 - 1 Uganda, home 41.5%, away 24.8%, draw 33.7%, confidence Low
 
 Injury Risk Games
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 105 - 123 New York Knicks, home 33.9%, away 66.1%, confidence Medium

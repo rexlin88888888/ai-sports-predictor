@@ -1,21 +1,21 @@
 Twitter/X Post
-Today's model pick: Spain in Spain vs Iraq.
-Projected score: Spain 3 - 0 Iraq.
-Watchlist note: Spain recent goals for 2.30, against 0.65
-Confidence: High. Model version: v1.0.0.
+Today's model pick: New York Knicks in New York Knicks at San Antonio Spurs.
+Projected score: San Antonio Spurs 105 - 123 New York Knicks.
+Watchlist note: Model favors New York Knicks mainly because of recent form (+20.4 rating edge).
+Confidence: Medium. Model version: v1.0.0.
 Hashtags: #SportsAI #ModelPick #SportsPredictions
 
 YouTube Shorts Title
-Spain is today's model pick to watch
+New York Knicks is today's model pick to watch
 
 Instagram Caption
 Today's AI Sports Predictor board is live.
 
-Top model pick: Spain
-Matchup: Spain vs Iraq
-Projection: Spain 3 - 0 Iraq
-Signal: Spain recent goals for 2.30, against 0.65
+Top model pick: New York Knicks
+Matchup: New York Knicks at San Antonio Spurs
+Projection: San Antonio Spurs 105 - 123 New York Knicks
+Signal: Model favors New York Knicks mainly because of recent form (+20.4 rating edge).
 
-Draw watchlist: Lesotho vs Kenya at 30.6%
+Draw watchlist: Canada vs Republic of Ireland at 36.7%
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #DailySports
