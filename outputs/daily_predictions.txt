@@ -1,47 +1,36 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-06T16:03:33
+Generated: 2026-06-07T16:55:47
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Fiji vs Vanuatu: Fiji, Fiji 2 - 1 Vanuatu, home 49.7%, away 21.3%, draw 29.0%, confidence Low
-- Myanmar vs Guam: Guam, Myanmar 1 - 2 Guam, home 31.0%, away 36.8%, draw 32.2%, confidence Low
-- Belgium vs Tunisia: Belgium, Belgium 2 - 0 Tunisia, home 62.4%, away 13.7%, draw 23.9%, confidence Medium
-- Armenia vs Kazakhstan: Armenia, Armenia 2 - 1 Kazakhstan, home 42.9%, away 27.2%, draw 30.0%, confidence Low
-- Palestine vs Kenya: Draw, Palestine 1 - 1 Kenya, home 26.7%, away 36.1%, draw 37.2%, confidence Low
-- Ethiopia vs Malawi: Ethiopia, Ethiopia 2 - 1 Malawi, home 50.9%, away 20.1%, draw 29.0%, confidence Low
-- Comoros vs Rwanda: Comoros, Comoros 2 - 1 Rwanda, home 56.4%, away 15.6%, draw 28.0%, confidence Medium
-- Gibraltar vs Cayman Islands: Gibraltar, Gibraltar 2 - 1 Cayman Islands, home 52.4%, away 18.2%, draw 29.4%, confidence Low
-- Portugal vs Chile: Portugal, Portugal 2 - 1 Chile, home 48.2%, away 24.2%, draw 27.6%, confidence Low
-- Romania vs Wales: Romania, Romania 2 - 0 Wales, home 55.8%, away 17.4%, draw 26.8%, confidence Medium
-- Albania vs Luxembourg: Albania, Albania 2 - 0 Luxembourg, home 66.9%, away 10.6%, draw 22.5%, confidence Medium
-- United States vs Germany: Germany, United States 2 - 3 Germany, home 33.4%, away 34.1%, draw 32.5%, confidence Low
-- Panama vs Bosnia-Herzegovina: Draw, Panama 1 - 1 Bosnia-Herzegovina, home 35.8%, away 27.0%, draw 37.2%, confidence Low
-- Switzerland vs Australia: Switzerland, Switzerland 2 - 1 Australia, home 53.1%, away 19.9%, draw 27.0%, confidence Low
-- Bolivia vs Scotland: Bolivia, Bolivia 2 - 1 Scotland, home 44.9%, away 26.2%, draw 28.9%, confidence Low
-- England vs New Zealand: England, England 2 - 0 New Zealand, home 69.8%, away 9.3%, draw 20.9%, confidence Medium
-- Qatar vs El Salvador: Qatar, Qatar 2 - 1 El Salvador, home 56.1%, away 18.7%, draw 25.2%, confidence Medium
-- Jamaica vs South Africa: Draw, Jamaica 1 - 1 South Africa, home 32.3%, away 32.8%, draw 34.9%, confidence Low
-- Brazil vs Egypt: Brazil, Brazil 3 - 1 Egypt, home 65.7%, away 13.1%, draw 21.1%, confidence Medium
-- Venezuela vs Türkiye: Venezuela, Venezuela 2 - 1 Türkiye, home 52.5%, away 21.9%, draw 25.5%, confidence Low
-- Argentina vs Honduras: Argentina, Argentina 3 - 0 Honduras, home 71.7%, away 7.7%, draw 20.6%, confidence High
-- Curaçao vs Aruba: Draw, Curaçao 2 - 2 Aruba, home 36.8%, away 26.0%, draw 37.2%, confidence Low
+- Afghanistan vs Pakistan: Afghanistan, Afghanistan 2 - 1 Pakistan, home 46.3%, away 24.1%, draw 29.6%, confidence Low
+- Kenya vs Lesotho: Kenya, Kenya 2 - 0 Lesotho, home 61.8%, away 13.9%, draw 24.3%, confidence Medium
+- Liechtenstein vs Cyprus: Cyprus, Liechtenstein 1 - 2 Cyprus, home 23.0%, away 53.3%, draw 23.7%, confidence Low
+- Oman vs Mozambique: Oman, Oman 2 - 1 Mozambique, home 51.5%, away 23.1%, draw 25.4%, confidence Low
+- Denmark vs Ukraine: Denmark, Denmark 2 - 1 Ukraine, home 53.6%, away 18.3%, draw 28.2%, confidence Low
+- Kosovo vs Andorra: Kosovo, Kosovo 2 - 0 Andorra, home 69.1%, away 9.8%, draw 21.0%, confidence Medium
+- Croatia vs Slovenia: Croatia, Croatia 2 - 1 Slovenia, home 52.3%, away 23.9%, draw 23.8%, confidence Low
+- Greece vs Italy: Italy, Greece 1 - 2 Italy, home 31.2%, away 36.2%, draw 32.6%, confidence Low
+- Morocco vs Norway: Morocco, Morocco 2 - 1 Norway, home 53.6%, away 20.5%, draw 25.9%, confidence Low
+- Ecuador vs Guatemala: Ecuador, Ecuador 2 - 0 Guatemala, home 67.3%, away 10.4%, draw 22.3%, confidence Medium
+- Colombia vs Jordan: Colombia, Colombia 3 - 1 Jordan, home 67.9%, away 11.5%, draw 20.6%, confidence Medium
 
 Highest Confidence Picks
-- Argentina vs Honduras: Argentina, Argentina 3 - 0 Honduras, home 71.7%, away 7.7%, draw 20.6%, confidence High
-- England vs New Zealand: England, England 2 - 0 New Zealand, home 69.8%, away 9.3%, draw 20.9%, confidence Medium
-- Albania vs Luxembourg: Albania, Albania 2 - 0 Luxembourg, home 66.9%, away 10.6%, draw 22.5%, confidence Medium
+- Kosovo vs Andorra: Kosovo, Kosovo 2 - 0 Andorra, home 69.1%, away 9.8%, draw 21.0%, confidence Medium
+- Colombia vs Jordan: Colombia, Colombia 3 - 1 Jordan, home 67.9%, away 11.5%, draw 20.6%, confidence Medium
+- Ecuador vs Guatemala: Ecuador, Ecuador 2 - 0 Guatemala, home 67.3%, away 10.4%, draw 22.3%, confidence Medium
 
 Upset Watch
-- Myanmar vs Guam: Guam, Myanmar 1 - 2 Guam, home 31.0%, away 36.8%, draw 32.2%, confidence Low
-- United States vs Germany: Germany, United States 2 - 3 Germany, home 33.4%, away 34.1%, draw 32.5%, confidence Low
+- Liechtenstein vs Cyprus: Cyprus, Liechtenstein 1 - 2 Cyprus, home 23.0%, away 53.3%, draw 23.7%, confidence Low
+- Greece vs Italy: Italy, Greece 1 - 2 Italy, home 31.2%, away 36.2%, draw 32.6%, confidence Low
 
 Draw Watch
-- Palestine vs Kenya: Draw, Palestine 1 - 1 Kenya, home 26.7%, away 36.1%, draw 37.2%, confidence Low
-- Panama vs Bosnia-Herzegovina: Draw, Panama 1 - 1 Bosnia-Herzegovina, home 35.8%, away 27.0%, draw 37.2%, confidence Low
-- Curaçao vs Aruba: Draw, Curaçao 2 - 2 Aruba, home 36.8%, away 26.0%, draw 37.2%, confidence Low
+- Greece vs Italy: Italy, Greece 1 - 2 Italy, home 31.2%, away 36.2%, draw 32.6%, confidence Low
+- Afghanistan vs Pakistan: Afghanistan, Afghanistan 2 - 1 Pakistan, home 46.3%, away 24.1%, draw 29.6%, confidence Low
+- Denmark vs Ukraine: Denmark, Denmark 2 - 1 Ukraine, home 53.6%, away 18.3%, draw 28.2%, confidence Low
 
 Injury Risk Games
 - No games available.
