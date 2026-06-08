@@ -1,36 +1,25 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-07T16:55:47
+Generated: 2026-06-08T19:54:52
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- San Antonio Spurs at New York Knicks: New York Knicks, New York Knicks 123 - 100 San Antonio Spurs, home 70.0%, away 30.0%, confidence Medium
 
 Today's Football Predictions
-- Afghanistan vs Pakistan: Afghanistan, Afghanistan 2 - 1 Pakistan, home 46.3%, away 24.1%, draw 29.6%, confidence Low
-- Kenya vs Lesotho: Kenya, Kenya 2 - 0 Lesotho, home 61.8%, away 13.9%, draw 24.3%, confidence Medium
-- Liechtenstein vs Cyprus: Cyprus, Liechtenstein 1 - 2 Cyprus, home 23.0%, away 53.3%, draw 23.7%, confidence Low
-- Oman vs Mozambique: Oman, Oman 2 - 1 Mozambique, home 51.5%, away 23.1%, draw 25.4%, confidence Low
-- Denmark vs Ukraine: Denmark, Denmark 2 - 1 Ukraine, home 53.6%, away 18.3%, draw 28.2%, confidence Low
-- Kosovo vs Andorra: Kosovo, Kosovo 2 - 0 Andorra, home 69.1%, away 9.8%, draw 21.0%, confidence Medium
-- Croatia vs Slovenia: Croatia, Croatia 2 - 1 Slovenia, home 52.3%, away 23.9%, draw 23.8%, confidence Low
-- Greece vs Italy: Italy, Greece 1 - 2 Italy, home 31.2%, away 36.2%, draw 32.6%, confidence Low
-- Morocco vs Norway: Morocco, Morocco 2 - 1 Norway, home 53.6%, away 20.5%, draw 25.9%, confidence Low
-- Ecuador vs Guatemala: Ecuador, Ecuador 2 - 0 Guatemala, home 67.3%, away 10.4%, draw 22.3%, confidence Medium
-- Colombia vs Jordan: Colombia, Colombia 3 - 1 Jordan, home 67.9%, away 11.5%, draw 20.6%, confidence Medium
+- Netherlands vs Uzbekistan: Netherlands, Netherlands 2 - 1 Uzbekistan, home 64.3%, away 15.1%, draw 20.6%, confidence Medium
+- France vs Northern Ireland: France, France 3 - 0 Northern Ireland, home 70.4%, away 9.0%, draw 20.6%, confidence High
+- Peru vs Spain: Spain, Peru 1 - 2 Spain, home 17.9%, away 59.6%, draw 22.5%, confidence Medium
 
 Highest Confidence Picks
-- Kosovo vs Andorra: Kosovo, Kosovo 2 - 0 Andorra, home 69.1%, away 9.8%, draw 21.0%, confidence Medium
-- Colombia vs Jordan: Colombia, Colombia 3 - 1 Jordan, home 67.9%, away 11.5%, draw 20.6%, confidence Medium
-- Ecuador vs Guatemala: Ecuador, Ecuador 2 - 0 Guatemala, home 67.3%, away 10.4%, draw 22.3%, confidence Medium
+- France vs Northern Ireland: France, France 3 - 0 Northern Ireland, home 70.4%, away 9.0%, draw 20.6%, confidence High
+- San Antonio Spurs at New York Knicks: New York Knicks, New York Knicks 123 - 100 San Antonio Spurs, home 70.0%, away 30.0%, confidence Medium
+- Netherlands vs Uzbekistan: Netherlands, Netherlands 2 - 1 Uzbekistan, home 64.3%, away 15.1%, draw 20.6%, confidence Medium
 
 Upset Watch
-- Liechtenstein vs Cyprus: Cyprus, Liechtenstein 1 - 2 Cyprus, home 23.0%, away 53.3%, draw 23.7%, confidence Low
-- Greece vs Italy: Italy, Greece 1 - 2 Italy, home 31.2%, away 36.2%, draw 32.6%, confidence Low
+- Peru vs Spain: Spain, Peru 1 - 2 Spain, home 17.9%, away 59.6%, draw 22.5%, confidence Medium
 
 Draw Watch
-- Greece vs Italy: Italy, Greece 1 - 2 Italy, home 31.2%, away 36.2%, draw 32.6%, confidence Low
-- Afghanistan vs Pakistan: Afghanistan, Afghanistan 2 - 1 Pakistan, home 46.3%, away 24.1%, draw 29.6%, confidence Low
-- Denmark vs Ukraine: Denmark, Denmark 2 - 1 Ukraine, home 53.6%, away 18.3%, draw 28.2%, confidence Low
+- No games available.
 
 Injury Risk Games
-- No games available.
+- San Antonio Spurs at New York Knicks: New York Knicks, New York Knicks 123 - 100 San Antonio Spurs, home 70.0%, away 30.0%, confidence Medium
