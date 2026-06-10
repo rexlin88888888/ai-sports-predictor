@@ -1,0 +1,24 @@
+Match: Mexico vs South Africa
+Date: 2026-06-03
+Predicted winner: Mexico
+Predicted score: Mexico 2 - 1 South Africa
+Home win probability: 54.0%
+Away win probability: 18.5%
+Draw probability: 27.5%
+Confidence: Low
+
+Key factors:
+- Mexico recent goals for 1.20, against 1.20
+- South Africa recent goals for 1.20, against 0.90
+- FIFA rank edge feature +0.44
+- home_elo=1662, away_elo=1587, elo_diff=+76, elo_win_probability=0.660
+- home_momentum=DDWWW, away_momentum=LDWWD, momentum_score_edge=+1.6
+- home_advantage_score=0.28
+- draw_probability=0.275, draw_risk=0.464, predicted_result=HOME_WIN
+- AI analysis: model leans Mexico after combining Elo, form, availability, rest, and venue context.
+- home_momentum=DDWWW, away_momentum=LDWWD, momentum_score_edge=+1.6
+- home_advantage_score=0.28
+- draw_probability=0.275, draw_risk=0.464, predicted_result=HOME_WIN
+
+Risk factors:
+- No major data completeness risks detected.

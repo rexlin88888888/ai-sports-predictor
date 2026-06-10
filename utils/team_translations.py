@@ -273,7 +273,9 @@ FACTOR_REPLACEMENTS_ZH = [
 
 
 def is_chinese_language(language: str | None) -> bool:
-    return str(language or "").strip() in {"中文", "ä¸­æ–‡"}
+    if str(language or "").strip() == "中文":
+        return True
+    return str(language or "").strip() in {"中文", "ä¸­æ–‡", "Ã¤Â¸Â­Ã¦â€“â€¡"}
 
 
 def translate_team_name(name: object, language: str | None = "English") -> str:

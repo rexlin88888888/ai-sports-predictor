@@ -36,18 +36,90 @@ from utils.team_translations import canonical_team_name, t, translate_team_name,
 
 LOGGER = logging.getLogger("sports_predictor")
 NAV_ITEMS = [
-    "Dashboard",
-    "Live Predictions",
-    "Content Studio",
-    "Install App",
-    "NBA",
-    "Football",
-    "Team Analysis",
-    "Results Tracker",
-    "Prediction History",
-    "Backtest Reports",
+    "Home",
+    "World Cup Predictions",
+    "Match History",
     "Settings",
 ]
+
+COUNTRY_FLAGS = {
+    "Algeria": "🇩🇿", "Argentina": "🇦🇷", "Australia": "🇦🇺", "Austria": "🇦🇹",
+    "Belgium": "🇧🇪", "Brazil": "🇧🇷", "Cameroon": "🇨🇲", "Canada": "🇨🇦",
+    "Cape Verde": "🇨🇻", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴",
+    "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Curacao": "🇨🇼", "Czechia": "🇨🇿",
+    "Czech Republic": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬",
+    "England": "🏴", "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪",
+    "Ghana": "🇬🇭", "Iceland": "🇮🇸", "India": "🇮🇳", "Iran": "🇮🇷",
+    "Iraq": "🇮🇶", "Italy": "🇮🇹", "Jamaica": "🇯🇲", "Japan": "🇯🇵",
+    "Jordan": "🇯🇴", "Korea Republic": "🇰🇷", "Kosovo": "🇽🇰", "Mexico": "🇲🇽",
+    "Mongolia": "🇲🇳", "Morocco": "🇲🇦", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿",
+    "Nigeria": "🇳🇬", "Panama": "🇵🇦", "Paraguay": "🇵🇾", "Poland": "🇵🇱",
+    "Portugal": "🇵🇹", "Qatar": "🇶🇦", "Saudi Arabia": "🇸🇦", "Scotland": "🏴",
+    "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Singapore": "🇸🇬", "South Africa": "🇿🇦",
+    "Spain": "🇪🇸", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Tunisia": "🇹🇳",
+    "Turkey": "🇹🇷", "Turkiye": "🇹🇷", "Ukraine": "🇺🇦", "United States": "🇺🇸",
+    "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿", "Venezuela": "🇻🇪", "Wales": "🏴",
+    "Zimbabwe": "🇿🇼",
+}
+
+DISPLAY_ENGLISH_NAMES = {
+    "Korea Republic": "South Korea",
+    "Turkiye": "Turkey",
+    "Czechia": "Czechia",
+}
+
+WC_TEXT_ZH = {
+    "Home": "首页",
+    "World Cup Predictions": "世界杯预测",
+    "Match History": "比赛历史",
+    "Settings": "设置",
+    "World Cup Predictor": "世界杯预测系统",
+    "World Cup match predictions powered by Elo ratings, form, attack and defensive metrics": "基于 Elo、球队状态、进攻防守数据的世界杯比赛预测",
+    "World Cup model status": "世界杯模型状态",
+    "Prediction accuracy": "预测准确率",
+    "Draw accuracy": "平局准确率",
+    "Saved matches": "已保存比赛",
+    "World Cup Predictions": "世界杯预测",
+    "Auto Schedule Mode": "自动赛程模式",
+    "Manual Prediction Mode": "手动预测模式",
+    "Date": "日期",
+    "Home Team": "主队",
+    "Away Team": "客队",
+    "Run Prediction": "开始预测",
+    "No World Cup or international matches found for this date. Use Manual Prediction Mode to enter a matchup.": "该日期没有找到世界杯或国际比赛。你可以使用手动预测模式输入比赛。",
+    "Upcoming World Cup / International Matches": "即将进行的世界杯 / 国际比赛",
+    "Manual World Cup Prediction": "手动世界杯预测",
+    "Match Time": "比赛时间",
+    "Predicted Score": "预测比分",
+    "Win Probability": "胜率",
+    "Reference Odds": "参考赔率",
+    "Model reference odds for analysis only": "模型参考赔率，仅供分析",
+    "Confidence": "信心指数",
+    "High": "高",
+    "Medium": "中",
+    "Low": "低",
+    "Home Win": "主胜",
+    "Draw": "平局",
+    "Away Win": "客胜",
+    "Key Factors": "关键因素",
+    "Risk Factors": "风险因素",
+    "Recent World Cup Predictions": "最近世界杯预测",
+    "Search country or match": "搜索国家或比赛",
+    "All records": "全部记录",
+    "Match": "比赛",
+    "Prediction": "预测结果",
+    "Score": "预测比分",
+    "Result": "实际结果",
+    "Correct": "是否命中",
+    "Created": "生成时间",
+    "World Cup data": "世界杯数据",
+    "World Cup backtest": "世界杯回测",
+    "Data source": "数据来源",
+    "Live APIs enabled": "实时 API 已启用",
+    "Fallback mode ready": "备用模式已就绪",
+    "Last updated": "最后更新",
+    "Model status": "模型状态",
+}
 
 ZH_TEXT = {
     "Dashboard": "数据看板",
@@ -194,6 +266,8 @@ ZH_TEXT = {
 
 def tr(text: str) -> str:
     if is_zh():
+        if text in WC_TEXT_ZH:
+            return WC_TEXT_ZH[text]
         return decode_mojibake(ZH_TEXT.get(text, t(text, current_language())))
     return text
 
@@ -203,7 +277,7 @@ def current_language() -> str:
 
 
 def is_zh() -> bool:
-    return current_language() in {"中文", "ä¸­æ–‡"}
+    return current_language() in {"中文", "ä¸­æ–‡", "Ã¤Â¸Â­Ã¦â€“â€¡"}
 
 
 def decode_mojibake(text: object) -> str:
@@ -220,6 +294,26 @@ def tx(text: object) -> str:
 
 def team_display(name: object) -> str:
     return translate_team_name(name, current_language())
+
+
+def country_flag(name: object) -> str:
+    english = canonical_team_name(name)
+    return COUNTRY_FLAGS.get(english, "🏳️")
+
+
+def country_english_name(name: object) -> str:
+    english = canonical_team_name(name)
+    return DISPLAY_ENGLISH_NAMES.get(english, english)
+
+
+def country_chinese_name(name: object) -> str:
+    return decode_mojibake(translate_team_name(canonical_team_name(name), "中文"))
+
+
+def country_display_dual(name: object) -> str:
+    english = country_english_name(name)
+    chinese = country_chinese_name(name)
+    return f"{country_flag(name)} {chinese} {english}"
 
 
 def confidence_display(value: object) -> str:
@@ -244,8 +338,8 @@ def main() -> None:
         <div class="brand-block">
             <div class="brand-mark">AI</div>
             <div>
-                <div class="brand-title">AI Sports Predictor</div>
-                <div class="brand-subtitle">{html.escape(tr("Live model dashboard"))}</div>
+                <div class="brand-title">{html.escape(tr("World Cup Predictor"))}</div>
+                <div class="brand-subtitle">{html.escape(tr("World Cup match predictions powered by Elo ratings, form, attack and defensive metrics"))}</div>
             </div>
         </div>
         """,
@@ -256,26 +350,12 @@ def main() -> None:
     render_sidebar_status()
     render_header(page)
 
-    if page == "Dashboard":
-        render_dashboard()
-    elif page == "Live Predictions":
-        render_live_predictions_page()
-    elif page == "Content Studio":
-        render_content_studio()
-    elif page == "Install App":
-        render_install_app_page()
-    elif page == "NBA":
-        render_nba_page()
-    elif page == "Football":
-        render_football_page()
-    elif page == "Team Analysis":
-        render_team_analysis()
-    elif page == "Results Tracker":
-        render_results_tracker()
-    elif page == "Prediction History":
-        render_prediction_history_page()
-    elif page == "Backtest Reports":
-        render_backtest_report()
+    if page == "Home":
+        render_world_cup_home()
+    elif page == "World Cup Predictions":
+        render_world_cup_predictions_page()
+    elif page == "Match History":
+        render_world_cup_history_page()
     elif page == "Settings":
         render_model_settings()
     render_footer()
@@ -347,8 +427,8 @@ def render_header(page: str) -> None:
             <div class="header-left">
                 <div class="app-logo">A</div>
                 <div>
-                    <h1>AI Sports Predictor</h1>
-                    <p>{html.escape(tr(page))} · {html.escape(tr("NBA and Football forecasts with Elo, momentum, fatigue and injury signals."))}</p>
+                    <h1>{html.escape(tr("World Cup Predictor"))}</h1>
+                    <p>{html.escape(tr("World Cup match predictions powered by Elo ratings, form, attack and defensive metrics"))}</p>
                 </div>
             </div>
             <div class="header-meta">
@@ -362,17 +442,15 @@ def render_header(page: str) -> None:
 
 
 def render_sidebar_status() -> None:
-    nba = read_csv(NBA_DATA_DIR / "nba_backtest_results.csv")
     football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
-    automation = read_automation_status()
+    history = world_cup_history_frame()
     st.sidebar.markdown(
         f"""
         <div class="sidebar-panel">
-            <div class="panel-label">{html.escape(tr("Model status"))}</div>
-            <div class="sidebar-row"><span>{html.escape(tr("NBA accuracy"))}</span><b>{percent(accuracy(nba))}</b></div>
-            <div class="sidebar-row"><span>{html.escape(tr("Football accuracy"))}</span><b>{percent(accuracy(football))}</b></div>
-            <div class="sidebar-row"><span>{html.escape(tr("Draw model"))}</span><b>{percent(football_draw_accuracy(football))}</b></div>
-            <div class="sidebar-row"><span>{html.escape(tr("Automation"))}</span><b>{html.escape(tx(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready")))}</b></div>
+            <div class="panel-label">{html.escape(tr("World Cup model status"))}</div>
+            <div class="sidebar-row"><span>{html.escape(tr("Prediction accuracy"))}</span><b>{percent(accuracy(football))}</b></div>
+            <div class="sidebar-row"><span>{html.escape(tr("Draw accuracy"))}</span><b>{percent(football_draw_accuracy(football))}</b></div>
+            <div class="sidebar-row"><span>{html.escape(tr("Saved matches"))}</span><b>{len(history):,}</b></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -432,6 +510,169 @@ def render_automation_overview() -> None:
     metric_card(cols[0], tr("Last Daily Run"), short_datetime(automation.get("last_daily_run")), tr("Prediction generation"), "neutral")
     metric_card(cols[1], tr("Last Result Update"), short_datetime(automation.get("last_result_update")), tr("Actual result sync"), "neutral")
     metric_card(cols[2], tr("Automation Status"), tx(str(automation.get("automation_status") or automation.get("last_daily_status") or "ready")), tr("GitHub Actions / local"), "accent")
+
+
+def render_world_cup_home() -> None:
+    football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
+    history = world_cup_history_frame()
+    st.markdown(
+        f"""
+        <div class="section-intro worldcup-hero">
+            <h2>{html.escape(tr("World Cup Predictor"))}</h2>
+            <p>{html.escape(tr("World Cup match predictions powered by Elo ratings, form, attack and defensive metrics"))}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    cols = st.columns(3)
+    metric_card(cols[0], tr("Prediction accuracy"), percent(accuracy(football)), tr("World Cup model status"), "positive")
+    metric_card(cols[1], tr("Draw accuracy"), percent(football_draw_accuracy(football)), tr("Draw"), "neutral")
+    metric_card(cols[2], tr("Saved matches"), f"{len(history):,}", tr("Match History"), "accent")
+    st.markdown("### " + tr("Recent World Cup Predictions"))
+    recent = history.tail(4)
+    if recent.empty:
+        st.info(tr("No saved prediction history yet."))
+    else:
+        for _, row in recent.iterrows():
+            result = prediction_result_from_row(row)
+            if result:
+                render_world_cup_match_card(result)
+
+
+def render_world_cup_predictions_page() -> None:
+    enable_auto_refresh()
+    st.markdown(
+        f"""
+        <div class="section-intro">
+            <h2>{html.escape(tr("World Cup Predictions"))}</h2>
+            <p>{html.escape(tr("World Cup match predictions powered by Elo ratings, form, attack and defensive metrics"))}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    auto_tab, manual_tab = st.tabs([tr("Auto Schedule Mode"), tr("Manual Prediction Mode")])
+    with auto_tab:
+        date_value = st.text_input(tr("Date"), "today", key="wc_auto_date")
+        football_results = safe_live_results("football", date_value)
+        st.markdown("### " + tr("Upcoming World Cup / International Matches"))
+        if football_results:
+            render_live_cards(football_results, "World Cup")
+        else:
+            st.info(tr("No World Cup or international matches found for this date. Use Manual Prediction Mode to enter a matchup."))
+    with manual_tab:
+        st.markdown("### " + tr("Manual World Cup Prediction"))
+        with st.form("world_cup_manual_prediction_form"):
+            cols = st.columns(3)
+            home = cols[0].text_input(tr("Home Team"), "Argentina")
+            away = cols[1].text_input(tr("Away Team"), "France")
+            manual_date = cols[2].text_input(tr("Date"), "tomorrow")
+            submitted = st.form_submit_button(tr("Run Prediction"), type="primary")
+        if submitted:
+            results = run_prediction("football", manual_date, canonical_team_name(home), canonical_team_name(away), "WORLD_CUP", False)
+            if results:
+                for result in results:
+                    render_prediction_card(result)
+            else:
+                st.warning(tr("No World Cup or international matches found for this date. Use Manual Prediction Mode to enter a matchup."))
+
+
+def render_world_cup_history_page() -> None:
+    st.markdown("### " + tr("Match History"))
+    frame = world_cup_history_frame()
+    if frame.empty:
+        st.info(tr("No saved prediction history yet."))
+        return
+    controls = st.columns([1.4, 1.0])
+    search = controls[0].text_input(tr("Search country or match"), "")
+    confidence_options = ["All"] + sorted(frame["confidence"].dropna().astype(str).unique().tolist()) if "confidence" in frame else ["All"]
+    confidence = controls[1].selectbox(tr("Confidence"), confidence_options, format_func=lambda value: t(value, current_language()))
+    filtered = frame.copy()
+    if search:
+        search_key = canonical_team_name(search)
+        localized = localize_frame_for_display(filtered)
+        filtered = filtered[
+            filtered.astype(str).apply(lambda col: col.str.contains(search_key, case=False, na=False)).any(axis=1)
+            | localized.astype(str).apply(lambda col: col.str.contains(search, case=False, na=False)).any(axis=1)
+        ]
+    if confidence != "All" and "confidence" in filtered:
+        filtered = filtered[filtered["confidence"].astype(str) == confidence]
+    st.caption(tx(f"{len(filtered):,} {tr('All records')}"))
+    render_world_cup_history_table(filtered.tail(250))
+
+
+def render_world_cup_history_table(frame: pd.DataFrame) -> None:
+    if frame.empty:
+        st.info(tr("No rows available."))
+        return
+    rows = []
+    for _, row in frame.tail(250).iterrows():
+        home = str(row.get("home_team") or "")
+        away = str(row.get("away_team") or "")
+        match_label = f"{country_display_dual(home)} VS {country_display_dual(away)}" if home and away else tx(row.get("match"))
+        rows.append(
+            {
+                tr("Date"): str(row.get("date") or row.get("prediction_date") or "")[:10],
+                tr("Match"): match_label,
+                tr("Prediction"): tx(row.get("predicted_result") or row.get("predicted_winner") or ""),
+                tr("Score"): tx(row.get("predicted_score") or ""),
+                tr("Confidence"): confidence_display(row.get("confidence")),
+                tr("Result"): tx(row.get("actual_result") or row.get("actual_winner") or ""),
+                tr("Correct"): tx(row.get("prediction_correct") or row.get("correct") or ""),
+                tr("Created"): str(row.get("created_at") or row.get("result_updated_at") or ""),
+            }
+        )
+    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+
+def world_cup_history_frame() -> pd.DataFrame:
+    frame = read_prediction_history()
+    if frame.empty or "sport" not in frame:
+        return pd.DataFrame()
+    return frame[frame["sport"].astype(str).str.lower().eq("football")].copy()
+
+
+def prediction_result_from_row(row: pd.Series) -> PredictionResult | None:
+    try:
+        date_value = dt.date.fromisoformat(str(row.get("date") or row.get("prediction_date") or dt.date.today().isoformat())[:10])
+    except ValueError:
+        date_value = dt.date.today()
+    home_prob = safe_float_value(row.get("win_probability_home") or row.get("home_win_probability"))
+    away_prob = safe_float_value(row.get("win_probability_away") or row.get("away_win_probability"))
+    draw_prob = safe_float_value(row.get("draw_probability"))
+    home = str(row.get("home_team") or "")
+    away = str(row.get("away_team") or "")
+    if not home or not away:
+        return None
+    return PredictionResult(
+        sport="football",
+        match=str(row.get("match") or f"{home} vs {away}"),
+        prediction_date=date_value,
+        home_team=home,
+        away_team=away,
+        predicted_winner=str(row.get("predicted_winner") or row.get("predicted_result") or ""),
+        win_probability_home=home_prob,
+        win_probability_away=away_prob,
+        draw_probability=draw_prob,
+        predicted_score=str(row.get("predicted_score") or ""),
+        confidence=str(row.get("confidence") or "Low"),
+        key_factors=split_pipe_text(row.get("key_factors")),
+        risk_factors=split_pipe_text(row.get("risk_factors")),
+        data_source=str(row.get("data_source") or "unknown"),
+    )
+
+
+def safe_float_value(value: object) -> float | None:
+    try:
+        if value is None or str(value) == "":
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def split_pipe_text(value: object) -> list[str]:
+    text = str(value or "")
+    return [item.strip() for item in text.split("|") if item.strip()]
 
 
 def render_live_predictions_page() -> None:
@@ -732,7 +973,95 @@ def top_probability(result: PredictionResult) -> float:
     return max(values) if values else 0.0
 
 
+def render_world_cup_match_card(result: PredictionResult) -> None:
+    home_prob = result.win_probability_home or 0.0
+    draw_prob = result.draw_probability or 0.0
+    away_prob = result.win_probability_away or 0.0
+    home_score, away_score = score_numbers(result.predicted_score)
+    confidence_class = result.confidence.lower() if result.confidence else "low"
+    source_text = str(getattr(result, "data_source", "") or "unknown")
+    home_label = country_display_dual(result.home_team)
+    away_label = country_display_dual(result.away_team)
+    match_time = f"{result.prediction_date.isoformat()} · {source_text}"
+    st.markdown(
+        f"""
+        <article class="wc-card">
+            <div class="wc-card-top">
+                <span>{html.escape(tr("Match Time"))}: {html.escape(match_time)}</span>
+                <span class="confidence-badge {confidence_class}">{html.escape(tr("Confidence"))}: {html.escape(confidence_display(result.confidence))}</span>
+            </div>
+            <div class="wc-score-row">
+                <div class="wc-team">
+                    <div class="wc-team-flag">{html.escape(country_flag(result.home_team))}</div>
+                    <div class="wc-team-name">{html.escape(country_chinese_name(result.home_team))}</div>
+                    <div class="wc-team-en">{html.escape(country_english_name(result.home_team))}</div>
+                </div>
+                <div class="wc-center-score">
+                    <div class="wc-vs">VS</div>
+                    <div class="wc-score">{home_score} : {away_score}</div>
+                    <div class="wc-score-label">{html.escape(tr("Predicted Score"))}</div>
+                </div>
+                <div class="wc-team">
+                    <div class="wc-team-flag">{html.escape(country_flag(result.away_team))}</div>
+                    <div class="wc-team-name">{html.escape(country_chinese_name(result.away_team))}</div>
+                    <div class="wc-team-en">{html.escape(country_english_name(result.away_team))}</div>
+                </div>
+            </div>
+            <div class="wc-prob-grid">
+                {world_cup_probability_cell(home_label, country_win_label(result.home_team), home_prob)}
+                {world_cup_probability_cell(tr("Draw"), tr("Draw"), draw_prob)}
+                {world_cup_probability_cell(away_label, country_win_label(result.away_team), away_prob)}
+            </div>
+            <div class="wc-odds-note">{html.escape(tr("Model reference odds for analysis only"))}</div>
+            <div class="factor-columns">
+                <div><b>{html.escape(tr("Key Factors"))}</b>{html_list([tx(item) for item in factor_preview(result.key_factors, 3)])}</div>
+                <div><b>{html.escape(tr("Risk Factors"))}</b>{html_list([tx(item) for item in factor_preview(result.risk_factors, 3)])}</div>
+            </div>
+        </article>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def world_cup_probability_cell(team_label: str, label: str, probability: float) -> str:
+    odds = reference_odds(probability)
+    width = max(3, min(100, int(probability * 100)))
+    return f"""
+        <div class="wc-prob-card">
+            <div class="wc-prob-team">{html.escape(team_label)}</div>
+            <div class="wc-prob-label">{html.escape(label)}</div>
+            <div class="wc-prob-value">{probability * 100:.0f}%</div>
+            <div class="wc-prob-track"><span style="width:{width}%"></span></div>
+            <div class="wc-odds">{html.escape(tr("Reference Odds"))}: {odds}</div>
+        </div>
+    """
+
+
+def country_win_label(name: object) -> str:
+    if is_zh():
+        return f"{country_chinese_name(name)}胜"
+    return f"{country_english_name(name)} win"
+
+
+def reference_odds(probability: float) -> str:
+    if probability <= 0:
+        return "N/A"
+    return f"{1 / probability:.2f}"
+
+
+def score_numbers(score_text: str) -> tuple[int, int]:
+    import re
+
+    numbers = [int(item) for item in re.findall(r"\d+", str(score_text or ""))]
+    if len(numbers) >= 2:
+        return numbers[-2], numbers[-1]
+    return 1, 1
+
+
 def render_match_card(result: PredictionResult) -> None:
+    if result.sport == "football":
+        render_world_cup_match_card(result)
+        return
     home_prob = result.win_probability_home or 0.0
     away_prob = result.win_probability_away or 0.0
     home_width = max(4, min(96, int(home_prob * 100)))
@@ -922,12 +1251,10 @@ def render_model_settings() -> None:
     automation = read_automation_status()
     api_rows = [
         {"Service": "News API", "Mode": "Live" if os.getenv("NEWS_API_KEY") else "Fallback"},
-        {"Service": "Football Data", "Mode": "Live" if os.getenv("FOOTBALL_DATA_KEY") else "Fallback"},
-        {"Service": "Odds API", "Mode": "Live" if os.getenv("ODDS_API_KEY") else "Fallback"},
+        {"Service": "World Cup data", "Mode": "Live" if os.getenv("FOOTBALL_DATA_KEY") else "Fallback"},
     ]
     cache_rows = [
-        {"File": "NBA backtest", "Path": project_relative(NBA_DATA_DIR / "nba_backtest_results.csv"), "Available": (NBA_DATA_DIR / "nba_backtest_results.csv").exists()},
-        {"File": "Football backtest", "Path": project_relative(FOOTBALL_DATA_DIR / "football_backtest_results.csv"), "Available": (FOOTBALL_DATA_DIR / "football_backtest_results.csv").exists()},
+        {"File": "World Cup backtest", "Path": project_relative(FOOTBALL_DATA_DIR / "football_backtest_results.csv"), "Available": (FOOTBALL_DATA_DIR / "football_backtest_results.csv").exists()},
         {"File": "Elo ratings", "Path": project_relative(DATA_DIR / "elo_ratings.csv"), "Available": (DATA_DIR / "elo_ratings.csv").exists()},
         {"File": "Cache directory", "Path": project_relative(CACHE_DIR), "Available": CACHE_DIR.exists()},
         {"File": "Backtest report", "Path": project_relative(BACKTEST_REPORT_TXT), "Available": BACKTEST_REPORT_TXT.exists()},
@@ -1135,7 +1462,7 @@ def localize_frame_for_display(frame: pd.DataFrame) -> pd.DataFrame:
     ]
     for column in text_columns:
         if column in display.columns:
-            display[column] = display[column].map(tx)
+            display[column] = display[column].map(lambda value: tr(tx(value)))
     display = display.rename(columns={column: t(column, current_language()) for column in display.columns})
     return display
 
@@ -1533,6 +1860,28 @@ def apply_theme(theme_mode: str) -> None:
         .install-kicker {{color:var(--success);font-size:.76rem;text-transform:uppercase;font-weight:900;letter-spacing:.06em;}}
         .install-card h3 {{margin:.45rem 0 .7rem;color:var(--text);}}
         .install-card ul {{margin:.3rem 0 0;padding-left:1.1rem;color:var(--muted);line-height:1.45;font-size:.9rem;}}
+        .worldcup-hero {{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,transparent),color-mix(in srgb,var(--panel) 84%,transparent));border:1px solid var(--border);border-radius:18px;padding:1.35rem;box-shadow:var(--shadow);}}
+        .wc-card {{border:1px solid var(--border);border-radius:18px;background:var(--card-gradient);box-shadow:var(--shadow);padding:1.1rem;margin-bottom:1rem;transition:transform .18s ease,border-color .18s ease;}}
+        .wc-card:hover {{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 42%,var(--border));}}
+        .wc-card-top {{display:flex;justify-content:space-between;gap:.75rem;align-items:center;color:var(--muted);font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
+        .wc-score-row {{display:grid;grid-template-columns:1fr minmax(150px,.6fr) 1fr;gap:1rem;align-items:center;}}
+        .wc-team {{min-height:150px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;}}
+        .wc-team-flag {{font-size:3.2rem;line-height:1;margin-bottom:.55rem;}}
+        .wc-team-name {{font-size:1.35rem;font-weight:900;color:var(--text);line-height:1.15;}}
+        .wc-team-en {{font-size:1rem;font-weight:750;color:var(--muted);margin-top:.2rem;}}
+        .wc-center-score {{text-align:center;}}
+        .wc-vs {{color:var(--muted);font-weight:900;letter-spacing:.18em;font-size:.8rem;}}
+        .wc-score {{font-size:4.2rem;line-height:1;font-weight:950;color:var(--text);letter-spacing:0;margin:.2rem 0;text-shadow:0 12px 36px color-mix(in srgb,var(--primary) 30%,transparent);}}
+        .wc-score-label {{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:850;}}
+        .wc-prob-grid {{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem;}}
+        .wc-prob-card {{border:1px solid var(--border);background:var(--panel-2);border-radius:14px;padding:.85rem;min-width:0;}}
+        .wc-prob-team {{font-size:.85rem;color:var(--muted);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}}
+        .wc-prob-label {{font-size:.86rem;color:var(--text);font-weight:850;margin-top:.2rem;}}
+        .wc-prob-value {{font-size:1.65rem;font-weight:950;color:var(--success);margin:.25rem 0;}}
+        .wc-prob-track {{height:7px;border-radius:999px;background:color-mix(in srgb,var(--muted) 16%,transparent);overflow:hidden;}}
+        .wc-prob-track span {{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--success));border-radius:999px;}}
+        .wc-odds {{margin-top:.45rem;color:var(--muted);font-size:.82rem;font-weight:750;}}
+        .wc-odds-note {{margin-top:.7rem;color:var(--muted);font-size:.84rem;text-align:center;}}
         .match-card {{padding:1.05rem;margin-bottom:1rem;}}
         .match-topline {{justify-content:space-between;color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;font-weight:850;}}
         .confidence-badge {{border-radius:999px;padding:.34rem .62rem;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary);border:1px solid color-mix(in srgb,var(--primary) 28%,transparent);font-weight:850;}}
@@ -1569,7 +1918,13 @@ def apply_theme(theme_mode: str) -> None:
             .header-left{{gap:.75rem;}}
             .header-meta{{justify-content:flex-start;gap:.45rem;}}
             .status-pill,.updated-pill{{font-size:.76rem;padding:.4rem .55rem;}}
-            .match-main,.probability-grid,.signal-grid{{grid-template-columns:1fr;gap:.55rem;margin:.7rem 0;}}
+            .match-main,.probability-grid,.signal-grid,.wc-score-row,.wc-prob-grid{{grid-template-columns:1fr;gap:.55rem;margin:.7rem 0;}}
+            .wc-card{{padding:.85rem;margin-bottom:.75rem;border-radius:14px;}}
+            .wc-card-top{{align-items:flex-start;flex-direction:column;}}
+            .wc-team{{min-height:118px;padding:.85rem;}}
+            .wc-team-flag{{font-size:2.7rem;}}
+            .wc-team-name{{font-size:1.18rem;}}
+            .wc-score{{font-size:3.3rem;}}
             .score-panel{{width:100%;padding:.75rem;}}
             .team-logo{{width:42px;height:42px;border-radius:12px;}}
             .team-name{{font-size:.94rem;}}
