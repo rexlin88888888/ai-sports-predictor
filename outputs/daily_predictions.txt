@@ -1,46 +1,26 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-09T19:36:22
+Generated: 2026-06-10T21:26:18
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- San Antonio Spurs at New York Knicks: New York Knicks, New York Knicks 126 - 102 San Antonio Spurs, home 70.0%, away 30.0%, confidence Medium
 
 Today's Football Predictions
-- Philippines vs Myanmar: Philippines, Philippines 2 - 1 Myanmar, home 45.2%, away 25.3%, draw 29.4%, confidence Low
-- China vs Thailand: Draw, China 1 - 1 Thailand, home 31.2%, away 31.6%, draw 37.2%, confidence Low
-- Cambodia vs Hong Kong: Hong Kong, Cambodia 1 - 2 Hong Kong, home 29.5%, away 36.9%, draw 33.6%, confidence Low
-- Oman vs Kuwait: Oman, Oman 2 - 1 Kuwait, home 49.8%, away 24.4%, draw 25.8%, confidence Low
-- Indonesia vs Mozambique: Indonesia, Indonesia 2 - 1 Mozambique, home 49.4%, away 23.4%, draw 27.2%, confidence Low
-- Bahrain vs Syria: Draw, Bahrain 1 - 1 Syria, home 36.9%, away 25.9%, draw 37.2%, confidence Low
-- Kyrgyz Republic vs Palestine: Kyrgyz Republic, Kyrgyz Republic 2 - 1 Palestine, home 54.4%, away 17.1%, draw 28.4%, confidence Low
-- Armenia vs Moldova: Armenia, Armenia 2 - 1 Moldova, home 54.7%, away 17.6%, draw 27.7%, confidence Low
-- Ethiopia vs Malawi: Ethiopia, Ethiopia 2 - 1 Malawi, home 50.9%, away 20.1%, draw 29.0%, confidence Low
-- Congo DR vs Chile: Chile, Congo DR 1 - 2 Chile, home 15.8%, away 62.8%, draw 21.4%, confidence Medium
-- Equatorial Guinea vs Comoros: Comoros, Equatorial Guinea 1 - 2 Comoros, home 25.2%, away 44.2%, draw 30.6%, confidence Low
-- Tanzania vs Rwanda: Draw, Tanzania 1 - 1 Rwanda, home 34.8%, away 28.0%, draw 37.2%, confidence Low
-- Belarus vs Burkina Faso: Belarus, Belarus 2 - 1 Burkina Faso, home 41.6%, away 27.8%, draw 30.6%, confidence Low
-- Angola vs Central African Republic: Angola, Angola 2 - 0 Central African Republic, home 62.6%, away 13.2%, draw 24.2%, confidence Medium
-- Hungary vs Kazakhstan: Hungary, Hungary 2 - 1 Kazakhstan, home 58.0%, away 17.2%, draw 24.8%, confidence Medium
-- Russia vs Trinidad and Tobago: Russia, Russia 3 - 0 Trinidad and Tobago, home 70.5%, away 8.9%, draw 20.6%, confidence High
-- Azerbaijan vs San Marino: Azerbaijan, Azerbaijan 2 - 1 San Marino, home 60.3%, away 15.4%, draw 24.3%, confidence Medium
-- Saudi Arabia vs Senegal: Senegal, Saudi Arabia 1 - 2 Senegal, home 18.6%, away 58.5%, draw 22.9%, confidence Medium
-- Argentina vs Iceland: Argentina, Argentina 3 - 0 Iceland, home 71.6%, away 7.8%, draw 20.6%, confidence High
-- Iraq vs Venezuela: Draw, Iraq 1 - 1 Venezuela, home 32.9%, away 29.9%, draw 37.2%, confidence Low
+- Pakistan vs Afghanistan: Pakistan, Pakistan 2 - 1 Afghanistan, home 38.7%, away 28.4%, draw 33.0%, confidence Low
+- Portugal vs Nigeria: Portugal, Portugal 3 - 1 Nigeria, home 66.2%, away 12.2%, draw 21.6%, confidence Medium
+- England vs Costa Rica: England, England 3 - 0 Costa Rica, home 69.4%, away 10.0%, draw 20.6%, confidence Medium
+- Bolivia vs Algeria: Algeria, Bolivia 1 - 2 Algeria, home 20.1%, away 58.7%, draw 21.2%, confidence Medium
 
 Highest Confidence Picks
-- Argentina vs Iceland: Argentina, Argentina 3 - 0 Iceland, home 71.6%, away 7.8%, draw 20.6%, confidence High
-- Russia vs Trinidad and Tobago: Russia, Russia 3 - 0 Trinidad and Tobago, home 70.5%, away 8.9%, draw 20.6%, confidence High
-- Congo DR vs Chile: Chile, Congo DR 1 - 2 Chile, home 15.8%, away 62.8%, draw 21.4%, confidence Medium
+- San Antonio Spurs at New York Knicks: New York Knicks, New York Knicks 126 - 102 San Antonio Spurs, home 70.0%, away 30.0%, confidence Medium
+- England vs Costa Rica: England, England 3 - 0 Costa Rica, home 69.4%, away 10.0%, draw 20.6%, confidence Medium
+- Portugal vs Nigeria: Portugal, Portugal 3 - 1 Nigeria, home 66.2%, away 12.2%, draw 21.6%, confidence Medium
 
 Upset Watch
-- Congo DR vs Chile: Chile, Congo DR 1 - 2 Chile, home 15.8%, away 62.8%, draw 21.4%, confidence Medium
-- Saudi Arabia vs Senegal: Senegal, Saudi Arabia 1 - 2 Senegal, home 18.6%, away 58.5%, draw 22.9%, confidence Medium
-- Equatorial Guinea vs Comoros: Comoros, Equatorial Guinea 1 - 2 Comoros, home 25.2%, away 44.2%, draw 30.6%, confidence Low
+- Bolivia vs Algeria: Algeria, Bolivia 1 - 2 Algeria, home 20.1%, away 58.7%, draw 21.2%, confidence Medium
 
 Draw Watch
-- China vs Thailand: Draw, China 1 - 1 Thailand, home 31.2%, away 31.6%, draw 37.2%, confidence Low
-- Bahrain vs Syria: Draw, Bahrain 1 - 1 Syria, home 36.9%, away 25.9%, draw 37.2%, confidence Low
-- Tanzania vs Rwanda: Draw, Tanzania 1 - 1 Rwanda, home 34.8%, away 28.0%, draw 37.2%, confidence Low
+- Pakistan vs Afghanistan: Pakistan, Pakistan 2 - 1 Afghanistan, home 38.7%, away 28.4%, draw 33.0%, confidence Low
 
 Injury Risk Games
-- No games available.
+- San Antonio Spurs at New York Knicks: New York Knicks, New York Knicks 126 - 102 San Antonio Spurs, home 70.0%, away 30.0%, confidence Medium

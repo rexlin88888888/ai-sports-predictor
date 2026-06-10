@@ -1,21 +1,21 @@
 Twitter/X Post
-Today's model pick: Argentina in Argentina vs Iceland.
-Projected score: Argentina 3 - 0 Iceland.
-Watchlist note: Argentina recent goals for 2.75, against 0.55
-Confidence: High. Model version: v1.0.0.
+Today's model pick: New York Knicks in San Antonio Spurs at New York Knicks.
+Projected score: New York Knicks 126 - 102 San Antonio Spurs.
+Watchlist note: Model favors New York Knicks mainly because of recent form (+20.4 rating edge).
+Confidence: Medium. Model version: v1.0.0.
 Hashtags: #SportsAI #ModelPick #SportsPredictions
 
 YouTube Shorts Title
-Argentina is today's model pick to watch
+New York Knicks is today's model pick to watch
 
 Instagram Caption
 Today's AI Sports Predictor board is live.
 
-Top model pick: Argentina
-Matchup: Argentina vs Iceland
-Projection: Argentina 3 - 0 Iceland
-Signal: Argentina recent goals for 2.75, against 0.55
+Top model pick: New York Knicks
+Matchup: San Antonio Spurs at New York Knicks
+Projection: New York Knicks 126 - 102 San Antonio Spurs
+Signal: Model favors New York Knicks mainly because of recent form (+20.4 rating edge).
 
-Draw watchlist: China vs Thailand at 37.2%
+Draw watchlist: Pakistan vs Afghanistan at 33.0%
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #DailySports
