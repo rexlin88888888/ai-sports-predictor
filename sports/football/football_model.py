@@ -364,6 +364,23 @@ def calibrate_football_probabilities(probs: dict[str, float]) -> dict[str, float
     return {key: value / total for key, value in calibrated.items()}
 
 
+def weighted_elo(history: list[FootballMatch], team: str | None = None, half_life: float = 4.0) -> float:
+    total = 0.0
+    total_weight = 0.0
+    if half_life <= 0:
+        half_life = 4.0
+    recent_first = sorted(history, key=lambda match: match.date, reverse=True)[:12]
+    for index, match in enumerate(recent_first):
+        weight = 0.5 ** (index / half_life)
+        if team and names_match(match.away_team, team):
+            goal_diff = match.away_goals - match.home_goals
+        else:
+            goal_diff = match.home_goals - match.away_goals
+        total += weight * max(-3.0, min(3.0, goal_diff))
+        total_weight += weight
+    return total / max(1e-9, total_weight)
+
+
 def historical_draw_rate(matches: list[FootballMatch], prediction_date: dt.date, limit: int = 500) -> float:
     history = [match for match in matches if match.date < prediction_date]
     if not history:
