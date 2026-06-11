@@ -34,10 +34,10 @@ def load_team_data(team: str, before_date: dt.date | None = None) -> TeamRealDat
     team = normalize_team_name(team)
     elo_rows = safe_fetch_all("SELECT team, elo_rating, last_updated, source FROM team_elo WHERE lower(team)=lower(?)", (team,))
     elo_rating = float(elo_rows[0]["elo_rating"]) if elo_rows else None
-    elo_source = f"{elo_rows[0].get('source') or 'eloratings.net'}, {elo_rows[0].get('last_updated')}" if elo_rows else "local estimate"
+    elo_source = f"{elo_rows[0].get('source') or 'ELO'}, {elo_rows[0].get('last_updated')}" if elo_rows else "Estimated"
     stats_rows = load_recent_stats(team, before_date)
     if not stats_rows:
-        return TeamRealData(team, elo_rating, elo_source, None, None, None, 0, "local estimate", True)
+        return TeamRealData(team, elo_rating, elo_source, None, None, None, 0, "Estimated", True)
     weighted_for = weighted_average([float(row["goals_scored"]) for row in stats_rows])
     weighted_against = weighted_average([float(row["goals_conceded"]) for row in stats_rows])
     form_points = [3.0 if row["result"] == "W" else 1.0 if row["result"] == "D" else 0.0 for row in stats_rows]

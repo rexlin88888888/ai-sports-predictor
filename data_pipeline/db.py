@@ -140,6 +140,23 @@ def upsert_team_elo(team: str, elo_rating: float, last_updated: dt.date, source:
     execute(sql, (team, elo_rating, last_updated.isoformat(), source))
 
 
+def delete_team_elo_source_except(source: str, teams: list[str]) -> int:
+    initialize_database()
+    normalized_teams = [normalize_team_name(team) for team in teams if normalize_team_name(team)]
+    existing = fetch_all("SELECT team FROM team_elo WHERE source=?", (source,))
+    stale = [row["team"] for row in existing if row.get("team") not in normalized_teams]
+    if not stale:
+        return 0
+    placeholders = ",".join(["?"] * len(stale))
+    execute(f"DELETE FROM team_elo WHERE source=? AND team IN ({placeholders})", (source, *stale))
+    return len(stale)
+
+
+def normalize_team_elo_source_labels() -> None:
+    initialize_database()
+    execute("UPDATE team_elo SET source='Estimated' WHERE source IS NULL OR source NOT IN ('ELO', 'ESPN', 'Estimated')")
+
+
 def upsert_team_stat(team: str, match_date: dt.date, opponent: str, goals_scored: int, goals_conceded: int, result: str, source: str) -> None:
     initialize_database()
     team = normalize_team_name(team)

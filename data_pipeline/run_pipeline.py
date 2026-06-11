@@ -4,6 +4,7 @@ import argparse
 
 from .common import LOGGER, configure_pipeline_logging
 from .db import initialize_database, merge_duplicate_matches
+from .elo_diagnostics import write_elo_source_report
 from .fetch_elo import fetch_elo_ratings
 from .fetch_espn import fetch_live_matches
 from .fetch_schedule import fetch_openfootball_schedule
@@ -25,7 +26,12 @@ def main() -> int:
     args = build_parser().parse_args()
     if args.elo:
         rows = fetch_elo_ratings()
-        print(f"elo_rows={len(rows)}")
+        report = write_elo_source_report()
+        print(
+            f"elo_rows={len(rows)} "
+            f"real_elo_teams={report['successfully_read_real_elo_teams']} "
+            f"estimated_match_teams={report['estimated_match_teams']}"
+        )
         return 0
     if args.live:
         rows = fetch_live_matches(args.days_back, args.days_forward)
@@ -37,9 +43,12 @@ def main() -> int:
         live = fetch_live_matches(args.days_back, args.days_forward)
         elo = fetch_elo_ratings()
         merge_report = merge_duplicate_matches()
+        elo_report = write_elo_source_report()
         LOGGER.info("full pipeline complete schedule=%s live=%s elo=%s", len(schedule), len(live), len(elo))
         print(
             f"schedule_matches={len(schedule)} live_matches={len(live)} elo_rows={len(elo)} "
+            f"real_elo_teams={elo_report['successfully_read_real_elo_teams']} "
+            f"estimated_match_teams={elo_report['estimated_match_teams']} "
             f"duplicate_groups_before={merge_report['duplicate_groups_before']} "
             f"duplicate_groups_after={merge_report['duplicate_groups_after']}"
         )
