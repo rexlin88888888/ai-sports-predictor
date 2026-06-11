@@ -124,25 +124,21 @@ def predict_football_match(
     home_adv = home_advantage_score("football", home)
     momentum_edge = home_momentum.momentum_score - away_momentum.momentum_score
     rank_edge = (rank(away) - rank(home)) / 100.0
-    lambda_home = clamp(
-        0.55 * home_stats["goals_for"]
-        + 0.45 * away_stats["goals_against"]
-        + 0.20
-        + 0.35 * rank_edge,
-        0.15,
-        MAX_EXPECTED_GOALS,
+    weighted_elo_home = weighted_elo(home_history, home)
+    weighted_elo_away = weighted_elo(away_history, away)
+    xg_home, xg_away = estimate_xg(
+        home_stats=home_stats,
+        away_stats=away_stats,
+        elo_diff=elo_snapshot.elo_diff,
+        weighted_elo_home=weighted_elo_home,
+        weighted_elo_away=weighted_elo_away,
+        rank_edge=rank_edge,
+        momentum_edge=momentum_edge,
+        home_advantage=home_adv,
     )
-    lambda_away = clamp(
-        0.55 * away_stats["goals_for"]
-        + 0.45 * home_stats["goals_against"]
-        - 0.20
-        - 0.25 * rank_edge,
-        0.15,
-        MAX_EXPECTED_GOALS,
-    )
-    lambda_home = clamp(lambda_home + home_adv + 0.08 * momentum_edge + 0.0015 * elo_snapshot.elo_diff, 0.15, MAX_EXPECTED_GOALS)
-    lambda_away = clamp(lambda_away - 0.05 * momentum_edge - 0.0010 * elo_snapshot.elo_diff, 0.15, MAX_EXPECTED_GOALS)
-    probs = poisson_probs(lambda_home, lambda_away)
+    lambda_home = xg_home
+    lambda_away = xg_away
+    probs = poisson_probs(xg_home, xg_away)
     probs = apply_football_elo_probability(probs, elo_snapshot.elo_win_probability)
     probs, draw_risk = apply_draw_model(
         probs=probs,
@@ -157,7 +153,8 @@ def predict_football_match(
     probs = calibrate_football_probabilities(probs)
     likely = max(probs, key=probs.get)
     winner = home if likely == "HOME_WIN" else away if likely == "AWAY_WIN" else "Draw"
-    projected_home_goals, projected_away_goals = projected_score(lambda_home, lambda_away, likely)
+    score_probs = top_score_probabilities(xg_home, xg_away)
+    projected_home_goals, projected_away_goals = score_probs[0][0], score_probs[0][1]
     confidence = confidence_level(max(probs.values()), risks)
     key_factors = [
         f"{home} recent goals for {home_stats['goals_for']:.2f}, against {home_stats['goals_against']:.2f}",
@@ -165,6 +162,9 @@ def predict_football_match(
         f"FIFA rank edge feature {rank_edge:+.2f}",
         f"home_elo={elo_snapshot.home_elo:.0f}, away_elo={elo_snapshot.away_elo:.0f}, "
         f"elo_diff={elo_snapshot.elo_diff:+.0f}, elo_win_probability={elo_snapshot.elo_win_probability:.3f}",
+        f"weighted_elo_home={weighted_elo_home:+.3f}, weighted_elo_away={weighted_elo_away:+.3f}",
+        f"xg_home={xg_home:.2f}, xg_away={xg_away:.2f}",
+        "most_likely_scores=" + ",".join(f"{home_goals}:{away_goals}:{probability:.3f}" for home_goals, away_goals, probability in score_probs),
         f"home_momentum={home_momentum.recent_form}, away_momentum={away_momentum.recent_form}, "
         f"momentum_score_edge={momentum_edge:+.1f}",
         f"home_advantage_score={home_adv:.2f}",
@@ -276,6 +276,43 @@ def apply_football_elo_probability(probs: dict[str, float], elo_home_probability
     }
 
 
+def estimate_xg(
+    home_stats: dict[str, float],
+    away_stats: dict[str, float],
+    elo_diff: float,
+    weighted_elo_home: float,
+    weighted_elo_away: float,
+    rank_edge: float = 0.0,
+    momentum_edge: float = 0.0,
+    home_advantage: float = 0.0,
+) -> tuple[float, float]:
+    recent_attack_home = home_stats.get("goals_for", 1.2)
+    recent_attack_away = away_stats.get("goals_for", 1.2)
+    recent_defence_home = home_stats.get("goals_against", 1.2)
+    recent_defence_away = away_stats.get("goals_against", 1.2)
+    weighted_elo_edge = weighted_elo_home - weighted_elo_away
+    xg_home = (
+        0.56 * recent_attack_home
+        + 0.44 * recent_defence_away
+        + 0.16
+        + home_advantage
+        + 0.0014 * elo_diff
+        + 0.050 * weighted_elo_edge
+        + 0.060 * momentum_edge
+        + 0.25 * rank_edge
+    )
+    xg_away = (
+        0.56 * recent_attack_away
+        + 0.44 * recent_defence_home
+        - 0.08
+        - 0.0010 * elo_diff
+        - 0.035 * weighted_elo_edge
+        - 0.040 * momentum_edge
+        - 0.18 * rank_edge
+    )
+    return clamp(xg_home, 0.15, MAX_EXPECTED_GOALS), clamp(xg_away, 0.15, MAX_EXPECTED_GOALS)
+
+
 def apply_draw_model(
     probs: dict[str, float],
     lambda_home: float,
@@ -379,6 +416,20 @@ def weighted_elo(history: list[FootballMatch], team: str | None = None, half_lif
         total += weight * max(-3.0, min(3.0, goal_diff))
         total_weight += weight
     return total / max(1e-9, total_weight)
+
+
+def top_score_probabilities(lambda_home: float, lambda_away: float, max_goals: int = 4) -> list[tuple[int, int, float]]:
+    outcomes: list[tuple[int, int, float]] = []
+    total = 0.0
+    for home_goals in range(max_goals + 1):
+        for away_goals in range(max_goals + 1):
+            probability = poisson_pmf(home_goals, lambda_home) * poisson_pmf(away_goals, lambda_away)
+            outcomes.append((home_goals, away_goals, probability))
+            total += probability
+    if total <= 0:
+        return [(1, 1, 0.12), (1, 0, 0.10), (2, 1, 0.09)]
+    normalized = [(home, away, probability / total) for home, away, probability in outcomes]
+    return sorted(normalized, key=lambda item: item[2], reverse=True)[:3]
 
 
 def historical_draw_rate(matches: list[FootballMatch], prediction_date: dt.date, limit: int = 500) -> float:
