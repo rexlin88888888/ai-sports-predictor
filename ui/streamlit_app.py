@@ -30,6 +30,7 @@ from core.prediction_result import PredictionResult  # noqa: E402
 from core.result_updater import update_results  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
+from sports.football.tournament_simulation import simulate_world_cup, simulation_output_path  # noqa: E402
 from sports.nba.nba_model import NBAPredictor  # noqa: E402
 from utils.team_translations import canonical_team_name, t, translate_team_name, translate_text  # noqa: E402
 
@@ -38,6 +39,7 @@ LOGGER = logging.getLogger("sports_predictor")
 NAV_ITEMS = [
     "Home",
     "World Cup Predictions",
+    "World Cup Winner Prediction",
     "Match History",
     "Settings",
 ]
@@ -319,8 +321,34 @@ ZH_TEXT = {
 }
 
 
+EXTRA_TEXT_ZH = {
+    "World Cup Winner Prediction": "世界杯冠军预测",
+    "Future Tournament Simulation": "未来赛程模拟",
+    "Simulation Summary": "模拟摘要",
+    "Simulation Settings": "模拟设置",
+    "Run 1000 simulations": "运行 1000 次模拟",
+    "Simulation output": "模拟输出",
+    "Champion Leaderboard": "夺冠概率排行榜",
+    "Group advance": "小组出线",
+    "Round of 32": "晋级32强",
+    "Round of 16": "晋级16强",
+    "Quarterfinal": "晋级8强",
+    "Semifinal": "晋级4强",
+    "Final": "进入决赛",
+    "Champion": "夺冠",
+    "Team": "球队",
+    "Group": "小组",
+    "Data Source": "数据来源",
+    "Based on current Elo ratings and model parameters. Remaining World Cup matches are simulated 1000 times.": "基于当前 Elo 和模型参数，模拟剩余所有世界杯比赛 1000 次。",
+    "No tournament schedule data is available yet.": "暂无可用世界杯赛程数据。",
+    "Saved to": "已保存到",
+}
+
+
 def tr(text: str) -> str:
     if is_zh():
+        if text in EXTRA_TEXT_ZH:
+            return EXTRA_TEXT_ZH[text]
         if text in WC_TEXT_ZH:
             return WC_TEXT_ZH[text]
         return decode_mojibake(ZH_TEXT.get(text, t(text, current_language())))
@@ -432,6 +460,8 @@ def main() -> None:
         render_world_cup_home()
     elif page == "World Cup Predictions":
         render_world_cup_predictions_page()
+    elif page == "World Cup Winner Prediction":
+        render_world_cup_winner_prediction_page()
     elif page == "Match History":
         render_world_cup_history_page()
     elif page == "Settings":
@@ -661,6 +691,93 @@ def render_world_cup_predictions_page() -> None:
                     render_prediction_card(result)
             else:
                 st.warning(tr("No upcoming international matches available"))
+
+
+@st.cache_data(ttl=3600, show_spinner=False)
+def cached_world_cup_simulation(iterations: int) -> pd.DataFrame:
+    return simulate_world_cup(iterations=iterations)
+
+
+def render_world_cup_winner_prediction_page() -> None:
+    st.markdown(
+        f"""
+        <div class="section-intro">
+            <h2>{html.escape(tr("World Cup Winner Prediction"))}</h2>
+            <p>{html.escape(tr("Based on current Elo ratings and model parameters. Remaining World Cup matches are simulated 1000 times."))}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown("### " + tr("Simulation Settings"))
+    run_now = st.button(tr("Run 1000 simulations"), type="primary")
+    frame = cached_world_cup_simulation(1000)
+    if run_now:
+        cached_world_cup_simulation.clear()
+        frame = cached_world_cup_simulation(1000)
+    if frame.empty:
+        st.info(tr("No tournament schedule data is available yet."))
+        return
+    top = frame.head(1).iloc[0]
+    cols = st.columns(4)
+    metric_card(cols[0], tr("Champion"), country_display_dual(top["team"]), percent(top["champion_probability"]), "positive")
+    metric_card(cols[1], tr("Final"), percent(frame["final_probability"].sum() / 2.0), tr("Simulation Summary"), "neutral")
+    metric_card(cols[2], tr("Round of 16"), percent(frame["round_of_16_probability"].mean()), tr("Simulation Summary"), "accent")
+    metric_card(cols[3], tr("Simulation output"), tr("Saved to") + f" {project_relative(simulation_output_path())}", tr("Champion Leaderboard"), "neutral")
+    st.markdown("### " + tr("Champion Leaderboard"))
+    render_winner_probability_chart(frame.head(12))
+    st.dataframe(format_simulation_frame(frame), use_container_width=True, hide_index=True)
+
+
+def render_winner_probability_chart(frame: pd.DataFrame) -> None:
+    if px is None or frame.empty:
+        return
+    chart_frame = frame.copy()
+    chart_frame["display_team"] = chart_frame["team"].map(country_display_dual)
+    fig = px.bar(
+        chart_frame.sort_values("champion_probability"),
+        x="champion_probability",
+        y="display_team",
+        orientation="h",
+        labels={"champion_probability": tr("Champion"), "display_team": tr("Team")},
+        text=chart_frame.sort_values("champion_probability")["champion_probability"].map(lambda value: f"{value * 100:.1f}%"),
+    )
+    fig.update_layout(
+        height=420,
+        margin=dict(l=8, r=8, t=12, b=8),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis_tickformat=".0%",
+        showlegend=False,
+    )
+    fig.update_traces(marker_color="#3B82F6", textposition="outside", cliponaxis=False)
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def format_simulation_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    columns = [
+        ("team", tr("Team")),
+        ("group", tr("Group")),
+        ("elo", "Elo"),
+        ("group_advance_probability", tr("Group advance")),
+        ("round_of_32_probability", tr("Round of 32")),
+        ("round_of_16_probability", tr("Round of 16")),
+        ("quarterfinal_probability", tr("Quarterfinal")),
+        ("semifinal_probability", tr("Semifinal")),
+        ("final_probability", tr("Final")),
+        ("champion_probability", tr("Champion")),
+        ("data_source", tr("Data Source")),
+    ]
+    display = pd.DataFrame()
+    for source, label in columns:
+        if source not in frame.columns:
+            continue
+        if source == "team":
+            display[label] = frame[source].map(country_display_dual)
+        elif source.endswith("_probability"):
+            display[label] = frame[source].map(lambda value: f"{float(value) * 100:.1f}%")
+        else:
+            display[label] = frame[source]
+    return display
 
 
 def render_world_cup_history_page() -> None:
