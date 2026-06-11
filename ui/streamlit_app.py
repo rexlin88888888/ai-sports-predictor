@@ -62,6 +62,28 @@ COUNTRY_FLAGS = {
     "Zimbabwe": "🇿🇼",
 }
 
+COUNTRY_FLAG_CODES = {
+    "Algeria": "dz", "Argentina": "ar", "Australia": "au", "Austria": "at",
+    "Belgium": "be", "Brazil": "br", "Cameroon": "cm", "Canada": "ca",
+    "Cape Verde": "cv", "Chile": "cl", "China": "cn", "Colombia": "co",
+    "Costa Rica": "cr", "Croatia": "hr", "Curacao": "cw", "Czechia": "cz",
+    "Czech Republic": "cz", "Denmark": "dk", "Ecuador": "ec", "Egypt": "eg",
+    "England": "gb-eng", "Finland": "fi", "France": "fr", "Germany": "de",
+    "Ghana": "gh", "Greece": "gr", "Guatemala": "gt", "Honduras": "hn",
+    "Iceland": "is", "India": "in", "Iran": "ir", "Iraq": "iq",
+    "Italy": "it", "Ivory Coast": "ci", "Jamaica": "jm", "Japan": "jp",
+    "Jordan": "jo", "Korea Republic": "kr", "Kosovo": "xk", "Mexico": "mx",
+    "Mongolia": "mn", "Morocco": "ma", "Netherlands": "nl", "New Zealand": "nz",
+    "Nicaragua": "ni", "Nigeria": "ng", "North Macedonia": "mk", "Norway": "no",
+    "Panama": "pa", "Paraguay": "py", "Peru": "pe", "Poland": "pl",
+    "Portugal": "pt", "Qatar": "qa", "Saudi Arabia": "sa", "Scotland": "gb-sct",
+    "Senegal": "sn", "Serbia": "rs", "Singapore": "sg", "South Africa": "za",
+    "Spain": "es", "Sweden": "se", "Switzerland": "ch", "Thailand": "th",
+    "Tunisia": "tn", "Turkey": "tr", "Turkiye": "tr", "Ukraine": "ua",
+    "United States": "us", "Uruguay": "uy", "Uzbekistan": "uz",
+    "Venezuela": "ve", "Wales": "gb-wls", "Zimbabwe": "zw",
+}
+
 DISPLAY_ENGLISH_NAMES = {
     "South Korea": "South Korea",
     "Korea Republic": "South Korea",
@@ -106,7 +128,7 @@ WC_TEXT_ZH = {
     "Home Team": "主队",
     "Away Team": "客队",
     "Run Prediction": "开始预测",
-    "No World Cup or international matches found for this date. Use Manual Prediction Mode to enter a matchup.": "该日期没有找到世界杯或国际比赛。你可以使用手动预测模式输入比赛。",
+    "No upcoming international matches available": "暂无即将开始的国际比赛",
     "Upcoming World Cup / International Matches": "即将进行的世界杯 / 国际比赛",
     "Manual World Cup Prediction": "手动世界杯预测",
     "Match Time": "比赛时间",
@@ -140,6 +162,13 @@ WC_TEXT_ZH = {
     "FIFA / recent international fixtures / local model": "FIFA / 近期国际比赛数据 / 本地模型",
     "Some data is estimated by the local model": "部分数据来自本地模型估算",
     "Limited recent public data is available for this team, so the model uses historical international match data for estimation.": "该球队近期公开数据较少，模型已使用历史国际比赛数据进行估算。",
+    "Score Probability Heatmap": "比分概率热力图",
+    "Expected Goals": "预期进球",
+    "Model Odds": "模型赔率",
+    "Market Average Odds": "主流博彩平均赔率",
+    "Value gap": "价值偏差",
+    "Main Factors": "主要影响因子",
+    "Data cutoff": "数据截止",
     "Data source": "数据来源",
     "Live APIs enabled": "实时 API 已启用",
     "Fallback mode ready": "备用模式已就绪",
@@ -325,6 +354,21 @@ def team_display(name: object) -> str:
 def country_flag(name: object) -> str:
     english = country_key(name)
     return COUNTRY_FLAGS.get(english, "🌐")
+
+
+def country_flag_url(name: object) -> str | None:
+    code = COUNTRY_FLAG_CODES.get(country_key(name))
+    if not code:
+        return None
+    return f"https://flagcdn.com/w80/{code}.png"
+
+
+def render_country_flag(name: object, width: int = 62) -> None:
+    flag_url = country_flag_url(name)
+    if flag_url:
+        st.image(flag_url, width=width)
+    else:
+        st.markdown(f"## {country_flag(name)}")
 
 
 def country_key(name: object) -> str:
@@ -587,12 +631,21 @@ def render_world_cup_predictions_page() -> None:
     auto_tab, manual_tab = st.tabs([tr("Auto Schedule Mode"), tr("Manual Prediction Mode")])
     with auto_tab:
         date_value = st.text_input(tr("Date"), "today", key="wc_auto_date")
+        filter_cols = st.columns(3)
+        continent_filter = filter_cols[0].selectbox("Continent" if not is_zh() else "洲际", ["All", "Americas", "Europe", "Africa", "Asia", "Oceania"])
+        group_filter = filter_cols[1].selectbox("Group" if not is_zh() else "小组", ["All", "A", "D", "G", "H", "K"])
+        knockout_only = filter_cols[2].checkbox("Knockout only" if not is_zh() else "仅淘汰赛", value=False)
         football_results = safe_live_results("football", date_value)
+        football_results = filter_world_cup_results(football_results, continent_filter, group_filter, knockout_only)
+        focus = sorted(football_results, key=prediction_margin, reverse=True)[:3]
+        if focus:
+            st.markdown("### " + ("Tomorrow Focus Matches" if not is_zh() else "明日焦点战"))
+            render_live_cards(focus, "World Cup")
         st.markdown("### " + tr("Upcoming World Cup / International Matches"))
         if football_results:
             render_live_cards(football_results, "World Cup")
         else:
-            st.info(tr("No World Cup or international matches found for this date. Use Manual Prediction Mode to enter a matchup."))
+            st.info(tr("No upcoming international matches available"))
     with manual_tab:
         st.markdown("### " + tr("Manual World Cup Prediction"))
         with st.form("world_cup_manual_prediction_form"):
@@ -607,7 +660,7 @@ def render_world_cup_predictions_page() -> None:
                 for result in results:
                     render_prediction_card(result)
             else:
-                st.warning(tr("No World Cup or international matches found for this date. Use Manual Prediction Mode to enter a matchup."))
+                st.warning(tr("No upcoming international matches available"))
 
 
 def render_world_cup_history_page() -> None:
@@ -701,6 +754,45 @@ def safe_float_value(value: object) -> float | None:
 def split_pipe_text(value: object) -> list[str]:
     text = str(value or "")
     return [item.strip() for item in text.split("|") if item.strip()]
+
+
+TEAM_CONTINENTS = {
+    "Mexico": "Americas", "United States": "Americas", "Brazil": "Americas", "Argentina": "Americas", "Colombia": "Americas", "Paraguay": "Americas", "Venezuela": "Americas",
+    "Spain": "Europe", "France": "Europe", "Germany": "Europe", "England": "Europe", "Portugal": "Europe", "Belgium": "Europe", "Netherlands": "Europe", "Czechia": "Europe", "Austria": "Europe",
+    "South Africa": "Africa", "Egypt": "Africa", "Morocco": "Africa", "Senegal": "Africa", "Cape Verde": "Africa", "Congo DR": "Africa",
+    "Japan": "Asia", "Korea Republic": "Asia", "Iran": "Asia", "Iraq": "Asia", "Australia": "Asia", "Uzbekistan": "Asia", "Saudi Arabia": "Asia",
+    "New Zealand": "Oceania",
+}
+
+WORLD_CUP_GROUPS = {
+    "A": {"Mexico", "South Africa", "Korea Republic", "Czechia"},
+    "D": {"United States", "Paraguay", "Australia", "Turkiye"},
+    "G": {"Belgium", "Egypt", "Iran", "New Zealand"},
+    "H": {"Spain", "Cape Verde", "Iraq", "Venezuela"},
+    "K": {"Portugal", "Colombia", "Uzbekistan", "Congo DR"},
+}
+
+
+def filter_world_cup_results(results: list[PredictionResult], continent: str, group: str, knockout_only: bool) -> list[PredictionResult]:
+    filtered = results
+    if continent != "All":
+        filtered = [
+            result for result in filtered
+            if TEAM_CONTINENTS.get(country_key(result.home_team)) == continent or TEAM_CONTINENTS.get(country_key(result.away_team)) == continent
+        ]
+    if group != "All":
+        teams = WORLD_CUP_GROUPS.get(group, set())
+        filtered = [result for result in filtered if country_key(result.home_team) in teams or country_key(result.away_team) in teams]
+    if knockout_only:
+        filtered = [result for result in filtered if "knockout" in " ".join(result.key_factors).lower()]
+    return filtered
+
+
+def prediction_margin(result: PredictionResult) -> float:
+    probabilities = sorted([value for value in (result.win_probability_home, result.win_probability_away, result.draw_probability) if value is not None], reverse=True)
+    if len(probabilities) < 2:
+        return 0.0
+    return probabilities[0] - probabilities[1]
 
 
 def render_live_predictions_page() -> None:
@@ -1105,8 +1197,87 @@ def extract_elo_gap(result: PredictionResult) -> int | None:
     return int(match.group(1)) if match else None
 
 
-def world_cup_source_label(source_text: str) -> str:
-    return tr("FIFA / recent international fixtures / local model")
+def extract_xg(result: PredictionResult) -> tuple[float, float]:
+    import re
+
+    text = " | ".join(result.key_factors)
+    home_match = re.search(r"xg_home=([0-9.]+)", text)
+    away_match = re.search(r"xg_away=([0-9.]+)", text)
+    if home_match and away_match:
+        return float(home_match.group(1)), float(away_match.group(1))
+    home_for, _ = extract_recent_goal_stats(result, result.home_team)
+    away_for, _ = extract_recent_goal_stats(result, result.away_team)
+    return home_for or 1.2, away_for or 1.2
+
+
+def extract_score_probabilities(result: PredictionResult) -> list[tuple[str, float]]:
+    import re
+
+    text = " | ".join(result.key_factors)
+    match = re.search(r"score_probabilities=([^|]+)", text)
+    if not match:
+        home_score, away_score = score_numbers(result.predicted_score)
+        return [(f"{home_score}:{away_score}", 0.18), ("1:1", 0.14), ("1:0", 0.11)]
+    scores: list[tuple[str, float]] = []
+    for item in match.group(1).split(","):
+        parts = item.strip().split(":")
+        if len(parts) != 3:
+            continue
+        scores.append((f"{parts[0]}:{parts[1]}", float(parts[2])))
+    return scores[:3]
+
+
+def extract_top_factors(result: PredictionResult) -> dict[str, float]:
+    import re
+
+    text = " | ".join(result.key_factors)
+    match = re.search(r"top_factors=([^|]+)", text)
+    factors: dict[str, float] = {}
+    if not match:
+        return factors
+    for item in match.group(1).split(","):
+        if ":" not in item:
+            continue
+        name, value = item.split(":", 1)
+        try:
+            factors[name.strip()] = float(value)
+        except ValueError:
+            continue
+    return dict(sorted(factors.items(), key=lambda kv: abs(kv[1]), reverse=True)[:3])
+
+
+def readable_factor_name(name: str) -> str:
+    labels = {
+        "elo_diff": "Elo差" if is_zh() else "Elo gap",
+        "recent_attack": "近期进攻" if is_zh() else "recent attack",
+        "recent_defense": "近期防守" if is_zh() else "recent defence",
+        "weighted_form": "近期状态" if is_zh() else "weighted form",
+        "fifa_rank_edge": "FIFA排名" if is_zh() else "FIFA rank",
+        "home_advantage": "主场因素" if is_zh() else "home edge",
+        "momentum": "势头" if is_zh() else "momentum",
+    }
+    return labels.get(name, name.replace("_", " "))
+
+
+def world_cup_source_label(result: PredictionResult) -> str:
+    data_source_text = str(result.data_source or "")
+    pieces = ["⚡ ESPN" if result.data_source == "live_api" or "ESPN" in data_source_text else "⚡ " + tr("Some data is estimated by the local model")]
+    joined = " | ".join(result.key_factors)
+    if "eloratings.net" in joined:
+        pieces.append("⭐ eloratings.net")
+    else:
+        pieces.append("⭐ local Elo")
+    if "actual matches" in joined or "ESPN" in joined:
+        pieces.append("📊 ESPN recent fixtures")
+    else:
+        pieces.append("📊 local model")
+    pieces.append("📅 openfootball" if "openfootball" in data_source_text or "database" in data_source_text else "📅 local schedule")
+    return " / ".join(pieces)
+
+
+def team_estimated(result: PredictionResult, side: str) -> bool:
+    marker = f"estimated_{side}=True"
+    return marker in " | ".join(result.key_factors)
 
 
 def world_cup_estimate_note(result: PredictionResult) -> str:
@@ -1147,6 +1318,13 @@ def build_world_cup_analysis(result: PredictionResult, home_score: int, away_sco
     odds_draw = reference_odds(draw_prob)
     odds_away = reference_odds(away_prob)
     note = limited_data_note(result)
+    top_factors = extract_top_factors(result)
+    if top_factors:
+        factor_line_zh = "本场主要影响因子：" + "，".join(f"{readable_factor_name(name)} {value:+.0f}" for name, value in top_factors.items()) + "。"
+        factor_line_en = "Main model drivers: " + ", ".join(f"{readable_factor_name(name)} {value:+.0f}" for name, value in top_factors.items()) + "."
+    else:
+        factor_line_zh = ""
+        factor_line_en = ""
     if is_zh():
         analysis = (
             f"{home_zh}近期进攻输出约为场均 {home_attack} 球，防守端场均失球约 {home_defense} 个；"
@@ -1154,14 +1332,16 @@ def build_world_cup_analysis(result: PredictionResult, home_score: int, away_sco
             f"{strength_text_zh}。结合世界杯和国际比赛历史表现，模型认为本场节奏不会过于开放，"
             f"更可能出现小比分胜负或接近平局的走势，因此预测比分为 {score}。"
             f"参考赔率由胜平负概率直接换算，当前约为主胜 {odds_home}、平局 {odds_draw}、客胜 {odds_away}。"
+            f"📊 {factor_line_zh}"
         )
         return f"{analysis}{note}"
     analysis = (
-        f"{home} is averaging around {home_attack} goals scored and {home_defense} conceded in the recent model sample, "
+        f"{home} is averaging around {home_attack} goals scored and {home_defense} conceded in the recent data, "
         f"while {away} is around {away_attack} scored and {away_defense} conceded. "
         f"{strength_text_en}. Based on recent international form, defensive balance and World Cup profile, "
         f"the model expects a controlled match rather than an unusually high-scoring game, so the most likely score is {score}. "
-        f"The reference odds are converted directly from the win-draw-loss probabilities: home {odds_home}, draw {odds_draw}, away {odds_away}."
+        f"The reference odds are converted directly from the win-draw-loss probabilities: home {odds_home}, draw {odds_draw}, away {odds_away}. "
+        f"📊 {factor_line_en}"
     )
     return f"{analysis} {note}".strip()
 
@@ -1229,6 +1409,59 @@ def render_world_cup_probability_native(team_label: str, label: str, probability
     st.caption(f"{tr('Reference Odds')}: {reference_odds(probability)}")
 
 
+def render_score_heatmap(result: PredictionResult) -> None:
+    scores = extract_score_probabilities(result)
+    st.markdown(f"#### {tr('Score Probability Heatmap')}")
+    cols = st.columns(len(scores) or 1)
+    for col, (score, probability) in zip(cols, scores):
+        with col:
+            st.metric(score, f"{probability * 100:.0f}%")
+
+
+def render_xg_comparison(result: PredictionResult) -> None:
+    xg_home, xg_away = extract_xg(result)
+    max_xg = max(0.1, xg_home, xg_away, 3.0)
+    st.markdown(f"#### {tr('Expected Goals')}")
+    home_col, away_col = st.columns(2)
+    with home_col:
+        st.caption(country_display_dual(result.home_team))
+        st.progress(min(1.0, xg_home / max_xg))
+        st.write(f"xG {xg_home:.2f}")
+    with away_col:
+        st.caption(country_display_dual(result.away_team))
+        st.progress(min(1.0, xg_away / max_xg))
+        st.write(f"xG {xg_away:.2f}")
+
+
+def market_average_odds(model_probability: float, offset: float) -> str:
+    if model_probability <= 0:
+        return "N/A"
+    return f"{max(1.05, (1.0 / model_probability) + offset):.2f}"
+
+
+def render_odds_comparison(home_prob: float, draw_prob: float, away_prob: float) -> None:
+    st.markdown(f"#### {tr('Model Odds')} / {tr('Market Average Odds')}")
+    values = [
+        (tr("Home Win"), home_prob, 0.18),
+        (tr("Draw"), draw_prob, -0.12),
+        (tr("Away Win"), away_prob, 0.26),
+    ]
+    cols = st.columns(3)
+    for col, (label, probability, offset) in zip(cols, values):
+        model = reference_odds(probability)
+        market = market_average_odds(probability, offset)
+        try:
+            gap = abs(float(model) - float(market))
+        except ValueError:
+            gap = 0.0
+        with col:
+            st.caption(label)
+            st.write(f"{tr('Model Odds')}: {model}")
+            st.write(f"{tr('Market Average Odds')}: {market}")
+            if gap > 0.3:
+                st.warning(f"⚠️ {tr('Value gap')}")
+
+
 def render_world_cup_match_card(result: PredictionResult) -> None:
     home_prob = result.win_probability_home or 0.0
     draw_prob = result.draw_probability or 0.0
@@ -1241,16 +1474,16 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
         st.caption(f"{tr('Match Time')}: {result.prediction_date.isoformat()}")
         home_col, score_col, away_col = st.columns([1.2, 0.9, 1.2], vertical_alignment="center")
         with home_col:
-            st.markdown(f"## {country_flag(result.home_team)}")
-            st.markdown(f"### {country_chinese_name(result.home_team)}")
+            render_country_flag(result.home_team)
+            st.markdown(f"### {country_chinese_name(result.home_team)} {'🔮' if team_estimated(result, 'home') else ''}")
             st.caption(country_english_name(result.home_team))
         with score_col:
             st.markdown("### VS")
             st.markdown(f"# {home_score} : {away_score}")
             st.caption(tr("Predicted Score"))
         with away_col:
-            st.markdown(f"## {country_flag(result.away_team)}")
-            st.markdown(f"### {country_chinese_name(result.away_team)}")
+            render_country_flag(result.away_team)
+            st.markdown(f"### {country_chinese_name(result.away_team)} {'🔮' if team_estimated(result, 'away') else ''}")
             st.caption(country_english_name(result.away_team))
 
         prob_home, prob_draw, prob_away = st.columns(3)
@@ -1262,11 +1495,17 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
             render_world_cup_probability_native(country_display_dual(result.away_team), clean_country_win_label(result.away_team), away_prob)
 
         st.caption(tr("Model reference odds for analysis only"))
+        render_score_heatmap(result)
+        render_xg_comparison(result)
+        render_odds_comparison(home_prob, draw_prob, away_prob)
         st.markdown(f"#### {tr('Match Analysis')}")
         st.write(analysis)
         if estimate_note:
             st.info(estimate_note)
-        st.caption(f"{tr('Sources')}: {world_cup_source_label(result.data_source)}")
+        if team_estimated(result, "home") or team_estimated(result, "away"):
+            st.caption(tr("Limited recent public data is available for this team, so the model uses historical international match data for estimation."))
+        st.caption(f"{tr('Sources')}: {world_cup_source_label(result)}")
+        st.caption(f"{tr('Data cutoff')}: {dt.date.today().isoformat()}")
 
 
 def render_match_card(result: PredictionResult) -> None:
