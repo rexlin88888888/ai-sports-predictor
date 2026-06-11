@@ -49,23 +49,43 @@ COUNTRY_FLAGS = {
     "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Curacao": "🇨🇼", "Czechia": "🇨🇿",
     "Czech Republic": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬",
     "England": "🏴", "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪",
-    "Ghana": "🇬🇭", "Iceland": "🇮🇸", "India": "🇮🇳", "Iran": "🇮🇷",
-    "Iraq": "🇮🇶", "Italy": "🇮🇹", "Jamaica": "🇯🇲", "Japan": "🇯🇵",
+    "Ghana": "🇬🇭", "Greece": "🇬🇷", "Guatemala": "🇬🇹", "Honduras": "🇭🇳", "Iceland": "🇮🇸", "India": "🇮🇳", "Iran": "🇮🇷",
+    "Iraq": "🇮🇶", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮", "Jamaica": "🇯🇲", "Japan": "🇯🇵",
     "Jordan": "🇯🇴", "Korea Republic": "🇰🇷", "Kosovo": "🇽🇰", "Mexico": "🇲🇽",
     "Mongolia": "🇲🇳", "Morocco": "🇲🇦", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿",
-    "Nigeria": "🇳🇬", "Panama": "🇵🇦", "Paraguay": "🇵🇾", "Poland": "🇵🇱",
+    "Nicaragua": "🇳🇮", "Nigeria": "🇳🇬", "North Macedonia": "🇲🇰", "Norway": "🇳🇴", "Panama": "🇵🇦", "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Poland": "🇵🇱",
     "Portugal": "🇵🇹", "Qatar": "🇶🇦", "Saudi Arabia": "🇸🇦", "Scotland": "🏴",
     "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Singapore": "🇸🇬", "South Africa": "🇿🇦",
     "Spain": "🇪🇸", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Tunisia": "🇹🇳",
-    "Turkey": "🇹🇷", "Turkiye": "🇹🇷", "Ukraine": "🇺🇦", "United States": "🇺🇸",
+    "Thailand": "🇹🇭", "Turkey": "🇹🇷", "Turkiye": "🇹🇷", "Ukraine": "🇺🇦", "United States": "🇺🇸",
     "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿", "Venezuela": "🇻🇪", "Wales": "🏴",
     "Zimbabwe": "🇿🇼",
 }
 
 DISPLAY_ENGLISH_NAMES = {
+    "South Korea": "South Korea",
     "Korea Republic": "South Korea",
+    "USA": "United States",
     "Turkiye": "Turkey",
     "Czechia": "Czechia",
+}
+
+COUNTRY_ALIASES = {
+    "South Korea": "Korea Republic",
+    "Republic of Korea": "Korea Republic",
+    "USA": "United States",
+    "United States of America": "United States",
+    "Czech Republic": "Czechia",
+    "Turkey": "Turkiye",
+    "Cote d'Ivoire": "Ivory Coast",
+    "Côte d'Ivoire": "Ivory Coast",
+}
+
+COUNTRY_ZH_OVERRIDES = {
+    "Guatemala": "危地马拉",
+    "Honduras": "洪都拉斯",
+    "Peru": "秘鲁",
+    "North Macedonia": "北马其顿",
 }
 
 WC_TEXT_ZH = {
@@ -92,6 +112,7 @@ WC_TEXT_ZH = {
     "Match Time": "比赛时间",
     "Predicted Score": "预测比分",
     "Win Probability": "胜率",
+    "Probability": "概率",
     "Reference Odds": "参考赔率",
     "Model reference odds for analysis only": "模型参考赔率，仅供分析",
     "Confidence": "信心指数",
@@ -114,6 +135,11 @@ WC_TEXT_ZH = {
     "Created": "生成时间",
     "World Cup data": "世界杯数据",
     "World Cup backtest": "世界杯回测",
+    "Match Analysis": "赛前分析",
+    "Sources": "数据来源",
+    "FIFA / recent international fixtures / local model": "FIFA / 近期国际比赛数据 / 本地模型",
+    "Some data is estimated by the local model": "部分数据来自本地模型估算",
+    "Limited recent public data is available for this team, so the model uses historical international match data for estimation.": "该球队近期公开数据较少，模型已使用历史国际比赛数据进行估算。",
     "Data source": "数据来源",
     "Live APIs enabled": "实时 API 已启用",
     "Fallback mode ready": "备用模式已就绪",
@@ -297,22 +323,30 @@ def team_display(name: object) -> str:
 
 
 def country_flag(name: object) -> str:
+    english = country_key(name)
+    return COUNTRY_FLAGS.get(english, "🌐")
+
+
+def country_key(name: object) -> str:
     english = canonical_team_name(name)
-    return COUNTRY_FLAGS.get(english, "🏳️")
+    return COUNTRY_ALIASES.get(english, english)
 
 
 def country_english_name(name: object) -> str:
-    english = canonical_team_name(name)
+    english = country_key(name)
     return DISPLAY_ENGLISH_NAMES.get(english, english)
 
 
 def country_chinese_name(name: object) -> str:
-    return decode_mojibake(translate_team_name(canonical_team_name(name), "中文"))
+    key = country_key(name)
+    return COUNTRY_ZH_OVERRIDES.get(key, decode_mojibake(translate_team_name(key, "中文")))
 
 
 def country_display_dual(name: object) -> str:
     english = country_english_name(name)
     chinese = country_chinese_name(name)
+    if chinese == english:
+        return f"{country_flag(name)} {english}"
     return f"{country_flag(name)} {chinese} {english}"
 
 
@@ -582,10 +616,7 @@ def render_world_cup_history_page() -> None:
     if frame.empty:
         st.info(tr("No saved prediction history yet."))
         return
-    controls = st.columns([1.4, 1.0])
-    search = controls[0].text_input(tr("Search country or match"), "")
-    confidence_options = ["All"] + sorted(frame["confidence"].dropna().astype(str).unique().tolist()) if "confidence" in frame else ["All"]
-    confidence = controls[1].selectbox(tr("Confidence"), confidence_options, format_func=lambda value: t(value, current_language()))
+    search = st.text_input(tr("Search country or match"), "")
     filtered = frame.copy()
     if search:
         search_key = canonical_team_name(search)
@@ -594,8 +625,6 @@ def render_world_cup_history_page() -> None:
             filtered.astype(str).apply(lambda col: col.str.contains(search_key, case=False, na=False)).any(axis=1)
             | localized.astype(str).apply(lambda col: col.str.contains(search, case=False, na=False)).any(axis=1)
         ]
-    if confidence != "All" and "confidence" in filtered:
-        filtered = filtered[filtered["confidence"].astype(str) == confidence]
     st.caption(tx(f"{len(filtered):,} {tr('All records')}"))
     render_world_cup_history_table(filtered.tail(250))
 
@@ -615,7 +644,6 @@ def render_world_cup_history_table(frame: pd.DataFrame) -> None:
                 tr("Match"): match_label,
                 tr("Prediction"): tx(row.get("predicted_result") or row.get("predicted_winner") or ""),
                 tr("Score"): tx(row.get("predicted_score") or ""),
-                tr("Confidence"): confidence_display(row.get("confidence")),
                 tr("Result"): tx(row.get("actual_result") or row.get("actual_winner") or ""),
                 tr("Correct"): tx(row.get("prediction_correct") or row.get("correct") or ""),
                 tr("Created"): str(row.get("created_at") or row.get("result_updated_at") or ""),
@@ -1056,6 +1084,189 @@ def score_numbers(score_text: str) -> tuple[int, int]:
     if len(numbers) >= 2:
         return numbers[-2], numbers[-1]
     return 1, 1
+
+
+def extract_recent_goal_stats(result: PredictionResult, team_name: str) -> tuple[float | None, float | None]:
+    import re
+
+    key = canonical_team_name(team_name)
+    for item in result.key_factors:
+        match = re.search(rf"{re.escape(key)} recent goals for ([0-9.]+), against ([0-9.]+)", str(item), re.IGNORECASE)
+        if match:
+            return float(match.group(1)), float(match.group(2))
+    return None, None
+
+
+def extract_elo_gap(result: PredictionResult) -> int | None:
+    import re
+
+    text = " | ".join(result.key_factors)
+    match = re.search(r"elo_diff=([+-]?\d+)", text)
+    return int(match.group(1)) if match else None
+
+
+def world_cup_source_label(source_text: str) -> str:
+    return tr("FIFA / recent international fixtures / local model")
+
+
+def world_cup_estimate_note(result: PredictionResult) -> str:
+    text = " | ".join(result.risk_factors + result.key_factors).lower()
+    if "missing data" in text or "only 0 historical" in text or result.data_source not in {"live_api"}:
+        return tr("Some data is estimated by the local model")
+    return ""
+
+
+def limited_data_note(result: PredictionResult) -> str:
+    text = " | ".join(result.risk_factors + result.key_factors).lower()
+    if "missing data" in text or "only 0 historical" in text:
+        return tr("Limited recent public data is available for this team, so the model uses historical international match data for estimation.")
+    return ""
+
+
+def build_world_cup_analysis(result: PredictionResult, home_score: int, away_score: int) -> str:
+    home = country_english_name(result.home_team)
+    away = country_english_name(result.away_team)
+    home_zh = country_chinese_name(result.home_team)
+    away_zh = country_chinese_name(result.away_team)
+    home_for, home_against = extract_recent_goal_stats(result, result.home_team)
+    away_for, away_against = extract_recent_goal_stats(result, result.away_team)
+    elo_gap = extract_elo_gap(result)
+    home_prob = result.win_probability_home or 0.0
+    draw_prob = result.draw_probability or 0.0
+    away_prob = result.win_probability_away or 0.0
+    favorite = home if home_prob >= away_prob else away
+    favorite_zh = home_zh if home_prob >= away_prob else away_zh
+    strength_text_en = "The two sides look closely matched" if elo_gap is None or abs(elo_gap) < 80 else f"The Elo gap points to a measurable strength edge for {favorite}"
+    strength_text_zh = "双方整体实力较接近" if elo_gap is None or abs(elo_gap) < 80 else f"Elo 差值显示{favorite_zh}具备一定实力优势"
+    home_attack = f"{home_for:.1f}" if home_for is not None else "historical"
+    home_defense = f"{home_against:.1f}" if home_against is not None else "historical"
+    away_attack = f"{away_for:.1f}" if away_for is not None else "historical"
+    away_defense = f"{away_against:.1f}" if away_against is not None else "historical"
+    score = f"{home_score}:{away_score}"
+    odds_home = reference_odds(home_prob)
+    odds_draw = reference_odds(draw_prob)
+    odds_away = reference_odds(away_prob)
+    note = limited_data_note(result)
+    if is_zh():
+        analysis = (
+            f"{home_zh}近期进攻输出约为场均 {home_attack} 球，防守端场均失球约 {home_defense} 个；"
+            f"{away_zh}近期进攻输出约为场均 {away_attack} 球，防守端场均失球约 {away_defense} 个。"
+            f"{strength_text_zh}。结合世界杯和国际比赛历史表现，模型认为本场节奏不会过于开放，"
+            f"更可能出现小比分胜负或接近平局的走势，因此预测比分为 {score}。"
+            f"参考赔率由胜平负概率直接换算，当前约为主胜 {odds_home}、平局 {odds_draw}、客胜 {odds_away}。"
+        )
+        return f"{analysis}{note}"
+    analysis = (
+        f"{home} is averaging around {home_attack} goals scored and {home_defense} conceded in the recent model sample, "
+        f"while {away} is around {away_attack} scored and {away_defense} conceded. "
+        f"{strength_text_en}. Based on recent international form, defensive balance and World Cup profile, "
+        f"the model expects a controlled match rather than an unusually high-scoring game, so the most likely score is {score}. "
+        f"The reference odds are converted directly from the win-draw-loss probabilities: home {odds_home}, draw {odds_draw}, away {odds_away}."
+    )
+    return f"{analysis} {note}".strip()
+
+
+def clean_country_win_label(name: object) -> str:
+    return f"{country_chinese_name(name)}胜" if is_zh() else f"{country_english_name(name)} win"
+
+
+def render_world_cup_match_card(result: PredictionResult) -> None:
+    home_prob = result.win_probability_home or 0.0
+    draw_prob = result.draw_probability or 0.0
+    away_prob = result.win_probability_away or 0.0
+    home_score, away_score = score_numbers(result.predicted_score)
+    home_label = country_display_dual(result.home_team)
+    away_label = country_display_dual(result.away_team)
+    analysis = build_world_cup_analysis(result, home_score, away_score)
+    estimate_note = world_cup_estimate_note(result)
+    estimate_html = f'<p class="wc-estimate-note">{html.escape(estimate_note)}</p>' if estimate_note else ""
+    st.markdown(
+        f"""
+        <article class="wc-card">
+            <div class="wc-card-top">
+                <span>{html.escape(tr("Match Time"))}: {html.escape(result.prediction_date.isoformat())}</span>
+            </div>
+            <div class="wc-score-row">
+                <div class="wc-team">
+                    <div class="wc-team-flag">{html.escape(country_flag(result.home_team))}</div>
+                    <div class="wc-team-name">{html.escape(country_chinese_name(result.home_team))}</div>
+                    <div class="wc-team-en">{html.escape(country_english_name(result.home_team))}</div>
+                </div>
+                <div class="wc-center-score">
+                    <div class="wc-vs">VS</div>
+                    <div class="wc-score">{home_score} : {away_score}</div>
+                    <div class="wc-score-label">{html.escape(tr("Predicted Score"))}</div>
+                </div>
+                <div class="wc-team">
+                    <div class="wc-team-flag">{html.escape(country_flag(result.away_team))}</div>
+                    <div class="wc-team-name">{html.escape(country_chinese_name(result.away_team))}</div>
+                    <div class="wc-team-en">{html.escape(country_english_name(result.away_team))}</div>
+                </div>
+            </div>
+            <div class="wc-prob-grid">
+                {world_cup_probability_cell(home_label, clean_country_win_label(result.home_team), home_prob)}
+                {world_cup_probability_cell(tr("Draw"), tr("Draw"), draw_prob)}
+                {world_cup_probability_cell(away_label, clean_country_win_label(result.away_team), away_prob)}
+            </div>
+            <div class="wc-odds-note">{html.escape(tr("Model reference odds for analysis only"))}</div>
+            <section class="wc-analysis">
+                <div class="wc-analysis-title">{html.escape(tr("Match Analysis"))}</div>
+                <p>{html.escape(analysis)}</p>
+                {estimate_html}
+            </section>
+            <div class="wc-sources">{html.escape(tr("Sources"))}: {html.escape(world_cup_source_label(result.data_source))}</div>
+        </article>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_world_cup_probability_native(team_label: str, label: str, probability: float) -> None:
+    st.caption(team_label)
+    st.markdown(f"**{label}**")
+    st.metric(tr("Probability"), f"{probability * 100:.0f}%")
+    st.progress(max(0.0, min(1.0, probability)))
+    st.caption(f"{tr('Reference Odds')}: {reference_odds(probability)}")
+
+
+def render_world_cup_match_card(result: PredictionResult) -> None:
+    home_prob = result.win_probability_home or 0.0
+    draw_prob = result.draw_probability or 0.0
+    away_prob = result.win_probability_away or 0.0
+    home_score, away_score = score_numbers(result.predicted_score)
+    analysis = build_world_cup_analysis(result, home_score, away_score)
+    estimate_note = world_cup_estimate_note(result)
+
+    with st.container(border=True):
+        st.caption(f"{tr('Match Time')}: {result.prediction_date.isoformat()}")
+        home_col, score_col, away_col = st.columns([1.2, 0.9, 1.2], vertical_alignment="center")
+        with home_col:
+            st.markdown(f"## {country_flag(result.home_team)}")
+            st.markdown(f"### {country_chinese_name(result.home_team)}")
+            st.caption(country_english_name(result.home_team))
+        with score_col:
+            st.markdown("### VS")
+            st.markdown(f"# {home_score} : {away_score}")
+            st.caption(tr("Predicted Score"))
+        with away_col:
+            st.markdown(f"## {country_flag(result.away_team)}")
+            st.markdown(f"### {country_chinese_name(result.away_team)}")
+            st.caption(country_english_name(result.away_team))
+
+        prob_home, prob_draw, prob_away = st.columns(3)
+        with prob_home:
+            render_world_cup_probability_native(country_display_dual(result.home_team), clean_country_win_label(result.home_team), home_prob)
+        with prob_draw:
+            render_world_cup_probability_native(tr("Draw"), tr("Draw"), draw_prob)
+        with prob_away:
+            render_world_cup_probability_native(country_display_dual(result.away_team), clean_country_win_label(result.away_team), away_prob)
+
+        st.caption(tr("Model reference odds for analysis only"))
+        st.markdown(f"#### {tr('Match Analysis')}")
+        st.write(analysis)
+        if estimate_note:
+            st.info(estimate_note)
+        st.caption(f"{tr('Sources')}: {world_cup_source_label(result.data_source)}")
 
 
 def render_match_card(result: PredictionResult) -> None:
@@ -1865,7 +2076,7 @@ def apply_theme(theme_mode: str) -> None:
         .wc-card:hover {{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 42%,var(--border));}}
         .wc-card-top {{display:flex;justify-content:space-between;gap:.75rem;align-items:center;color:var(--muted);font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:1rem;}}
         .wc-score-row {{display:grid;grid-template-columns:1fr minmax(150px,.6fr) 1fr;gap:1rem;align-items:center;}}
-        .wc-team {{min-height:150px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem;}}
+        .wc-team {{border:1px solid var(--border);border-radius:16px;background:var(--panel-2);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1rem .8rem;}}
         .wc-team-flag {{font-size:3.2rem;line-height:1;margin-bottom:.55rem;}}
         .wc-team-name {{font-size:1.35rem;font-weight:900;color:var(--text);line-height:1.15;}}
         .wc-team-en {{font-size:1rem;font-weight:750;color:var(--muted);margin-top:.2rem;}}
@@ -1882,6 +2093,11 @@ def apply_theme(theme_mode: str) -> None:
         .wc-prob-track span {{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--success));border-radius:999px;}}
         .wc-odds {{margin-top:.45rem;color:var(--muted);font-size:.82rem;font-weight:750;}}
         .wc-odds-note {{margin-top:.7rem;color:var(--muted);font-size:.84rem;text-align:center;}}
+        .wc-analysis {{margin-top:1rem;border:1px solid var(--border);border-radius:14px;background:var(--panel-2);padding:1rem;}}
+        .wc-analysis-title {{color:var(--text);font-size:.92rem;font-weight:900;margin-bottom:.45rem;}}
+        .wc-analysis p {{margin:.25rem 0 0;color:var(--muted);font-size:.94rem;line-height:1.58;}}
+        .wc-estimate-note {{color:var(--warning) !important;font-size:.84rem !important;}}
+        .wc-sources {{margin-top:.75rem;color:var(--muted);font-size:.82rem;text-align:center;}}
         .match-card {{padding:1.05rem;margin-bottom:1rem;}}
         .match-topline {{justify-content:space-between;color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;font-weight:850;}}
         .confidence-badge {{border-radius:999px;padding:.34rem .62rem;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary);border:1px solid color-mix(in srgb,var(--primary) 28%,transparent);font-weight:850;}}
