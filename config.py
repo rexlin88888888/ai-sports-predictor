@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import os
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -30,10 +31,15 @@ BACKTEST_REPORT_TXT = OUTPUTS_DIR / "backtest_report.txt"
 WEIGHT_TUNING_JSON = OUTPUTS_DIR / "model_weight_tuning.json"
 MODEL_VERSION_JSON = PROJECT_ROOT / "model_version.json"
 ELO_RATINGS_CSV = DATA_DIR / "elo_ratings.csv"
+PIPELINE_SQLITE = DATA_DIR / "worldcup_pipeline.sqlite3"
+PIPELINE_LOG = LOG_DIR / "pipeline.log"
 NBA_PREDICTIONS_CSV = NBA_DATA_DIR / "nba_predictions.csv"
 FOOTBALL_PREDICTIONS_CSV = FOOTBALL_DATA_DIR / "football_predictions.csv"
 APP_LOG = LOG_DIR / "app.log"
 ENV_FILE = PROJECT_ROOT / ".env"
+DATABASE_URL = os.getenv("DATABASE_URL", "")
+ESPN_BASE_URL = os.getenv("ESPN_BASE_URL", "https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard")
+FOOTBALL_DATA_API_KEY = os.getenv("FOOTBALL_DATA_API_KEY") or os.getenv("FOOTBALL_DATA_KEY", "")
 
 
 def project_relative(path: Path) -> str:

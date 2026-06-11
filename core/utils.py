@@ -101,9 +101,16 @@ def normalize_name(value: str) -> str:
 
 
 def names_match(left: str, right: str) -> bool:
+    try:
+        from core.team_names import team_names_match
+    except ImportError:  # pragma: no cover
+        from .team_names import team_names_match
+
+    if team_names_match(left, right):
+        return True
     left_norm = normalize_name(left)
     right_norm = normalize_name(right)
-    return left_norm == right_norm or left_norm in right_norm or right_norm in left_norm
+    return left_norm == right_norm
 
 
 def safe_int(value: Any, default: int | None = None) -> int | None:

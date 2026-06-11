@@ -5,3 +5,4 @@ plotly
 requests
 python-dotenv
 nba_api
+psycopg2-binary

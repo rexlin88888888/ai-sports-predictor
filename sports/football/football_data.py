@@ -8,12 +8,16 @@ try:
     from ...config import FOOTBALL_DATA_DIR, WORKSPACE_ROOT
     from ...core.data_loader import read_csv_checked
     from ...core.live_schedule import fetch_football_schedule
+    from ...core.team_names import normalize_team_name, normalized_team_key
     from ...core.utils import names_match, safe_int
+    from ...data_pipeline.db import fetch_all
 except ImportError:
     from config import FOOTBALL_DATA_DIR, WORKSPACE_ROOT
     from core.data_loader import read_csv_checked
     from core.live_schedule import fetch_football_schedule
+    from core.team_names import normalize_team_name, normalized_team_key
     from core.utils import names_match, safe_int
+    from data_pipeline.db import fetch_all
 
 
 LOGGER = logging.getLogger("sports_predictor")
@@ -75,8 +79,8 @@ def load_matches() -> list[FootballMatch]:
         matches.append(
             FootballMatch(
                 date=match_date,
-                home_team=str(row["home_team"]),
-                away_team=str(row["away_team"]),
+                home_team=normalize_team_name(row["home_team"]),
+                away_team=normalize_team_name(row["away_team"]),
                 home_goals=home_goals,
                 away_goals=away_goals,
                 tournament=tournament,
@@ -100,10 +104,13 @@ def team_matches(matches: list[FootballMatch], team: str, before_date: dt.date |
 def load_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
     """Load football fixtures from live APIs, then local cache."""
 
+    database_fixtures = load_database_fixtures(target_date)
+    if database_fixtures:
+        return database_fixtures
     live = fetch_football_schedule(target_date, "WORLD_CUP")
     if live:
         return [
-            FootballFixture(item.date, item.home_team, item.away_team, item.mode or "WORLD_CUP", item.data_source)
+            FootballFixture(item.date, normalize_team_name(item.home_team), normalize_team_name(item.away_team), item.mode or "WORLD_CUP", item.data_source)
             for item in live
         ]
     fixtures = load_cached_live_fixtures(target_date)
@@ -111,6 +118,34 @@ def load_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
         return fixtures
     LOGGER.warning("No football fixtures available from live APIs or fallback cache for %s.", target_date)
     return []
+
+
+def load_database_fixtures(target_date: dt.date) -> list[FootballFixture]:
+    try:
+        rows = fetch_all(
+            "SELECT match_time_utc, home_team, away_team, stage, data_source FROM matches WHERE substr(match_time_utc, 1, 10)=? AND status <> 'cancelled' ORDER BY match_time_utc",
+            (target_date.isoformat(),),
+        )
+    except Exception:
+        return []
+    keyed: dict[tuple[str, str, str], FootballFixture] = {}
+    for row in rows:
+        try:
+            fixture_date = dt.date.fromisoformat(str(row["match_time_utc"])[:10])
+        except ValueError:
+            fixture_date = target_date
+        key = (fixture_date.isoformat(), normalized_team_key(row["home_team"]), normalized_team_key(row["away_team"]))
+        fixture = FootballFixture(
+            fixture_date,
+            normalize_team_name(row["home_team"]),
+            normalize_team_name(row["away_team"]),
+            str(row.get("stage") or "WORLD_CUP"),
+            "database:" + str(row.get("data_source") or "matches"),
+        )
+        existing = keyed.get(key)
+        if existing is None or "ESPN" in fixture.data_source:
+            keyed[key] = fixture
+    return list(keyed.values())
 
 
 def load_cached_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
@@ -130,8 +165,8 @@ def load_cached_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
         fixtures.append(
             FootballFixture(
                 fixture_date,
-                str(row["home_team"]),
-                str(row["away_team"]),
+                normalize_team_name(row["home_team"]),
+                normalize_team_name(row["away_team"]),
                 str(row.get("mode") or "WORLD_CUP"),
                 "fallback_cache",
             )

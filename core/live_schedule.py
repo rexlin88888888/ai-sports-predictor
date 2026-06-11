@@ -8,6 +8,11 @@ from typing import Any
 
 import requests
 
+try:
+    from core.team_names import normalize_team_name
+except ImportError:  # pragma: no cover
+    from .team_names import normalize_team_name
+
 
 LOGGER = logging.getLogger("sports_predictor")
 TIMEOUT_SECONDS = 15
@@ -77,8 +82,8 @@ def fetch_football_schedule_from_football_data(target_date: dt.date, mode: str) 
         return []
     fixtures: list[LiveFixture] = []
     for match in payload.get("matches", []) or []:
-        home = ((match.get("homeTeam") or {}).get("name") or "").strip()
-        away = ((match.get("awayTeam") or {}).get("name") or "").strip()
+        home = normalize_team_name((match.get("homeTeam") or {}).get("name") or "")
+        away = normalize_team_name((match.get("awayTeam") or {}).get("name") or "")
         if not home or not away:
             continue
         competition = str((match.get("competition") or {}).get("name") or "")
@@ -135,6 +140,8 @@ def _fixture_from_espn_event(event: dict[str, Any], target_date: dt.date, sport:
             home = name
         elif item.get("homeAway") == "away":
             away = name
+    home = normalize_team_name(home)
+    away = normalize_team_name(away)
     if not home or not away:
         return None
     status = (event.get("status") or {}).get("type") or {}
