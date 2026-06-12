@@ -365,6 +365,21 @@ EXTRA_TEXT_ZH = {
     "Other likely scores": "其它可能比分",
     "xG home": "主队 xG",
     "xG away": "客队 xG",
+    "Today's Match Predictions": "今日比赛预测",
+    "Tomorrow's Match Predictions": "明日比赛预测",
+    "Today's Best Prediction": "今日最佳预测",
+    "Yesterday's Prediction Results": "昨日预测结果",
+    "Second Predicted Score": "第二预测比分",
+    "Third Predicted Score": "第三预测比分",
+    "Most Likely Score": "最可能比分",
+    "Favorite": "看好球队",
+    "Win Probability": "胜率",
+    "Reason": "原因",
+    "Prediction": "预测",
+    "Actual Result": "实际结果",
+    "Hit": "命中",
+    "Miss": "未命中",
+    "No settled predictions yesterday yet.": "昨日暂无已结算预测结果。",
 }
 
 
@@ -475,7 +490,7 @@ def main() -> None:
         unsafe_allow_html=True,
     )
     sync_quick_navigation()
-    page = st.sidebar.radio("Navigation", NAV_ITEMS, index=1, key="nav_choice", format_func=tr, label_visibility="collapsed")
+    page = st.sidebar.radio("Navigation", NAV_ITEMS, index=0, key="nav_choice", format_func=tr, label_visibility="collapsed")
     render_sidebar_status()
     render_header(page)
 
@@ -646,28 +661,12 @@ def render_automation_overview() -> None:
 def render_world_cup_home() -> None:
     football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
     history = world_cup_history_frame()
-    st.markdown(
-        f"""
-        <div class="section-intro worldcup-hero">
-            <h2>{html.escape(tr("World Cup Predictor"))}</h2>
-            <p>{html.escape(tr("World Cup match predictions powered by Elo ratings, form, attack and defensive metrics"))}</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    render_daily_world_cup_board("world_cup_home_competition_filter")
+    st.markdown("---")
     cols = st.columns(3)
     metric_card(cols[0], tr("Prediction accuracy"), percent(accuracy(football)), tr("World Cup model status"), "positive")
     metric_card(cols[1], tr("Draw accuracy"), percent(football_draw_accuracy(football)), tr("Draw"), "neutral")
     metric_card(cols[2], tr("Saved matches"), f"{len(history):,}", tr("Match History"), "accent")
-    st.markdown("### " + tr("Recent World Cup Predictions"))
-    recent = history.tail(4)
-    if recent.empty:
-        st.info(tr("No saved prediction history yet."))
-    else:
-        for _, row in recent.iterrows():
-            result = prediction_result_from_row(row)
-            if result:
-                render_world_cup_match_card(result)
 
 
 def render_world_cup_predictions_page() -> None:
@@ -717,7 +716,99 @@ def render_world_cup_predictions_page() -> None:
                 st.info(tr("No upcoming international matches available"))
 
 
-def render_daily_world_cup_board() -> None:
+def favorite_probability(result: PredictionResult) -> float:
+    return max(result.win_probability_home or 0.0, result.win_probability_away or 0.0)
+
+
+def favorite_team_name(result: PredictionResult) -> str:
+    if (result.win_probability_home or 0.0) >= (result.win_probability_away or 0.0):
+        return country_display_dual(result.home_team)
+    return country_display_dual(result.away_team)
+
+
+def best_prediction_reason(result: PredictionResult) -> str:
+    home_score, away_score = score_numbers(result.predicted_score)
+    analysis = build_world_cup_analysis(result, home_score, away_score)
+    if is_zh():
+        return analysis.split("。")[0] + "。"
+    return analysis.split(".")[0] + "."
+
+
+def render_todays_best_prediction(results: list[PredictionResult]) -> None:
+    st.markdown("### ⭐ " + tr("Today's Best Prediction"))
+    if not results:
+        st.info(tr("No FIFA World Cup matches scheduled"))
+        return
+    best = max(results, key=favorite_probability)
+    best_home_score, best_away_score = score_numbers(best.predicted_score)
+    with st.container(border=True):
+        home_col, center_col, away_col = st.columns([1.2, 0.7, 1.2], vertical_alignment="center")
+        with home_col:
+            render_country_flag(best.home_team, width=46)
+            st.markdown(f"#### {country_chinese_name(best.home_team)}")
+            st.caption(country_english_name(best.home_team))
+        with center_col:
+            st.markdown("#### VS")
+        with away_col:
+            render_country_flag(best.away_team, width=46)
+            st.markdown(f"#### {country_chinese_name(best.away_team)}")
+            st.caption(country_english_name(best.away_team))
+        cols = st.columns(3)
+        cols[0].write(f"**{tr('Predicted Score')}**")
+        cols[0].markdown(f"### {best_home_score} : {best_away_score}")
+        cols[1].write(f"**{tr('Win Probability')}**")
+        cols[1].markdown(f"### {percent(favorite_probability(best))}")
+        cols[2].write(f"**{tr('Favorite')}**")
+        cols[2].markdown(f"### {country_chinese_name(best.away_team if (best.win_probability_away or 0.0) > (best.win_probability_home or 0.0) else best.home_team)}")
+        st.write(f"**{tr('Reason')}**: {best_prediction_reason(best)}")
+
+
+def read_yesterday_tracker_rows(competition_filter: str) -> pd.DataFrame:
+    tracker = read_csv(OUTPUTS_DIR / "prediction_tracker.csv")
+    if tracker.empty:
+        tracker = read_prediction_history()
+    if tracker.empty:
+        return tracker
+    local = tracker.copy()
+    date_column = "match_time" if "match_time" in local.columns else "date"
+    if date_column not in local.columns:
+        return local.iloc[0:0].copy()
+    local["date_obj"] = pd.to_datetime(local[date_column], errors="coerce", utc=True).dt.date
+    yesterday = dt.date.today() - dt.timedelta(days=1)
+    local = local[local["date_obj"] == yesterday]
+    if "sport" in local.columns:
+        local = local[local["sport"].astype(str).str.lower().str.contains("football|world", na=False)]
+    if competition_filter != "All International Matches" and "competition_name" in local.columns:
+        local = local[local["competition_name"].astype(str).str.contains(competition_filter, case=False, na=False)]
+    return local
+
+
+def render_yesterday_prediction_results(competition_filter: str) -> None:
+    st.markdown("### 📊 " + tr("Yesterday's Prediction Results"))
+    rows = read_yesterday_tracker_rows(competition_filter)
+    if rows.empty:
+        st.info(tr("No settled predictions yesterday yet."))
+        return
+    display_rows = []
+    for _, row in rows.tail(8).iterrows():
+        home = row.get("home_team", "")
+        away = row.get("away_team", "")
+        prediction = row.get("predicted_score") or row.get("top_score_1") or row.get("predicted_result") or ""
+        actual = row.get("actual_score") or row.get("actual_result") or ""
+        hit_value = str(row.get("win_draw_loss_hit") or row.get("prediction_correct") or "").lower()
+        hit = tr("Hit") if hit_value in {"1", "true", "yes"} else tr("Miss") if hit_value in {"0", "false", "no"} else "-"
+        display_rows.append(
+            {
+                tr("Match"): f"{country_display_dual(home)} vs {country_display_dual(away)}",
+                tr("Prediction"): prediction,
+                tr("Actual Result"): actual or "-",
+                tr("Hit"): hit,
+            }
+        )
+    st.dataframe(pd.DataFrame(display_rows), use_container_width=True, hide_index=True)
+
+
+def render_daily_world_cup_board(filter_key: str = "world_cup_competition_filter") -> tuple[list[PredictionResult], list[PredictionResult]]:
     today = dt.date.today()
     tomorrow = today + dt.timedelta(days=1)
     filter_labels = {
@@ -729,24 +820,27 @@ def render_daily_world_cup_board() -> None:
         tr("Competition Filter"),
         list(filter_labels.keys()),
         horizontal=True,
-        key="world_cup_competition_filter",
+        key=filter_key,
     )
     competition_filter = filter_labels[selected_label]
     today_results = daily_world_cup_predictions(today, competition_filter)
     tomorrow_results = daily_world_cup_predictions(tomorrow, competition_filter)
     empty_message = tr("No FIFA World Cup matches scheduled") if competition_filter == "FIFA World Cup" else tr("No upcoming international matches available")
-    st.markdown("### " + tr("Today"))
+    render_todays_best_prediction(today_results)
+    st.markdown("### 🔥 " + tr("Today's Match Predictions"))
     if today_results:
         for result in today_results:
             render_world_cup_match_card(result)
     else:
         st.info(empty_message)
-    st.markdown("### " + tr("Tomorrow"))
+    st.markdown("### 📅 " + tr("Tomorrow's Match Predictions"))
     if tomorrow_results:
         for result in tomorrow_results:
             render_world_cup_match_card(result)
     else:
         st.info(empty_message)
+    render_yesterday_prediction_results(competition_filter)
+    return today_results, tomorrow_results
 
 
 @st.cache_data(ttl=300, show_spinner=False)
@@ -1534,9 +1628,21 @@ def extract_key_factor_value(result: PredictionResult, key: str) -> str:
     return ""
 
 
+def local_match_time_text(value: str) -> str:
+    if not value:
+        return ""
+    try:
+        parsed = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=dt.timezone.utc)
+        return parsed.astimezone().strftime("%Y-%m-%d %H:%M %Z")
+    except ValueError:
+        return value
+
+
 def display_match_time(result: PredictionResult) -> str:
     value = extract_key_factor_value(result, "match_time")
-    return value or result.prediction_date.isoformat()
+    return local_match_time_text(value) or result.prediction_date.isoformat()
 
 
 def display_data_updated(result: PredictionResult) -> str:
@@ -1738,10 +1844,11 @@ def render_world_cup_probability_native(team_label: str, label: str, probability
 def render_score_heatmap(result: PredictionResult) -> None:
     scores = extract_score_probabilities(result)
     st.markdown(f"#### {tr('Other likely scores')}")
+    labels = [tr("Most Likely Score"), tr("Second Predicted Score"), tr("Third Predicted Score")]
     cols = st.columns(len(scores) or 1)
-    for col, (score, probability) in zip(cols, scores):
+    for col, label, (score, probability) in zip(cols, labels, scores):
         with col:
-            st.metric(score, f"{probability * 100:.0f}%")
+            st.metric(label, f"{score} ({probability * 100:.0f}%)")
 
 
 def render_xg_comparison(result: PredictionResult) -> None:
