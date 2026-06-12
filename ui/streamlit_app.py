@@ -9,6 +9,7 @@ import sys
 from argparse import Namespace
 from io import StringIO
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 import streamlit as st
@@ -39,6 +40,7 @@ from utils.team_translations import canonical_team_name, t, translate_team_name,
 
 
 LOGGER = logging.getLogger("sports_predictor")
+APP_TIMEZONE = ZoneInfo("Australia/Melbourne")
 NAV_ITEMS = [
     "Home",
     "World Cup Predictions",
@@ -821,8 +823,67 @@ def render_yesterday_prediction_results(competition_filter: str) -> None:
     st.dataframe(pd.DataFrame(display_rows), use_container_width=True, hide_index=True)
 
 
+def app_now() -> dt.datetime:
+    return dt.datetime.now(dt.timezone.utc).astimezone(APP_TIMEZONE)
+
+
+def app_today() -> dt.date:
+    return app_now().date()
+
+
+def schedule_query_dates_for_app_date(target_date: dt.date) -> list[dt.date]:
+    start_local = dt.datetime.combine(target_date, dt.time.min, tzinfo=APP_TIMEZONE)
+    end_local = start_local + dt.timedelta(days=1)
+    start_utc_date = start_local.astimezone(dt.timezone.utc).date()
+    end_utc_date = (end_local - dt.timedelta(microseconds=1)).astimezone(dt.timezone.utc).date()
+    dates: list[dt.date] = []
+    current = start_utc_date
+    while current <= end_utc_date:
+        dates.append(current)
+        current += dt.timedelta(days=1)
+    if target_date not in dates:
+        dates.append(target_date)
+    return sorted(set(dates))
+
+
+def fixture_utc_datetime(fixture: object) -> dt.datetime | None:
+    value = fixture_time_text(fixture).strip()
+    if not value:
+        return None
+    try:
+        if " UTC" in value:
+            parts = value.split()
+            if len(parts) >= 3:
+                date_text, time_text, offset_text = parts[0], parts[1], parts[2].replace("UTC", "") or "+0"
+                offset_hours = int(offset_text)
+                hour_text, minute_text = time_text.split(":", 1)
+                source_tz = dt.timezone(dt.timedelta(hours=offset_hours))
+                source_time = dt.datetime.combine(
+                    dt.date.fromisoformat(date_text),
+                    dt.time(int(hour_text), int(minute_text[:2])),
+                    tzinfo=source_tz,
+                )
+                return source_time.astimezone(dt.timezone.utc)
+        if value.endswith("Z"):
+            return dt.datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(dt.timezone.utc)
+        parsed = dt.datetime.fromisoformat(value)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=dt.timezone.utc)
+        return parsed.astimezone(dt.timezone.utc)
+    except Exception:
+        return None
+
+
+def fixture_matches_app_date(fixture: object, target_date: dt.date) -> bool:
+    fixture_time = fixture_utc_datetime(fixture)
+    if fixture_time:
+        return fixture_time.astimezone(APP_TIMEZONE).date() == target_date
+    fixture_date = getattr(fixture, "date", None)
+    return fixture_date == target_date
+
+
 def render_daily_world_cup_board(filter_key: str = "world_cup_competition_filter") -> tuple[list[PredictionResult], list[PredictionResult]]:
-    today = dt.date.today()
+    today = app_today()
     tomorrow = today + dt.timedelta(days=1)
     filter_labels = {
         tr("FIFA World Cup Finals"): "FIFA World Cup",
@@ -917,14 +978,23 @@ def real_world_cup_fixtures(target_date: dt.date, competition_filter: str = "FIF
 
 
 def schedule_fixtures_by_source(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> dict[str, list[object]]:
-    fifa_fixtures = fetch_fifa_official_schedule(target_date) if competition_filter in {"FIFA World Cup", "All International Matches"} else []
-    openfootball_fixtures = fetch_openfootball_world_cup_schedule(target_date) if competition_filter in {"FIFA World Cup", "All International Matches"} else []
-    espn_fixtures = fetch_international_schedule_from_espn(target_date, competition_filter)
+    query_dates = schedule_query_dates_for_app_date(target_date)
+    fifa_fixtures: list[object] = []
+    openfootball_fixtures: list[object] = []
+    espn_fixtures: list[object] = []
+    for query_date in query_dates:
+        if competition_filter in {"FIFA World Cup", "All International Matches"}:
+            fifa_fixtures.extend(fetch_fifa_official_schedule(query_date))
+            openfootball_fixtures.extend(fetch_openfootball_world_cup_schedule(query_date))
+        espn_fixtures.extend(fetch_international_schedule_from_espn(query_date, competition_filter))
+    fifa_fixtures = [fixture for fixture in fifa_fixtures if fixture_matches_app_date(fixture, target_date)]
+    openfootball_fixtures = [fixture for fixture in openfootball_fixtures if fixture_matches_app_date(fixture, target_date)]
+    espn_fixtures = [fixture for fixture in espn_fixtures if fixture_matches_app_date(fixture, target_date)]
     database_fixtures = load_database_fixtures(target_date)
     return {
-        "FIFA": filter_competition_fixtures(fifa_fixtures, competition_filter),
-        "OpenFootball": filter_competition_fixtures(openfootball_fixtures, competition_filter),
-        "ESPN": filter_competition_fixtures(espn_fixtures, competition_filter),
+        "FIFA": dedupe_real_fixtures(filter_competition_fixtures(fifa_fixtures, competition_filter)),
+        "OpenFootball": dedupe_real_fixtures(filter_competition_fixtures(openfootball_fixtures, competition_filter)),
+        "ESPN": dedupe_real_fixtures(filter_competition_fixtures(espn_fixtures, competition_filter)),
         "database": filter_competition_fixtures(database_fixtures, competition_filter),
     }
 
