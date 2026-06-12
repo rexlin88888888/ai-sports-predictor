@@ -31,7 +31,7 @@ from core.result_updater import update_results  # noqa: E402
 from core.live_schedule import fetch_world_cup_schedule_from_espn  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
-from sports.football.football_data import load_matches  # noqa: E402
+from sports.football.football_data import load_database_fixtures, load_matches  # noqa: E402
 from sports.football.football_model import predict_football_match  # noqa: E402
 from sports.football.tournament_simulation import simulate_world_cup, simulation_output_path  # noqa: E402
 from sports.nba.nba_model import NBAPredictor  # noqa: E402
@@ -347,8 +347,8 @@ EXTRA_TEXT_ZH = {
     "Saved to": "已保存到",
     "Today": "今天",
     "Tomorrow": "明天",
-    "No World Cup matches today": "今天暂无世界杯比赛",
-    "No World Cup matches tomorrow": "明天暂无世界杯比赛",
+    "No real World Cup matches today": "今天暂无真实世界杯比赛",
+    "No real World Cup matches tomorrow": "明天暂无真实世界杯比赛",
     "Some metrics are model estimated": "部分数据为模型估算",
     "Data updated": "数据更新时间",
     "Recent 5 form": "最近5场状态",
@@ -717,13 +717,13 @@ def render_daily_world_cup_board() -> None:
         for result in today_results:
             render_world_cup_match_card(result)
     else:
-        st.info(tr("No World Cup matches today"))
+        st.info(tr("No real World Cup matches today"))
     st.markdown("### " + tr("Tomorrow"))
     if tomorrow_results:
         for result in tomorrow_results:
             render_world_cup_match_card(result)
     else:
-        st.info(tr("No World Cup matches tomorrow"))
+        st.info(tr("No real World Cup matches tomorrow"))
 
 
 @st.cache_data(ttl=300, show_spinner=False)
@@ -731,27 +731,85 @@ def daily_world_cup_predictions(target_date: dt.date) -> list[PredictionResult]:
     matches = load_matches()
     if not matches:
         return []
-    fixtures = fetch_world_cup_schedule_from_espn(target_date, "WORLD_CUP")
+    fixtures = real_world_cup_fixtures(target_date)
     results: list[PredictionResult] = []
-    updated_at = dt.datetime.now().isoformat(timespec="minutes")
+    updated_at = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
     for fixture in fixtures:
+        source = real_fixture_source(fixture)
+        fixture_date = getattr(fixture, "date", target_date)
         result = predict_football_match(
             matches,
             fixture.home_team,
             fixture.away_team,
             fixture.mode or "WORLD_CUP",
-            fixture.date,
-            data_source="ESPN",
+            fixture_date,
+            data_source=source,
         )
         result.key_factors.extend(
             [
-                f"match_time={fixture.time_text}",
+                f"match_time={fixture_time_text(fixture)}",
                 f"data_updated={updated_at}",
-                "daily_data_source=ESPN",
+                f"daily_data_source={source}",
             ]
         )
         results.append(result)
     return results
+
+
+def real_world_cup_fixtures(target_date: dt.date) -> list[object]:
+    espn_fixtures = fetch_world_cup_schedule_from_espn(target_date, "WORLD_CUP")
+    if espn_fixtures:
+        return espn_fixtures
+    database_fixtures = load_database_fixtures(target_date)
+    real_fixtures: list[object] = []
+    for fixture in database_fixtures:
+        source = real_fixture_source(fixture)
+        if source not in {"openfootball", "database", "ESPN"}:
+            continue
+        real_fixtures.append(
+            Namespace(
+                date=fixture.date,
+                home_team=fixture.home_team,
+                away_team=fixture.away_team,
+                mode=fixture.mode or "WORLD_CUP",
+                data_source=source,
+                time_text=fixture.date.isoformat(),
+            )
+        )
+    return dedupe_real_fixtures(real_fixtures)
+
+
+def dedupe_real_fixtures(fixtures: list[object]) -> list[object]:
+    seen: set[tuple[str, str, str]] = set()
+    unique: list[object] = []
+    for fixture in fixtures:
+        fixture_date = getattr(fixture, "date", dt.date.today())
+        key = (fixture_date.isoformat(), canonical_team_name(fixture.home_team), canonical_team_name(fixture.away_team))
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(fixture)
+    return unique
+
+
+def real_fixture_source(fixture: object) -> str:
+    source = str(getattr(fixture, "data_source", "") or "")
+    lowered = source.lower()
+    if "espn" in lowered or source == "live_api":
+        return "ESPN"
+    if "openfootball" in lowered:
+        return "openfootball"
+    if "database" in lowered:
+        return "database"
+    return source if source in {"ESPN", "openfootball", "database"} else "database"
+
+
+def fixture_time_text(fixture: object) -> str:
+    value = str(getattr(fixture, "time_text", "") or "")
+    if value:
+        return value
+    fixture_date = getattr(fixture, "date", dt.date.today())
+    return fixture_date.isoformat() if hasattr(fixture_date, "isoformat") else str(fixture_date)
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -1466,19 +1524,15 @@ def readable_factor_name(name: str) -> str:
 
 
 def world_cup_source_label(result: PredictionResult) -> str:
-    data_source_text = str(result.data_source or "")
-    pieces = ["⚡ ESPN" if result.data_source == "live_api" or "ESPN" in data_source_text else "⚡ " + tr("Some data is estimated by the local model")]
-    joined = " | ".join(result.key_factors)
-    if "eloratings.net" in joined:
-        pieces.append("⭐ eloratings.net")
-    else:
-        pieces.append("⭐ local Elo")
-    if "actual matches" in joined or "ESPN" in joined:
-        pieces.append("📊 ESPN recent fixtures")
-    else:
-        pieces.append("📊 local model")
-    pieces.append("📅 openfootball" if "openfootball" in data_source_text or "database" in data_source_text else "📅 local schedule")
-    return " / ".join(pieces)
+    data_source_text = str(extract_key_factor_value(result, "daily_data_source") or result.data_source or "")
+    lowered = data_source_text.lower()
+    if "espn" in lowered:
+        return "ESPN"
+    if "openfootball" in lowered:
+        return "openfootball"
+    if "database" in lowered:
+        return "database"
+    return "database"
 
 
 def team_estimated(result: PredictionResult, side: str) -> bool:
