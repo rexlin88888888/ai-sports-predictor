@@ -28,8 +28,11 @@ from core.automation_status import read_automation_status  # noqa: E402
 from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package, generate_daily_predictions  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
 from core.result_updater import update_results  # noqa: E402
+from core.live_schedule import fetch_world_cup_schedule_from_espn  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
+from sports.football.football_data import load_matches  # noqa: E402
+from sports.football.football_model import predict_football_match  # noqa: E402
 from sports.football.tournament_simulation import simulate_world_cup, simulation_output_path  # noqa: E402
 from sports.nba.nba_model import NBAPredictor  # noqa: E402
 from utils.team_translations import canonical_team_name, t, translate_team_name, translate_text  # noqa: E402
@@ -342,6 +345,16 @@ EXTRA_TEXT_ZH = {
     "Based on current Elo ratings and model parameters. Remaining World Cup matches are simulated 1000 times.": "基于当前 Elo 和模型参数，模拟剩余所有世界杯比赛 1000 次。",
     "No tournament schedule data is available yet.": "暂无可用世界杯赛程数据。",
     "Saved to": "已保存到",
+    "Today": "今天",
+    "Tomorrow": "明天",
+    "No World Cup matches today": "今天暂无世界杯比赛",
+    "No World Cup matches tomorrow": "明天暂无世界杯比赛",
+    "Some metrics are model estimated": "部分数据为模型估算",
+    "Data updated": "数据更新时间",
+    "Recent 5 form": "最近5场状态",
+    "Other likely scores": "其它可能比分",
+    "xG home": "主队 xG",
+    "xG away": "客队 xG",
 }
 
 
@@ -660,6 +673,7 @@ def render_world_cup_predictions_page() -> None:
     )
     auto_tab, manual_tab = st.tabs([tr("Auto Schedule Mode"), tr("Manual Prediction Mode")])
     with auto_tab:
+        render_daily_world_cup_board()
         date_value = st.text_input(tr("Date"), "today", key="wc_auto_date")
         filter_cols = st.columns(3)
         continent_filter = filter_cols[0].selectbox("Continent" if not is_zh() else "洲际", ["All", "Americas", "Europe", "Africa", "Asia", "Oceania"])
@@ -690,7 +704,54 @@ def render_world_cup_predictions_page() -> None:
                 for result in results:
                     render_prediction_card(result)
             else:
-                st.warning(tr("No upcoming international matches available"))
+                st.info(tr("No upcoming international matches available"))
+
+
+def render_daily_world_cup_board() -> None:
+    today = dt.date.today()
+    tomorrow = today + dt.timedelta(days=1)
+    today_results = daily_world_cup_predictions(today)
+    tomorrow_results = daily_world_cup_predictions(tomorrow)
+    st.markdown("### " + tr("Today"))
+    if today_results:
+        for result in today_results:
+            render_world_cup_match_card(result)
+    else:
+        st.info(tr("No World Cup matches today"))
+    st.markdown("### " + tr("Tomorrow"))
+    if tomorrow_results:
+        for result in tomorrow_results:
+            render_world_cup_match_card(result)
+    else:
+        st.info(tr("No World Cup matches tomorrow"))
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def daily_world_cup_predictions(target_date: dt.date) -> list[PredictionResult]:
+    matches = load_matches()
+    if not matches:
+        return []
+    fixtures = fetch_world_cup_schedule_from_espn(target_date, "WORLD_CUP")
+    results: list[PredictionResult] = []
+    updated_at = dt.datetime.now().isoformat(timespec="minutes")
+    for fixture in fixtures:
+        result = predict_football_match(
+            matches,
+            fixture.home_team,
+            fixture.away_team,
+            fixture.mode or "WORLD_CUP",
+            fixture.date,
+            data_source="ESPN",
+        )
+        result.key_factors.extend(
+            [
+                f"match_time={fixture.time_text}",
+                f"data_updated={updated_at}",
+                "daily_data_source=ESPN",
+            ]
+        )
+        results.append(result)
+    return results
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
@@ -1344,6 +1405,34 @@ def extract_score_probabilities(result: PredictionResult) -> list[tuple[str, flo
     return scores[:3]
 
 
+def extract_key_factor_value(result: PredictionResult, key: str) -> str:
+    prefix = f"{key}="
+    for item in result.key_factors:
+        text = str(item)
+        if text.startswith(prefix):
+            return text[len(prefix):].strip()
+    return ""
+
+
+def display_match_time(result: PredictionResult) -> str:
+    value = extract_key_factor_value(result, "match_time")
+    return value or result.prediction_date.isoformat()
+
+
+def display_data_updated(result: PredictionResult) -> str:
+    return extract_key_factor_value(result, "data_updated") or dt.datetime.now().isoformat(timespec="minutes")
+
+
+def extract_recent_forms(result: PredictionResult) -> tuple[str, str]:
+    import re
+
+    text = " | ".join(result.key_factors)
+    match = re.search(r"home_momentum=([WLD-]+), away_momentum=([WLD-]+)", text)
+    if match:
+        return match.group(1), match.group(2)
+    return "-", "-"
+
+
 def extract_top_factors(result: PredictionResult) -> dict[str, float]:
     import re
 
@@ -1400,7 +1489,7 @@ def team_estimated(result: PredictionResult, side: str) -> bool:
 def world_cup_estimate_note(result: PredictionResult) -> str:
     text = " | ".join(result.risk_factors + result.key_factors).lower()
     if "missing data" in text or "only 0 historical" in text or result.data_source not in {"live_api"}:
-        return tr("Some data is estimated by the local model")
+        return tr("Some metrics are model estimated")
     return ""
 
 
@@ -1528,7 +1617,7 @@ def render_world_cup_probability_native(team_label: str, label: str, probability
 
 def render_score_heatmap(result: PredictionResult) -> None:
     scores = extract_score_probabilities(result)
-    st.markdown(f"#### {tr('Score Probability Heatmap')}")
+    st.markdown(f"#### {tr('Other likely scores')}")
     cols = st.columns(len(scores) or 1)
     for col, (score, probability) in zip(cols, scores):
         with col:
@@ -1543,11 +1632,11 @@ def render_xg_comparison(result: PredictionResult) -> None:
     with home_col:
         st.caption(country_display_dual(result.home_team))
         st.progress(min(1.0, xg_home / max_xg))
-        st.write(f"xG {xg_home:.2f}")
+        st.write(f"{tr('xG home')}: {xg_home:.2f}")
     with away_col:
         st.caption(country_display_dual(result.away_team))
         st.progress(min(1.0, xg_away / max_xg))
-        st.write(f"xG {xg_away:.2f}")
+        st.write(f"{tr('xG away')}: {xg_away:.2f}")
 
 
 def market_average_odds(model_probability: float, offset: float) -> str:
@@ -1586,9 +1675,12 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
     home_score, away_score = score_numbers(result.predicted_score)
     analysis = build_world_cup_analysis(result, home_score, away_score)
     estimate_note = world_cup_estimate_note(result)
+    match_time = display_match_time(result)
+    data_updated = display_data_updated(result)
+    home_form, away_form = extract_recent_forms(result)
 
     with st.container(border=True):
-        st.caption(f"{tr('Match Time')}: {result.prediction_date.isoformat()}")
+        st.caption(f"{tr('Match Time')}: {match_time}")
         home_col, score_col, away_col = st.columns([1.2, 0.9, 1.2], vertical_alignment="center")
         with home_col:
             render_country_flag(result.home_team)
@@ -1614,6 +1706,9 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
         st.caption(tr("Model reference odds for analysis only"))
         render_score_heatmap(result)
         render_xg_comparison(result)
+        form_cols = st.columns(2)
+        form_cols[0].metric(tr("Recent 5 form"), home_form)
+        form_cols[1].metric(tr("Recent 5 form"), away_form)
         render_odds_comparison(home_prob, draw_prob, away_prob)
         st.markdown(f"#### {tr('Match Analysis')}")
         st.write(analysis)
@@ -1622,6 +1717,7 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
         if team_estimated(result, "home") or team_estimated(result, "away"):
             st.caption(tr("Limited recent public data is available for this team, so the model uses historical international match data for estimation."))
         st.caption(f"{tr('Sources')}: {world_cup_source_label(result)}")
+        st.caption(f"{tr('Data updated')}: {data_updated}")
         st.caption(f"{tr('Data cutoff')}: {dt.date.today().isoformat()}")
 
 
@@ -2519,6 +2615,37 @@ def apply_theme(theme_mode: str) -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_world_cup_predictions_page() -> None:
+    enable_auto_refresh()
+    st.markdown(
+        f"""
+        <div class="section-intro">
+            <h2>{html.escape(tr("World Cup Predictions"))}</h2>
+            <p>{html.escape(tr("World Cup match predictions powered by Elo ratings, form, attack and defensive metrics"))}</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    auto_tab, manual_tab = st.tabs([tr("Auto Schedule Mode"), tr("Manual Prediction Mode")])
+    with auto_tab:
+        render_daily_world_cup_board()
+    with manual_tab:
+        st.markdown("### " + tr("Manual World Cup Prediction"))
+        with st.form("world_cup_manual_prediction_form_v2"):
+            cols = st.columns(3)
+            home = cols[0].text_input(tr("Home Team"), "Argentina")
+            away = cols[1].text_input(tr("Away Team"), "France")
+            manual_date = cols[2].text_input(tr("Date"), "tomorrow")
+            submitted = st.form_submit_button(tr("Run Prediction"), type="primary")
+        if submitted:
+            results = run_prediction("football", manual_date, canonical_team_name(home), canonical_team_name(away), "WORLD_CUP", False)
+            if results:
+                for result in results:
+                    render_world_cup_match_card(result)
+            else:
+                st.info(tr("No upcoming international matches available"))
 
 
 if __name__ == "__main__":

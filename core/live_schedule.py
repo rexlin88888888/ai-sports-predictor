@@ -55,6 +55,9 @@ def fetch_nba_schedule_from_espn(target_date: dt.date) -> list[LiveFixture]:
 def fetch_football_schedule(target_date: dt.date, mode: str = "WORLD_CUP") -> list[LiveFixture]:
     """Fetch football fixtures from live APIs; returns [] when no provider has data."""
 
+    fixtures = fetch_world_cup_schedule_from_espn(target_date, mode)
+    if fixtures:
+        return fixtures
     fixtures = fetch_football_schedule_from_football_data(target_date, mode)
     if fixtures:
         return fixtures
@@ -63,6 +66,28 @@ def fetch_football_schedule(target_date: dt.date, mode: str = "WORLD_CUP") -> li
         return fixtures
     LOGGER.warning("No live football fixtures found for %s.", target_date)
     return []
+
+
+def fetch_world_cup_schedule_from_espn(target_date: dt.date, mode: str = "WORLD_CUP") -> list[LiveFixture]:
+    """Fetch FIFA World Cup fixtures for one date from ESPN's public web endpoint."""
+
+    url = "https://site.web.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
+    params = {"dates": target_date.strftime("%Y%m%d")}
+    try:
+        response = requests.get(url, params=params, timeout=TIMEOUT_SECONDS)
+        response.raise_for_status()
+        payload = response.json()
+    except (requests.RequestException, ValueError) as exc:
+        LOGGER.warning("ESPN World Cup schedule API failed for %s: %s", target_date, exc)
+        return []
+    fixtures: list[LiveFixture] = []
+    for event in payload.get("events", []) or []:
+        fixture = _fixture_from_espn_event(event, target_date, "football", mode)
+        if fixture:
+            fixtures.append(fixture)
+    if fixtures:
+        LOGGER.info("Using ESPN World Cup schedule API for %s: %s fixture(s).", target_date, len(fixtures))
+    return fixtures
 
 
 def fetch_football_schedule_from_football_data(target_date: dt.date, mode: str) -> list[LiveFixture]:
@@ -145,6 +170,8 @@ def _fixture_from_espn_event(event: dict[str, Any], target_date: dt.date, sport:
     if not home or not away:
         return None
     status = (event.get("status") or {}).get("type") or {}
+    event_time = str(event.get("date") or "").strip()
+    status_text = str(status.get("shortDetail") or status.get("detail") or "TBD")
     return LiveFixture(
         date=target_date,
         home_team=home,
@@ -152,6 +179,6 @@ def _fixture_from_espn_event(event: dict[str, Any], target_date: dt.date, sport:
         sport=sport,
         mode=mode,
         game_id=str(event.get("id") or ""),
-        time_text=str(status.get("shortDetail") or status.get("detail") or "TBD"),
+        time_text=event_time or status_text,
         data_source="live_api",
     )
