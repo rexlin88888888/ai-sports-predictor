@@ -1,0 +1,25 @@
+Real Match Prediction Tracker
+Generated: 2026-06-13T00:05:09
+
+Future window fixtures: 31
+ESPN matches fetched: 31
+openfootball matches fetched: 104
+Result rows updated: 0
+
+Last 7 Days
+Settled predictions: 0
+Win/Draw/Loss accuracy: N/A
+Top1 score accuracy: N/A
+Top3 score accuracy: N/A
+
+Last 30 Days
+Settled predictions: 0
+Win/Draw/Loss accuracy: N/A
+Top1 score accuracy: N/A
+Top3 score accuracy: N/A
+
+All Time
+Settled predictions: 0
+Win/Draw/Loss accuracy: N/A
+Top1 score accuracy: N/A
+Top3 score accuracy: N/A
