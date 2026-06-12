@@ -1766,10 +1766,8 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
         render_odds_comparison(home_prob, draw_prob, away_prob)
         st.markdown(f"#### {tr('Match Analysis')}")
         st.write(analysis)
-        if estimate_note:
-            st.info(estimate_note)
-        if team_estimated(result, "home") or team_estimated(result, "away"):
-            st.caption(tr("Limited recent public data is available for this team, so the model uses historical international match data for estimation."))
+        if estimate_note or team_estimated(result, "home") or team_estimated(result, "away"):
+            st.caption(estimate_note or tr("Limited recent public data is available for this team, so the model uses historical international match data for estimation."))
         st.caption(f"{tr('Sources')}: {world_cup_source_label(result)}")
         st.caption(f"{tr('Data updated')}: {data_updated}")
         st.caption(f"{tr('Data cutoff')}: {dt.date.today().isoformat()}")
@@ -2855,6 +2853,142 @@ def build_world_cup_analysis(result: PredictionResult, home_score: int, away_sco
         home_prediction_reason_en(home, away, elo_gap, xg_gap, form_gap),
         score_prediction_reason_en(home, away, score, xg_home, xg_away, home_for, home_against, away_for, away_against),
         form_line,
+    ]
+    if note:
+        parts.append(note)
+    return " ".join(parts)
+
+
+COUNTRY_FLAGS.update({
+    "Bosnia & Herzegovina": "🇧🇦",
+    "Bosnia and Herzegovina": "🇧🇦",
+    "Haiti": "🇭🇹",
+    "Scotland": "🏴",
+})
+
+COUNTRY_FLAG_CODES.update({
+    "Bosnia & Herzegovina": "ba",
+    "Bosnia and Herzegovina": "ba",
+    "Haiti": "ht",
+})
+
+COUNTRY_ZH_OVERRIDES.update({
+    "Bosnia & Herzegovina": "波黑",
+    "Bosnia and Herzegovina": "波黑",
+    "Haiti": "海地",
+    "Scotland": "苏格兰",
+})
+
+
+def prediction_side(home_prob: float, draw_prob: float, away_prob: float) -> str:
+    if draw_prob >= home_prob and draw_prob >= away_prob:
+        return "draw"
+    return "home" if home_prob >= away_prob else "away"
+
+
+def match_edge_reason_zh(
+    side: str,
+    home_zh: str,
+    away_zh: str,
+    elo_gap: int | None,
+    xg_gap: float,
+    form_gap: float,
+) -> str:
+    target = home_zh if side == "home" else away_zh
+    if side == "draw":
+        return f"模型没有明显偏向某一方，{home_zh}和{away_zh}的胜率接近，平局概率被抬高。"
+    reasons: list[str] = []
+    oriented_elo = elo_gap if side == "home" else (-elo_gap if elo_gap is not None else None)
+    oriented_xg = xg_gap if side == "home" else -xg_gap
+    oriented_form = form_gap if side == "home" else -form_gap
+    if oriented_elo is not None:
+        if oriented_elo > 80:
+            reasons.append(f"Elo 领先 {oriented_elo} 分")
+        elif oriented_elo > 20:
+            reasons.append("Elo 略占优势")
+        elif oriented_elo < -50:
+            reasons.append("Elo 并不占优，但其它指标补足了差距")
+    if oriented_xg > 0.45:
+        reasons.append("xG 优势清楚")
+    elif oriented_xg > 0.12:
+        reasons.append("xG 略高")
+    if oriented_form > 0.8:
+        reasons.append("最近 5 场状态更好")
+    elif oriented_form < -0.8:
+        reasons.append("近期状态存在波动")
+    if not reasons:
+        reasons.append("整体攻防数据更均衡")
+    return f"模型更看好{target}，主要因为" + "、".join(reasons) + "。"
+
+
+def match_edge_reason_en(
+    side: str,
+    home: str,
+    away: str,
+    elo_gap: int | None,
+    xg_gap: float,
+    form_gap: float,
+) -> str:
+    target = home if side == "home" else away
+    if side == "draw":
+        return f"The model does not see a clear winner; {home} and {away} are close enough that the draw probability rises."
+    reasons: list[str] = []
+    oriented_elo = elo_gap if side == "home" else (-elo_gap if elo_gap is not None else None)
+    oriented_xg = xg_gap if side == "home" else -xg_gap
+    oriented_form = form_gap if side == "home" else -form_gap
+    if oriented_elo is not None:
+        if oriented_elo > 80:
+            reasons.append(f"a {oriented_elo}-point Elo edge")
+        elif oriented_elo > 20:
+            reasons.append("a small Elo edge")
+        elif oriented_elo < -50:
+            reasons.append("other indicators offset an Elo disadvantage")
+    if oriented_xg > 0.45:
+        reasons.append("a clear xG advantage")
+    elif oriented_xg > 0.12:
+        reasons.append("a slight xG edge")
+    if oriented_form > 0.8:
+        reasons.append("better recent five-match form")
+    elif oriented_form < -0.8:
+        reasons.append("some recent form volatility")
+    if not reasons:
+        reasons.append("a more balanced attack and defence profile")
+    return f"The model leans toward {target} because of " + ", ".join(reasons) + "."
+
+
+def build_world_cup_analysis(result: PredictionResult, home_score: int, away_score: int) -> str:
+    home = country_english_name(result.home_team)
+    away = country_english_name(result.away_team)
+    home_zh = country_chinese_name(result.home_team)
+    away_zh = country_chinese_name(result.away_team)
+    home_prob = result.win_probability_home or 0.0
+    draw_prob = result.draw_probability or 0.0
+    away_prob = result.win_probability_away or 0.0
+    xg_home, xg_away = extract_xg(result)
+    home_for, home_against = extract_recent_goal_stats(result, result.home_team)
+    away_for, away_against = extract_recent_goal_stats(result, result.away_team)
+    home_form, away_form = extract_recent_forms(result)
+    form_gap = form_score_value(home_form) - form_score_value(away_form)
+    elo_gap = extract_elo_gap(result)
+    side = prediction_side(home_prob, draw_prob, away_prob)
+    score = f"{home_score}:{away_score}"
+    xg_gap = xg_home - xg_away
+    note = limited_data_note(result)
+
+    if is_zh():
+        parts = [
+            match_edge_reason_zh(side, home_zh, away_zh, elo_gap, xg_gap, form_gap),
+            score_prediction_reason_zh(home_zh, away_zh, score, xg_home, xg_away, home_for, home_against, away_for, away_against),
+            f"最近 5 场状态：{home_zh} {home_form}，{away_zh} {away_form}。",
+        ]
+        if note:
+            parts.append(note)
+        return " ".join(parts)
+
+    parts = [
+        match_edge_reason_en(side, home, away, elo_gap, xg_gap, form_gap),
+        score_prediction_reason_en(home, away, score, xg_home, xg_away, home_for, home_against, away_for, away_against),
+        f"Recent five-match form: {home} {home_form}, {away} {away_form}.",
     ]
     if note:
         parts.append(note)
