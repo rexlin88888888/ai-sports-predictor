@@ -20,13 +20,13 @@
   },
   "football": {
     "sport": "football",
-    "accuracy": 0.56,
+    "accuracy": 0.63,
     "weights": {
-      "elo_weight": 0.15,
+      "elo_weight": 0.0,
       "fatigue_weight": 0.0,
       "injury_weight": 0.0,
       "momentum_weight": 0.0,
-      "home_advantage_weight": 0.0
+      "home_advantage_weight": 0.15
     },
     "available_features": [
       "elo_difference",

@@ -46,7 +46,22 @@ FIFA_RANKS = {
     "South Africa": 60,
 }
 
-ENSEMBLE_WEIGHTS = {"poisson_xg": 0.40, "real_elo": 0.35, "recent_form": 0.25}
+ENSEMBLE_WEIGHTS = {"poisson_xg": 0.42, "real_elo": 0.44, "recent_form": 0.14}
+MODEL_WEIGHTS = {
+    "xg_attack": 0.64,
+    "xg_defence": 0.42,
+    "xg_elo": 0.0017,
+    "xg_weighted_elo": 0.050,
+    "xg_recent_form": 0.025,
+    "xg_momentum": 0.060,
+    "prob_attack": 0.44,
+    "prob_defence": 0.24,
+    "prob_recent_form": 0.10,
+    "prob_elo": 0.0042,
+    "prob_rank": 0.35,
+    "prob_momentum": 0.18,
+    "prob_home_advantage": 0.25,
+}
 EVENT_AVERAGE = {"goals_for": 1.25, "goals_against": 1.10, "win_rate": 0.42, "recent_form_weighted": 0.0}
 
 KEY_INJURIES = {
@@ -354,24 +369,24 @@ def estimate_xg(
     weighted_elo_edge = weighted_elo_home - weighted_elo_away
     recent_form_edge = home_stats.get("recent_form_weighted", 0.0) - away_stats.get("recent_form_weighted", 0.0)
     xg_home = (
-        0.56 * recent_attack_home
-        + 0.44 * recent_defence_away
+        MODEL_WEIGHTS["xg_attack"] * recent_attack_home
+        + MODEL_WEIGHTS["xg_defence"] * recent_defence_away
         + 0.16
         + home_advantage
-        + 0.0014 * elo_diff
-        + 0.050 * weighted_elo_edge
-        + 0.045 * recent_form_edge
-        + 0.060 * momentum_edge
+        + MODEL_WEIGHTS["xg_elo"] * elo_diff
+        + MODEL_WEIGHTS["xg_weighted_elo"] * weighted_elo_edge
+        + MODEL_WEIGHTS["xg_recent_form"] * recent_form_edge
+        + MODEL_WEIGHTS["xg_momentum"] * momentum_edge
         + 0.25 * rank_edge
     )
     xg_away = (
-        0.56 * recent_attack_away
-        + 0.44 * recent_defence_home
+        MODEL_WEIGHTS["xg_attack"] * recent_attack_away
+        + MODEL_WEIGHTS["xg_defence"] * recent_defence_home
         - 0.08
-        - 0.0010 * elo_diff
-        - 0.035 * weighted_elo_edge
-        - 0.035 * recent_form_edge
-        - 0.040 * momentum_edge
+        - (MODEL_WEIGHTS["xg_elo"] * 0.72) * elo_diff
+        - (MODEL_WEIGHTS["xg_weighted_elo"] * 0.70) * weighted_elo_edge
+        - (MODEL_WEIGHTS["xg_recent_form"] * 0.78) * recent_form_edge
+        - (MODEL_WEIGHTS["xg_momentum"] * 0.67) * momentum_edge
         - 0.18 * rank_edge
     )
     return clamp(xg_home, 0.15, MAX_EXPECTED_GOALS), clamp(xg_away, 0.15, MAX_EXPECTED_GOALS)
@@ -401,7 +416,15 @@ def recent_form_probability_distribution(
     attack_edge = home_stats["goals_for"] - away_stats["goals_for"]
     defense_edge = away_stats["goals_against"] - home_stats["goals_against"]
     form_edge = home_stats.get("recent_form_weighted", 0.0) - away_stats.get("recent_form_weighted", 0.0)
-    score = 0.34 * attack_edge + 0.28 * defense_edge + 0.18 * form_edge + 0.003 * elo_diff + 0.35 * rank_edge + 0.18 * momentum_edge + 0.25 * home_adv
+    score = (
+        MODEL_WEIGHTS["prob_attack"] * attack_edge
+        + MODEL_WEIGHTS["prob_defence"] * defense_edge
+        + MODEL_WEIGHTS["prob_recent_form"] * form_edge
+        + MODEL_WEIGHTS["prob_elo"] * elo_diff
+        + MODEL_WEIGHTS["prob_rank"] * rank_edge
+        + MODEL_WEIGHTS["prob_momentum"] * momentum_edge
+        + MODEL_WEIGHTS["prob_home_advantage"] * home_adv
+    )
     home_probability = 1.0 / (1.0 + math.exp(-score))
     closeness = max(0.0, 1.0 - abs(score) / 1.8)
     draw = clamp(0.18 + 0.12 * closeness, 0.16, 0.34)
