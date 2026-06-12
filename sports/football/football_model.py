@@ -10,6 +10,7 @@ try:
     from ...core.base_model import SportPredictor
     from ...core.prediction_result import PredictionResult
     from ...core.prediction_store import save_prediction_outputs
+    from ...core.predictor import load_match_data
     from ...core.utils import append_csv_row, clamp, mean, names_match, parse_target_date
     from ...elo import EloMatch, EloRatingSystem
     from ...momentum import football_momentum
@@ -19,12 +20,14 @@ except ImportError:
     from core.base_model import SportPredictor
     from core.prediction_result import PredictionResult
     from core.prediction_store import save_prediction_outputs
+    from core.predictor import load_match_data
     from core.utils import append_csv_row, clamp, mean, names_match, parse_target_date
     from elo import EloMatch, EloRatingSystem
     from momentum import football_momentum
     from predictor import ai_explain, blend_probability, home_advantage_score
 
 from .football_data import FootballMatch, load_live_fixtures, load_matches, team_matches
+from .draw_booster import boost_draw_probability, normalize_probabilities
 
 
 LOGGER = logging.getLogger("sports_predictor")
@@ -41,6 +44,15 @@ FIFA_RANKS = {
     "Mexico": 16,
     "United States": 17,
     "South Africa": 60,
+}
+
+ENSEMBLE_WEIGHTS = {"poisson_xg": 0.40, "real_elo": 0.35, "recent_form": 0.25}
+EVENT_AVERAGE = {"goals_for": 1.25, "goals_against": 1.10, "win_rate": 0.42, "recent_form_weighted": 0.0}
+
+KEY_INJURIES = {
+    "France": [{"player": "Estimated key availability", "impact": -0.08}],
+    "Argentina": [],
+    "Brazil": [],
 }
 
 
@@ -117,7 +129,22 @@ def predict_football_match(
         risks.append(f"WARNING: missing data for {away}: only {len(away_history)} historical matches")
     home_stats = team_stats(home, home_history)
     away_stats = team_stats(away, away_history)
+    real_data = load_match_data(home, away, prediction_date)
+    home_real = real_data["home"]
+    away_real = real_data["away"]
+    if home_real.goals_for is not None:
+        home_stats["goals_for"] = home_real.goals_for
+        home_stats["goals_against"] = home_real.goals_against or home_stats["goals_against"]
+        home_stats["recent_form_weighted"] = home_real.recent_form_weighted or home_stats["recent_form_weighted"]
+    if away_real.goals_for is not None:
+        away_stats["goals_for"] = away_real.goals_for
+        away_stats["goals_against"] = away_real.goals_against or away_stats["goals_against"]
+        away_stats["recent_form_weighted"] = away_real.recent_form_weighted or away_stats["recent_form_weighted"]
     elo_system = build_football_elo_system(matches, prediction_date)
+    if home_real.elo_rating is not None:
+        elo_system.set(home, home_real.elo_rating)
+    if away_real.elo_rating is not None:
+        elo_system.set(away, away_real.elo_rating)
     elo_snapshot = elo_system.snapshot(home, away, home_advantage=40.0)
     home_momentum = football_momentum(home, home_history)
     away_momentum = football_momentum(away, away_history)
@@ -138,8 +165,10 @@ def predict_football_match(
     )
     lambda_home = xg_home
     lambda_away = xg_away
-    probs = poisson_probs(xg_home, xg_away)
-    probs = apply_football_elo_probability(probs, elo_snapshot.elo_win_probability)
+    poisson_model_probs = poisson_probs(xg_home, xg_away)
+    elo_model_probs = elo_probability_distribution(poisson_model_probs, elo_snapshot.elo_win_probability)
+    recent_form_probs = recent_form_probability_distribution(home_stats, away_stats, elo_snapshot.elo_diff, rank_edge, momentum_edge, home_adv)
+    probs = ensemble_probabilities(poisson_model_probs, elo_model_probs, recent_form_probs)
     probs, draw_risk = apply_draw_model(
         probs=probs,
         lambda_home=lambda_home,
@@ -150,25 +179,44 @@ def predict_football_match(
         mode=mode,
         historical_draw_rate=historical_draw_rate(matches, prediction_date),
     )
+    mode_upper = str(mode or "").upper()
+    boosted = boost_draw_probability(
+        probs,
+        elo_diff=elo_snapshot.elo_diff,
+        avg_goals_scored=(home_stats["goals_for"] + away_stats["goals_for"]) / 2.0,
+        avg_goals_conceded=(home_stats["goals_against"] + away_stats["goals_against"]) / 2.0,
+        is_knockout=any(token in mode_upper for token in ("KNOCKOUT", "FINAL", "SEMIFINAL", "QUARTER")),
+    )
+    probs = boosted.probabilities
     probs = calibrate_football_probabilities(probs)
     likely = max(probs, key=probs.get)
     winner = home if likely == "HOME_WIN" else away if likely == "AWAY_WIN" else "Draw"
     score_probs = top_score_probabilities(xg_home, xg_away)
     projected_home_goals, projected_away_goals = score_probs[0][0], score_probs[0][1]
+    top_factors = explain_top_factors(elo_snapshot.elo_diff, home_stats, away_stats, momentum_edge, rank_edge, home_adv)
     confidence = confidence_level(max(probs.values()), risks)
     key_factors = [
         f"{home} recent goals for {home_stats['goals_for']:.2f}, against {home_stats['goals_against']:.2f}",
         f"{away} recent goals for {away_stats['goals_for']:.2f}, against {away_stats['goals_against']:.2f}",
+        f"recent_form_weighted_home={home_stats['recent_form_weighted']:.3f}, recent_form_weighted_away={away_stats['recent_form_weighted']:.3f}",
+        f"key_injuries_home={injury_summary(home)}, key_injuries_away={injury_summary(away)}",
+        f"data_source_home_elo={home_real.elo_source}, data_source_away_elo={away_real.elo_source}",
+        f"data_source_home_recent={home_real.recent_source}, data_source_away_recent={away_real.recent_source}",
+        f"estimated_home={home_real.estimated}, estimated_away={away_real.estimated}",
         f"FIFA rank edge feature {rank_edge:+.2f}",
         f"home_elo={elo_snapshot.home_elo:.0f}, away_elo={elo_snapshot.away_elo:.0f}, "
         f"elo_diff={elo_snapshot.elo_diff:+.0f}, elo_win_probability={elo_snapshot.elo_win_probability:.3f}",
         f"weighted_elo_home={weighted_elo_home:+.3f}, weighted_elo_away={weighted_elo_away:+.3f}",
-        f"xg_home={xg_home:.2f}, xg_away={xg_away:.2f}",
-        "most_likely_scores=" + ",".join(f"{home_goals}:{away_goals}:{probability:.3f}" for home_goals, away_goals, probability in score_probs),
         f"home_momentum={home_momentum.recent_form}, away_momentum={away_momentum.recent_form}, "
         f"momentum_score_edge={momentum_edge:+.1f}",
         f"home_advantage_score={home_adv:.2f}",
-        f"draw_probability={probs['DRAW']:.3f}, draw_risk={draw_risk:.3f}, predicted_result={likely}",
+        "probability_inputs=real_elo,recent_form,goals_scored,goals_conceded,xg",
+        f"ensemble_weights=real_elo:{ENSEMBLE_WEIGHTS['real_elo']:.2f}, poisson_xg:{ENSEMBLE_WEIGHTS['poisson_xg']:.2f}, recent_form:{ENSEMBLE_WEIGHTS['recent_form']:.2f}",
+        f"xg_home={xg_home:.2f}, xg_away={xg_away:.2f}",
+        "score_probabilities=" + ",".join(f"{home_goals}:{away_goals}:{probability:.3f}" for home_goals, away_goals, probability in score_probs),
+        "most_likely_scores=" + ",".join(f"{home_goals}:{away_goals}:{probability:.3f}" for home_goals, away_goals, probability in score_probs),
+        "top_factors=" + ",".join(f"{name}:{value:+.1f}" for name, value in top_factors.items()),
+        f"draw_probability={probs['DRAW']:.3f}, draw_risk={draw_risk:.3f}, draw_booster={boosted.reason}, predicted_result={likely}",
     ]
     key_factors.extend(ai_explain(winner, key_factors[-3:], risks))
     return PredictionResult(
@@ -203,13 +251,16 @@ def projected_score(lambda_home: float, lambda_away: float, likely: str) -> tupl
 
 
 def team_stats(team: str, history: list[FootballMatch]) -> dict[str, float]:
-    recent = history[:20]
+    recent = history[:5]
     if not recent:
-        return {"goals_for": 1.2, "goals_against": 1.2, "win_rate": 0.5}
+        return {**EVENT_AVERAGE, "sample_size": 0}
     goals_for: list[int] = []
     goals_against: list[int] = []
     wins = 0
-    for match in recent:
+    weighted_form = 0.0
+    total_weight = 0.0
+    for index, match in enumerate(recent):
+        weight = 0.5 ** (index / 4.0)
         if names_match(match.home_team, team):
             gf, ga = match.home_goals, match.away_goals
         else:
@@ -217,11 +268,19 @@ def team_stats(team: str, history: list[FootballMatch]) -> dict[str, float]:
         goals_for.append(gf)
         goals_against.append(ga)
         wins += int(gf > ga)
-    return {
+        weighted_form += weight * (3.0 if gf > ga else 1.0 if gf == ga else 0.0)
+        total_weight += weight
+    raw = {
         "goals_for": mean(goals_for, 1.2),
         "goals_against": mean(goals_against, 1.2),
         "win_rate": wins / len(recent),
+        "recent_form_weighted": weighted_form / max(1e-9, total_weight),
+        "sample_size": len(recent),
     }
+    if len(recent) < 5:
+        for key, average in EVENT_AVERAGE.items():
+            raw[key] = 0.7 * raw[key] + 0.3 * average
+    return raw
 
 
 def rank(team: str) -> int:
@@ -245,7 +304,7 @@ def poisson_probs(lambda_home: float, lambda_away: float, max_goals: int = 7) ->
                 away_win += p
     total = home_win + draw + away_win
     if total <= 0:
-        return {"HOME_WIN": 0.34, "DRAW": 0.33, "AWAY_WIN": 0.33}
+        raise ValueError("football probability mass must come from positive xG inputs")
     return {"HOME_WIN": home_win / total, "DRAW": draw / total, "AWAY_WIN": away_win / total}
 
 
@@ -311,6 +370,60 @@ def estimate_xg(
         - 0.18 * rank_edge
     )
     return clamp(xg_home, 0.15, MAX_EXPECTED_GOALS), clamp(xg_away, 0.15, MAX_EXPECTED_GOALS)
+
+
+def elo_probability_distribution(base_probs: dict[str, float], elo_home_probability: float) -> dict[str, float]:
+    draw = clamp(base_probs.get("DRAW", 0.25), 0.16, 0.34)
+    return normalize_probabilities(
+        {
+            "HOME_WIN": (1.0 - draw) * elo_home_probability,
+            "DRAW": draw,
+            "AWAY_WIN": (1.0 - draw) * (1.0 - elo_home_probability),
+        }
+    )
+
+
+def recent_form_probability_distribution(
+    home_stats: dict[str, float],
+    away_stats: dict[str, float],
+    elo_diff: float,
+    rank_edge: float,
+    momentum_edge: float,
+    home_adv: float,
+) -> dict[str, float]:
+    """Feature model from recent form, goals scored/conceded, and Elo edge."""
+
+    attack_edge = home_stats["goals_for"] - away_stats["goals_for"]
+    defense_edge = away_stats["goals_against"] - home_stats["goals_against"]
+    form_edge = home_stats.get("recent_form_weighted", 0.0) - away_stats.get("recent_form_weighted", 0.0)
+    score = 0.34 * attack_edge + 0.28 * defense_edge + 0.18 * form_edge + 0.003 * elo_diff + 0.35 * rank_edge + 0.18 * momentum_edge + 0.25 * home_adv
+    home_probability = 1.0 / (1.0 + math.exp(-score))
+    closeness = max(0.0, 1.0 - abs(score) / 1.8)
+    draw = clamp(0.18 + 0.12 * closeness, 0.16, 0.34)
+    return normalize_probabilities(
+        {
+            "HOME_WIN": (1.0 - draw) * home_probability,
+            "DRAW": draw,
+            "AWAY_WIN": (1.0 - draw) * (1.0 - home_probability),
+        }
+    )
+
+
+def ensemble_probabilities(
+    poisson_model: dict[str, float],
+    elo_model: dict[str, float],
+    recent_form_model: dict[str, float],
+) -> dict[str, float]:
+    return normalize_probabilities(
+        {
+            key: (
+                ENSEMBLE_WEIGHTS["poisson_xg"] * poisson_model.get(key, 0.0)
+                + ENSEMBLE_WEIGHTS["real_elo"] * elo_model.get(key, 0.0)
+                + ENSEMBLE_WEIGHTS["recent_form"] * recent_form_model.get(key, 0.0)
+            )
+            for key in ("HOME_WIN", "DRAW", "AWAY_WIN")
+        }
+    )
 
 
 def apply_draw_model(
@@ -427,9 +540,35 @@ def top_score_probabilities(lambda_home: float, lambda_away: float, max_goals: i
             outcomes.append((home_goals, away_goals, probability))
             total += probability
     if total <= 0:
-        return [(1, 1, 0.12), (1, 0, 0.10), (2, 1, 0.09)]
+        raise ValueError("score probabilities must come from positive xG inputs")
     normalized = [(home, away, probability / total) for home, away, probability in outcomes]
     return sorted(normalized, key=lambda item: item[2], reverse=True)[:3]
+
+
+def injury_summary(team: str) -> str:
+    injuries = KEY_INJURIES.get(team, [])
+    if not injuries:
+        return "none"
+    return ";".join(f"{item['player']}({float(item['impact']):+.2f})" for item in injuries)
+
+
+def explain_top_factors(
+    elo_diff: float,
+    home_stats: dict[str, float],
+    away_stats: dict[str, float],
+    momentum_edge: float,
+    rank_edge: float,
+    home_adv: float,
+) -> dict[str, float]:
+    return {
+        "elo_diff": round(0.32 * elo_diff, 1),
+        "recent_attack": round(35.0 * (home_stats["goals_for"] - away_stats["goals_for"]), 1),
+        "recent_defense": round(30.0 * (away_stats["goals_against"] - home_stats["goals_against"]), 1),
+        "weighted_form": round(12.0 * (home_stats.get("recent_form_weighted", 0.0) - away_stats.get("recent_form_weighted", 0.0)), 1),
+        "fifa_rank_edge": round(45.0 * rank_edge, 1),
+        "home_advantage": round(20.0 * home_adv, 1),
+        "momentum": round(8.0 * momentum_edge, 1),
+    }
 
 
 def historical_draw_rate(matches: list[FootballMatch], prediction_date: dt.date, limit: int = 500) -> float:

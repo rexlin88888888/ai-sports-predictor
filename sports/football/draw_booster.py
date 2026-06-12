@@ -13,7 +13,7 @@ class DrawBoostResult:
 def normalize_probabilities(probabilities: dict[str, float]) -> dict[str, float]:
     total = sum(max(0.0, value) for value in probabilities.values())
     if total <= 0:
-        return {"HOME_WIN": 0.34, "DRAW": 0.33, "AWAY_WIN": 0.33}
+        raise ValueError("football probabilities must be produced by model features before normalization")
     return {key: max(0.0, value) / total for key, value in probabilities.items()}
 
 
