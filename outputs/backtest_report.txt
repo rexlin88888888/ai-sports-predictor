@@ -12,10 +12,10 @@ current_biggest_weakness: High-probability favorites are failing too often.
 FOOTBALL HISTORICAL BACKTEST
 ============================================================
 total_predictions: 100
-accuracy: 0.5800
-average_confidence: 0.5161
-ROI simulation: {'bets': 34, 'profit_units': 5.42, 'roi': 0.1594}
-confidence_distribution: {'High': 8, 'Medium': 26, 'Low': 66}
+accuracy: 0.6000
+average_confidence: 0.5149
+ROI simulation: {'bets': 35, 'profit_units': 6.242, 'roi': 0.1783}
+confidence_distribution: {'High': 8, 'Medium': 27, 'Low': 65}
 upset_analysis: {'upset_rate': 0.04, 'high_probability_failures': 4, 'largest_prediction_error': 'Egypt at Spain: predicted Spain, actual Draw'}
 auto_tuned_weights: {'elo_weight': 0.0, 'fatigue_weight': 0.0, 'injury_weight': 0.0, 'momentum_weight': 0.0, 'home_advantage_weight': 0.15}
-current_biggest_weakness: draw prediction weak
+current_biggest_weakness: Football model is most limited by simple team-strength features.

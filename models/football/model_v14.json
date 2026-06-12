@@ -1,0 +1,82 @@
+{
+  "sport": "football",
+  "created_at": "2026-06-12T23:22:28",
+  "metrics": {
+    "sport": "football",
+    "games": 100,
+    "accuracy": 0.6,
+    "draw_accuracy": 0.27586206896551724,
+    "over_under_accuracy": 0.55,
+    "average_goal_error": 0.91,
+    "log_loss": 0.9261319349312516,
+    "brier_score": 0.1832033326,
+    "average_confidence": 0.5148919999999999,
+    "calibration_report": "data/football/calibration_report.csv",
+    "confidence_validation": {
+      "high_games": 8,
+      "high_accuracy": 0.875,
+      "medium_games": 27,
+      "medium_accuracy": 0.7407407407407407,
+      "low_games": 65,
+      "low_accuracy": 0.5076923076923077
+    },
+    "confidence_distribution": {
+      "High": 8,
+      "Medium": 27,
+      "Low": 65
+    },
+    "upset_analysis": {
+      "upset_rate": 0.04,
+      "high_probability_failures": 4,
+      "largest_prediction_error": "Egypt at Spain: predicted Spain, actual Draw"
+    },
+    "roi_simulation": {
+      "bets": 35,
+      "profit_units": 6.242,
+      "roi": 0.1783
+    },
+    "weight_tuning": {
+      "sport": "football",
+      "accuracy": 0.61,
+      "weights": {
+        "elo_weight": 0.0,
+        "fatigue_weight": 0.0,
+        "injury_weight": 0.0,
+        "momentum_weight": 0.0,
+        "home_advantage_weight": 0.15
+      },
+      "available_features": [
+        "elo_difference",
+        "recent_form_edge",
+        "home_advantage_edge"
+      ],
+      "status": "ok"
+    },
+    "feature_importance": [
+      {
+        "feature": "recent_form",
+        "importance": 0.0467,
+        "direction": -0.0467
+      },
+      {
+        "feature": "elo_difference",
+        "importance": 0.0239,
+        "direction": 0.0239
+      },
+      {
+        "feature": "home_advantage",
+        "importance": 0.0064,
+        "direction": 0.0064
+      }
+    ],
+    "prediction_drift": {
+      "recent_30d_games": 70,
+      "recent_30d_accuracy": 0.5857142857142857,
+      "previous_accuracy": 0.6333333333333333,
+      "trend": "worse"
+    },
+    "report": "reports/football_report.txt",
+    "historical_report": "outputs/backtest_report.txt",
+    "weakness": "Football model is most limited by simple team-strength features."
+  }
+}

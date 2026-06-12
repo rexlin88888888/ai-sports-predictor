@@ -3,21 +3,21 @@ FOOTBALL MODEL REPORT
 Metrics:
 - sport: football
 - games: 100
-- accuracy: 0.58
-- draw_accuracy: 0.13793103448275862
+- accuracy: 0.6
+- draw_accuracy: 0.27586206896551724
 - over_under_accuracy: 0.55
-- average_goal_error: 0.905
-- log_loss: 0.9262490350414904
-- brier_score: 0.18314482913333333
-- average_confidence: 0.516069
+- average_goal_error: 0.91
+- log_loss: 0.9261319349312516
+- brier_score: 0.1832033326
+- average_confidence: 0.5148919999999999
 
 Confidence validation:
 - high_games: 8
 - high_accuracy: 0.875
-- medium_games: 26
-- medium_accuracy: 0.7307692307692307
-- low_games: 66
-- low_accuracy: 0.48484848484848486
+- medium_games: 27
+- medium_accuracy: 0.7407407407407407
+- low_games: 65
+- low_accuracy: 0.5076923076923077
 
 Upset analysis:
 - upset_rate: 0.04
@@ -25,17 +25,17 @@ Upset analysis:
 - largest_prediction_error: Egypt at Spain: predicted Spain, actual Draw
 
 Feature importance:
-- {'feature': 'home_advantage', 'importance': 0.0629, 'direction': -0.0629}
-- {'feature': 'recent_form', 'importance': 0.0583, 'direction': -0.0583}
-- {'feature': 'elo_difference', 'importance': 0.0561, 'direction': 0.0561}
+- {'feature': 'recent_form', 'importance': 0.0467, 'direction': -0.0467}
+- {'feature': 'elo_difference', 'importance': 0.0239, 'direction': 0.0239}
+- {'feature': 'home_advantage', 'importance': 0.0064, 'direction': 0.0064}
 
 Prediction drift:
 - recent_30d_games: 70
 - recent_30d_accuracy: 0.5857142857142857
-- previous_accuracy: 0.5666666666666667
-- trend: stable_or_better
+- previous_accuracy: 0.6333333333333333
+- trend: worse
 
 Most stable teams: requires longer team-level history in future versions.
 Hardest teams to predict: inspect largest_prediction_error and team-level residuals.
 
-Biggest weakness: draw prediction weak
+Biggest weakness: Football model is most limited by simple team-strength features.

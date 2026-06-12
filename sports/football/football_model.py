@@ -168,6 +168,7 @@ def predict_football_match(
     rank_edge = (rank(away) - rank(home)) / 100.0
     weighted_elo_home = weighted_elo(home_history, home)
     weighted_elo_away = weighted_elo(away_history, away)
+    data_penalty = estimated_data_penalty(home_stats, away_stats, home_real.estimated, away_real.estimated)
     xg_home, xg_away = estimate_xg(
         home_stats=home_stats,
         away_stats=away_stats,
@@ -178,10 +179,25 @@ def predict_football_match(
         momentum_edge=momentum_edge,
         home_advantage=home_adv,
     )
+    xg_home, xg_away = adjust_xg_for_big_score_and_data_quality(
+        xg_home=xg_home,
+        xg_away=xg_away,
+        home_stats=home_stats,
+        away_stats=away_stats,
+        elo_diff=elo_snapshot.elo_diff,
+        data_penalty=data_penalty,
+    )
     lambda_home = xg_home
     lambda_away = xg_away
     poisson_model_probs = poisson_probs(xg_home, xg_away)
-    elo_model_probs = elo_probability_distribution(poisson_model_probs, elo_snapshot.elo_win_probability)
+    adjusted_elo_probability = conflict_adjusted_elo_probability(
+        elo_snapshot.elo_win_probability,
+        elo_snapshot.elo_diff,
+        home_stats,
+        away_stats,
+        momentum_edge,
+    )
+    elo_model_probs = elo_probability_distribution(poisson_model_probs, adjusted_elo_probability)
     recent_form_probs = recent_form_probability_distribution(home_stats, away_stats, elo_snapshot.elo_diff, rank_edge, momentum_edge, home_adv)
     probs = ensemble_probabilities(poisson_model_probs, elo_model_probs, recent_form_probs)
     probs, draw_risk = apply_draw_model(
@@ -222,6 +238,7 @@ def predict_football_match(
         f"home_elo={elo_snapshot.home_elo:.0f}, away_elo={elo_snapshot.away_elo:.0f}, "
         f"elo_diff={elo_snapshot.elo_diff:+.0f}, elo_win_probability={elo_snapshot.elo_win_probability:.3f}",
         f"weighted_elo_home={weighted_elo_home:+.3f}, weighted_elo_away={weighted_elo_away:+.3f}",
+        f"estimated_data_penalty={data_penalty:.3f}, adjusted_elo_win_probability={adjusted_elo_probability:.3f}",
         f"home_momentum={home_momentum.recent_form}, away_momentum={away_momentum.recent_form}, "
         f"momentum_score_edge={momentum_edge:+.1f}",
         f"home_advantage_score={home_adv:.2f}",
@@ -392,6 +409,66 @@ def estimate_xg(
     return clamp(xg_home, 0.15, MAX_EXPECTED_GOALS), clamp(xg_away, 0.15, MAX_EXPECTED_GOALS)
 
 
+def conflict_adjusted_elo_probability(
+    elo_home_probability: float,
+    elo_diff: float,
+    home_stats: dict[str, float],
+    away_stats: dict[str, float],
+    momentum_edge: float,
+) -> float:
+    attack_edge = home_stats["goals_for"] - away_stats["goals_for"]
+    defense_edge = away_stats["goals_against"] - home_stats["goals_against"]
+    form_edge = home_stats.get("recent_form_weighted", 0.0) - away_stats.get("recent_form_weighted", 0.0)
+    recent_edge = 0.45 * attack_edge + 0.35 * defense_edge + 0.16 * form_edge + 0.04 * momentum_edge
+    if abs(elo_diff) < 60 or abs(recent_edge) < 0.35:
+        return elo_home_probability
+    conflict = (elo_diff > 0 and recent_edge < 0) or (elo_diff < 0 and recent_edge > 0)
+    if not conflict:
+        return elo_home_probability
+    pull_to_neutral = clamp(0.18 + abs(recent_edge) * 0.08, 0.18, 0.42)
+    return (1.0 - pull_to_neutral) * elo_home_probability + pull_to_neutral * 0.5
+
+
+def estimated_data_penalty(
+    home_stats: dict[str, float],
+    away_stats: dict[str, float],
+    home_estimated: bool,
+    away_estimated: bool,
+) -> float:
+    home_sample = int(home_stats.get("sample_size", 0))
+    away_sample = int(away_stats.get("sample_size", 0))
+    sample_gap = max(0, 5 - min(home_sample, away_sample)) / 5.0
+    if sample_gap <= 0:
+        return 0.0
+    estimated_factor = 0.05 if home_estimated or away_estimated else 0.0
+    return clamp(0.10 + 0.22 * sample_gap + estimated_factor, 0.0, 0.35)
+
+
+def adjust_xg_for_big_score_and_data_quality(
+    xg_home: float,
+    xg_away: float,
+    home_stats: dict[str, float],
+    away_stats: dict[str, float],
+    elo_diff: float,
+    data_penalty: float,
+) -> tuple[float, float]:
+    home_attack = home_stats.get("goals_for", 1.2)
+    away_attack = away_stats.get("goals_for", 1.2)
+    home_defence = home_stats.get("goals_against", 1.2)
+    away_defence = away_stats.get("goals_against", 1.2)
+    if home_attack >= 2.0 and away_defence >= 1.6 and elo_diff >= 100:
+        xg_home += 0.16 + min(0.14, (home_attack - 2.0) * 0.08 + (away_defence - 1.6) * 0.06)
+    if away_attack >= 2.0 and home_defence >= 1.6 and elo_diff <= -100:
+        xg_away += 0.16 + min(0.14, (away_attack - 2.0) * 0.08 + (home_defence - 1.6) * 0.06)
+    if data_penalty > 0:
+        xg_home = (1.0 - data_penalty) * xg_home + data_penalty * EVENT_AVERAGE["goals_for"]
+        xg_away = (1.0 - data_penalty) * xg_away + data_penalty * EVENT_AVERAGE["goals_for"]
+        cap = 2.4 if data_penalty >= 0.25 else 2.8
+        xg_home = min(xg_home, cap)
+        xg_away = min(xg_away, cap)
+    return clamp(xg_home, 0.15, MAX_EXPECTED_GOALS), clamp(xg_away, 0.15, MAX_EXPECTED_GOALS)
+
+
 def elo_probability_distribution(base_probs: dict[str, float], elo_home_probability: float) -> dict[str, float]:
     draw = clamp(base_probs.get("DRAW", 0.25), 0.16, 0.34)
     return normalize_probabilities(
@@ -502,6 +579,10 @@ def apply_draw_model(
         target_draw = max(target_draw, 0.30)
     if abs(elo_diff) < 80 and projected_score_gap < 0.35 and not is_knockout:
         target_draw = max(target_draw, 0.34)
+    if not is_knockout and expected_total < 2.65 and projected_score_gap < 0.45 and abs(elo_diff) < 140:
+        target_draw = max(target_draw, 0.32)
+    if not is_knockout and expected_total < 2.35 and projected_score_gap < 0.35:
+        target_draw = max(target_draw, 0.36)
     non_draw_total = max(1e-9, probs["HOME_WIN"] + probs["AWAY_WIN"])
     home_share = probs["HOME_WIN"] / non_draw_total
     adjusted = {
@@ -521,12 +602,12 @@ def promote_close_draw(
     abs_elo_diff: float,
 ) -> dict[str, float]:
     max_non_draw = max(probs["HOME_WIN"], probs["AWAY_WIN"])
-    close_probability = probs["DRAW"] >= max_non_draw - 0.06
-    close_score = projected_score_gap < 0.35
-    close_elo = abs_elo_diff < 80
+    close_probability = probs["DRAW"] >= max_non_draw - 0.10
+    close_score = projected_score_gap < 0.45 or rounded_score_draw
+    close_elo = abs_elo_diff < 150
     if not (close_probability and close_score and close_elo):
         return probs
-    target_draw = min(0.38, max(probs["DRAW"], max_non_draw + 0.015))
+    target_draw = min(0.38, max(probs["DRAW"], max_non_draw + 0.010))
     non_draw_total = max(1e-9, probs["HOME_WIN"] + probs["AWAY_WIN"])
     home_share = probs["HOME_WIN"] / non_draw_total
     return {

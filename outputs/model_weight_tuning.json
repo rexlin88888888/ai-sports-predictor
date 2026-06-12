@@ -20,7 +20,7 @@
   },
   "football": {
     "sport": "football",
-    "accuracy": 0.63,
+    "accuracy": 0.61,
     "weights": {
       "elo_weight": 0.0,
       "fatigue_weight": 0.0,
