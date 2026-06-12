@@ -213,6 +213,8 @@ def predict_football_match(
         "probability_inputs=real_elo,recent_form,goals_scored,goals_conceded,xg",
         f"ensemble_weights=real_elo:{ENSEMBLE_WEIGHTS['real_elo']:.2f}, poisson_xg:{ENSEMBLE_WEIGHTS['poisson_xg']:.2f}, recent_form:{ENSEMBLE_WEIGHTS['recent_form']:.2f}",
         f"xg_home={xg_home:.2f}, xg_away={xg_away:.2f}",
+        f"xG Home={xg_home:.2f}, xG Away={xg_away:.2f}",
+        "predicted_score_source=xg_top_score_probability",
         "score_probabilities=" + ",".join(f"{home_goals}:{away_goals}:{probability:.3f}" for home_goals, away_goals, probability in score_probs),
         "most_likely_scores=" + ",".join(f"{home_goals}:{away_goals}:{probability:.3f}" for home_goals, away_goals, probability in score_probs),
         "top_factors=" + ",".join(f"{name}:{value:+.1f}" for name, value in top_factors.items()),
@@ -350,6 +352,7 @@ def estimate_xg(
     recent_defence_home = home_stats.get("goals_against", 1.2)
     recent_defence_away = away_stats.get("goals_against", 1.2)
     weighted_elo_edge = weighted_elo_home - weighted_elo_away
+    recent_form_edge = home_stats.get("recent_form_weighted", 0.0) - away_stats.get("recent_form_weighted", 0.0)
     xg_home = (
         0.56 * recent_attack_home
         + 0.44 * recent_defence_away
@@ -357,6 +360,7 @@ def estimate_xg(
         + home_advantage
         + 0.0014 * elo_diff
         + 0.050 * weighted_elo_edge
+        + 0.045 * recent_form_edge
         + 0.060 * momentum_edge
         + 0.25 * rank_edge
     )
@@ -366,6 +370,7 @@ def estimate_xg(
         - 0.08
         - 0.0010 * elo_diff
         - 0.035 * weighted_elo_edge
+        - 0.035 * recent_form_edge
         - 0.040 * momentum_edge
         - 0.18 * rank_edge
     )
