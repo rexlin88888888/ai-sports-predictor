@@ -1,101 +1,101 @@
-date,home_team,away_team,predicted_winner,actual_winner,correct,predicted_probability,actual_result,actual_label,is_draw,predicted_draw,home_win_probability,away_win_probability,draw_probability,confidence_value,confidence,predicted_score,actual_score,actual_home_goals,actual_away_goals,predicted_total_goals,actual_total_goals,predicted_over_2_5,actual_over_2_5,over_under_correct,elo_difference,recent_form_edge,home_advantage_edge
-2025-11-17,Mozambique,Chad,Mozambique,Draw,False,0.6421,0,DRAW,True,False,0.6421,0.1387,0.2192,0.6421,Medium,Mozambique 1 - 0 Chad,2-2,2,2,1,4,False,True,False,269.0,0.0,0.12
-2025-11-17,Madagascar,Equatorial Guinea,Madagascar,Madagascar,True,0.4156,1,HOME_WIN,False,False,0.4156,0.2901,0.2943,0.4156,Low,Madagascar 2 - 1 Equatorial Guinea,2-0,2,0,3,2,True,False,False,0.0,-0.3,0.12
-2025-11-17,Finland,Andorra,Finland,Finland,True,0.6942,1,HOME_WIN,False,False,0.6942,0.0944,0.2114,0.6942,Medium,Finland 2 - 0 Andorra,4-0,4,0,2,4,False,True,False,456.0,0.2,0.12
-2025-11-17,Qatar,Zimbabwe,Qatar,Zimbabwe,False,0.4496,0,AWAY_WIN,False,False,0.4496,0.2565,0.2939,0.4496,Low,Qatar 1 - 0 Zimbabwe,1-2,1,2,1,3,False,True,False,49.0,0.4,0.12
-2025-11-17,Bahrain,Somalia,Bahrain,Somalia,False,0.6596,0,AWAY_WIN,False,False,0.6596,0.1251,0.2153,0.6596,Medium,Bahrain 2 - 0 Somalia,1-2,1,2,2,3,False,True,False,435.0,-0.3,0.12
-2025-11-18,Angola,Zambia,Angola,Angola,True,0.5857,1,HOME_WIN,False,False,0.5857,0.1763,0.238,0.5857,Medium,Angola 1 - 0 Zambia,3-2,3,2,1,5,False,True,False,171.0,1.2,0.12
-2025-11-18,Morocco,Uganda,Morocco,Morocco,True,0.7033,1,HOME_WIN,False,False,0.7033,0.0837,0.213,0.7033,High,Morocco 2 - 0 Uganda,4-0,4,0,2,4,False,True,False,433.0,1.8,0.12
-2025-11-18,Oman,Ivory Coast,Ivory Coast,Ivory Coast,True,0.4332,1,AWAY_WIN,False,False,0.2581,0.4332,0.3087,0.4332,Low,Oman 1 - 1 Ivory Coast,0-2,0,2,2,2,False,False,True,-215.0,2.6,0.12
-2025-11-18,Saudi Arabia,Algeria,Algeria,Algeria,True,0.5169,1,AWAY_WIN,False,False,0.2535,0.5169,0.2296,0.5169,Low,Saudi Arabia 1 - 2 Algeria,0-2,0,2,3,2,True,False,False,-196.0,0.8,0.12
-2025-11-18,Guinea,Niger,Guinea,Draw,False,0.4071,0,DRAW,True,False,0.4071,0.2739,0.319,0.4071,Low,Guinea 2 - 1 Niger,1-1,1,1,3,2,True,False,False,81.0,2.0,0.12
-2025-11-18,Benin,Burkina Faso,Burkina Faso,Burkina Faso,True,0.5223,1,AWAY_WIN,False,False,0.238,0.5223,0.2397,0.5223,Low,Benin 0 - 1 Burkina Faso,0-3,0,3,1,3,False,True,False,-124.0,-3.7,0.12
-2025-11-18,Mali,Jordan,Mali,Mali,True,0.4734,1,HOME_WIN,False,False,0.4734,0.2864,0.2402,0.4734,Low,Mali 2 - 1 Jordan,3-2,3,2,3,5,True,True,True,-92.0,2.5,0.12
-2025-11-18,Kuwait,Gambia,Draw,Draw,True,0.3721,1,DRAW,True,True,0.2847,0.3432,0.3721,0.3721,Low,Kuwait 1 - 1 Gambia,2-2,2,2,2,4,False,True,False,-87.0,0.4,0.12
-2025-11-18,Lesotho,Malawi,Draw,Malawi,False,0.3721,0,AWAY_WIN,False,True,0.3156,0.3123,0.3721,0.3721,Low,Lesotho 0 - 0 Malawi,0-1,0,1,0,1,False,False,True,-41.0,-0.1,0.12
-2025-11-18,Brazil,Tunisia,Brazil,Draw,False,0.6851,0,DRAW,True,False,0.6851,0.1088,0.206,0.6851,Medium,Brazil 3 - 0 Tunisia,1-1,1,1,3,2,True,False,False,363.0,1.1,0.18
-2025-11-18,Canada,Venezuela,Canada,Canada,True,0.4994,1,HOME_WIN,False,False,0.4994,0.1967,0.3039,0.4994,Low,Canada 1 - 0 Venezuela,2-0,2,0,1,2,False,False,True,55.0,0.7,0.2
-2025-11-18,Chile,Peru,Chile,Chile,True,0.4946,1,HOME_WIN,False,False,0.4946,0.2224,0.283,0.4946,Low,Chile 2 - 1 Peru,2-1,2,1,3,3,True,True,True,17.0,2.0,0.12
-2025-11-18,Colombia,Australia,Colombia,Colombia,True,0.6589,1,HOME_WIN,False,False,0.6589,0.1197,0.2215,0.6589,Medium,Colombia 3 - 0 Australia,3-0,3,0,3,3,True,True,True,205.0,2.7,0.12
-2025-11-18,Cyprus,Estonia,Cyprus,Estonia,False,0.4542,0,AWAY_WIN,False,False,0.4542,0.2719,0.274,0.4542,Low,Cyprus 2 - 0 Estonia,2-4,2,4,2,6,False,True,False,-46.0,0.7,0.12
-2025-11-18,Ecuador,New Zealand,Ecuador,Ecuador,True,0.6649,1,HOME_WIN,False,False,0.6649,0.1291,0.206,0.6649,Medium,Ecuador 2 - 0 New Zealand,2-0,2,0,2,2,False,False,True,376.0,-0.4,0.12
-2025-11-18,Faroe Islands,Kazakhstan,Draw,Faroe Islands,False,0.3677,0,HOME_WIN,False,True,0.2888,0.3435,0.3677,0.3677,Low,Faroe Islands 1 - 1 Kazakhstan,1-0,1,0,2,1,False,False,True,-42.0,-1.7,0.12
-2025-11-18,Korea Republic,Ghana,Korea Republic,Korea Republic,True,0.6695,1,HOME_WIN,False,False,0.6695,0.1244,0.206,0.6695,Medium,Korea Republic 2 - 0 Ghana,1-0,1,0,2,1,False,False,True,276.0,1.5,0.12
-2025-11-18,Mexico,Paraguay,Mexico,Paraguay,False,0.4703,0,AWAY_WIN,False,False,0.4703,0.224,0.3057,0.4703,Low,Mexico 1 - 0 Paraguay,1-2,1,2,1,3,False,True,False,47.0,0.8,0.28
-2025-11-18,United States,Uruguay,Uruguay,United States,False,0.4027,0,HOME_WIN,False,False,0.2785,0.4027,0.3188,0.4027,Low,United States 1 - 1 Uruguay,5-1,5,1,2,6,False,True,False,-166.0,1.6,0.22
-2026-01-18,Bolivia,Panama,Draw,Draw,True,0.3721,1,DRAW,True,True,0.2789,0.349,0.3721,0.3721,Low,Bolivia 1 - 1 Panama,1-1,1,1,2,2,False,False,True,-109.0,1.5,0.12
-2026-01-18,Grenada,Jamaica,Jamaica,Jamaica,True,0.4614,1,AWAY_WIN,False,False,0.1831,0.4614,0.3555,0.4614,Low,Grenada 0 - 1 Jamaica,0-1,0,1,1,1,False,False,True,-429.0,2.1,0.12
-2026-01-22,Panama,Mexico,Mexico,Mexico,True,0.4914,1,AWAY_WIN,False,False,0.2614,0.4914,0.2472,0.4914,Low,Panama 1 - 1 Mexico,0-1,0,1,2,1,False,False,True,-151.0,0.0,0.12
-2026-01-25,Bolivia,Mexico,Mexico,Mexico,True,0.5241,1,AWAY_WIN,False,False,0.1702,0.5241,0.3057,0.5241,Low,Bolivia 0 - 1 Mexico,0-1,0,1,1,1,False,False,True,-260.0,-0.3,0.12
-2026-01-26,Uzbekistan,China PR,Uzbekistan,Draw,False,0.6201,0,DRAW,True,False,0.6201,0.1531,0.2268,0.6201,Medium,Uzbekistan 2 - 0 China PR,2-2,2,2,2,4,False,True,False,203.0,2.2,0.12
-2026-02-25,Mexico,Iceland,Mexico,Mexico,True,0.6673,1,HOME_WIN,False,False,0.6673,0.1202,0.2125,0.6673,Medium,Mexico 2 - 0 Iceland,4-0,4,0,2,4,False,True,False,313.0,2.4,0.28
-2026-03-15,Bolivia,Trinidad and Tobago,Bolivia,Bolivia,True,0.3961,1,HOME_WIN,False,False,0.3961,0.2484,0.3555,0.3961,Low,Bolivia 1 - 0 Trinidad and Tobago,3-0,3,0,1,3,False,True,False,235.0,-0.7,0.12
-2026-03-25,Bermuda,Congo DR,Congo DR,Congo DR,True,0.6982,1,AWAY_WIN,False,False,0.0835,0.6982,0.2183,0.6982,Medium,Bermuda 0 - 2 Congo DR,0-2,0,2,2,2,False,False,True,-535.0,-2.5,0.12
-2026-03-25,Equatorial Guinea,Kyrgyzstan,Draw,Equatorial Guinea,False,0.3594,0,HOME_WIN,False,True,0.3438,0.2968,0.3594,0.3594,Low,Equatorial Guinea 1 - 1 Kyrgyzstan,1-0,1,0,2,1,False,False,True,85.0,-1.8,0.12
-2026-03-26,Brazil,France,Draw,France,False,0.3721,0,AWAY_WIN,False,True,0.3385,0.2894,0.3721,0.3721,Low,Brazil 2 - 1 France,1-2,1,2,3,3,True,True,True,-72.0,0.7,0.18
-2026-03-26,Colombia,Croatia,Colombia,Croatia,False,0.5256,0,AWAY_WIN,False,False,0.5256,0.2043,0.2701,0.5256,Low,Colombia 2 - 0 Croatia,1-2,1,2,2,3,False,True,False,70.0,-0.4,0.12
-2026-03-26,Cyprus,Belarus,Belarus,Belarus,True,0.556,1,AWAY_WIN,False,False,0.2352,0.556,0.2088,0.556,Medium,Cyprus 1 - 2 Belarus,0-1,0,1,3,1,True,False,False,-208.0,-1.4,0.12
-2026-03-26,Georgia,Israel,Georgia,Draw,False,0.4526,0,DRAW,True,False,0.4526,0.2693,0.278,0.4526,Low,Georgia 2 - 1 Israel,2-2,2,2,3,4,True,True,True,7.0,0.6,0.12
-2026-03-26,Moldova,Lithuania,Draw,Lithuania,False,0.3721,0,AWAY_WIN,False,True,0.3585,0.2694,0.3721,0.3721,Low,Moldova 1 - 0 Lithuania,0-2,0,2,1,2,False,False,True,-9.0,-1.2,0.12
-2026-03-26,Vietnam,Bangladesh,Vietnam,Vietnam,True,0.606,1,HOME_WIN,False,False,0.606,0.1879,0.206,0.606,Medium,Vietnam 1 - 0 Bangladesh,3-0,3,0,1,3,False,True,False,409.0,0.9,0.12
-2026-03-27,Algeria,Guatemala,Algeria,Algeria,True,0.6756,1,HOME_WIN,False,False,0.6756,0.1184,0.206,0.6756,Medium,Algeria 3 - 0 Guatemala,7-0,7,0,3,7,True,True,True,268.0,0.7,0.12
-2026-03-27,Argentina,Mauritania,Argentina,Argentina,True,0.7335,1,HOME_WIN,False,False,0.7335,0.0605,0.206,0.7335,High,Argentina 3 - 0 Mauritania,2-1,2,1,3,3,True,True,True,786.0,4.1,0.12
-2026-03-27,Austria,Ghana,Austria,Austria,True,0.7022,1,HOME_WIN,False,False,0.7022,0.0918,0.206,0.7022,High,Austria 3 - 0 Ghana,5-1,5,1,3,6,True,True,True,320.0,3.8,0.12
-2026-03-27,England,Uruguay,England,Draw,False,0.5858,0,DRAW,True,False,0.5858,0.189,0.2253,0.5858,Medium,England 2 - 0 Uruguay,1-1,1,1,2,2,False,False,True,132.0,2.2,0.12
-2026-03-27,Greece,Paraguay,Greece,Paraguay,False,0.5159,0,AWAY_WIN,False,False,0.5159,0.247,0.2371,0.5159,Low,Greece 2 - 0 Paraguay,0-1,0,1,2,1,False,False,True,-90.0,3.1,0.12
-2026-03-27,Montenegro,Andorra,Montenegro,Montenegro,True,0.6927,1,HOME_WIN,False,False,0.6927,0.1001,0.2072,0.6927,Medium,Montenegro 2 - 0 Andorra,2-0,2,0,2,2,False,False,True,381.0,1.2,0.12
-2026-03-27,Morocco,Ecuador,Morocco,Draw,False,0.4559,0,DRAW,True,False,0.4559,0.2904,0.2537,0.4559,Low,Morocco 1 - 0 Ecuador,1-1,1,1,1,2,False,False,True,-111.0,3.5,0.12
-2026-03-27,Netherlands,Norway,Netherlands,Netherlands,True,0.5213,1,HOME_WIN,False,False,0.5213,0.205,0.2737,0.5213,Low,Netherlands 2 - 0 Norway,2-1,2,1,2,3,False,True,False,34.0,2.9,0.12
-2026-03-27,Saudi Arabia,Egypt,Egypt,Egypt,True,0.4151,1,AWAY_WIN,False,False,0.2626,0.4151,0.3223,0.4151,Low,Saudi Arabia 1 - 1 Egypt,0-4,0,4,2,4,False,True,False,-120.0,-1.0,0.12
-2026-03-27,South Africa,Panama,South Africa,Draw,False,0.4664,0,DRAW,True,False,0.4664,0.3151,0.2185,0.4664,Low,South Africa 2 - 0 Panama,1-1,1,1,2,2,False,False,True,-219.0,3.6,0.12
-2026-03-27,Spain,Serbia,Spain,Spain,True,0.6947,1,HOME_WIN,False,False,0.6947,0.0992,0.206,0.6947,Medium,Spain 3 - 0 Serbia,3-0,3,0,3,3,True,True,True,423.0,0.0,0.16
-2026-03-27,Russia,Nicaragua,Russia,Russia,True,0.7102,1,HOME_WIN,False,False,0.7102,0.0837,0.206,0.7102,High,Russia 2 - 0 Nicaragua,3-1,3,1,2,4,False,True,False,439.0,-1.8,0.12
-2026-03-27,Switzerland,Germany,Switzerland,Germany,False,0.4632,0,AWAY_WIN,False,False,0.4632,0.2648,0.272,0.4632,Low,Switzerland 2 - 1 Germany,3-4,3,4,3,7,True,True,True,-41.0,2.1,0.12
-2026-03-27,Costa Rica,Jordan,Draw,Draw,True,0.3716,1,DRAW,True,True,0.2833,0.3452,0.3716,0.3716,Low,Costa Rica 1 - 1 Jordan,2-2,2,2,2,4,False,True,False,-72.0,1.6,0.12
-2026-03-27,IR Iran,Nigeria,IR Iran,Nigeria,False,0.492,0,AWAY_WIN,False,False,0.492,0.2302,0.2778,0.492,Low,IR Iran 2 - 1 Nigeria,1-2,1,2,3,3,True,True,True,5.0,0.6,0.12
-2026-03-28,Burkina Faso,Guinea-Bissau,Burkina Faso,Burkina Faso,True,0.6931,1,HOME_WIN,False,False,0.6931,0.1009,0.206,0.6931,Medium,Burkina Faso 3 - 0 Guinea-Bissau,5-0,5,0,3,5,True,True,True,281.0,5.9,0.12
-2026-03-28,Canada,Iceland,Canada,Draw,False,0.6464,0,DRAW,True,False,0.6464,0.1277,0.2258,0.6464,Medium,Canada 2 - 0 Iceland,2-2,2,2,2,4,False,True,False,220.0,2.5,0.2
-2026-03-28,Haiti,Tunisia,Draw,Tunisia,False,0.3559,0,AWAY_WIN,False,True,0.3122,0.3319,0.3559,0.3559,Low,Haiti 1 - 1 Tunisia,0-1,0,1,2,1,False,False,True,-80.0,1.6,0.12
-2026-03-28,Hungary,Slovenia,Draw,Hungary,False,0.3647,0,HOME_WIN,False,True,0.344,0.2913,0.3647,0.3647,Low,Hungary 1 - 1 Slovenia,1-0,1,0,2,1,False,False,True,28.0,-1.0,0.12
-2026-03-28,Ivory Coast,Korea Republic,Ivory Coast,Ivory Coast,True,0.4225,1,HOME_WIN,False,False,0.4225,0.3384,0.2391,0.4225,Low,Ivory Coast 2 - 1 Korea Republic,4-0,4,0,3,4,True,True,True,-91.0,0.5,0.12
-2026-03-28,Mexico,Portugal,Draw,Draw,True,0.3685,1,DRAW,True,True,0.297,0.3345,0.3685,0.3685,Low,Mexico 1 - 1 Portugal,0-0,0,0,2,0,False,False,True,-108.0,2.4,0.28
-2026-03-28,San Marino,Faroe Islands,Faroe Islands,Faroe Islands,True,0.7124,1,AWAY_WIN,False,False,0.0769,0.7124,0.2107,0.7124,High,San Marino 0 - 2 Faroe Islands,1-2,1,2,2,3,False,True,False,-561.0,-5.1,0.12
-2026-03-28,Scotland,Japan,Japan,Japan,True,0.4299,1,AWAY_WIN,False,False,0.2644,0.4299,0.3057,0.4299,Low,Scotland 1 - 2 Japan,0-1,0,1,3,1,True,False,False,-124.0,3.3,0.12
-2026-03-28,Senegal,Peru,Senegal,Senegal,True,0.5981,1,HOME_WIN,False,False,0.5981,0.1687,0.2332,0.5981,Medium,Senegal 2 - 0 Peru,2-0,2,0,2,2,False,False,True,160.0,1.1,0.12
-2026-03-28,United States,Belgium,Belgium,Belgium,True,0.4005,1,AWAY_WIN,False,False,0.3495,0.4005,0.25,0.4005,Low,United States 1 - 1 Belgium,2-5,2,5,2,7,False,True,False,-168.0,1.1,0.22
-2026-03-28,Kyrgyzstan,Madagascar,Madagascar,Madagascar,True,0.4903,1,AWAY_WIN,False,False,0.2644,0.4903,0.2453,0.4903,Low,Kyrgyzstan 0 - 1 Madagascar,2-5,2,5,1,7,False,True,False,-85.0,-2.4,0.12
-2026-03-29,Armenia,Belarus,Belarus,Belarus,True,0.5753,1,AWAY_WIN,False,False,0.2029,0.5753,0.2218,0.5753,Medium,Armenia 1 - 3 Belarus,1-2,1,2,4,3,True,True,True,-149.0,-3.1,0.12
-2026-03-29,Colombia,France,Colombia,France,False,0.3688,0,AWAY_WIN,False,False,0.3688,0.3621,0.2691,0.3688,Low,Colombia 1 - 1 France,1-3,1,3,2,4,False,True,False,-81.0,-1.5,0.12
-2026-03-29,Lithuania,Georgia,Georgia,Georgia,True,0.6879,1,AWAY_WIN,False,False,0.1061,0.6879,0.206,0.6879,Medium,Lithuania 0 - 2 Georgia,0-2,0,2,2,2,False,False,True,-375.0,-0.5,0.12
-2026-03-30,Cyprus,Moldova,Cyprus,Cyprus,True,0.4871,1,HOME_WIN,False,False,0.4871,0.2441,0.2688,0.4871,Low,Cyprus 2 - 1 Moldova,3-2,3,2,3,5,True,True,True,44.0,0.5,0.12
-2026-03-30,Germany,Ghana,Germany,Germany,True,0.7162,1,HOME_WIN,False,False,0.7162,0.0777,0.206,0.7162,High,Germany 3 - 0 Ghana,2-1,2,1,3,3,True,True,True,422.0,5.1,0.16
-2026-03-31,Algeria,Uruguay,Algeria,Draw,False,0.5043,0,DRAW,True,False,0.5043,0.2674,0.2282,0.5043,Low,Algeria 3 - 0 Uruguay,0-0,0,0,3,0,True,False,False,-120.0,2.7,0.12
-2026-03-31,Argentina,Zambia,Argentina,Argentina,True,0.7329,1,HOME_WIN,False,False,0.7329,0.0611,0.206,0.7329,High,Argentina 3 - 0 Zambia,5-0,5,0,3,5,True,True,True,744.0,6.2,0.12
-2026-03-31,Austria,Korea Republic,Austria,Austria,True,0.5595,1,HOME_WIN,False,False,0.5595,0.1737,0.2668,0.5595,Medium,Austria 3 - 0 Korea Republic,1-0,1,0,3,1,True,False,False,44.0,4.6,0.12
-2026-03-31,Brazil,Croatia,Brazil,Brazil,True,0.4612,1,HOME_WIN,False,False,0.4612,0.2717,0.2672,0.4612,Low,Brazil 2 - 1 Croatia,3-1,3,1,3,4,True,True,True,79.0,-3.3,0.18
-2026-03-31,Burkina Faso,Guinea-Bissau,Burkina Faso,Draw,False,0.6969,0,DRAW,True,False,0.6969,0.097,0.206,0.6969,Medium,Burkina Faso 3 - 0 Guinea-Bissau,1-1,1,1,3,2,True,False,False,281.0,8.8,0.12
-2026-03-31,Canada,Tunisia,Canada,Draw,False,0.5299,0,DRAW,True,False,0.5299,0.2282,0.2419,0.5299,Low,Canada 1 - 0 Tunisia,0-0,0,0,1,0,False,False,True,160.0,-1.1,0.2
-2026-03-31,Costa Rica,IR Iran,IR Iran,IR Iran,True,0.561,1,AWAY_WIN,False,False,0.2215,0.561,0.2174,0.561,Medium,Costa Rica 1 - 2 IR Iran,0-5,0,5,3,5,True,True,True,-164.0,0.6,0.12
-2026-03-31,England,Japan,Draw,Japan,False,0.3721,0,AWAY_WIN,False,True,0.3556,0.2723,0.3721,0.3721,Low,England 1 - 1 Japan,0-1,0,1,2,1,False,False,True,118.0,0.7,0.12
-2026-03-31,Equatorial Guinea,Madagascar,Madagascar,Draw,False,0.3953,0,DRAW,True,False,0.3142,0.3953,0.2905,0.3953,Low,Equatorial Guinea 1 - 1 Madagascar,1-1,1,1,2,2,False,False,True,0.0,-1.2,0.12
-2026-03-31,Haiti,Iceland,Haiti,Draw,False,0.4772,0,DRAW,True,False,0.4772,0.2435,0.2793,0.4772,Low,Haiti 2 - 0 Iceland,1-1,1,1,2,2,False,False,True,-20.0,2.0,0.12
-2026-03-31,Hungary,Greece,Draw,Draw,True,0.3595,1,DRAW,True,True,0.3004,0.3401,0.3595,0.3595,Low,Hungary 1 - 1 Greece,0-0,0,0,2,0,False,False,True,-34.0,0.8,0.12
-2026-03-31,Ivory Coast,Scotland,Ivory Coast,Ivory Coast,True,0.3999,1,HOME_WIN,False,False,0.3999,0.3477,0.2524,0.3999,Low,Ivory Coast 2 - 1 Scotland,1-0,1,0,3,1,True,False,False,-87.0,0.2,0.12
-2026-03-31,Jordan,Nigeria,Nigeria,Draw,False,0.429,0,DRAW,True,False,0.2653,0.429,0.3057,0.429,Low,Jordan 1 - 2 Nigeria,2-2,2,2,3,4,True,True,True,-87.0,-2.4,0.12
-2026-03-31,Mexico,Belgium,Draw,Draw,True,0.3629,1,DRAW,True,True,0.2956,0.3415,0.3629,0.3629,Low,Mexico 1 - 1 Belgium,1-1,1,1,2,2,False,False,True,-13.0,-2.0,0.28
-2026-03-31,Montenegro,Slovenia,Slovenia,Slovenia,True,0.4696,1,AWAY_WIN,False,False,0.2684,0.4696,0.262,0.4696,Low,Montenegro 1 - 1 Slovenia,2-3,2,3,2,5,False,True,False,-221.0,2.4,0.12
-2026-03-31,Morocco,Paraguay,Morocco,Morocco,True,0.441,1,HOME_WIN,False,False,0.441,0.2534,0.3057,0.441,Low,Morocco 1 - 0 Paraguay,2-1,2,1,1,3,False,True,False,-7.0,-1.6,0.12
-2026-03-31,Netherlands,Ecuador,Netherlands,Draw,False,0.5151,0,DRAW,True,False,0.5151,0.2008,0.2841,0.5151,Low,Netherlands 2 - 0 Ecuador,1-1,1,1,2,2,False,False,True,10.0,3.0,0.12
-2026-03-31,Norway,Switzerland,Draw,Draw,True,0.3721,1,DRAW,True,True,0.2858,0.3421,0.3721,0.3721,Low,Norway 1 - 2 Switzerland,0-0,0,0,3,0,True,False,False,23.0,-1.8,0.12
-2026-03-31,Peru,Honduras,Peru,Draw,False,0.5291,0,DRAW,True,False,0.5291,0.2253,0.2456,0.5291,Low,Peru 1 - 0 Honduras,2-2,2,2,1,4,False,True,False,130.0,-0.3,0.12
-2026-03-31,Russia,Mali,Russia,Draw,False,0.4134,0,DRAW,True,False,0.4134,0.2809,0.3057,0.4134,Low,Russia 2 - 1 Mali,0-0,0,0,3,0,True,False,False,184.0,-2.0,0.12
-2026-03-31,Republic of Ireland,North Macedonia,Republic of Ireland,Draw,False,0.4445,0,DRAW,True,False,0.4445,0.2356,0.3199,0.4445,Low,Republic of Ireland 1 - 0 North Macedonia,0-0,0,0,1,0,False,False,True,33.0,0.4,0.12
-2026-03-31,San Marino,Andorra,Andorra,Draw,False,0.5179,0,DRAW,True,False,0.1765,0.5179,0.3057,0.5179,Low,San Marino 0 - 1 Andorra,0-0,0,0,1,0,False,False,True,-255.0,-2.1,0.12
-2026-03-31,Senegal,Gambia,Senegal,Senegal,True,0.6912,1,HOME_WIN,False,False,0.6912,0.1027,0.206,0.6912,Medium,Senegal 2 - 0 Gambia,3-1,3,1,2,4,False,True,False,441.0,-0.1,0.12
-2026-03-31,Serbia,Saudi Arabia,Serbia,Serbia,True,0.5778,1,HOME_WIN,False,False,0.5778,0.1903,0.2319,0.5778,Medium,Serbia 1 - 0 Saudi Arabia,2-1,2,1,1,3,False,True,False,158.0,1.4,0.12
-2026-03-31,Slovakia,Romania,Slovakia,Slovakia,True,0.4631,1,HOME_WIN,False,False,0.4631,0.2312,0.3057,0.4631,Low,Slovakia 2 - 0 Romania,2-0,2,0,2,2,False,False,True,28.0,-0.4,0.12
-2026-03-31,South Africa,Panama,South Africa,Panama,False,0.4254,0,AWAY_WIN,False,False,0.4254,0.3573,0.2173,0.4254,Low,South Africa 1 - 0 Panama,1-2,1,2,1,3,False,True,False,-219.0,1.4,0.12
-2026-03-31,Spain,Egypt,Spain,Draw,False,0.7045,0,DRAW,True,False,0.7045,0.0894,0.206,0.7045,High,Spain 3 - 0 Egypt,0-0,0,0,3,0,True,False,False,461.0,1.5,0.16
-2026-03-31,Ukraine,Albania,Ukraine,Ukraine,True,0.3865,1,HOME_WIN,False,False,0.3865,0.3078,0.3057,0.3865,Low,Ukraine 1 - 1 Albania,1-0,1,0,2,1,False,False,True,164.0,-3.3,0.12
-2026-03-31,United States,Portugal,Portugal,Portugal,True,0.4359,1,AWAY_WIN,False,False,0.2584,0.4359,0.3057,0.4359,Low,United States 1 - 2 Portugal,0-2,0,2,3,2,True,False,False,-263.0,0.9,0.22
-2026-03-31,Wales,Northern Ireland,Draw,Draw,True,0.3578,1,DRAW,True,True,0.3415,0.3007,0.3578,0.3578,Low,Wales 1 - 1 Northern Ireland,1-1,1,1,2,2,False,False,True,77.0,-2.6,0.12
+date,home_team,away_team,predicted_winner,actual_winner,correct,predicted_probability,actual_result,actual_label,is_draw,predicted_draw,home_win_probability,away_win_probability,draw_probability,confidence_value,confidence,predicted_score,top_score_1,top_score_2,top_score_3,top1_score_hit,top3_score_hit,actual_score,actual_home_goals,actual_away_goals,predicted_total_goals,actual_total_goals,predicted_over_2_5,actual_over_2_5,over_under_correct,elo_difference,recent_form_edge,home_advantage_edge
+2025-11-17,Mozambique,Chad,Mozambique,Draw,False,0.6421,0,DRAW,True,False,0.6421,0.1387,0.2192,0.6421,Medium,Mozambique 2 - 0 Chad,2:0,1:0,3:0,False,False,2-2,2,2,2,4,False,True,False,269.0,0.0,0.12
+2025-11-17,Madagascar,Equatorial Guinea,Madagascar,Madagascar,True,0.4156,1,HOME_WIN,False,False,0.4156,0.2901,0.2943,0.4156,Low,Madagascar 2 - 1 Equatorial Guinea,2:1,1:1,2:0,False,True,2-0,2,0,3,2,True,False,False,0.0,-0.3,0.12
+2025-11-17,Finland,Andorra,Finland,Finland,True,0.6942,1,HOME_WIN,False,False,0.6942,0.0944,0.2114,0.6942,Medium,Finland 2 - 0 Andorra,2:0,3:0,1:0,False,False,4-0,4,0,2,4,False,True,False,456.0,0.2,0.12
+2025-11-17,Qatar,Zimbabwe,Qatar,Zimbabwe,False,0.4496,0,AWAY_WIN,False,False,0.4496,0.2565,0.2939,0.4496,Low,Qatar 1 - 1 Zimbabwe,1:1,1:0,2:0,False,False,1-2,1,2,2,3,False,True,False,49.0,0.4,0.12
+2025-11-17,Bahrain,Somalia,Bahrain,Somalia,False,0.6596,0,AWAY_WIN,False,False,0.6596,0.1251,0.2153,0.6596,Medium,Bahrain 2 - 0 Somalia,2:0,1:0,3:0,False,False,1-2,1,2,2,3,False,True,False,435.0,-0.3,0.12
+2025-11-18,Angola,Zambia,Angola,Angola,True,0.5857,1,HOME_WIN,False,False,0.5857,0.1763,0.238,0.5857,Medium,Angola 2 - 0 Zambia,2:0,1:0,3:0,False,False,3-2,3,2,2,5,False,True,False,171.0,1.2,0.12
+2025-11-18,Morocco,Uganda,Morocco,Morocco,True,0.7033,1,HOME_WIN,False,False,0.7033,0.0837,0.213,0.7033,High,Morocco 2 - 0 Uganda,2:0,3:0,1:0,False,False,4-0,4,0,2,4,False,True,False,433.0,1.8,0.12
+2025-11-18,Oman,Ivory Coast,Ivory Coast,Ivory Coast,True,0.4332,1,AWAY_WIN,False,False,0.2581,0.4332,0.3087,0.4332,Low,Oman 1 - 1 Ivory Coast,1:1,0:1,1:0,False,False,0-2,0,2,2,2,False,False,True,-215.0,2.6,0.12
+2025-11-18,Saudi Arabia,Algeria,Algeria,Algeria,True,0.5169,1,AWAY_WIN,False,False,0.2535,0.5169,0.2296,0.5169,Low,Saudi Arabia 1 - 2 Algeria,1:2,1:1,0:2,False,True,0-2,0,2,3,2,True,False,False,-196.0,0.8,0.12
+2025-11-18,Guinea,Niger,Guinea,Draw,False,0.4071,0,DRAW,True,False,0.4071,0.2739,0.319,0.4071,Low,Guinea 2 - 1 Niger,2:1,2:2,1:1,False,True,1-1,1,1,3,2,True,False,False,81.0,2.0,0.12
+2025-11-18,Benin,Burkina Faso,Burkina Faso,Burkina Faso,True,0.5223,1,AWAY_WIN,False,False,0.238,0.5223,0.2397,0.5223,Low,Benin 0 - 1 Burkina Faso,0:1,0:2,1:1,False,False,0-3,0,3,1,3,False,True,False,-124.0,-3.7,0.12
+2025-11-18,Mali,Jordan,Mali,Mali,True,0.4734,1,HOME_WIN,False,False,0.4734,0.2864,0.2402,0.4734,Low,Mali 2 - 1 Jordan,2:1,2:0,3:1,False,False,3-2,3,2,3,5,True,True,True,-92.0,2.5,0.12
+2025-11-18,Kuwait,Gambia,Draw,Draw,True,0.3721,1,DRAW,True,True,0.2847,0.3432,0.3721,0.3721,Low,Kuwait 1 - 1 Gambia,1:1,1:2,2:1,False,False,2-2,2,2,2,4,False,True,False,-87.0,0.4,0.12
+2025-11-18,Lesotho,Malawi,Draw,Malawi,False,0.3721,0,AWAY_WIN,False,True,0.3156,0.3123,0.3721,0.3721,Low,Lesotho 0 - 0 Malawi,0:0,1:0,0:1,False,True,0-1,0,1,0,1,False,False,True,-41.0,-0.1,0.12
+2025-11-18,Brazil,Tunisia,Brazil,Draw,False,0.6851,0,DRAW,True,False,0.6851,0.1088,0.206,0.6851,Medium,Brazil 3 - 0 Tunisia,3:0,2:0,4:0,False,False,1-1,1,1,3,2,True,False,False,363.0,1.1,0.18
+2025-11-18,Canada,Venezuela,Canada,Canada,True,0.4994,1,HOME_WIN,False,False,0.4994,0.1967,0.3039,0.4994,Low,Canada 2 - 0 Venezuela,2:0,1:0,0:0,True,True,2-0,2,0,2,2,False,False,True,55.0,0.7,0.2
+2025-11-18,Chile,Peru,Chile,Chile,True,0.4946,1,HOME_WIN,False,False,0.4946,0.2224,0.283,0.4946,Low,Chile 2 - 1 Peru,2:1,2:0,3:1,True,True,2-1,2,1,3,3,True,True,True,17.0,2.0,0.12
+2025-11-18,Colombia,Australia,Colombia,Colombia,True,0.6589,1,HOME_WIN,False,False,0.6589,0.1197,0.2215,0.6589,Medium,Colombia 3 - 0 Australia,3:0,2:0,4:0,True,True,3-0,3,0,3,3,True,True,True,205.0,2.7,0.12
+2025-11-18,Cyprus,Estonia,Cyprus,Estonia,False,0.4542,0,AWAY_WIN,False,False,0.4542,0.2719,0.274,0.4542,Low,Cyprus 2 - 0 Estonia,2:0,2:1,1:0,False,False,2-4,2,4,2,6,False,True,False,-46.0,0.7,0.12
+2025-11-18,Ecuador,New Zealand,Ecuador,Ecuador,True,0.6649,1,HOME_WIN,False,False,0.6649,0.1291,0.206,0.6649,Medium,Ecuador 2 - 0 New Zealand,2:0,1:0,3:0,True,True,2-0,2,0,2,2,False,False,True,376.0,-0.4,0.12
+2025-11-18,Faroe Islands,Kazakhstan,Draw,Faroe Islands,False,0.3677,0,HOME_WIN,False,True,0.2888,0.3435,0.3677,0.3677,Low,Faroe Islands 1 - 1 Kazakhstan,1:1,1:2,0:1,False,False,1-0,1,0,2,1,False,False,True,-42.0,-1.7,0.12
+2025-11-18,Korea Republic,Ghana,Korea Republic,Korea Republic,True,0.6695,1,HOME_WIN,False,False,0.6695,0.1244,0.206,0.6695,Medium,Korea Republic 2 - 0 Ghana,2:0,3:0,1:0,False,True,1-0,1,0,2,1,False,False,True,276.0,1.5,0.12
+2025-11-18,Mexico,Paraguay,Mexico,Paraguay,False,0.4703,0,AWAY_WIN,False,False,0.4703,0.224,0.3057,0.4703,Low,Mexico 2 - 0 Paraguay,2:0,1:0,0:0,False,False,1-2,1,2,2,3,False,True,False,47.0,0.8,0.28
+2025-11-18,United States,Uruguay,Uruguay,United States,False,0.4027,0,HOME_WIN,False,False,0.2785,0.4027,0.3188,0.4027,Low,United States 1 - 1 Uruguay,1:1,0:1,1:2,False,False,5-1,5,1,2,6,False,True,False,-166.0,1.6,0.22
+2026-01-18,Bolivia,Panama,Draw,Draw,True,0.3721,1,DRAW,True,True,0.2789,0.349,0.3721,0.3721,Low,Bolivia 1 - 1 Panama,1:1,0:1,1:2,True,True,1-1,1,1,2,2,False,False,True,-109.0,1.5,0.12
+2026-01-18,Grenada,Jamaica,Jamaica,Jamaica,True,0.4614,1,AWAY_WIN,False,False,0.1831,0.4614,0.3555,0.4614,Low,Grenada 0 - 1 Jamaica,0:1,1:1,0:0,True,True,0-1,0,1,1,1,False,False,True,-429.0,2.1,0.12
+2026-01-22,Panama,Mexico,Mexico,Mexico,True,0.4914,1,AWAY_WIN,False,False,0.2614,0.4914,0.2472,0.4914,Low,Panama 1 - 1 Mexico,1:1,0:1,1:2,False,True,0-1,0,1,2,1,False,False,True,-151.0,0.0,0.12
+2026-01-25,Bolivia,Mexico,Mexico,Mexico,True,0.5241,1,AWAY_WIN,False,False,0.1702,0.5241,0.3057,0.5241,Low,Bolivia 0 - 1 Mexico,0:1,0:2,0:0,True,True,0-1,0,1,1,1,False,False,True,-260.0,-0.3,0.12
+2026-01-26,Uzbekistan,China PR,Uzbekistan,Draw,False,0.6201,0,DRAW,True,False,0.6201,0.1531,0.2268,0.6201,Medium,Uzbekistan 2 - 0 China PR,2:0,1:0,3:0,False,False,2-2,2,2,2,4,False,True,False,203.0,2.2,0.12
+2026-02-25,Mexico,Iceland,Mexico,Mexico,True,0.6673,1,HOME_WIN,False,False,0.6673,0.1202,0.2125,0.6673,Medium,Mexico 2 - 0 Iceland,2:0,1:0,3:0,False,False,4-0,4,0,2,4,False,True,False,313.0,2.4,0.28
+2026-03-15,Bolivia,Trinidad and Tobago,Bolivia,Bolivia,True,0.3961,1,HOME_WIN,False,False,0.3961,0.2484,0.3555,0.3961,Low,Bolivia 1 - 1 Trinidad and Tobago,1:1,1:0,0:0,False,False,3-0,3,0,2,3,False,True,False,235.0,-0.7,0.12
+2026-03-25,Bermuda,Congo DR,Congo DR,Congo DR,True,0.6982,1,AWAY_WIN,False,False,0.0835,0.6982,0.2183,0.6982,Medium,Bermuda 0 - 2 Congo DR,0:2,0:1,0:3,True,True,0-2,0,2,2,2,False,False,True,-535.0,-2.5,0.12
+2026-03-25,Equatorial Guinea,Kyrgyzstan,Draw,Equatorial Guinea,False,0.3594,0,HOME_WIN,False,True,0.3438,0.2968,0.3594,0.3594,Low,Equatorial Guinea 1 - 1 Kyrgyzstan,1:1,0:1,1:0,False,True,1-0,1,0,2,1,False,False,True,85.0,-1.8,0.12
+2026-03-26,Brazil,France,Draw,France,False,0.3721,0,AWAY_WIN,False,True,0.3385,0.2894,0.3721,0.3721,Low,Brazil 2 - 1 France,2:1,1:1,2:2,False,False,1-2,1,2,3,3,True,True,True,-72.0,0.7,0.18
+2026-03-26,Colombia,Croatia,Colombia,Croatia,False,0.5256,0,AWAY_WIN,False,False,0.5256,0.2043,0.2701,0.5256,Low,Colombia 2 - 0 Croatia,2:0,3:0,2:1,False,False,1-2,1,2,2,3,False,True,False,70.0,-0.4,0.12
+2026-03-26,Cyprus,Belarus,Belarus,Belarus,True,0.556,1,AWAY_WIN,False,False,0.2352,0.556,0.2088,0.556,Medium,Cyprus 1 - 2 Belarus,1:2,1:3,2:2,False,False,0-1,0,1,3,1,True,False,False,-208.0,-1.4,0.12
+2026-03-26,Georgia,Israel,Georgia,Draw,False,0.4526,0,DRAW,True,False,0.4526,0.2693,0.278,0.4526,Low,Georgia 2 - 1 Israel,2:1,1:1,2:0,False,False,2-2,2,2,3,4,True,True,True,7.0,0.6,0.12
+2026-03-26,Moldova,Lithuania,Draw,Lithuania,False,0.3721,0,AWAY_WIN,False,True,0.3585,0.2694,0.3721,0.3721,Low,Moldova 0 - 0 Lithuania,0:0,1:0,1:1,False,False,0-2,0,2,0,2,False,False,True,-9.0,-1.2,0.12
+2026-03-26,Vietnam,Bangladesh,Vietnam,Vietnam,True,0.606,1,HOME_WIN,False,False,0.606,0.1879,0.206,0.606,Medium,Vietnam 2 - 0 Bangladesh,2:0,1:0,1:1,False,False,3-0,3,0,2,3,False,True,False,409.0,0.9,0.12
+2026-03-27,Algeria,Guatemala,Algeria,Algeria,True,0.6756,1,HOME_WIN,False,False,0.6756,0.1184,0.206,0.6756,Medium,Algeria 3 - 0 Guatemala,3:0,2:0,4:0,False,False,7-0,7,0,3,7,True,True,True,268.0,0.7,0.12
+2026-03-27,Argentina,Mauritania,Argentina,Argentina,True,0.7335,1,HOME_WIN,False,False,0.7335,0.0605,0.206,0.7335,High,Argentina 3 - 0 Mauritania,3:0,4:0,2:0,False,False,2-1,2,1,3,3,True,True,True,786.0,4.1,0.12
+2026-03-27,Austria,Ghana,Austria,Austria,True,0.7022,1,HOME_WIN,False,False,0.7022,0.0918,0.206,0.7022,High,Austria 3 - 0 Ghana,3:0,4:0,2:0,False,False,5-1,5,1,3,6,True,True,True,320.0,3.8,0.12
+2026-03-27,England,Uruguay,England,Draw,False,0.5858,0,DRAW,True,False,0.5858,0.189,0.2253,0.5858,Medium,England 2 - 0 Uruguay,2:0,1:0,3:0,False,False,1-1,1,1,2,2,False,False,True,132.0,2.2,0.12
+2026-03-27,Greece,Paraguay,Greece,Paraguay,False,0.5159,0,AWAY_WIN,False,False,0.5159,0.247,0.2371,0.5159,Low,Greece 2 - 0 Paraguay,2:0,3:0,1:0,False,False,0-1,0,1,2,1,False,False,True,-90.0,3.1,0.12
+2026-03-27,Montenegro,Andorra,Montenegro,Montenegro,True,0.6927,1,HOME_WIN,False,False,0.6927,0.1001,0.2072,0.6927,Medium,Montenegro 2 - 0 Andorra,2:0,1:0,3:0,True,True,2-0,2,0,2,2,False,False,True,381.0,1.2,0.12
+2026-03-27,Morocco,Ecuador,Morocco,Draw,False,0.4559,0,DRAW,True,False,0.4559,0.2904,0.2537,0.4559,Low,Morocco 2 - 0 Ecuador,2:0,1:0,1:1,False,True,1-1,1,1,2,2,False,False,True,-111.0,3.5,0.12
+2026-03-27,Netherlands,Norway,Netherlands,Netherlands,True,0.5213,1,HOME_WIN,False,False,0.5213,0.205,0.2737,0.5213,Low,Netherlands 2 - 0 Norway,2:0,3:0,2:1,False,True,2-1,2,1,2,3,False,True,False,34.0,2.9,0.12
+2026-03-27,Saudi Arabia,Egypt,Egypt,Egypt,True,0.4151,1,AWAY_WIN,False,False,0.2626,0.4151,0.3223,0.4151,Low,Saudi Arabia 1 - 1 Egypt,1:1,0:1,1:2,False,False,0-4,0,4,2,4,False,True,False,-120.0,-1.0,0.12
+2026-03-27,South Africa,Panama,South Africa,Draw,False,0.4664,0,DRAW,True,False,0.4664,0.3151,0.2185,0.4664,Low,South Africa 2 - 0 Panama,2:0,1:0,3:0,False,False,1-1,1,1,2,2,False,False,True,-219.0,3.6,0.12
+2026-03-27,Spain,Serbia,Spain,Spain,True,0.6947,1,HOME_WIN,False,False,0.6947,0.0992,0.206,0.6947,Medium,Spain 3 - 0 Serbia,3:0,2:0,4:0,True,True,3-0,3,0,3,3,True,True,True,423.0,0.0,0.16
+2026-03-27,Russia,Nicaragua,Russia,Russia,True,0.7102,1,HOME_WIN,False,False,0.7102,0.0837,0.206,0.7102,High,Russia 2 - 0 Nicaragua,2:0,3:0,4:0,False,False,3-1,3,1,2,4,False,True,False,439.0,-1.8,0.12
+2026-03-27,Switzerland,Germany,Switzerland,Germany,False,0.4632,0,AWAY_WIN,False,False,0.4632,0.2648,0.272,0.4632,Low,Switzerland 2 - 1 Germany,2:1,2:0,1:1,False,False,3-4,3,4,3,7,True,True,True,-41.0,2.1,0.12
+2026-03-27,Costa Rica,Jordan,Draw,Draw,True,0.3716,1,DRAW,True,True,0.2833,0.3452,0.3716,0.3716,Low,Costa Rica 1 - 1 Jordan,1:1,1:2,2:1,False,False,2-2,2,2,2,4,False,True,False,-72.0,1.6,0.12
+2026-03-27,IR Iran,Nigeria,IR Iran,Nigeria,False,0.492,0,AWAY_WIN,False,False,0.492,0.2302,0.2778,0.492,Low,IR Iran 2 - 1 Nigeria,2:1,3:1,2:0,False,False,1-2,1,2,3,3,True,True,True,5.0,0.6,0.12
+2026-03-28,Burkina Faso,Guinea-Bissau,Burkina Faso,Burkina Faso,True,0.6931,1,HOME_WIN,False,False,0.6931,0.1009,0.206,0.6931,Medium,Burkina Faso 3 - 0 Guinea-Bissau,3:0,2:0,4:0,False,False,5-0,5,0,3,5,True,True,True,281.0,5.9,0.12
+2026-03-28,Canada,Iceland,Canada,Draw,False,0.6464,0,DRAW,True,False,0.6464,0.1277,0.2258,0.6464,Medium,Canada 2 - 0 Iceland,2:0,1:0,3:0,False,False,2-2,2,2,2,4,False,True,False,220.0,2.5,0.2
+2026-03-28,Haiti,Tunisia,Draw,Tunisia,False,0.3559,0,AWAY_WIN,False,True,0.3122,0.3319,0.3559,0.3559,Low,Haiti 1 - 1 Tunisia,1:1,2:1,1:2,False,False,0-1,0,1,2,1,False,False,True,-80.0,1.6,0.12
+2026-03-28,Hungary,Slovenia,Draw,Hungary,False,0.3647,0,HOME_WIN,False,True,0.344,0.2913,0.3647,0.3647,Low,Hungary 1 - 1 Slovenia,1:1,2:1,1:0,False,True,1-0,1,0,2,1,False,False,True,28.0,-1.0,0.12
+2026-03-28,Ivory Coast,Korea Republic,Ivory Coast,Ivory Coast,True,0.4225,1,HOME_WIN,False,False,0.4225,0.3384,0.2391,0.4225,Low,Ivory Coast 2 - 1 Korea Republic,2:1,1:1,2:0,False,False,4-0,4,0,3,4,True,True,True,-91.0,0.5,0.12
+2026-03-28,Mexico,Portugal,Draw,Draw,True,0.3685,1,DRAW,True,True,0.297,0.3345,0.3685,0.3685,Low,Mexico 1 - 1 Portugal,1:1,2:1,1:2,False,False,0-0,0,0,2,0,False,False,True,-108.0,2.4,0.28
+2026-03-28,San Marino,Faroe Islands,Faroe Islands,Faroe Islands,True,0.7124,1,AWAY_WIN,False,False,0.0769,0.7124,0.2107,0.7124,High,San Marino 0 - 2 Faroe Islands,0:2,0:1,0:3,False,False,1-2,1,2,2,3,False,True,False,-561.0,-5.1,0.12
+2026-03-28,Scotland,Japan,Japan,Japan,True,0.4299,1,AWAY_WIN,False,False,0.2644,0.4299,0.3057,0.4299,Low,Scotland 1 - 2 Japan,1:2,2:2,1:1,False,False,0-1,0,1,3,1,True,False,False,-124.0,3.3,0.12
+2026-03-28,Senegal,Peru,Senegal,Senegal,True,0.5981,1,HOME_WIN,False,False,0.5981,0.1687,0.2332,0.5981,Medium,Senegal 2 - 0 Peru,2:0,1:0,3:0,True,True,2-0,2,0,2,2,False,False,True,160.0,1.1,0.12
+2026-03-28,United States,Belgium,Belgium,Belgium,True,0.4005,1,AWAY_WIN,False,False,0.3495,0.4005,0.25,0.4005,Low,United States 1 - 1 Belgium,1:1,2:1,1:2,False,False,2-5,2,5,2,7,False,True,False,-168.0,1.1,0.22
+2026-03-28,Kyrgyzstan,Madagascar,Madagascar,Madagascar,True,0.4903,1,AWAY_WIN,False,False,0.2644,0.4903,0.2453,0.4903,Low,Kyrgyzstan 0 - 1 Madagascar,0:1,1:1,0:2,False,False,2-5,2,5,1,7,False,True,False,-85.0,-2.4,0.12
+2026-03-29,Armenia,Belarus,Belarus,Belarus,True,0.5753,1,AWAY_WIN,False,False,0.2029,0.5753,0.2218,0.5753,Medium,Armenia 1 - 3 Belarus,1:3,1:2,0:3,False,True,1-2,1,2,4,3,True,True,True,-149.0,-3.1,0.12
+2026-03-29,Colombia,France,Colombia,France,False,0.3688,0,AWAY_WIN,False,False,0.3688,0.3621,0.2691,0.3688,Low,Colombia 1 - 1 France,1:1,2:1,1:0,False,False,1-3,1,3,2,4,False,True,False,-81.0,-1.5,0.12
+2026-03-29,Lithuania,Georgia,Georgia,Georgia,True,0.6879,1,AWAY_WIN,False,False,0.1061,0.6879,0.206,0.6879,Medium,Lithuania 0 - 2 Georgia,0:2,0:3,0:1,True,True,0-2,0,2,2,2,False,False,True,-375.0,-0.5,0.12
+2026-03-30,Cyprus,Moldova,Cyprus,Cyprus,True,0.4871,1,HOME_WIN,False,False,0.4871,0.2441,0.2688,0.4871,Low,Cyprus 2 - 1 Moldova,2:1,2:0,1:1,False,False,3-2,3,2,3,5,True,True,True,44.0,0.5,0.12
+2026-03-30,Germany,Ghana,Germany,Germany,True,0.7162,1,HOME_WIN,False,False,0.7162,0.0777,0.206,0.7162,High,Germany 3 - 0 Ghana,3:0,4:0,2:0,False,False,2-1,2,1,3,3,True,True,True,422.0,5.1,0.16
+2026-03-31,Algeria,Uruguay,Algeria,Draw,False,0.5043,0,DRAW,True,False,0.5043,0.2674,0.2282,0.5043,Low,Algeria 3 - 0 Uruguay,3:0,2:0,3:1,False,False,0-0,0,0,3,0,True,False,False,-120.0,2.7,0.12
+2026-03-31,Argentina,Zambia,Argentina,Argentina,True,0.7329,1,HOME_WIN,False,False,0.7329,0.0611,0.206,0.7329,High,Argentina 3 - 0 Zambia,3:0,4:0,2:0,False,False,5-0,5,0,3,5,True,True,True,744.0,6.2,0.12
+2026-03-31,Austria,Korea Republic,Austria,Austria,True,0.5595,1,HOME_WIN,False,False,0.5595,0.1737,0.2668,0.5595,Medium,Austria 3 - 0 Korea Republic,3:0,4:0,2:0,False,False,1-0,1,0,3,1,True,False,False,44.0,4.6,0.12
+2026-03-31,Brazil,Croatia,Brazil,Brazil,True,0.4612,1,HOME_WIN,False,False,0.4612,0.2717,0.2672,0.4612,Low,Brazil 2 - 1 Croatia,2:1,1:1,2:0,False,False,3-1,3,1,3,4,True,True,True,79.0,-3.3,0.18
+2026-03-31,Burkina Faso,Guinea-Bissau,Burkina Faso,Draw,False,0.6969,0,DRAW,True,False,0.6969,0.097,0.206,0.6969,Medium,Burkina Faso 3 - 0 Guinea-Bissau,3:0,4:0,2:0,False,False,1-1,1,1,3,2,True,False,False,281.0,8.8,0.12
+2026-03-31,Canada,Tunisia,Canada,Draw,False,0.5299,0,DRAW,True,False,0.5299,0.2282,0.2419,0.5299,Low,Canada 1 - 1 Tunisia,1:1,1:0,2:0,False,False,0-0,0,0,2,0,False,False,True,160.0,-1.1,0.2
+2026-03-31,Costa Rica,IR Iran,IR Iran,IR Iran,True,0.561,1,AWAY_WIN,False,False,0.2215,0.561,0.2174,0.561,Medium,Costa Rica 1 - 2 IR Iran,1:2,0:2,1:1,False,False,0-5,0,5,3,5,True,True,True,-164.0,0.6,0.12
+2026-03-31,England,Japan,Draw,Japan,False,0.3721,0,AWAY_WIN,False,True,0.3556,0.2723,0.3721,0.3721,Low,England 1 - 1 Japan,1:1,2:1,1:2,False,False,0-1,0,1,2,1,False,False,True,118.0,0.7,0.12
+2026-03-31,Equatorial Guinea,Madagascar,Madagascar,Draw,False,0.3953,0,DRAW,True,False,0.3142,0.3953,0.2905,0.3953,Low,Equatorial Guinea 1 - 1 Madagascar,1:1,1:2,0:1,True,True,1-1,1,1,2,2,False,False,True,0.0,-1.2,0.12
+2026-03-31,Haiti,Iceland,Haiti,Draw,False,0.4772,0,DRAW,True,False,0.4772,0.2435,0.2793,0.4772,Low,Haiti 2 - 0 Iceland,2:0,1:0,2:1,False,False,1-1,1,1,2,2,False,False,True,-20.0,2.0,0.12
+2026-03-31,Hungary,Greece,Draw,Draw,True,0.3595,1,DRAW,True,True,0.3004,0.3401,0.3595,0.3595,Low,Hungary 1 - 1 Greece,1:1,1:2,2:1,False,False,0-0,0,0,2,0,False,False,True,-34.0,0.8,0.12
+2026-03-31,Ivory Coast,Scotland,Ivory Coast,Ivory Coast,True,0.3999,1,HOME_WIN,False,False,0.3999,0.3477,0.2524,0.3999,Low,Ivory Coast 2 - 1 Scotland,2:1,1:1,2:2,False,False,1-0,1,0,3,1,True,False,False,-87.0,0.2,0.12
+2026-03-31,Jordan,Nigeria,Nigeria,Draw,False,0.429,0,DRAW,True,False,0.2653,0.429,0.3057,0.429,Low,Jordan 1 - 2 Nigeria,1:2,1:1,2:2,False,True,2-2,2,2,3,4,True,True,True,-87.0,-2.4,0.12
+2026-03-31,Mexico,Belgium,Draw,Draw,True,0.3629,1,DRAW,True,True,0.2956,0.3415,0.3629,0.3629,Low,Mexico 1 - 1 Belgium,1:1,1:2,2:1,True,True,1-1,1,1,2,2,False,False,True,-13.0,-2.0,0.28
+2026-03-31,Montenegro,Slovenia,Slovenia,Slovenia,True,0.4696,1,AWAY_WIN,False,False,0.2684,0.4696,0.262,0.4696,Low,Montenegro 1 - 1 Slovenia,1:1,0:1,1:2,False,False,2-3,2,3,2,5,False,True,False,-221.0,2.4,0.12
+2026-03-31,Morocco,Paraguay,Morocco,Morocco,True,0.441,1,HOME_WIN,False,False,0.441,0.2534,0.3057,0.441,Low,Morocco 2 - 0 Paraguay,2:0,1:0,1:1,False,False,2-1,2,1,2,3,False,True,False,-7.0,-1.6,0.12
+2026-03-31,Netherlands,Ecuador,Netherlands,Draw,False,0.5151,0,DRAW,True,False,0.5151,0.2008,0.2841,0.5151,Low,Netherlands 2 - 0 Ecuador,2:0,3:0,1:0,False,False,1-1,1,1,2,2,False,False,True,10.0,3.0,0.12
+2026-03-31,Norway,Switzerland,Draw,Draw,True,0.3721,1,DRAW,True,True,0.2858,0.3421,0.3721,0.3721,Low,Norway 1 - 2 Switzerland,1:2,2:2,1:1,False,False,0-0,0,0,3,0,True,False,False,23.0,-1.8,0.12
+2026-03-31,Peru,Honduras,Peru,Draw,False,0.5291,0,DRAW,True,False,0.5291,0.2253,0.2456,0.5291,Low,Peru 2 - 0 Honduras,2:0,1:0,1:1,False,False,2-2,2,2,2,4,False,True,False,130.0,-0.3,0.12
+2026-03-31,Russia,Mali,Russia,Draw,False,0.4134,0,DRAW,True,False,0.4134,0.2809,0.3057,0.4134,Low,Russia 2 - 1 Mali,2:1,2:2,1:1,False,False,0-0,0,0,3,0,True,False,False,184.0,-2.0,0.12
+2026-03-31,Republic of Ireland,North Macedonia,Republic of Ireland,Draw,False,0.4445,0,DRAW,True,False,0.4445,0.2356,0.3199,0.4445,Low,Republic of Ireland 2 - 0 North Macedonia,2:0,1:0,0:0,False,True,0-0,0,0,2,0,False,False,True,33.0,0.4,0.12
+2026-03-31,San Marino,Andorra,Andorra,Draw,False,0.5179,0,DRAW,True,False,0.1765,0.5179,0.3057,0.5179,Low,San Marino 0 - 1 Andorra,0:1,0:0,0:2,False,True,0-0,0,0,1,0,False,False,True,-255.0,-2.1,0.12
+2026-03-31,Senegal,Gambia,Senegal,Senegal,True,0.6912,1,HOME_WIN,False,False,0.6912,0.1027,0.206,0.6912,Medium,Senegal 2 - 0 Gambia,2:0,1:0,3:0,False,False,3-1,3,1,2,4,False,True,False,441.0,-0.1,0.12
+2026-03-31,Serbia,Saudi Arabia,Serbia,Serbia,True,0.5778,1,HOME_WIN,False,False,0.5778,0.1903,0.2319,0.5778,Medium,Serbia 2 - 0 Saudi Arabia,2:0,1:0,1:1,False,False,2-1,2,1,2,3,False,True,False,158.0,1.4,0.12
+2026-03-31,Slovakia,Romania,Slovakia,Slovakia,True,0.4631,1,HOME_WIN,False,False,0.4631,0.2312,0.3057,0.4631,Low,Slovakia 2 - 0 Romania,2:0,1:0,2:1,True,True,2-0,2,0,2,2,False,False,True,28.0,-0.4,0.12
+2026-03-31,South Africa,Panama,South Africa,Panama,False,0.4254,0,AWAY_WIN,False,False,0.4254,0.3573,0.2173,0.4254,Low,South Africa 2 - 0 Panama,2:0,1:0,1:1,False,False,1-2,1,2,2,3,False,True,False,-219.0,1.4,0.12
+2026-03-31,Spain,Egypt,Spain,Draw,False,0.7045,0,DRAW,True,False,0.7045,0.0894,0.206,0.7045,High,Spain 3 - 0 Egypt,3:0,4:0,2:0,False,False,0-0,0,0,3,0,True,False,False,461.0,1.5,0.16
+2026-03-31,Ukraine,Albania,Ukraine,Ukraine,True,0.3865,1,HOME_WIN,False,False,0.3865,0.3078,0.3057,0.3865,Low,Ukraine 1 - 1 Albania,1:1,1:2,2:1,False,False,1-0,1,0,2,1,False,False,True,164.0,-3.3,0.12
+2026-03-31,United States,Portugal,Portugal,Portugal,True,0.4359,1,AWAY_WIN,False,False,0.2584,0.4359,0.3057,0.4359,Low,United States 1 - 2 Portugal,1:2,1:1,2:2,False,False,0-2,0,2,3,2,True,False,False,-263.0,0.9,0.22
+2026-03-31,Wales,Northern Ireland,Draw,Draw,True,0.3578,1,DRAW,True,True,0.3415,0.3007,0.3578,0.3578,Low,Wales 1 - 1 Northern Ireland,1:1,0:1,1:2,True,True,1-1,1,1,2,2,False,False,True,77.0,-2.6,0.12

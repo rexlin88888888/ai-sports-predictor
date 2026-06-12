@@ -6,7 +6,7 @@ Metrics:
 - accuracy: 0.6
 - draw_accuracy: 0.27586206896551724
 - over_under_accuracy: 0.55
-- average_goal_error: 0.91
+- average_goal_error: 0.895
 - log_loss: 0.9261319349312516
 - brier_score: 0.1832033326
 - average_confidence: 0.5148919999999999

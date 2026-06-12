@@ -25,6 +25,8 @@ def run_football_backtest(args: Namespace) -> dict[str, object]:
     limit = int(getattr(args, "limit", 100) or 100)
     test_matches = matches[-limit:]
     correct = 0
+    top1_score_hits = 0
+    top3_score_hits = 0
     rows: list[dict[str, object]] = []
     for match in test_matches:
         history = [item for item in matches if item.date < match.date]
@@ -36,6 +38,12 @@ def run_football_backtest(args: Namespace) -> dict[str, object]:
         correct += int(is_correct)
         actual_label = "DRAW" if actual == "Draw" else "HOME_WIN" if actual == match.home_team else "AWAY_WIN"
         predicted_total = predicted_total_from_score(prediction.predicted_score)
+        top_scores = extract_top_scores(prediction.key_factors)
+        actual_score_pair = (match.home_goals, match.away_goals)
+        top1_score_hit = bool(top_scores and top_scores[0] == actual_score_pair)
+        top3_score_hit = actual_score_pair in top_scores[:3]
+        top1_score_hits += int(top1_score_hit)
+        top3_score_hits += int(top3_score_hit)
         actual_total = match.home_goals + match.away_goals
         actual_over = actual_total > 2.5
         predicted_over = predicted_total is not None and predicted_total > 2.5
@@ -73,6 +81,11 @@ def run_football_backtest(args: Namespace) -> dict[str, object]:
                 ),
                 "confidence": prediction.confidence,
                 "predicted_score": prediction.predicted_score,
+                "top_score_1": format_score_pair(top_scores, 0),
+                "top_score_2": format_score_pair(top_scores, 1),
+                "top_score_3": format_score_pair(top_scores, 2),
+                "top1_score_hit": top1_score_hit,
+                "top3_score_hit": top3_score_hit,
                 "actual_score": f"{match.home_goals}-{match.away_goals}",
                 "actual_home_goals": match.home_goals,
                 "actual_away_goals": match.away_goals,
@@ -93,6 +106,8 @@ def run_football_backtest(args: Namespace) -> dict[str, object]:
         "sport": "football",
         "games": games,
         "accuracy": correct / games if games else 0.0,
+        "top1_score_hit_rate": top1_score_hits / games if games else 0.0,
+        "top3_score_hit_rate": top3_score_hits / games if games else 0.0,
         "output": str(output),
     }
 
@@ -104,6 +119,31 @@ def predicted_total_from_score(value: str) -> int | None:
     if len(numbers) < 2:
         return None
     return numbers[-2] + numbers[-1]
+
+
+def extract_top_scores(factors: list[str]) -> list[tuple[int, int]]:
+    import re
+
+    joined = " | ".join(factors)
+    match = re.search(r"most_likely_scores=([^|]+)", joined)
+    if not match:
+        return []
+    scores: list[tuple[int, int]] = []
+    for item in match.group(1).split(","):
+        parts = item.strip().split(":")
+        if len(parts) < 2:
+            continue
+        try:
+            scores.append((int(parts[0]), int(parts[1])))
+        except ValueError:
+            continue
+    return scores[:3]
+
+
+def format_score_pair(scores: list[tuple[int, int]], index: int) -> str:
+    if index >= len(scores):
+        return ""
+    return f"{scores[index][0]}:{scores[index][1]}"
 
 
 def extract_feature_edges(factors: list[str]) -> dict[str, float]:

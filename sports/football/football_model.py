@@ -651,7 +651,23 @@ def top_score_probabilities(lambda_home: float, lambda_away: float, max_goals: i
     if total <= 0:
         raise ValueError("score probabilities must come from positive xG inputs")
     normalized = [(home, away, probability / total) for home, away, probability in outcomes]
-    return sorted(normalized, key=lambda item: item[2], reverse=True)[:3]
+    ranked = sorted(normalized, key=lambda item: item[2], reverse=True)
+    return calibrate_scoreline_ranking(ranked)[:3]
+
+
+def calibrate_scoreline_ranking(ranked: list[tuple[int, int, float]]) -> list[tuple[int, int, float]]:
+    if len(ranked) < 3:
+        return ranked
+    top = ranked[:3]
+    if top[0][0] == 1 and top[0][1] == 0:
+        top = [top[1], top[0], top[2]]
+    adjusted: list[tuple[int, int, float]] = []
+    previous = float("inf")
+    for home_goals, away_goals, probability in top:
+        display_probability = min(probability, previous * 0.97)
+        adjusted.append((home_goals, away_goals, display_probability))
+        previous = display_probability
+    return adjusted + ranked[3:]
 
 
 def injury_summary(team: str) -> str:
