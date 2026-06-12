@@ -49,6 +49,11 @@ class FootballFixture:
     away_team: str
     mode: str = "WORLD_CUP"
     data_source: str = "unknown"
+    match_id: str = ""
+    time_text: str = ""
+    competition_name: str = ""
+    stage: str = ""
+    venue: str = ""
 
 
 def load_matches() -> list[FootballMatch]:
@@ -123,7 +128,7 @@ def load_live_fixtures(target_date: dt.date) -> list[FootballFixture]:
 def load_database_fixtures(target_date: dt.date) -> list[FootballFixture]:
     try:
         rows = fetch_all(
-            "SELECT match_time_utc, home_team, away_team, stage, data_source FROM matches WHERE substr(match_time_utc, 1, 10)=? AND status <> 'cancelled' ORDER BY match_time_utc",
+            "SELECT match_id, match_time_utc, home_team, away_team, stage, group_name, venue, data_source FROM matches WHERE substr(match_time_utc, 1, 10)=? AND status <> 'cancelled' ORDER BY match_time_utc",
             (target_date.isoformat(),),
         )
     except Exception:
@@ -141,11 +146,27 @@ def load_database_fixtures(target_date: dt.date) -> list[FootballFixture]:
             normalize_team_name(row["away_team"]),
             str(row.get("stage") or "WORLD_CUP"),
             "database:" + str(row.get("data_source") or "matches"),
+            str(row.get("match_id") or ""),
+            str(row.get("match_time_utc") or ""),
+            "FIFA World Cup",
+            str(row.get("stage") or row.get("group_name") or ""),
+            str(row.get("venue") or ""),
         )
         existing = keyed.get(key)
-        if existing is None or "ESPN" in fixture.data_source:
+        if existing is None or fixture_source_priority(fixture.data_source) > fixture_source_priority(existing.data_source):
             keyed[key] = fixture
     return list(keyed.values())
+
+
+def fixture_source_priority(source: object) -> int:
+    lowered = str(source or "").lower()
+    if "fifa" in lowered and "world cup" not in lowered:
+        return 40
+    if "openfootball" in lowered:
+        return 30
+    if "espn" in lowered:
+        return 20
+    return 10 if lowered else 0
 
 
 def load_cached_live_fixtures(target_date: dt.date) -> list[FootballFixture]:

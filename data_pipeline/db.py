@@ -212,7 +212,7 @@ def merge_duplicate_matches() -> dict[str, Any]:
 def choose_match_row_to_keep(rows: list[dict[str, Any]]) -> dict[str, Any]:
     def score(row: dict[str, Any]) -> tuple[int, int, int, str]:
         source = str(row.get("data_source") or "")
-        priority = 3 if "ESPN" in source else 2 if "openfootball" in source else 1
+        priority = source_priority(source)
         canonical_score = int(str(row.get("home_team") or "") == normalize_team_name(row.get("home_team")))
         canonical_score += int(str(row.get("away_team") or "") == normalize_team_name(row.get("away_team")))
         canonical_id_score = int(str(row.get("match_id") or "") == canonical_match_id_for_row(row))
@@ -223,9 +223,12 @@ def choose_match_row_to_keep(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def source_priority(source: object) -> int:
     value = str(source or "")
-    if "ESPN" in value:
+    lowered = value.lower()
+    if "fifa" in lowered and "world cup" not in lowered:
+        return 40
+    if "openfootball" in lowered:
         return 30
-    if "openfootball" in value:
+    if "espn" in lowered:
         return 20
     if value:
         return 10

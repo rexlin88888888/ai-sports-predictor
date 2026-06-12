@@ -23,12 +23,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from config import BACKTEST_REPORT_TXT, CACHE_DIR, DAILY_RESULT_RECAP_TXT, DAILY_SHORT_SCRIPT_TXT, DAILY_SOCIAL_POSTS_TXT, DATA_DIR, FOOTBALL_DATA_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, PERFORMANCE_REPORT_TXT, ensure_project_dirs, load_environment, project_relative  # noqa: E402
+from config import BACKTEST_REPORT_TXT, CACHE_DIR, DAILY_RESULT_RECAP_TXT, DAILY_SHORT_SCRIPT_TXT, DAILY_SOCIAL_POSTS_TXT, DATA_DIR, FOOTBALL_DATA_DIR, LOG_DIR, MODEL_VERSION_JSON, NBA_DATA_DIR, OUTPUTS_DIR, PERFORMANCE_REPORT_TXT, ensure_project_dirs, load_environment, project_relative  # noqa: E402
 from core.automation_status import read_automation_status  # noqa: E402
 from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package, generate_daily_predictions  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
 from core.result_updater import update_results  # noqa: E402
-from core.live_schedule import fetch_international_schedule_from_espn, fetch_world_cup_schedule_from_espn  # noqa: E402
+from core.live_schedule import fetch_fifa_official_schedule, fetch_international_schedule_from_espn, fetch_openfootball_world_cup_schedule, fetch_world_cup_schedule_from_espn  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
 from sports.football.football_data import load_database_fixtures, load_matches  # noqa: E402
@@ -44,6 +44,7 @@ NAV_ITEMS = [
     "World Cup Predictions",
     "World Cup Winner Prediction",
     "Match History",
+    "Diagnostics",
     "Settings",
 ]
 
@@ -119,6 +120,7 @@ WC_TEXT_ZH = {
     "Home": "首页",
     "World Cup Predictions": "世界杯预测",
     "Match History": "比赛历史",
+    "Diagnostics": "诊断",
     "Settings": "设置",
     "World Cup Predictor": "世界杯预测系统",
     "World Cup match predictions powered by Elo ratings, form, attack and defensive metrics": "基于 Elo、球队状态、进攻防守数据的世界杯比赛预测",
@@ -380,6 +382,15 @@ EXTRA_TEXT_ZH = {
     "Hit": "命中",
     "Miss": "未命中",
     "No settled predictions yesterday yet.": "昨日暂无已结算预测结果。",
+    "Schedule Conflict Detected": "检测到赛程冲突",
+    "No schedule conflicts detected.": "未检测到赛程冲突。",
+    "Schedule Diagnostics": "赛程诊断",
+    "Preferred Source": "优先数据源",
+    "FIFA Official Schedule": "FIFA 官方赛程",
+    "OpenFootball": "OpenFootball",
+    "ESPN": "ESPN",
+    "Conflicting Sources": "冲突数据源",
+    "Current match sources": "当前比赛数据源",
 }
 
 
@@ -502,6 +513,8 @@ def main() -> None:
         render_world_cup_winner_prediction_page()
     elif page == "Match History":
         render_world_cup_history_page()
+    elif page == "Diagnostics":
+        render_schedule_diagnostics_page()
     elif page == "Settings":
         render_model_settings()
     render_footer()
@@ -875,14 +888,16 @@ def daily_world_cup_predictions(target_date: dt.date, competition_filter: str = 
 
 
 def real_world_cup_fixtures(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> list[object]:
-    espn_fixtures = fetch_international_schedule_from_espn(target_date, competition_filter)
-    if espn_fixtures:
-        return filter_competition_fixtures(espn_fixtures, competition_filter)
-    database_fixtures = load_database_fixtures(target_date)
+    source_fixtures = schedule_fixtures_by_source(target_date, competition_filter)
+    log_schedule_conflicts(target_date, source_fixtures)
+    for source_name in ("FIFA", "OpenFootball", "ESPN"):
+        fixtures = filter_competition_fixtures(source_fixtures.get(source_name, []), competition_filter)
+        if fixtures:
+            return dedupe_real_fixtures(fixtures)
     real_fixtures: list[object] = []
-    for fixture in database_fixtures:
+    for fixture in source_fixtures.get("database", []):
         source = real_fixture_source(fixture)
-        if source not in {"openfootball", "database", "ESPN"}:
+        if source not in {"FIFA", "OpenFootball", "ESPN", "database"}:
             continue
         competition_name = fixture_competition_name(fixture)
         if not competition_allowed(competition_name, competition_filter):
@@ -899,6 +914,105 @@ def real_world_cup_fixtures(target_date: dt.date, competition_filter: str = "FIF
             )
         )
     return dedupe_real_fixtures(real_fixtures)
+
+
+def schedule_fixtures_by_source(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> dict[str, list[object]]:
+    fifa_fixtures = fetch_fifa_official_schedule(target_date) if competition_filter in {"FIFA World Cup", "All International Matches"} else []
+    openfootball_fixtures = fetch_openfootball_world_cup_schedule(target_date) if competition_filter in {"FIFA World Cup", "All International Matches"} else []
+    espn_fixtures = fetch_international_schedule_from_espn(target_date, competition_filter)
+    database_fixtures = load_database_fixtures(target_date)
+    return {
+        "FIFA": filter_competition_fixtures(fifa_fixtures, competition_filter),
+        "OpenFootball": filter_competition_fixtures(openfootball_fixtures, competition_filter),
+        "ESPN": filter_competition_fixtures(espn_fixtures, competition_filter),
+        "database": filter_competition_fixtures(database_fixtures, competition_filter),
+    }
+
+
+def fixture_identity(fixture: object) -> tuple[str, str, str]:
+    fixture_date = getattr(fixture, "date", dt.date.today())
+    date_text = fixture_date.isoformat() if hasattr(fixture_date, "isoformat") else str(fixture_date)
+    return (date_text, canonical_team_name(getattr(fixture, "home_team", "")), canonical_team_name(getattr(fixture, "away_team", "")))
+
+
+def fixture_summary(fixture: object, source_name: str) -> dict[str, str]:
+    return {
+        "source": source_name,
+        "match_id": str(getattr(fixture, "game_id", "") or getattr(fixture, "match_id", "") or ""),
+        "date": str(getattr(fixture, "date", "")),
+        "home_team": str(getattr(fixture, "home_team", "")),
+        "away_team": str(getattr(fixture, "away_team", "")),
+        "match_time": fixture_time_text(fixture),
+        "competition_name": fixture_competition_name(fixture),
+        "competition_stage": str(getattr(fixture, "stage", "") or getattr(fixture, "mode", "") or ""),
+        "venue": str(getattr(fixture, "venue", "") or ""),
+    }
+
+
+def detect_schedule_conflicts(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> list[dict[str, object]]:
+    sources = schedule_fixtures_by_source(target_date, competition_filter)
+    by_key: dict[tuple[str, str, str], list[dict[str, str]]] = {}
+    source_keys: dict[str, set[tuple[str, str, str]]] = {}
+    for source_name, fixtures in sources.items():
+        if source_name == "database":
+            continue
+        source_keys[source_name] = set()
+        for fixture in fixtures:
+            key = fixture_identity(fixture)
+            source_keys[source_name].add(key)
+            by_key.setdefault(key, []).append(fixture_summary(fixture, source_name))
+    conflicts: list[dict[str, object]] = []
+    all_keys = set().union(*source_keys.values()) if source_keys else set()
+    for key in sorted(all_keys):
+        present = [source for source, keys in source_keys.items() if key in keys]
+        if len(present) == 1 and len([keys for keys in source_keys.values() if keys]) > 1:
+            conflicts.append({"type": "missing_from_source", "match": key, "sources": present, "rows": by_key.get(key, [])})
+        rows = by_key.get(key, [])
+        times = {row["match_time"] for row in rows if row.get("match_time")}
+        venues = {row["venue"] for row in rows if row.get("venue")}
+        if len(times) > 1 or len(venues) > 1:
+            conflicts.append({"type": "field_mismatch", "match": key, "sources": present, "rows": rows})
+    return conflicts
+
+
+def log_schedule_conflicts(target_date: dt.date, source_fixtures: dict[str, list[object]]) -> None:
+    try:
+        conflicts = detect_schedule_conflicts_from_sources(source_fixtures)
+        if not conflicts:
+            return
+        LOG_DIR.mkdir(parents=True, exist_ok=True)
+        line = json.dumps({"date": target_date.isoformat(), "conflicts": conflicts}, ensure_ascii=False, default=str)
+        (LOG_DIR / "schedule_conflicts.log").open("a", encoding="utf-8").write(line + "\n")
+        LOGGER.warning("Schedule Conflict Detected date=%s count=%s", target_date, len(conflicts))
+    except Exception as exc:
+        LOGGER.warning("Schedule conflict logging failed for %s: %s", target_date, exc)
+
+
+def detect_schedule_conflicts_from_sources(sources: dict[str, list[object]]) -> list[dict[str, object]]:
+    by_key: dict[tuple[str, str, str], list[dict[str, str]]] = {}
+    source_keys: dict[str, set[tuple[str, str, str]]] = {}
+    for source_name, fixtures in sources.items():
+        if source_name == "database":
+            continue
+        source_keys[source_name] = set()
+        for fixture in fixtures:
+            key = fixture_identity(fixture)
+            source_keys[source_name].add(key)
+            by_key.setdefault(key, []).append(fixture_summary(fixture, source_name))
+    active_sources = [source for source, keys in source_keys.items() if keys]
+    conflicts: list[dict[str, object]] = []
+    all_keys = set().union(*source_keys.values()) if source_keys else set()
+    for key in sorted(all_keys):
+        rows = by_key.get(key, [])
+        present = [source for source in active_sources if key in source_keys.get(source, set())]
+        if len(active_sources) > 1 and len(present) != len(active_sources):
+            conflicts.append({"type": "missing_from_source", "match": key, "sources": present, "rows": rows})
+            continue
+        times = {row["match_time"] for row in rows if row.get("match_time")}
+        venues = {row["venue"] for row in rows if row.get("venue")}
+        if len(times) > 1 or len(venues) > 1:
+            conflicts.append({"type": "field_mismatch", "match": key, "sources": present, "rows": rows})
+    return conflicts
 
 
 def filter_competition_fixtures(fixtures: list[object], competition_filter: str) -> list[object]:
@@ -951,13 +1065,15 @@ def dedupe_real_fixtures(fixtures: list[object]) -> list[object]:
 def real_fixture_source(fixture: object) -> str:
     source = str(getattr(fixture, "data_source", "") or "")
     lowered = source.lower()
+    if "fifa" in lowered and "world cup" not in lowered:
+        return "FIFA"
+    if "openfootball" in lowered:
+        return "OpenFootball"
     if "espn" in lowered or source == "live_api":
         return "ESPN"
-    if "openfootball" in lowered:
-        return "openfootball"
     if "database" in lowered:
         return "database"
-    return source if source in {"ESPN", "openfootball", "database"} else "database"
+    return source if source in {"FIFA", "OpenFootball", "ESPN", "database"} else "database"
 
 
 def fixture_time_text(fixture: object) -> str:
@@ -1698,10 +1814,12 @@ def readable_factor_name(name: str) -> str:
 def world_cup_source_label(result: PredictionResult) -> str:
     data_source_text = str(extract_key_factor_value(result, "daily_data_source") or result.data_source or "")
     lowered = data_source_text.lower()
+    if "fifa" in lowered and "world cup" not in lowered:
+        return "FIFA"
+    if "openfootball" in lowered:
+        return "OpenFootball"
     if "espn" in lowered:
         return "ESPN"
-    if "openfootball" in lowered:
-        return "openfootball"
     if "database" in lowered:
         return "database"
     return "database"
@@ -1943,7 +2061,7 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
         st.write(analysis)
         if estimate_note or team_estimated(result, "home") or team_estimated(result, "away"):
             st.caption(estimate_note or tr("Limited recent public data is available for this team, so the model uses historical international match data for estimation."))
-        st.caption(f"{tr('Sources')}: {world_cup_source_label(result)}")
+        st.caption(f"{tr('Data Source')}: {world_cup_source_label(result)}")
         st.caption(f"{tr('Data updated')}: {data_updated}")
         st.caption(f"{tr('Data cutoff')}: {dt.date.today().isoformat()}")
 
@@ -2131,6 +2249,58 @@ def render_results_tracker() -> None:
     st.text_area(tr("Performance report"), tx(report), height=260, label_visibility="collapsed")
     st.markdown("#### " + tr("Settled Predictions"))
     render_history_table(settled.tail(100), compact=False)
+
+
+def render_schedule_diagnostics_page() -> None:
+    st.markdown("### " + tr("Schedule Diagnostics"))
+    st.caption(f"{tr('Preferred Source')}: FIFA → OpenFootball → ESPN")
+    today = dt.date.today()
+    selected_rows: list[dict[str, str]] = []
+    conflict_rows: list[dict[str, str]] = []
+    for offset in range(0, 8):
+        day = today + dt.timedelta(days=offset)
+        sources = schedule_fixtures_by_source(day, "FIFA World Cup")
+        selected_source = "none"
+        selected_fixtures: list[object] = []
+        for source_name in ("FIFA", "OpenFootball", "ESPN"):
+            fixtures = sources.get(source_name, [])
+            if fixtures:
+                selected_source = source_name
+                selected_fixtures = fixtures
+                break
+        if offset <= 1:
+            for fixture in selected_fixtures:
+                row = fixture_summary(fixture, selected_source)
+                row["selected_source"] = selected_source
+                selected_rows.append(row)
+        for conflict in detect_schedule_conflicts_from_sources(sources):
+            match = conflict.get("match", ("", "", ""))
+            if isinstance(match, tuple):
+                match_text = f"{match[1]} vs {match[2]} ({match[0]})"
+            else:
+                match_text = str(match)
+            conflict_rows.append(
+                {
+                    "date": day.isoformat(),
+                    "type": str(conflict.get("type", "")),
+                    "match": match_text,
+                    "sources": ", ".join(conflict.get("sources", [])),
+                    "details": json.dumps(conflict.get("rows", []), ensure_ascii=False),
+                }
+            )
+
+    st.markdown("#### " + tr("Current match sources"))
+    if selected_rows:
+        st.dataframe(localize_frame_for_display(pd.DataFrame(selected_rows)), use_container_width=True, hide_index=True)
+    else:
+        st.info(tr("No FIFA World Cup matches scheduled"))
+
+    st.markdown("#### " + tr("Schedule Conflict Detected"))
+    if conflict_rows:
+        st.warning(tr("Schedule Conflict Detected"))
+        st.dataframe(localize_frame_for_display(pd.DataFrame(conflict_rows)), use_container_width=True, hide_index=True)
+    else:
+        st.success(tr("No schedule conflicts detected."))
 
 
 def render_model_settings() -> None:
