@@ -28,7 +28,7 @@ from core.automation_status import read_automation_status  # noqa: E402
 from core.daily_predictions import DailyPredictionPackage, build_daily_prediction_package, generate_daily_predictions  # noqa: E402
 from core.prediction_result import PredictionResult  # noqa: E402
 from core.result_updater import update_results  # noqa: E402
-from core.live_schedule import fetch_world_cup_schedule_from_espn  # noqa: E402
+from core.live_schedule import fetch_international_schedule_from_espn, fetch_world_cup_schedule_from_espn  # noqa: E402
 from core.utils import configure_logging  # noqa: E402
 from sports.football.football_model import FootballPredictor  # noqa: E402
 from sports.football.football_data import load_database_fixtures, load_matches  # noqa: E402
@@ -349,6 +349,16 @@ EXTRA_TEXT_ZH = {
     "Tomorrow": "明天",
     "No real World Cup matches today": "今天暂无真实世界杯比赛",
     "No real World Cup matches tomorrow": "明天暂无真实世界杯比赛",
+    "No FIFA World Cup matches scheduled": "当前暂无世界杯正赛赛程",
+    "Competition Filter": "赛事筛选",
+    "FIFA World Cup": "世界杯正赛",
+    "FIFA World Cup Finals": "🏆 世界杯正赛",
+    "World Cup Qualifiers": "🌍 世界杯预选赛",
+    "All International Matches": "📅 全部国际比赛",
+    "Competition": "赛事",
+    "International Friendly": "国际友谊赛",
+    "Nations League": "欧国联",
+    "Other": "其它赛事",
     "Some metrics are model estimated": "部分数据为模型估算",
     "Data updated": "数据更新时间",
     "Recent 5 form": "最近5场状态",
@@ -710,28 +720,41 @@ def render_world_cup_predictions_page() -> None:
 def render_daily_world_cup_board() -> None:
     today = dt.date.today()
     tomorrow = today + dt.timedelta(days=1)
-    today_results = daily_world_cup_predictions(today)
-    tomorrow_results = daily_world_cup_predictions(tomorrow)
+    filter_labels = {
+        tr("FIFA World Cup Finals"): "FIFA World Cup",
+        tr("World Cup Qualifiers"): "World Cup Qualifiers",
+        tr("All International Matches"): "All International Matches",
+    }
+    selected_label = st.radio(
+        tr("Competition Filter"),
+        list(filter_labels.keys()),
+        horizontal=True,
+        key="world_cup_competition_filter",
+    )
+    competition_filter = filter_labels[selected_label]
+    today_results = daily_world_cup_predictions(today, competition_filter)
+    tomorrow_results = daily_world_cup_predictions(tomorrow, competition_filter)
+    empty_message = tr("No FIFA World Cup matches scheduled") if competition_filter == "FIFA World Cup" else tr("No upcoming international matches available")
     st.markdown("### " + tr("Today"))
     if today_results:
         for result in today_results:
             render_world_cup_match_card(result)
     else:
-        st.info(tr("No real World Cup matches today"))
+        st.info(empty_message)
     st.markdown("### " + tr("Tomorrow"))
     if tomorrow_results:
         for result in tomorrow_results:
             render_world_cup_match_card(result)
     else:
-        st.info(tr("No real World Cup matches tomorrow"))
+        st.info(empty_message)
 
 
 @st.cache_data(ttl=300, show_spinner=False)
-def daily_world_cup_predictions(target_date: dt.date) -> list[PredictionResult]:
+def daily_world_cup_predictions(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> list[PredictionResult]:
     matches = load_matches()
     if not matches:
         return []
-    fixtures = real_world_cup_fixtures(target_date)
+    fixtures = real_world_cup_fixtures(target_date, competition_filter)
     results: list[PredictionResult] = []
     updated_at = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
     for fixture in fixtures:
@@ -750,21 +773,25 @@ def daily_world_cup_predictions(target_date: dt.date) -> list[PredictionResult]:
                 f"match_time={fixture_time_text(fixture)}",
                 f"data_updated={updated_at}",
                 f"daily_data_source={source}",
+                f"competition_name={fixture_competition_name(fixture)}",
             ]
         )
         results.append(result)
     return results
 
 
-def real_world_cup_fixtures(target_date: dt.date) -> list[object]:
-    espn_fixtures = fetch_world_cup_schedule_from_espn(target_date, "WORLD_CUP")
+def real_world_cup_fixtures(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> list[object]:
+    espn_fixtures = fetch_international_schedule_from_espn(target_date, competition_filter)
     if espn_fixtures:
-        return espn_fixtures
+        return filter_competition_fixtures(espn_fixtures, competition_filter)
     database_fixtures = load_database_fixtures(target_date)
     real_fixtures: list[object] = []
     for fixture in database_fixtures:
         source = real_fixture_source(fixture)
         if source not in {"openfootball", "database", "ESPN"}:
+            continue
+        competition_name = fixture_competition_name(fixture)
+        if not competition_allowed(competition_name, competition_filter):
             continue
         real_fixtures.append(
             Namespace(
@@ -773,10 +800,45 @@ def real_world_cup_fixtures(target_date: dt.date) -> list[object]:
                 away_team=fixture.away_team,
                 mode=fixture.mode or "WORLD_CUP",
                 data_source=source,
+                competition_name=competition_name,
                 time_text=fixture.date.isoformat(),
             )
         )
     return dedupe_real_fixtures(real_fixtures)
+
+
+def filter_competition_fixtures(fixtures: list[object], competition_filter: str) -> list[object]:
+    return [fixture for fixture in fixtures if competition_allowed(fixture_competition_name(fixture), competition_filter)]
+
+
+def fixture_competition_name(fixture: object) -> str:
+    value = str(getattr(fixture, "competition_name", "") or getattr(fixture, "mode", "") or "")
+    source = str(getattr(fixture, "data_source", "") or "")
+    return normalize_competition_display(value, source)
+
+
+def normalize_competition_display(value: str, source: str = "") -> str:
+    lowered = str(value or "").lower()
+    lowered_source = str(source or "").lower()
+    if "qual" in lowered:
+        return "World Cup Qualifiers"
+    if "world cup" in lowered or "world_cup" in lowered:
+        return "FIFA World Cup"
+    if "friendly" in lowered:
+        return "International Friendly"
+    if "nations" in lowered:
+        return "Nations League"
+    if "espn" in lowered_source or "openfootball" in lowered_source:
+        return "FIFA World Cup"
+    return "Other"
+
+
+def competition_allowed(competition_name: str, competition_filter: str) -> bool:
+    if competition_filter == "FIFA World Cup":
+        return competition_name == "FIFA World Cup"
+    if competition_filter == "World Cup Qualifiers":
+        return competition_name == "World Cup Qualifiers"
+    return competition_name in {"FIFA World Cup", "World Cup Qualifiers"}
 
 
 def dedupe_real_fixtures(fixtures: list[object]) -> list[object]:
@@ -1481,6 +1543,10 @@ def display_data_updated(result: PredictionResult) -> str:
     return extract_key_factor_value(result, "data_updated") or dt.datetime.now().isoformat(timespec="minutes")
 
 
+def display_competition_name(result: PredictionResult) -> str:
+    return normalize_competition_display(extract_key_factor_value(result, "competition_name"), result.data_source)
+
+
 def extract_recent_forms(result: PredictionResult) -> tuple[str, str]:
     import re
 
@@ -1731,9 +1797,11 @@ def render_world_cup_match_card(result: PredictionResult) -> None:
     estimate_note = world_cup_estimate_note(result)
     match_time = display_match_time(result)
     data_updated = display_data_updated(result)
+    competition_name = display_competition_name(result)
     home_form, away_form = extract_recent_forms(result)
 
     with st.container(border=True):
+        st.caption(f"{tr('Competition')}: {tr(competition_name)}")
         st.caption(f"{tr('Match Time')}: {match_time}")
         home_col, score_col, away_col = st.columns([1.2, 0.9, 1.2], vertical_alignment="center")
         with home_col:

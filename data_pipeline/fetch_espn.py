@@ -38,14 +38,44 @@ def fetch_espn_live_matches(date_str: str) -> list[dict[str, Any]]:
     configure_pipeline_logging()
     base_url = os.getenv("ESPN_BASE_URL") or ESPN_BASE_URL
     payload = request_json(base_url, params={"dates": date_str})
+    competition_name = competition_name_from_payload(payload, base_url)
     events = payload.get("events") or []
     matches: list[dict[str, Any]] = []
     for event in events:
-        normalized = normalize_espn_event(event)
+        normalized = normalize_espn_event(event, competition_name)
         if normalized:
             matches.append(normalized)
     LOGGER.info("ESPN fetch date=%s matches=%s", date_str, len(matches))
     return matches
+
+
+def competition_name_from_payload(payload: dict[str, Any], base_url: str) -> str:
+    league_name = str(((payload.get("leagues") or [{}])[0].get("name") or "")).strip()
+    lowered_url = base_url.lower()
+    if league_name:
+        return normalize_competition_name(league_name)
+    if "worldq" in lowered_url:
+        return "World Cup Qualifiers"
+    if "friendly" in lowered_url:
+        return "International Friendly"
+    if "nations" in lowered_url:
+        return "Nations League"
+    if "fifa.world" in lowered_url:
+        return "FIFA World Cup"
+    return "Other"
+
+
+def normalize_competition_name(value: str) -> str:
+    lowered = value.lower()
+    if "qual" in lowered:
+        return "World Cup Qualifiers"
+    if "friendly" in lowered:
+        return "International Friendly"
+    if "nations" in lowered:
+        return "Nations League"
+    if "world cup" in lowered:
+        return "FIFA World Cup"
+    return value or "Other"
 
 
 def fetch_live_matches(days_back: int = 1, days_forward: int = 7) -> list[dict[str, Any]]:
@@ -64,7 +94,7 @@ def fetch_live_matches(days_back: int = 1, days_forward: int = 7) -> list[dict[s
     return all_matches
 
 
-def normalize_espn_event(event: dict[str, Any]) -> dict[str, Any] | None:
+def normalize_espn_event(event: dict[str, Any], competition_name: str = "FIFA World Cup") -> dict[str, Any] | None:
     competitions = event.get("competitions") or []
     if not competitions:
         return None
@@ -81,8 +111,6 @@ def normalize_espn_event(event: dict[str, Any]) -> dict[str, Any] | None:
     home_team = team_display_name(home)
     away_team = team_display_name(away)
     match_time = str(event.get("date") or competition.get("date") or "")
-    season = event.get("season") if isinstance(event.get("season"), dict) else {}
-    season_type = season.get("type") if isinstance(season.get("type"), dict) else {}
     match_date = str(event.get("date") or competition.get("date") or "")[:10]
     try:
         stable_id = stable_match_id(home_team, away_team, dt.date.fromisoformat(match_date))
@@ -97,7 +125,7 @@ def normalize_espn_event(event: dict[str, Any]) -> dict[str, Any] | None:
         "home_score": parse_score(home.get("score")),
         "away_score": parse_score(away.get("score")),
         "venue": ((competition.get("venue") or {}).get("fullName") or (competition.get("venue") or {}).get("displayName") or ""),
-        "stage": str(season_type.get("name") or season.get("displayName") or ""),
+        "stage": competition_name,
         "group_name": "",
         "data_source": "ESPN",
         "data_timestamp": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),

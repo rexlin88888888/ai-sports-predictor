@@ -34,6 +34,7 @@ TRACKER_REPORT_TXT = OUTPUTS_DIR / "prediction_tracker_report.txt"
 DAILY_FIELDNAMES = [
     "prediction_generated_at",
     "match_id",
+    "competition_name",
     "match_time",
     "home_team",
     "away_team",
@@ -58,6 +59,7 @@ DAILY_FIELDNAMES = [
 TRACKER_FIELDNAMES = [
     "prediction_time",
     "match_id",
+    "competition_name",
     "match_time",
     "sport",
     "home_team",
@@ -96,6 +98,7 @@ class RealFixture:
     data_source: str
     data_updated_at: str
     mode: str = "WORLD_CUP"
+    competition_name: str = "FIFA World Cup"
 
     @property
     def match_date(self) -> dt.date:
@@ -188,7 +191,10 @@ def collect_real_fixtures(start_date: dt.date, days_forward: int) -> list[RealFi
             data_source=clean_source(row.get("data_source")),
             data_updated_at=str(row.get("data_timestamp") or dt.datetime.now(dt.UTC).isoformat(timespec="seconds")),
             mode=str(row.get("stage") or "WORLD_CUP"),
+            competition_name=competition_name_from_row(row),
         )
+        if fixture.competition_name not in {"FIFA World Cup", "World Cup Qualifiers"}:
+            continue
         existing = fixtures_by_key.get(key)
         if existing is None or source_priority(fixture.data_source) > source_priority(existing.data_source):
             fixtures_by_key[key] = fixture
@@ -220,6 +226,7 @@ def build_prediction_rows(fixtures: list[RealFixture]) -> list[dict[str, Any]]:
         row = {
             "prediction_generated_at": generated_at,
             "match_id": fixture.match_id,
+            "competition_name": fixture.competition_name,
             "match_time": fixture.match_time,
             "home_team": fixture.home_team,
             "away_team": fixture.away_team,
@@ -260,6 +267,7 @@ def upsert_tracker(prediction_rows: list[dict[str, Any]]) -> None:
             **current,
             "prediction_time": current.get("prediction_time") or prediction["prediction_generated_at"],
             "match_id": match_id,
+            "competition_name": prediction.get("competition_name", "FIFA World Cup"),
             "match_time": prediction["match_time"],
             "sport": "football",
             "home_team": prediction["home_team"],
@@ -545,6 +553,26 @@ def clean_source(value: Any) -> str:
     return source or "database"
 
 
+def competition_name_from_row(row: dict[str, Any]) -> str:
+    stage = str(row.get("stage") or "").strip()
+    source = str(row.get("data_source") or "")
+    return normalize_competition_name(stage, source)
+
+
+def normalize_competition_name(value: str, source: str = "") -> str:
+    lowered = str(value or "").lower()
+    lowered_source = str(source or "").lower()
+    if "qual" in lowered:
+        return "World Cup Qualifiers"
+    if "friendly" in lowered:
+        return "International Friendly"
+    if "nations" in lowered:
+        return "Nations League"
+    if "world cup" in lowered or "espn" in lowered_source or "openfootball" in lowered_source:
+        return "FIFA World Cup"
+    return "Other"
+
+
 def stable_match_id(home: str, away: str, match_date: str) -> str:
     safe_home = re.sub(r"[^A-Za-z0-9]+", "_", normalize_team_name(home)).strip("_")
     safe_away = re.sub(r"[^A-Za-z0-9]+", "_", normalize_team_name(away)).strip("_")
@@ -561,7 +589,7 @@ def print_summary(summary: dict[str, Any]) -> None:
     print("")
     for row in summary["predictions"]:
         print(
-            f"{row['match_time']} | {row['home_team']} vs {row['away_team']} | "
+            f"{row['match_time']} | {row['competition_name']} | {row['home_team']} vs {row['away_team']} | "
             f"{row['predicted_score']} | H {row['home_win_probability']} "
             f"D {row['draw_probability']} A {row['away_win_probability']} | {row['data_source']}"
         )

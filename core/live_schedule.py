@@ -28,6 +28,7 @@ class LiveFixture:
     game_id: str = ""
     time_text: str = "TBD"
     data_source: str = "live_api"
+    competition_name: str = ""
 
 
 def fetch_nba_schedule_from_espn(target_date: dt.date) -> list[LiveFixture]:
@@ -44,7 +45,7 @@ def fetch_nba_schedule_from_espn(target_date: dt.date) -> list[LiveFixture]:
         return []
     fixtures: list[LiveFixture] = []
     for event in payload.get("events", []) or []:
-        fixture = _fixture_from_espn_event(event, target_date, "nba", "")
+        fixture = _fixture_from_espn_event(event, target_date, "nba", "", "NBA")
         if fixture:
             fixtures.append(fixture)
     if fixtures:
@@ -82,7 +83,7 @@ def fetch_world_cup_schedule_from_espn(target_date: dt.date, mode: str = "WORLD_
         return []
     fixtures: list[LiveFixture] = []
     for event in payload.get("events", []) or []:
-        fixture = _fixture_from_espn_event(event, target_date, "football", mode)
+        fixture = _fixture_from_espn_event(event, target_date, "football", mode, "FIFA World Cup")
         if fixture:
             fixtures.append(fixture)
     if fixtures:
@@ -123,6 +124,7 @@ def fetch_football_schedule_from_football_data(target_date: dt.date, mode: str) 
                 game_id=str(match.get("id") or ""),
                 time_text=status,
                 data_source="live_api",
+                competition_name=competition or mode,
             )
         )
     if fixtures:
@@ -131,9 +133,12 @@ def fetch_football_schedule_from_football_data(target_date: dt.date, mode: str) 
 
 
 def fetch_football_schedule_from_espn(target_date: dt.date, mode: str) -> list[LiveFixture]:
-    leagues = ["fifa.world", "fifa.friendly"]
+    leagues = [
+        ("fifa.world", "FIFA World Cup"),
+        ("fifa.friendly", "International Friendly"),
+    ]
     fixtures: list[LiveFixture] = []
-    for league in leagues:
+    for league, competition_name in leagues:
         url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard"
         params = {"dates": target_date.strftime("%Y%m%d")}
         try:
@@ -144,7 +149,7 @@ def fetch_football_schedule_from_espn(target_date: dt.date, mode: str) -> list[L
             LOGGER.warning("ESPN football schedule API failed for %s %s: %s", league, target_date, exc)
             continue
         for event in payload.get("events", []) or []:
-            fixture = _fixture_from_espn_event(event, target_date, "football", mode)
+            fixture = _fixture_from_espn_event(event, target_date, "football", mode, competition_name)
             if fixture:
                 fixtures.append(fixture)
     if fixtures:
@@ -152,7 +157,48 @@ def fetch_football_schedule_from_espn(target_date: dt.date, mode: str) -> list[L
     return fixtures
 
 
-def _fixture_from_espn_event(event: dict[str, Any], target_date: dt.date, sport: str, mode: str) -> LiveFixture | None:
+def fetch_international_schedule_from_espn(target_date: dt.date, competition_filter: str = "FIFA World Cup") -> list[LiveFixture]:
+    """Fetch international fixtures by competition category from ESPN public endpoints."""
+
+    endpoints = {
+        "FIFA World Cup": [("fifa.world", "FIFA World Cup", "web")],
+        "World Cup Qualifiers": [
+            ("fifa.worldq.uefa", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.conmebol", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.concacaf", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.afc", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.caf", "World Cup Qualifiers", "site"),
+        ],
+        "All International Matches": [
+            ("fifa.world", "FIFA World Cup", "web"),
+            ("fifa.worldq.uefa", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.conmebol", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.concacaf", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.afc", "World Cup Qualifiers", "site"),
+            ("fifa.worldq.caf", "World Cup Qualifiers", "site"),
+        ],
+    }
+    selected = endpoints.get(competition_filter, endpoints["FIFA World Cup"])
+    fixtures: list[LiveFixture] = []
+    for league, competition_name, host_type in selected:
+        host = "site.web.api.espn.com" if host_type == "web" else "site.api.espn.com"
+        url = f"https://{host}/apis/site/v2/sports/soccer/{league}/scoreboard"
+        params = {"dates": target_date.strftime("%Y%m%d")}
+        try:
+            response = requests.get(url, params=params, timeout=TIMEOUT_SECONDS)
+            response.raise_for_status()
+            payload = response.json()
+        except (requests.RequestException, ValueError) as exc:
+            LOGGER.warning("ESPN international schedule API failed for %s %s: %s", league, target_date, exc)
+            continue
+        for event in payload.get("events", []) or []:
+            fixture = _fixture_from_espn_event(event, target_date, "football", competition_name, competition_name)
+            if fixture:
+                fixtures.append(fixture)
+    return fixtures
+
+
+def _fixture_from_espn_event(event: dict[str, Any], target_date: dt.date, sport: str, mode: str, competition_name: str = "") -> LiveFixture | None:
     competitors: list[dict[str, Any]] = []
     competitions = event.get("competitions") or []
     if competitions:
@@ -181,4 +227,5 @@ def _fixture_from_espn_event(event: dict[str, Any], target_date: dt.date, sport:
         game_id=str(event.get("id") or ""),
         time_text=event_time or status_text,
         data_source="live_api",
+        competition_name=competition_name or mode,
     )
