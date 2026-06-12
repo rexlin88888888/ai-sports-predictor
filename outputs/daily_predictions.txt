@@ -1,25 +1,24 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-11T20:41:18
+Generated: 2026-06-12T18:34:19
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
-- South Korea vs Czechia: South Korea, South Korea 2 - 1 Czechia, home 53.3%, away 23.2%, draw 23.5%, confidence Low
-- Austria vs Guatemala: Austria, Austria 2 - 0 Guatemala, home 68.3%, away 9.6%, draw 22.1%, confidence Medium
+- Canada vs Bosnia & Herzegovina: Canada, Canada 1 - 1 Bosnia & Herzegovina, home 37.9%, away 24.9%, draw 37.2%, confidence Low
+- United States vs Paraguay: United States, United States 2 - 1 Paraguay, home 49.8%, away 23.3%, draw 26.9%, confidence Low
 
 Highest Confidence Picks
-- Austria vs Guatemala: Austria, Austria 2 - 0 Guatemala, home 68.3%, away 9.6%, draw 22.1%, confidence Medium
-- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
-- South Korea vs Czechia: South Korea, South Korea 2 - 1 Czechia, home 53.3%, away 23.2%, draw 23.5%, confidence Low
+- United States vs Paraguay: United States, United States 2 - 1 Paraguay, home 49.8%, away 23.3%, draw 26.9%, confidence Low
+- Canada vs Bosnia & Herzegovina: Canada, Canada 1 - 1 Bosnia & Herzegovina, home 37.9%, away 24.9%, draw 37.2%, confidence Low
 
 Upset Watch
 - No games available.
 
 Draw Watch
-- Mexico vs South Africa: Mexico, Mexico 2 - 1 South Africa, home 54.0%, away 18.5%, draw 27.5%, confidence Low
+- Canada vs Bosnia & Herzegovina: Canada, Canada 1 - 1 Bosnia & Herzegovina, home 37.9%, away 24.9%, draw 37.2%, confidence Low
+- United States vs Paraguay: United States, United States 2 - 1 Paraguay, home 49.8%, away 23.3%, draw 26.9%, confidence Low
 
 Injury Risk Games
 - No games available.
