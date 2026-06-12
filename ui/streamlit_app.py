@@ -2702,5 +2702,164 @@ def render_world_cup_predictions_page() -> None:
                 st.info(tr("No upcoming international matches available"))
 
 
+def form_score_value(form: str) -> float:
+    score = 0.0
+    for char in (form or "").upper():
+        if char == "W":
+            score += 1.0
+        elif char == "D":
+            score += 0.35
+        elif char == "L":
+            score -= 0.6
+    return score
+
+
+def format_goal_value(value: float | None) -> str:
+    return f"{value:.1f}" if value is not None else "1.2"
+
+
+def home_prediction_reason_zh(home_zh: str, away_zh: str, elo_gap: int | None, xg_gap: float, form_gap: float) -> str:
+    reasons: list[str] = []
+    if elo_gap is not None:
+        if elo_gap > 40:
+            reasons.append(f"Elo 领先 {elo_gap} 分")
+        elif elo_gap > 0:
+            reasons.append("Elo 略占上风")
+        elif elo_gap < -40:
+            reasons.append(f"Elo 落后 {abs(elo_gap)} 分")
+    if xg_gap > 0.35:
+        reasons.append("预期进球优势明显")
+    elif xg_gap > 0.12:
+        reasons.append("预期进球略高")
+    if form_gap > 0.8:
+        reasons.append("近期状态更稳定")
+    elif form_gap < -0.8:
+        reasons.append("但近期状态并不占优")
+    if reasons:
+        return f"模型看好{home_zh}，主要因为" + "、".join(reasons) + "。"
+    return f"{home_zh}和{away_zh}的核心指标很接近，主队优势更多来自细微的主场和控场倾向。"
+
+
+def home_prediction_reason_en(home: str, away: str, elo_gap: int | None, xg_gap: float, form_gap: float) -> str:
+    reasons: list[str] = []
+    if elo_gap is not None:
+        if elo_gap > 40:
+            reasons.append(f"a {elo_gap}-point Elo edge")
+        elif elo_gap > 0:
+            reasons.append("a small Elo edge")
+        elif elo_gap < -40:
+            reasons.append(f"a {abs(elo_gap)}-point Elo deficit")
+    if xg_gap > 0.35:
+        reasons.append("a clear xG advantage")
+    elif xg_gap > 0.12:
+        reasons.append("a slight xG edge")
+    if form_gap > 0.8:
+        reasons.append("steadier recent form")
+    elif form_gap < -0.8:
+        reasons.append("weaker recent form than the opponent")
+    if reasons:
+        return f"The model favours {home} because of " + ", ".join(reasons) + "."
+    return f"{home} and {away} are close across the main indicators, so the home lean comes from a narrow control and venue edge."
+
+
+def score_prediction_reason_zh(
+    home_zh: str,
+    away_zh: str,
+    score: str,
+    xg_home: float,
+    xg_away: float,
+    home_for: float | None,
+    home_against: float | None,
+    away_for: float | None,
+    away_against: float | None,
+) -> str:
+    home_attack = format_goal_value(home_for)
+    home_defence = format_goal_value(home_against)
+    away_attack = format_goal_value(away_for)
+    away_defence = format_goal_value(away_against)
+    if xg_home - xg_away >= 0.75:
+        score_logic = "主队创造机会的预期更高，但客队仍有进球窗口"
+    elif abs(xg_home - xg_away) <= 0.25:
+        score_logic = "双方 xG 很接近，比分更容易停留在一球差或平局附近"
+    elif xg_home > xg_away:
+        score_logic = "主队 xG 略高，最合理的落点是一场小比分胜负"
+    else:
+        score_logic = "客队 xG 不低，预测比分保留了客队反击得分的空间"
+    return (
+        f"{home_zh}近期场均进球约 {home_attack} 个，场均失球约 {home_defence} 个；"
+        f"{away_zh}近期场均进球约 {away_attack} 个，场均失球约 {away_defence} 个。"
+        f"本场 xG 为 {home_zh} {xg_home:.2f}、{away_zh} {xg_away:.2f}，{score_logic}，"
+        f"所以最可能比分落在 {score}。"
+    )
+
+
+def score_prediction_reason_en(
+    home: str,
+    away: str,
+    score: str,
+    xg_home: float,
+    xg_away: float,
+    home_for: float | None,
+    home_against: float | None,
+    away_for: float | None,
+    away_against: float | None,
+) -> str:
+    home_attack = format_goal_value(home_for)
+    home_defence = format_goal_value(home_against)
+    away_attack = format_goal_value(away_for)
+    away_defence = format_goal_value(away_against)
+    if xg_home - xg_away >= 0.75:
+        score_logic = "the home side projects to create more chances, while the away side still has enough attacking room to score"
+    elif abs(xg_home - xg_away) <= 0.25:
+        score_logic = "the xG gap is small, which keeps the score near a one-goal margin or a draw"
+    elif xg_home > xg_away:
+        score_logic = "the home xG edge is modest, pointing to a narrow result rather than a runaway game"
+    else:
+        score_logic = "the away xG remains competitive, so the scoreline leaves room for an away goal"
+    return (
+        f"{home} is averaging about {home_attack} goals for and {home_defence} against recently; "
+        f"{away} is around {away_attack} for and {away_defence} against. "
+        f"The xG projection is {xg_home:.2f} for {home} and {xg_away:.2f} for {away}; {score_logic}, "
+        f"which makes {score} the most likely score."
+    )
+
+
+def build_world_cup_analysis(result: PredictionResult, home_score: int, away_score: int) -> str:
+    home = country_english_name(result.home_team)
+    away = country_english_name(result.away_team)
+    home_zh = country_chinese_name(result.home_team)
+    away_zh = country_chinese_name(result.away_team)
+    xg_home, xg_away = extract_xg(result)
+    home_for, home_against = extract_recent_goal_stats(result, result.home_team)
+    away_for, away_against = extract_recent_goal_stats(result, result.away_team)
+    home_form, away_form = extract_recent_forms(result)
+    form_gap = form_score_value(home_form) - form_score_value(away_form)
+    elo_gap = extract_elo_gap(result)
+    score = f"{home_score}:{away_score}"
+    xg_gap = xg_home - xg_away
+    note = limited_data_note(result)
+
+    if is_zh():
+        form_line = f"最近5场状态方面，{home_zh}是 {home_form}，{away_zh}是 {away_form}。"
+        parts = [
+            home_prediction_reason_zh(home_zh, away_zh, elo_gap, xg_gap, form_gap),
+            score_prediction_reason_zh(home_zh, away_zh, score, xg_home, xg_away, home_for, home_against, away_for, away_against),
+            form_line,
+        ]
+        if note:
+            parts.append(note)
+        return " ".join(parts)
+
+    form_line = f"Recent form over the last five matches is {home_form} for {home} and {away_form} for {away}."
+    parts = [
+        home_prediction_reason_en(home, away, elo_gap, xg_gap, form_gap),
+        score_prediction_reason_en(home, away, score, xg_home, xg_away, home_for, home_against, away_for, away_against),
+        form_line,
+    ]
+    if note:
+        parts.append(note)
+    return " ".join(parts)
+
+
 if __name__ == "__main__":
     main()
