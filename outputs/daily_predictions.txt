@@ -1,24 +1,26 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-12T18:34:19
+Generated: 2026-06-13T17:04:26
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
 
 Today's Football Predictions
-- Canada vs Bosnia & Herzegovina: Canada, Canada 1 - 1 Bosnia & Herzegovina, home 37.9%, away 24.9%, draw 37.2%, confidence Low
-- United States vs Paraguay: United States, United States 2 - 1 Paraguay, home 49.8%, away 23.3%, draw 26.9%, confidence Low
+- Qatar vs Switzerland: Switzerland, Qatar 1 - 3 Switzerland, home 18.7%, away 59.5%, draw 21.8%, confidence Medium
+- Brazil vs Morocco: Brazil, Brazil 2 - 1 Morocco, home 59.0%, away 18.6%, draw 22.4%, confidence Medium
+- Haiti vs Scotland: Draw, Haiti 1 - 1 Scotland, home 32.0%, away 33.1%, draw 35.0%, confidence Low
 
 Highest Confidence Picks
-- United States vs Paraguay: United States, United States 2 - 1 Paraguay, home 49.8%, away 23.3%, draw 26.9%, confidence Low
-- Canada vs Bosnia & Herzegovina: Canada, Canada 1 - 1 Bosnia & Herzegovina, home 37.9%, away 24.9%, draw 37.2%, confidence Low
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
+- Qatar vs Switzerland: Switzerland, Qatar 1 - 3 Switzerland, home 18.7%, away 59.5%, draw 21.8%, confidence Medium
+- Brazil vs Morocco: Brazil, Brazil 2 - 1 Morocco, home 59.0%, away 18.6%, draw 22.4%, confidence Medium
 
 Upset Watch
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
+- Qatar vs Switzerland: Switzerland, Qatar 1 - 3 Switzerland, home 18.7%, away 59.5%, draw 21.8%, confidence Medium
 
 Draw Watch
-- Canada vs Bosnia & Herzegovina: Canada, Canada 1 - 1 Bosnia & Herzegovina, home 37.9%, away 24.9%, draw 37.2%, confidence Low
-- United States vs Paraguay: United States, United States 2 - 1 Paraguay, home 49.8%, away 23.3%, draw 26.9%, confidence Low
+- Haiti vs Scotland: Draw, Haiti 1 - 1 Scotland, home 32.0%, away 33.1%, draw 35.0%, confidence Low
 
 Injury Risk Games
-- No games available.
+- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium

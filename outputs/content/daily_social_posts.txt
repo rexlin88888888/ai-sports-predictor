@@ -1,21 +1,21 @@
 Twitter/X Post
-Today's model pick: United States in United States vs Paraguay.
-Projected score: United States 2 - 1 Paraguay.
-Watchlist note: United States recent goals for 2.20, against 2.00
-Confidence: Low. Model version: v1.0.0.
+Today's model pick: New York Knicks in New York Knicks at San Antonio Spurs.
+Projected score: San Antonio Spurs 106 - 121 New York Knicks.
+Watchlist note: Model favors New York Knicks mainly because of recent form (+16.8 rating edge).
+Confidence: Medium. Model version: v1.0.0.
 Hashtags: #SportsAI #ModelPick #SportsPredictions
 
 YouTube Shorts Title
-United States is today's model pick to watch
+New York Knicks is today's model pick to watch
 
 Instagram Caption
 Today's AI Sports Predictor board is live.
 
-Top model pick: United States
-Matchup: United States vs Paraguay
-Projection: United States 2 - 1 Paraguay
-Signal: United States recent goals for 2.20, against 2.00
+Top model pick: New York Knicks
+Matchup: New York Knicks at San Antonio Spurs
+Projection: San Antonio Spurs 106 - 121 New York Knicks
+Signal: Model favors New York Knicks mainly because of recent form (+16.8 rating edge).
 
-Draw watchlist: Canada vs Bosnia & Herzegovina at 37.2%
+Draw watchlist: Haiti vs Scotland at 35.0%
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #DailySports
