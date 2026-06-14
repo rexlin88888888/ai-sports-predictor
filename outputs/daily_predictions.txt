@@ -1,26 +1,29 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-13T17:04:26
+Generated: 2026-06-14T17:02:20
 Model version: v1.0.0
 
 Today's NBA Predictions
-- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
+- No games available.
 
 Today's Football Predictions
-- Qatar vs Switzerland: Switzerland, Qatar 1 - 3 Switzerland, home 18.7%, away 59.5%, draw 21.8%, confidence Medium
-- Brazil vs Morocco: Brazil, Brazil 2 - 1 Morocco, home 59.0%, away 18.6%, draw 22.4%, confidence Medium
-- Haiti vs Scotland: Draw, Haiti 1 - 1 Scotland, home 32.0%, away 33.1%, draw 35.0%, confidence Low
+- Australia vs Turkey: Australia, Australia 1 - 1 Turkey, home 39.5%, away 29.7%, draw 30.9%, confidence Low
+- Germany vs Curaçao: Germany, Germany 3 - 0 Curaçao, home 69.0%, away 10.4%, draw 20.6%, confidence Medium
+- Netherlands vs Japan: Netherlands, Netherlands 2 - 1 Japan, home 51.9%, away 23.4%, draw 24.6%, confidence Low
+- Ivory Coast vs Ecuador: Ivory Coast, Ivory Coast 2 - 0 Ecuador, home 46.8%, away 22.6%, draw 30.6%, confidence Low
+- Sweden vs Tunisia: Sweden, Sweden 2 - 1 Tunisia, home 48.3%, away 24.7%, draw 27.1%, confidence Low
 
 Highest Confidence Picks
-- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
-- Qatar vs Switzerland: Switzerland, Qatar 1 - 3 Switzerland, home 18.7%, away 59.5%, draw 21.8%, confidence Medium
-- Brazil vs Morocco: Brazil, Brazil 2 - 1 Morocco, home 59.0%, away 18.6%, draw 22.4%, confidence Medium
+- Germany vs Curaçao: Germany, Germany 3 - 0 Curaçao, home 69.0%, away 10.4%, draw 20.6%, confidence Medium
+- Netherlands vs Japan: Netherlands, Netherlands 2 - 1 Japan, home 51.9%, away 23.4%, draw 24.6%, confidence Low
+- Sweden vs Tunisia: Sweden, Sweden 2 - 1 Tunisia, home 48.3%, away 24.7%, draw 27.1%, confidence Low
 
 Upset Watch
-- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
-- Qatar vs Switzerland: Switzerland, Qatar 1 - 3 Switzerland, home 18.7%, away 59.5%, draw 21.8%, confidence Medium
+- No games available.
 
 Draw Watch
-- Haiti vs Scotland: Draw, Haiti 1 - 1 Scotland, home 32.0%, away 33.1%, draw 35.0%, confidence Low
+- Australia vs Turkey: Australia, Australia 1 - 1 Turkey, home 39.5%, away 29.7%, draw 30.9%, confidence Low
+- Ivory Coast vs Ecuador: Ivory Coast, Ivory Coast 2 - 0 Ecuador, home 46.8%, away 22.6%, draw 30.6%, confidence Low
+- Sweden vs Tunisia: Sweden, Sweden 2 - 1 Tunisia, home 48.3%, away 24.7%, draw 27.1%, confidence Low
 
 Injury Risk Games
-- New York Knicks at San Antonio Spurs: New York Knicks, San Antonio Spurs 106 - 121 New York Knicks, home 35.4%, away 64.6%, confidence Medium
+- No games available.
