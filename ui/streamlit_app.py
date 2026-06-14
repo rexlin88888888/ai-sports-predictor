@@ -164,6 +164,14 @@ WC_TEXT_ZH = {
     "Result": "实际结果",
     "Correct": "是否命中",
     "Created": "生成时间",
+    "Real Results Panel": "真实成绩面板",
+    "Scored Matches": "已评分比赛",
+    "Win/Draw/Loss Accuracy": "胜平负准确率",
+    "Top1 Score Accuracy": "Top1 比分命中率",
+    "Top3 Score Accuracy": "Top3 比分命中率",
+    "Recent 7 Days": "最近7天",
+    "Recent 30 Days": "最近30天",
+    "No scored matches yet.": "暂无已评分比赛。",
     "World Cup data": "世界杯数据",
     "World Cup backtest": "世界杯回测",
     "Match Analysis": "赛前分析",
@@ -677,11 +685,64 @@ def render_world_cup_home() -> None:
     football = read_csv(FOOTBALL_DATA_DIR / "football_backtest_results.csv")
     history = world_cup_history_frame()
     render_daily_world_cup_board("world_cup_home_competition_filter")
+    render_real_results_panel()
     st.markdown("---")
     cols = st.columns(3)
     metric_card(cols[0], tr("Prediction accuracy"), percent(accuracy(football)), tr("World Cup model status"), "positive")
     metric_card(cols[1], tr("Draw accuracy"), percent(football_draw_accuracy(football)), tr("Draw"), "neutral")
     metric_card(cols[2], tr("Saved matches"), f"{len(history):,}", tr("Match History"), "accent")
+
+
+def render_real_results_panel() -> None:
+    tracker = read_csv(OUTPUTS_DIR / "prediction_tracker.csv")
+    if tracker.empty:
+        return
+    settled = tracker[tracker.get("actual_result", "").astype(str).str.strip() != ""].copy() if "actual_result" in tracker else tracker.iloc[0:0].copy()
+    st.markdown("### " + tr("Real Results Panel"))
+    if settled.empty:
+        st.info(tr("No scored matches yet."))
+        return
+    cols = st.columns(4)
+    metric_card(cols[0], tr("Scored Matches"), f"{len(settled):,}", tr("Actual result found"), "accent")
+    metric_card(cols[1], tr("Win/Draw/Loss Accuracy"), percent(binary_accuracy(settled, "win_draw_loss_hit")), tr("Prediction"), "positive")
+    metric_card(cols[2], tr("Top1 Score Accuracy"), percent(binary_accuracy(settled, "top1_score_hit")), tr("Predicted Score"), "neutral")
+    metric_card(cols[3], tr("Top3 Score Accuracy"), percent(binary_accuracy(settled, "top3_score_hit")), tr("Score Probability Heatmap"), "neutral")
+    today = app_today()
+    rows = [
+        {
+            tr("Match"): tr("Recent 7 Days"),
+            tr("Scored Matches"): len(period_tracker_rows(settled, today - dt.timedelta(days=7), today)),
+            tr("Win/Draw/Loss Accuracy"): percent(binary_accuracy(period_tracker_rows(settled, today - dt.timedelta(days=7), today), "win_draw_loss_hit")),
+            tr("Top1 Score Accuracy"): percent(binary_accuracy(period_tracker_rows(settled, today - dt.timedelta(days=7), today), "top1_score_hit")),
+            tr("Top3 Score Accuracy"): percent(binary_accuracy(period_tracker_rows(settled, today - dt.timedelta(days=7), today), "top3_score_hit")),
+        },
+        {
+            tr("Match"): tr("Recent 30 Days"),
+            tr("Scored Matches"): len(period_tracker_rows(settled, today - dt.timedelta(days=30), today)),
+            tr("Win/Draw/Loss Accuracy"): percent(binary_accuracy(period_tracker_rows(settled, today - dt.timedelta(days=30), today), "win_draw_loss_hit")),
+            tr("Top1 Score Accuracy"): percent(binary_accuracy(period_tracker_rows(settled, today - dt.timedelta(days=30), today), "top1_score_hit")),
+            tr("Top3 Score Accuracy"): percent(binary_accuracy(period_tracker_rows(settled, today - dt.timedelta(days=30), today), "top3_score_hit")),
+        },
+    ]
+    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+
+def period_tracker_rows(frame: pd.DataFrame, start: dt.date, end: dt.date) -> pd.DataFrame:
+    if frame.empty or "match_time" not in frame:
+        return frame.iloc[0:0].copy()
+    local = frame.copy()
+    local["match_date"] = pd.to_datetime(local["match_time"], errors="coerce", utc=True).dt.tz_convert(APP_TIMEZONE).dt.date
+    return local[(local["match_date"] >= start) & (local["match_date"] <= end)].copy()
+
+
+def binary_accuracy(frame: pd.DataFrame, column: str) -> float | None:
+    if frame.empty or column not in frame:
+        return None
+    values = frame[column].astype(str).str.strip().str.lower()
+    values = values[values.isin(["1", "0", "true", "false"])]
+    if values.empty:
+        return None
+    return float(values.isin(["1", "true"]).mean())
 
 
 def render_world_cup_predictions_page() -> None:

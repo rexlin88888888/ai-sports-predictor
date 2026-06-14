@@ -1,0 +1,22 @@
+Prediction Tracker Score Report
+Generated: 2026-06-14T17:45:22
+
+Tracker rows: 31
+ESPN dates checked: 10
+ESPN matches fetched: 35
+Updated rows: 0
+Settled rows: 5
+Pending rows: 26
+Win/Draw/Loss accuracy: 40.0%
+Top1 score accuracy: 0.0%
+Top3 score accuracy: 20.0%
+
+Diagnostics
+- 比赛未结束: 26
+
+Recent Settled Matches
+- 2026-06-13T01:00Z | United States vs Paraguay | pred 2:1 | actual 4:1 | WDL 1 | Top3 0
+- 2026-06-13T19:00Z | Qatar vs Switzerland | pred 0:3 | actual 1:1 | WDL 0 | Top3 0
+- 2026-06-13T22:00Z | Brazil vs Morocco | pred 2:1 | actual 1:1 | WDL 0 | Top3 0
+- 2026-06-14T01:00Z | Haiti vs Scotland | pred 1:1 | actual 0:1 | WDL 1 | Top3 1
+- 2026-06-14T04:00Z | Australia vs Turkey | pred 1:1 | actual 2:0 | WDL 0 | Top3 0

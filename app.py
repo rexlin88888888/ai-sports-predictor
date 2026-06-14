@@ -9,6 +9,7 @@ from core.metrics import evaluate_sport
 from core.prediction_result import PredictionResult
 from core.result_updater import update_results
 from core.utils import configure_logging
+from score_predictions import score_prediction_tracker, score_prediction_tracker_if_due
 from sports.football.football_model import FootballPredictor
 from sports.nba.nba_model import NBAPredictor
 
@@ -84,7 +85,6 @@ def print_predictions(results: list[PredictionResult]) -> None:
             print(f"Draw probability: {format_probability(result.draw_probability)}")
         print(f"Away win probability: {format_probability(result.win_probability_away)}")
         print(f"Predicted score: {result.predicted_score}")
-        print(f"Confidence: {result.confidence}")
         print(f"Data source: {result.data_source}")
         print("Key factors:")
         for item in result.key_factors[:6]:
@@ -112,13 +112,19 @@ if __name__ == "__main__":
         print(f"social_posts={package.social_posts_path}")
     elif "--update-results" in sys.argv:
         result = update_results()
+        tracker_result = score_prediction_tracker()
         print("Result update complete")
         print(f"settled={result.get('settled', 0)} pending={result.get('pending', 0)} updated={result.get('updated', 0)}")
+        print(f"tracker_settled={tracker_result.get('settled_rows', 0)} tracker_updated={tracker_result.get('updated_rows', 0)}")
         print(f"performance_report={result.get('performance_report')}")
         print(f"recap={result.get('recap')}")
     elif cli_requested(sys.argv[1:]):
         raise SystemExit(run_cli(build_parser().parse_args()))
     else:
+        try:
+            score_prediction_tracker_if_due()
+        except Exception:
+            pass
         from ui.streamlit_app import main
 
         main()

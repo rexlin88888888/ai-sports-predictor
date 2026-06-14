@@ -1,0 +1,16 @@
+{
+  "tracker_rows": 31,
+  "espn_dates_checked": 10,
+  "espn_matches_fetched": 35,
+  "updated_rows": 0,
+  "settled_rows": 5,
+  "pending_rows": 26,
+  "win_draw_loss_accuracy": 0.4,
+  "top1_score_accuracy": 0.0,
+  "top3_score_accuracy": 0.2,
+  "diagnostics": {
+    "比赛未结束": 26
+  },
+  "fetch_errors": {},
+  "generated_at": "2026-06-14T17:45:22"
+}
