@@ -1,18 +1,18 @@
 Prediction Tracker Score Report
-Generated: 2026-06-14T17:05:08
+Generated: 2026-06-15T21:57:37
 
 Tracker rows: 31
-ESPN dates checked: 10
-ESPN matches fetched: 35
-Updated rows: 0
-Settled rows: 5
-Pending rows: 26
-Win/Draw/Loss accuracy: 40.0%
+ESPN dates checked: 9
+ESPN matches fetched: 33
+Updated rows: 6
+Settled rows: 11
+Pending rows: 20
+Win/Draw/Loss accuracy: 36.4%
 Top1 score accuracy: 0.0%
-Top3 score accuracy: 20.0%
+Top3 score accuracy: 18.2%
 
 Diagnostics
-- 比赛未结束: 26
+- 比赛未结束: 20
 
 Recent Settled Matches
 - 2026-06-13T01:00Z | United States vs Paraguay | pred 2:1 | actual 4:1 | WDL 1 | Top3 0
@@ -20,3 +20,9 @@ Recent Settled Matches
 - 2026-06-13T22:00Z | Brazil vs Morocco | pred 2:1 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-14T01:00Z | Haiti vs Scotland | pred 1:1 | actual 0:1 | WDL 1 | Top3 1
 - 2026-06-14T04:00Z | Australia vs Turkey | pred 1:1 | actual 2:0 | WDL 0 | Top3 0
+- 2026-06-14T17:00Z | Germany vs Curaçao | pred 3:0 | actual 7:1 | WDL 1 | Top3 0
+- 2026-06-14T20:00Z | Netherlands vs Japan | pred 2:1 | actual 2:2 | WDL 0 | Top3 0
+- 2026-06-14T23:00Z | Ivory Coast vs Ecuador | pred 1:1 | actual 1:0 | WDL 0 | Top3 1
+- 2026-06-15T02:00Z | Sweden vs Tunisia | pred 2:1 | actual 5:1 | WDL 1 | Top3 0
+- 2026-06-15T16:00Z | Spain vs Cape Verde | pred 3:0 | actual 0:0 | WDL 0 | Top3 0
+- 2026-06-15T19:00Z | Belgium vs Egypt | pred 2:0 | actual 1:1 | WDL 0 | Top3 0
