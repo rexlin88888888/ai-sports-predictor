@@ -1,26 +1,25 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-15T21:53:27
+Generated: 2026-06-16T21:49:31
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Spain vs Cape Verde: Spain, Spain 3 - 0 Cape Verde, home 68.7%, away 10.7%, draw 20.6%, confidence Medium
-- Belgium vs Egypt: Belgium, Belgium 2 - 1 Egypt, home 54.7%, away 21.0%, draw 24.3%, confidence Low
-- Saudi Arabia vs Uruguay: Uruguay, Saudi Arabia 0 - 1 Uruguay, home 20.2%, away 57.1%, draw 22.7%, confidence Medium
-- IR Iran vs New Zealand: IR Iran, IR Iran 3 - 0 New Zealand, home 67.0%, away 12.4%, draw 20.6%, confidence Medium
+- France vs Senegal: France, France 2 - 1 Senegal, home 57.8%, away 19.4%, draw 22.9%, confidence Medium
+- Iraq vs Norway: Draw, Iraq 0 - 0 Norway, home 28.7%, away 34.1%, draw 37.2%, confidence Low
+- Argentina vs Algeria: Argentina, Argentina 3 - 1 Algeria, home 59.0%, away 18.1%, draw 23.0%, confidence Medium
 
 Highest Confidence Picks
-- Spain vs Cape Verde: Spain, Spain 3 - 0 Cape Verde, home 68.7%, away 10.7%, draw 20.6%, confidence Medium
-- IR Iran vs New Zealand: IR Iran, IR Iran 3 - 0 New Zealand, home 67.0%, away 12.4%, draw 20.6%, confidence Medium
-- Saudi Arabia vs Uruguay: Uruguay, Saudi Arabia 0 - 1 Uruguay, home 20.2%, away 57.1%, draw 22.7%, confidence Medium
+- Argentina vs Algeria: Argentina, Argentina 3 - 1 Algeria, home 59.0%, away 18.1%, draw 23.0%, confidence Medium
+- France vs Senegal: France, France 2 - 1 Senegal, home 57.8%, away 19.4%, draw 22.9%, confidence Medium
+- Iraq vs Norway: Draw, Iraq 0 - 0 Norway, home 28.7%, away 34.1%, draw 37.2%, confidence Low
 
 Upset Watch
-- Saudi Arabia vs Uruguay: Uruguay, Saudi Arabia 0 - 1 Uruguay, home 20.2%, away 57.1%, draw 22.7%, confidence Medium
+- No games available.
 
 Draw Watch
-- No games available.
+- Iraq vs Norway: Draw, Iraq 0 - 0 Norway, home 28.7%, away 34.1%, draw 37.2%, confidence Low
 
 Injury Risk Games
 - No games available.
