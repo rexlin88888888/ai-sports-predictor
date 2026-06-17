@@ -1,19 +1,19 @@
 Prediction Tracker Score Report
-Generated: 2026-06-16T21:53:00
+Generated: 2026-06-17T15:47:00
 
 Tracker rows: 31
 ESPN dates checked: 8
 ESPN matches fetched: 31
 Updated rows: 3
-Settled rows: 14
-Pending rows: 17
-Win/Draw/Loss accuracy: 35.7%
-Top1 score accuracy: 0.0%
-Top3 score accuracy: 21.4%
+Settled rows: 17
+Pending rows: 14
+Win/Draw/Loss accuracy: 47.1%
+Top1 score accuracy: 5.9%
+Top3 score accuracy: 23.5%
 
 Diagnostics
 - 其它原因: 1
-- 比赛未结束: 17
+- 比赛未结束: 14
 
 Recent Settled Matches
 - 2026-06-13T01:00Z | United States vs Paraguay | pred 2:1 | actual 4:1 | WDL 1 | Top3 0
@@ -30,3 +30,6 @@ Recent Settled Matches
 - 2026-06-15T22:00Z | Saudi Arabia vs Uruguay | pred 0:1 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-16T01:00Z | IR Iran vs New Zealand | pred 3:0 | actual 2:2 | WDL 0 | Top3 0
 - 2026-06-16T19:00Z | France vs Senegal | pred 2:1 | actual 3:1 | WDL 1 | Top3 1
+- 2026-06-16T22:00Z | Iraq vs Norway | pred 0:1 | actual 1:4 | WDL 1 | Top3 0
+- 2026-06-17T01:00Z | Argentina vs Algeria | pred 3:1 | actual 3:0 | WDL 1 | Top3 0
+- 2026-06-17T04:00Z | Austria vs Jordan | pred 3:1 | actual 3:1 | WDL 1 | Top3 1
