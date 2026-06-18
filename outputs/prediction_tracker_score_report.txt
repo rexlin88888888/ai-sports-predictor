@@ -1,22 +1,21 @@
 Prediction Tracker Score Report
-Generated: 2026-06-17T15:47:00
+Generated: 2026-06-18T15:38:47
 
 Tracker rows: 31
 ESPN dates checked: 8
 ESPN matches fetched: 31
-Updated rows: 3
-Settled rows: 17
-Pending rows: 14
-Win/Draw/Loss accuracy: 47.1%
-Top1 score accuracy: 5.9%
-Top3 score accuracy: 23.5%
+Updated rows: 4
+Settled rows: 21
+Pending rows: 10
+Win/Draw/Loss accuracy: 42.9%
+Top1 score accuracy: 4.8%
+Top3 score accuracy: 19.0%
 
 Diagnostics
 - 其它原因: 1
-- 比赛未结束: 14
+- 比赛未结束: 10
 
 Recent Settled Matches
-- 2026-06-13T01:00Z | United States vs Paraguay | pred 2:1 | actual 4:1 | WDL 1 | Top3 0
 - 2026-06-13T19:00Z | Qatar vs Switzerland | pred 0:3 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-13T22:00Z | Brazil vs Morocco | pred 2:1 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-14T01:00Z | Haiti vs Scotland | pred 1:1 | actual 0:1 | WDL 1 | Top3 1
@@ -33,3 +32,7 @@ Recent Settled Matches
 - 2026-06-16T22:00Z | Iraq vs Norway | pred 0:1 | actual 1:4 | WDL 1 | Top3 0
 - 2026-06-17T01:00Z | Argentina vs Algeria | pred 3:1 | actual 3:0 | WDL 1 | Top3 0
 - 2026-06-17T04:00Z | Austria vs Jordan | pred 3:1 | actual 3:1 | WDL 1 | Top3 1
+- 2026-06-17T17:00Z | Portugal vs Congo DR | pred 2:0 | actual 1:1 | WDL 0 | Top3 0
+- 2026-06-17T20:00Z | England vs Croatia | pred 1:1 | actual 4:2 | WDL 0 | Top3 0
+- 2026-06-17T23:00Z | Ghana vs Panama | pred 0:1 | actual 1:0 | WDL 0 | Top3 0
+- 2026-06-18T02:00Z | Uzbekistan vs Colombia | pred 1:1 | actual 1:3 | WDL 1 | Top3 0
