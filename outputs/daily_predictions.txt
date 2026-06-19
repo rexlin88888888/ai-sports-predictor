@@ -1,28 +1,27 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-18T15:35:06
+Generated: 2026-06-19T15:29:03
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Czech Republic vs South Africa: Czech Republic, Czech Republic 2 - 0 South Africa, home 50.9%, away 21.5%, draw 27.5%, confidence Low
-- Switzerland vs Bosnia & Herzegovina: Switzerland, Switzerland 2 - 1 Bosnia & Herzegovina, home 57.7%, away 19.3%, draw 23.1%, confidence Medium
-- Canada vs Qatar: Canada, Canada 2 - 0 Qatar, home 52.1%, away 20.9%, draw 27.0%, confidence Low
-- Mexico vs Korea Republic: Mexico, Mexico 2 - 0 Korea Republic, home 49.1%, away 20.4%, draw 30.6%, confidence Low
+- United States vs Australia: United States, United States 2 - 1 Australia, home 49.0%, away 23.3%, draw 27.7%, confidence Low
+- Scotland vs Morocco: Morocco, Scotland 0 - 2 Morocco, home 21.3%, away 56.0%, draw 22.7%, confidence Medium
+- Brazil vs Haiti: Brazil, Brazil 3 - 0 Haiti, home 71.7%, away 7.7%, draw 20.6%, confidence High
+- Turkey vs Paraguay: Draw, Turkey 1 - 1 Paraguay, home 34.7%, away 28.4%, draw 36.9%, confidence Low
 
 Highest Confidence Picks
-- Switzerland vs Bosnia & Herzegovina: Switzerland, Switzerland 2 - 1 Bosnia & Herzegovina, home 57.7%, away 19.3%, draw 23.1%, confidence Medium
-- Canada vs Qatar: Canada, Canada 2 - 0 Qatar, home 52.1%, away 20.9%, draw 27.0%, confidence Low
-- Czech Republic vs South Africa: Czech Republic, Czech Republic 2 - 0 South Africa, home 50.9%, away 21.5%, draw 27.5%, confidence Low
+- Brazil vs Haiti: Brazil, Brazil 3 - 0 Haiti, home 71.7%, away 7.7%, draw 20.6%, confidence High
+- Scotland vs Morocco: Morocco, Scotland 0 - 2 Morocco, home 21.3%, away 56.0%, draw 22.7%, confidence Medium
+- United States vs Australia: United States, United States 2 - 1 Australia, home 49.0%, away 23.3%, draw 27.7%, confidence Low
 
 Upset Watch
-- No games available.
+- Scotland vs Morocco: Morocco, Scotland 0 - 2 Morocco, home 21.3%, away 56.0%, draw 22.7%, confidence Medium
 
 Draw Watch
-- Mexico vs Korea Republic: Mexico, Mexico 2 - 0 Korea Republic, home 49.1%, away 20.4%, draw 30.6%, confidence Low
-- Czech Republic vs South Africa: Czech Republic, Czech Republic 2 - 0 South Africa, home 50.9%, away 21.5%, draw 27.5%, confidence Low
-- Canada vs Qatar: Canada, Canada 2 - 0 Qatar, home 52.1%, away 20.9%, draw 27.0%, confidence Low
+- Turkey vs Paraguay: Draw, Turkey 1 - 1 Paraguay, home 34.7%, away 28.4%, draw 36.9%, confidence Low
+- United States vs Australia: United States, United States 2 - 1 Australia, home 49.0%, away 23.3%, draw 27.7%, confidence Low
 
 Injury Risk Games
 - No games available.

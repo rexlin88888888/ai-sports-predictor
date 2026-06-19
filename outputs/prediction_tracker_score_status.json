@@ -3,15 +3,15 @@
   "espn_dates_checked": 8,
   "espn_matches_fetched": 31,
   "updated_rows": 4,
-  "settled_rows": 21,
-  "pending_rows": 10,
-  "win_draw_loss_accuracy": 0.42857142857142855,
-  "top1_score_accuracy": 0.047619047619047616,
-  "top3_score_accuracy": 0.19047619047619047,
+  "settled_rows": 25,
+  "pending_rows": 6,
+  "win_draw_loss_accuracy": 0.48,
+  "top1_score_accuracy": 0.04,
+  "top3_score_accuracy": 0.2,
   "diagnostics": {
     "其它原因": 1,
-    "比赛未结束": 10
+    "比赛未结束": 6
   },
   "fetch_errors": {},
-  "generated_at": "2026-06-18T15:38:47"
+  "generated_at": "2026-06-19T15:32:09"
 }
