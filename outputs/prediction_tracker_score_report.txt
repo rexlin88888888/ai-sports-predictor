@@ -1,25 +1,21 @@
 Prediction Tracker Score Report
-Generated: 2026-06-19T15:32:09
+Generated: 2026-06-20T14:17:21
 
 Tracker rows: 31
 ESPN dates checked: 8
 ESPN matches fetched: 31
 Updated rows: 4
-Settled rows: 25
-Pending rows: 6
-Win/Draw/Loss accuracy: 48.0%
-Top1 score accuracy: 4.0%
-Top3 score accuracy: 20.0%
+Settled rows: 29
+Pending rows: 2
+Win/Draw/Loss accuracy: 51.7%
+Top1 score accuracy: 6.9%
+Top3 score accuracy: 27.6%
 
 Diagnostics
 - 其它原因: 1
-- 比赛未结束: 6
+- 比赛未结束: 2
 
 Recent Settled Matches
-- 2026-06-14T17:00Z | Germany vs Curaçao | pred 3:0 | actual 7:1 | WDL 1 | Top3 0
-- 2026-06-14T20:00Z | Netherlands vs Japan | pred 2:1 | actual 2:2 | WDL 0 | Top3 0
-- 2026-06-14T23:00Z | Ivory Coast vs Ecuador | pred 1:1 | actual 1:0 | WDL 0 | Top3 1
-- 2026-06-15T02:00Z | Sweden vs Tunisia | pred 2:1 | actual 5:1 | WDL 1 | Top3 0
 - 2026-06-15T16:00Z | Spain vs Cape Verde | pred 3:0 | actual 0:0 | WDL 0 | Top3 0
 - 2026-06-15T19:00Z | Belgium vs Egypt | pred 2:0 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-15T22:00Z | Saudi Arabia vs Uruguay | pred 0:1 | actual 1:1 | WDL 0 | Top3 0
@@ -36,3 +32,7 @@ Recent Settled Matches
 - 2026-06-18T19:00Z | Switzerland vs Bosnia & Herzegovina | pred 3:0 | actual 4:1 | WDL 1 | Top3 0
 - 2026-06-18T22:00Z | Canada vs Qatar | pred 2:0 | actual 6:0 | WDL 1 | Top3 0
 - 2026-06-19T01:00Z | Mexico vs Korea Republic | pred 2:0 | actual 1:0 | WDL 1 | Top3 1
+- 2026-06-19T19:00Z | United States vs Australia | pred 2:1 | actual 2:0 | WDL 1 | Top3 1
+- 2026-06-19T22:00Z | Scotland vs Morocco | pred 1:1 | actual 0:1 | WDL 1 | Top3 1
+- 2026-06-20T00:30Z | Brazil vs Haiti | pred 3:0 | actual 3:0 | WDL 1 | Top3 1
+- 2026-06-20T03:00Z | Turkey vs Paraguay | pred 1:1 | actual 0:1 | WDL 0 | Top3 0

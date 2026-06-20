@@ -1,27 +1,25 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-19T15:29:03
+Generated: 2026-06-20T14:12:42
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- United States vs Australia: United States, United States 2 - 1 Australia, home 49.0%, away 23.3%, draw 27.7%, confidence Low
-- Scotland vs Morocco: Morocco, Scotland 0 - 2 Morocco, home 21.3%, away 56.0%, draw 22.7%, confidence Medium
-- Brazil vs Haiti: Brazil, Brazil 3 - 0 Haiti, home 71.7%, away 7.7%, draw 20.6%, confidence High
-- Turkey vs Paraguay: Draw, Turkey 1 - 1 Paraguay, home 34.7%, away 28.4%, draw 36.9%, confidence Low
+- Netherlands vs Sweden: Netherlands, Netherlands 2 - 1 Sweden, home 52.7%, away 24.1%, draw 23.2%, confidence Low
+- Germany vs Ivory Coast: Germany, Germany 1 - 1 Ivory Coast, home 40.9%, away 27.2%, draw 31.9%, confidence Low
+- Ecuador vs Curaçao: Ecuador, Ecuador 2 - 0 Curaçao, home 63.5%, away 13.2%, draw 23.3%, confidence Medium
 
 Highest Confidence Picks
-- Brazil vs Haiti: Brazil, Brazil 3 - 0 Haiti, home 71.7%, away 7.7%, draw 20.6%, confidence High
-- Scotland vs Morocco: Morocco, Scotland 0 - 2 Morocco, home 21.3%, away 56.0%, draw 22.7%, confidence Medium
-- United States vs Australia: United States, United States 2 - 1 Australia, home 49.0%, away 23.3%, draw 27.7%, confidence Low
+- Ecuador vs Curaçao: Ecuador, Ecuador 2 - 0 Curaçao, home 63.5%, away 13.2%, draw 23.3%, confidence Medium
+- Netherlands vs Sweden: Netherlands, Netherlands 2 - 1 Sweden, home 52.7%, away 24.1%, draw 23.2%, confidence Low
+- Germany vs Ivory Coast: Germany, Germany 1 - 1 Ivory Coast, home 40.9%, away 27.2%, draw 31.9%, confidence Low
 
 Upset Watch
-- Scotland vs Morocco: Morocco, Scotland 0 - 2 Morocco, home 21.3%, away 56.0%, draw 22.7%, confidence Medium
+- No games available.
 
 Draw Watch
-- Turkey vs Paraguay: Draw, Turkey 1 - 1 Paraguay, home 34.7%, away 28.4%, draw 36.9%, confidence Low
-- United States vs Australia: United States, United States 2 - 1 Australia, home 49.0%, away 23.3%, draw 27.7%, confidence Low
+- Germany vs Ivory Coast: Germany, Germany 1 - 1 Ivory Coast, home 40.9%, away 27.2%, draw 31.9%, confidence Low
 
 Injury Risk Games
 - No games available.
