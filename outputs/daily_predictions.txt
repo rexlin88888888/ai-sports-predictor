@@ -1,25 +1,28 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-20T14:12:42
+Generated: 2026-06-21T14:20:06
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Netherlands vs Sweden: Netherlands, Netherlands 2 - 1 Sweden, home 52.7%, away 24.1%, draw 23.2%, confidence Low
-- Germany vs Ivory Coast: Germany, Germany 1 - 1 Ivory Coast, home 40.9%, away 27.2%, draw 31.9%, confidence Low
-- Ecuador vs Curaçao: Ecuador, Ecuador 2 - 0 Curaçao, home 63.5%, away 13.2%, draw 23.3%, confidence Medium
+- Tunisia vs Japan: Draw, Tunisia 1 - 1 Japan, home 28.3%, away 35.3%, draw 36.4%, confidence Low
+- Spain vs Saudi Arabia: Spain, Spain 3 - 0 Saudi Arabia, home 70.1%, away 9.3%, draw 20.6%, confidence High
+- Belgium vs IR Iran: Belgium, Belgium 2 - 1 IR Iran, home 46.6%, away 27.6%, draw 25.8%, confidence Low
+- Uruguay vs Cape Verde: Uruguay, Uruguay 1 - 1 Cape Verde, home 51.9%, away 24.0%, draw 24.1%, confidence Low
+- New Zealand vs Egypt: Egypt, New Zealand 0 - 1 Egypt, home 19.1%, away 58.2%, draw 22.7%, confidence Medium
 
 Highest Confidence Picks
-- Ecuador vs Curaçao: Ecuador, Ecuador 2 - 0 Curaçao, home 63.5%, away 13.2%, draw 23.3%, confidence Medium
-- Netherlands vs Sweden: Netherlands, Netherlands 2 - 1 Sweden, home 52.7%, away 24.1%, draw 23.2%, confidence Low
-- Germany vs Ivory Coast: Germany, Germany 1 - 1 Ivory Coast, home 40.9%, away 27.2%, draw 31.9%, confidence Low
+- Spain vs Saudi Arabia: Spain, Spain 3 - 0 Saudi Arabia, home 70.1%, away 9.3%, draw 20.6%, confidence High
+- New Zealand vs Egypt: Egypt, New Zealand 0 - 1 Egypt, home 19.1%, away 58.2%, draw 22.7%, confidence Medium
+- Uruguay vs Cape Verde: Uruguay, Uruguay 1 - 1 Cape Verde, home 51.9%, away 24.0%, draw 24.1%, confidence Low
 
 Upset Watch
-- No games available.
+- New Zealand vs Egypt: Egypt, New Zealand 0 - 1 Egypt, home 19.1%, away 58.2%, draw 22.7%, confidence Medium
 
 Draw Watch
-- Germany vs Ivory Coast: Germany, Germany 1 - 1 Ivory Coast, home 40.9%, away 27.2%, draw 31.9%, confidence Low
+- Tunisia vs Japan: Draw, Tunisia 1 - 1 Japan, home 28.3%, away 35.3%, draw 36.4%, confidence Low
+- Belgium vs IR Iran: Belgium, Belgium 2 - 1 IR Iran, home 46.6%, away 27.6%, draw 25.8%, confidence Low
 
 Injury Risk Games
 - No games available.

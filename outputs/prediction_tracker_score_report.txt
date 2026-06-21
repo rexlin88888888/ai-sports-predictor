@@ -1,23 +1,20 @@
 Prediction Tracker Score Report
-Generated: 2026-06-20T14:17:21
+Generated: 2026-06-21T14:24:58
 
 Tracker rows: 31
-ESPN dates checked: 8
-ESPN matches fetched: 31
-Updated rows: 4
-Settled rows: 29
-Pending rows: 2
-Win/Draw/Loss accuracy: 51.7%
-Top1 score accuracy: 6.9%
-Top3 score accuracy: 27.6%
+ESPN dates checked: 9
+ESPN matches fetched: 36
+Updated rows: 2
+Settled rows: 31
+Pending rows: 0
+Win/Draw/Loss accuracy: 54.8%
+Top1 score accuracy: 9.7%
+Top3 score accuracy: 29.0%
 
 Diagnostics
 - 其它原因: 1
-- 比赛未结束: 2
 
 Recent Settled Matches
-- 2026-06-15T16:00Z | Spain vs Cape Verde | pred 3:0 | actual 0:0 | WDL 0 | Top3 0
-- 2026-06-15T19:00Z | Belgium vs Egypt | pred 2:0 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-15T22:00Z | Saudi Arabia vs Uruguay | pred 0:1 | actual 1:1 | WDL 0 | Top3 0
 - 2026-06-16T01:00Z | IR Iran vs New Zealand | pred 3:0 | actual 2:2 | WDL 0 | Top3 0
 - 2026-06-16T19:00Z | France vs Senegal | pred 2:1 | actual 3:1 | WDL 1 | Top3 1
@@ -36,3 +33,5 @@ Recent Settled Matches
 - 2026-06-19T22:00Z | Scotland vs Morocco | pred 1:1 | actual 0:1 | WDL 1 | Top3 1
 - 2026-06-20T00:30Z | Brazil vs Haiti | pred 3:0 | actual 3:0 | WDL 1 | Top3 1
 - 2026-06-20T03:00Z | Turkey vs Paraguay | pred 1:1 | actual 0:1 | WDL 0 | Top3 0
+- 2026-06-20T17:00Z | Netherlands vs Sweden | pred 2:1 | actual 5:1 | WDL 1 | Top3 0
+- 2026-06-20T20:00Z | Germany vs Ivory Coast | pred 2:1 | actual 2:1 | WDL 1 | Top3 1
