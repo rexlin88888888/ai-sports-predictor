@@ -1,10 +1,10 @@
 Prediction Tracker Score Report
-Generated: 2026-06-21T14:24:58
+Generated: 2026-06-22T17:09:44
 
 Tracker rows: 31
-ESPN dates checked: 9
-ESPN matches fetched: 36
-Updated rows: 2
+ESPN dates checked: 10
+ESPN matches fetched: 40
+Updated rows: 0
 Settled rows: 31
 Pending rows: 0
 Win/Draw/Loss accuracy: 54.8%
