@@ -1,26 +1,30 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-23T14:57:38
+Generated: 2026-06-24T14:39:25
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Portugal vs Uzbekistan: Portugal, Portugal 2 - 0 Uzbekistan, home 62.3%, away 15.7%, draw 22.0%, confidence Medium
-- England vs Ghana: England, England 2 - 0 Ghana, home 63.4%, away 14.3%, draw 22.3%, confidence Medium
-- Panama vs Croatia: Croatia, Panama 0 - 2 Croatia, home 18.8%, away 60.6%, draw 20.6%, confidence Medium
-- Colombia vs Congo DR: Colombia, Colombia 1 - 1 Congo DR, home 54.5%, away 23.8%, draw 21.7%, confidence Low
+- Bosnia & Herzegovina vs Qatar: Bosnia & Herzegovina, Bosnia & Herzegovina 2 - 1 Qatar, home 49.2%, away 23.7%, draw 27.1%, confidence Low
+- Switzerland vs Canada: Switzerland, Switzerland 2 - 0 Canada, home 56.2%, away 19.7%, draw 24.1%, confidence Medium
+- Morocco vs Haiti: Morocco, Morocco 2 - 0 Haiti, home 66.4%, away 12.2%, draw 21.4%, confidence Medium
+- Scotland vs Brazil: Brazil, Scotland 0 - 2 Brazil, home 11.7%, away 67.7%, draw 20.6%, confidence Medium
+- Czech Republic vs Mexico: Czech Republic, Czech Republic 1 - 1 Mexico, home 41.0%, away 29.4%, draw 29.5%, confidence Low
+- South Africa vs Korea Republic: South Africa, South Africa 1 - 1 Korea Republic, home 40.0%, away 30.8%, draw 29.2%, confidence Low
 
 Highest Confidence Picks
-- England vs Ghana: England, England 2 - 0 Ghana, home 63.4%, away 14.3%, draw 22.3%, confidence Medium
-- Portugal vs Uzbekistan: Portugal, Portugal 2 - 0 Uzbekistan, home 62.3%, away 15.7%, draw 22.0%, confidence Medium
-- Panama vs Croatia: Croatia, Panama 0 - 2 Croatia, home 18.8%, away 60.6%, draw 20.6%, confidence Medium
+- Scotland vs Brazil: Brazil, Scotland 0 - 2 Brazil, home 11.7%, away 67.7%, draw 20.6%, confidence Medium
+- Morocco vs Haiti: Morocco, Morocco 2 - 0 Haiti, home 66.4%, away 12.2%, draw 21.4%, confidence Medium
+- Switzerland vs Canada: Switzerland, Switzerland 2 - 0 Canada, home 56.2%, away 19.7%, draw 24.1%, confidence Medium
 
 Upset Watch
-- Panama vs Croatia: Croatia, Panama 0 - 2 Croatia, home 18.8%, away 60.6%, draw 20.6%, confidence Medium
+- Scotland vs Brazil: Brazil, Scotland 0 - 2 Brazil, home 11.7%, away 67.7%, draw 20.6%, confidence Medium
 
 Draw Watch
-- No games available.
+- Czech Republic vs Mexico: Czech Republic, Czech Republic 1 - 1 Mexico, home 41.0%, away 29.4%, draw 29.5%, confidence Low
+- South Africa vs Korea Republic: South Africa, South Africa 1 - 1 Korea Republic, home 40.0%, away 30.8%, draw 29.2%, confidence Low
+- Bosnia & Herzegovina vs Qatar: Bosnia & Herzegovina, Bosnia & Herzegovina 2 - 1 Qatar, home 49.2%, away 23.7%, draw 27.1%, confidence Low
 
 Injury Risk Games
 - No games available.
