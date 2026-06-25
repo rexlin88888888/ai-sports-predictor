@@ -1,30 +1,32 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-24T14:39:25
+Generated: 2026-06-25T14:40:35
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Bosnia & Herzegovina vs Qatar: Bosnia & Herzegovina, Bosnia & Herzegovina 2 - 1 Qatar, home 49.2%, away 23.7%, draw 27.1%, confidence Low
-- Switzerland vs Canada: Switzerland, Switzerland 2 - 0 Canada, home 56.2%, away 19.7%, draw 24.1%, confidence Medium
-- Morocco vs Haiti: Morocco, Morocco 2 - 0 Haiti, home 66.4%, away 12.2%, draw 21.4%, confidence Medium
-- Scotland vs Brazil: Brazil, Scotland 0 - 2 Brazil, home 11.7%, away 67.7%, draw 20.6%, confidence Medium
-- Czech Republic vs Mexico: Czech Republic, Czech Republic 1 - 1 Mexico, home 41.0%, away 29.4%, draw 29.5%, confidence Low
-- South Africa vs Korea Republic: South Africa, South Africa 1 - 1 Korea Republic, home 40.0%, away 30.8%, draw 29.2%, confidence Low
+- Curaçao vs Ivory Coast: Ivory Coast, Curaçao 0 - 2 Ivory Coast, home 15.0%, away 62.4%, draw 22.6%, confidence Medium
+- Ecuador vs Germany: Germany, Ecuador 1 - 1 Germany, home 28.0%, away 43.0%, draw 28.9%, confidence Low
+- Japan vs Sweden: Draw, Japan 1 - 1 Sweden, home 35.0%, away 28.8%, draw 36.2%, confidence Low
+- Tunisia vs Netherlands: Netherlands, Tunisia 1 - 2 Netherlands, home 23.9%, away 53.5%, draw 22.6%, confidence Low
+- Paraguay vs Australia: Draw, Paraguay 1 - 1 Australia, home 35.3%, away 27.5%, draw 37.2%, confidence Low
+- Turkey vs United States: United States, Turkey 1 - 2 United States, home 30.4%, away 41.2%, draw 28.4%, confidence Low
 
 Highest Confidence Picks
-- Scotland vs Brazil: Brazil, Scotland 0 - 2 Brazil, home 11.7%, away 67.7%, draw 20.6%, confidence Medium
-- Morocco vs Haiti: Morocco, Morocco 2 - 0 Haiti, home 66.4%, away 12.2%, draw 21.4%, confidence Medium
-- Switzerland vs Canada: Switzerland, Switzerland 2 - 0 Canada, home 56.2%, away 19.7%, draw 24.1%, confidence Medium
+- Curaçao vs Ivory Coast: Ivory Coast, Curaçao 0 - 2 Ivory Coast, home 15.0%, away 62.4%, draw 22.6%, confidence Medium
+- Tunisia vs Netherlands: Netherlands, Tunisia 1 - 2 Netherlands, home 23.9%, away 53.5%, draw 22.6%, confidence Low
+- Ecuador vs Germany: Germany, Ecuador 1 - 1 Germany, home 28.0%, away 43.0%, draw 28.9%, confidence Low
 
 Upset Watch
-- Scotland vs Brazil: Brazil, Scotland 0 - 2 Brazil, home 11.7%, away 67.7%, draw 20.6%, confidence Medium
+- Curaçao vs Ivory Coast: Ivory Coast, Curaçao 0 - 2 Ivory Coast, home 15.0%, away 62.4%, draw 22.6%, confidence Medium
+- Tunisia vs Netherlands: Netherlands, Tunisia 1 - 2 Netherlands, home 23.9%, away 53.5%, draw 22.6%, confidence Low
+- Ecuador vs Germany: Germany, Ecuador 1 - 1 Germany, home 28.0%, away 43.0%, draw 28.9%, confidence Low
 
 Draw Watch
-- Czech Republic vs Mexico: Czech Republic, Czech Republic 1 - 1 Mexico, home 41.0%, away 29.4%, draw 29.5%, confidence Low
-- South Africa vs Korea Republic: South Africa, South Africa 1 - 1 Korea Republic, home 40.0%, away 30.8%, draw 29.2%, confidence Low
-- Bosnia & Herzegovina vs Qatar: Bosnia & Herzegovina, Bosnia & Herzegovina 2 - 1 Qatar, home 49.2%, away 23.7%, draw 27.1%, confidence Low
+- Paraguay vs Australia: Draw, Paraguay 1 - 1 Australia, home 35.3%, away 27.5%, draw 37.2%, confidence Low
+- Japan vs Sweden: Draw, Japan 1 - 1 Sweden, home 35.0%, away 28.8%, draw 36.2%, confidence Low
+- Ecuador vs Germany: Germany, Ecuador 1 - 1 Germany, home 28.0%, away 43.0%, draw 28.9%, confidence Low
 
 Injury Risk Games
 - No games available.
