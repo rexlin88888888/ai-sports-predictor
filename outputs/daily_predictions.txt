@@ -1,31 +1,31 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-26T14:33:36
+Generated: 2026-06-27T13:51:33
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Norway vs France: France, Norway 0 - 2 France, home 14.0%, away 64.9%, draw 21.0%, confidence Medium
-- Senegal vs Iraq: Senegal, Senegal 2 - 0 Iraq, home 61.7%, away 14.0%, draw 24.3%, confidence Medium
-- Cape Verde vs Saudi Arabia: Cape Verde, Cape Verde 2 - 0 Saudi Arabia, home 49.6%, away 21.3%, draw 29.0%, confidence Low
-- Uruguay vs Spain: Spain, Uruguay 0 - 2 Spain, home 20.7%, away 54.9%, draw 24.5%, confidence Low
-- Egypt vs IR Iran: Draw, Egypt 1 - 1 IR Iran, home 28.6%, away 34.3%, draw 37.1%, confidence Low
-- New Zealand vs Belgium: Belgium, New Zealand 0 - 2 Belgium, home 12.5%, away 66.9%, draw 20.6%, confidence Medium
+- Croatia vs Ghana: Croatia, Croatia 3 - 0 Ghana, home 65.0%, away 13.2%, draw 21.8%, confidence Medium
+- Panama vs England: England, Panama 1 - 1 England, home 23.4%, away 54.4%, draw 22.2%, confidence Low
+- Colombia vs Portugal: Portugal, Colombia 1 - 1 Portugal, home 34.0%, away 37.1%, draw 28.9%, confidence Low
+- Congo DR vs Uzbekistan: Congo DR, Congo DR 1 - 1 Uzbekistan, home 40.0%, away 30.7%, draw 29.3%, confidence Low
+- Algeria vs Austria: Draw, Algeria 2 - 2 Austria, home 35.2%, away 27.9%, draw 36.8%, confidence Low
+- Jordan vs Argentina: Argentina, Jordan 0 - 3 Argentina, home 10.1%, away 69.3%, draw 20.6%, confidence Medium
 
 Highest Confidence Picks
-- New Zealand vs Belgium: Belgium, New Zealand 0 - 2 Belgium, home 12.5%, away 66.9%, draw 20.6%, confidence Medium
-- Norway vs France: France, Norway 0 - 2 France, home 14.0%, away 64.9%, draw 21.0%, confidence Medium
-- Senegal vs Iraq: Senegal, Senegal 2 - 0 Iraq, home 61.7%, away 14.0%, draw 24.3%, confidence Medium
+- Jordan vs Argentina: Argentina, Jordan 0 - 3 Argentina, home 10.1%, away 69.3%, draw 20.6%, confidence Medium
+- Croatia vs Ghana: Croatia, Croatia 3 - 0 Ghana, home 65.0%, away 13.2%, draw 21.8%, confidence Medium
+- Panama vs England: England, Panama 1 - 1 England, home 23.4%, away 54.4%, draw 22.2%, confidence Low
 
 Upset Watch
-- New Zealand vs Belgium: Belgium, New Zealand 0 - 2 Belgium, home 12.5%, away 66.9%, draw 20.6%, confidence Medium
-- Norway vs France: France, Norway 0 - 2 France, home 14.0%, away 64.9%, draw 21.0%, confidence Medium
-- Uruguay vs Spain: Spain, Uruguay 0 - 2 Spain, home 20.7%, away 54.9%, draw 24.5%, confidence Low
+- Panama vs England: England, Panama 1 - 1 England, home 23.4%, away 54.4%, draw 22.2%, confidence Low
+- Colombia vs Portugal: Portugal, Colombia 1 - 1 Portugal, home 34.0%, away 37.1%, draw 28.9%, confidence Low
 
 Draw Watch
-- Egypt vs IR Iran: Draw, Egypt 1 - 1 IR Iran, home 28.6%, away 34.3%, draw 37.1%, confidence Low
-- Cape Verde vs Saudi Arabia: Cape Verde, Cape Verde 2 - 0 Saudi Arabia, home 49.6%, away 21.3%, draw 29.0%, confidence Low
+- Algeria vs Austria: Draw, Algeria 2 - 2 Austria, home 35.2%, away 27.9%, draw 36.8%, confidence Low
+- Congo DR vs Uzbekistan: Congo DR, Congo DR 1 - 1 Uzbekistan, home 40.0%, away 30.7%, draw 29.3%, confidence Low
+- Colombia vs Portugal: Portugal, Colombia 1 - 1 Portugal, home 34.0%, away 37.1%, draw 28.9%, confidence Low
 
 Injury Risk Games
 - No games available.
