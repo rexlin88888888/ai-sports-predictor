@@ -1,31 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-27T13:51:33
+Generated: 2026-06-28T13:56:08
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Croatia vs Ghana: Croatia, Croatia 3 - 0 Ghana, home 65.0%, away 13.2%, draw 21.8%, confidence Medium
-- Panama vs England: England, Panama 1 - 1 England, home 23.4%, away 54.4%, draw 22.2%, confidence Low
-- Colombia vs Portugal: Portugal, Colombia 1 - 1 Portugal, home 34.0%, away 37.1%, draw 28.9%, confidence Low
-- Congo DR vs Uzbekistan: Congo DR, Congo DR 1 - 1 Uzbekistan, home 40.0%, away 30.7%, draw 29.3%, confidence Low
-- Algeria vs Austria: Draw, Algeria 2 - 2 Austria, home 35.2%, away 27.9%, draw 36.8%, confidence Low
-- Jordan vs Argentina: Argentina, Jordan 0 - 3 Argentina, home 10.1%, away 69.3%, draw 20.6%, confidence Medium
+- South Africa vs Canada: South Africa, South Africa 1 - 1 Canada, home 38.2%, away 24.6%, draw 37.2%, confidence Low
 
 Highest Confidence Picks
-- Jordan vs Argentina: Argentina, Jordan 0 - 3 Argentina, home 10.1%, away 69.3%, draw 20.6%, confidence Medium
-- Croatia vs Ghana: Croatia, Croatia 3 - 0 Ghana, home 65.0%, away 13.2%, draw 21.8%, confidence Medium
-- Panama vs England: England, Panama 1 - 1 England, home 23.4%, away 54.4%, draw 22.2%, confidence Low
+- South Africa vs Canada: South Africa, South Africa 1 - 1 Canada, home 38.2%, away 24.6%, draw 37.2%, confidence Low
 
 Upset Watch
-- Panama vs England: England, Panama 1 - 1 England, home 23.4%, away 54.4%, draw 22.2%, confidence Low
-- Colombia vs Portugal: Portugal, Colombia 1 - 1 Portugal, home 34.0%, away 37.1%, draw 28.9%, confidence Low
+- No games available.
 
 Draw Watch
-- Algeria vs Austria: Draw, Algeria 2 - 2 Austria, home 35.2%, away 27.9%, draw 36.8%, confidence Low
-- Congo DR vs Uzbekistan: Congo DR, Congo DR 1 - 1 Uzbekistan, home 40.0%, away 30.7%, draw 29.3%, confidence Low
-- Colombia vs Portugal: Portugal, Colombia 1 - 1 Portugal, home 34.0%, away 37.1%, draw 28.9%, confidence Low
+- South Africa vs Canada: South Africa, South Africa 1 - 1 Canada, home 38.2%, away 24.6%, draw 37.2%, confidence Low
 
 Injury Risk Games
 - No games available.
