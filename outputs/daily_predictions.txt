@@ -1,25 +1,26 @@
 AI Sports Predictor Daily Report
-Generated: 2026-06-29T15:54:13
+Generated: 2026-06-30T14:27:21
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Brazil vs Japan: Brazil, Brazil 2 - 0 Japan, home 60.0%, away 17.3%, draw 22.7%, confidence Medium
-- Germany vs Paraguay: Germany, Germany 2 - 0 Paraguay, home 61.8%, away 15.9%, draw 22.3%, confidence Medium
-- Netherlands vs Morocco: Netherlands, Netherlands 2 - 1 Morocco, home 50.3%, away 25.2%, draw 24.5%, confidence Low
+- Ivory Coast vs Norway: Ivory Coast, Ivory Coast 2 - 0 Norway, home 55.0%, away 17.0%, draw 28.0%, confidence Medium
+- France vs Sweden: France, France 2 - 1 Sweden, home 58.5%, away 19.5%, draw 22.0%, confidence Medium
+- Mexico vs Ecuador: Mexico, Mexico 2 - 0 Ecuador, home 45.9%, away 23.4%, draw 30.7%, confidence Low
 
 Highest Confidence Picks
-- Germany vs Paraguay: Germany, Germany 2 - 0 Paraguay, home 61.8%, away 15.9%, draw 22.3%, confidence Medium
-- Brazil vs Japan: Brazil, Brazil 2 - 0 Japan, home 60.0%, away 17.3%, draw 22.7%, confidence Medium
-- Netherlands vs Morocco: Netherlands, Netherlands 2 - 1 Morocco, home 50.3%, away 25.2%, draw 24.5%, confidence Low
+- France vs Sweden: France, France 2 - 1 Sweden, home 58.5%, away 19.5%, draw 22.0%, confidence Medium
+- Ivory Coast vs Norway: Ivory Coast, Ivory Coast 2 - 0 Norway, home 55.0%, away 17.0%, draw 28.0%, confidence Medium
+- Mexico vs Ecuador: Mexico, Mexico 2 - 0 Ecuador, home 45.9%, away 23.4%, draw 30.7%, confidence Low
 
 Upset Watch
 - No games available.
 
 Draw Watch
-- No games available.
+- Mexico vs Ecuador: Mexico, Mexico 2 - 0 Ecuador, home 45.9%, away 23.4%, draw 30.7%, confidence Low
+- Ivory Coast vs Norway: Ivory Coast, Ivory Coast 2 - 0 Norway, home 55.0%, away 17.0%, draw 28.0%, confidence Medium
 
 Injury Risk Games
 - No games available.
