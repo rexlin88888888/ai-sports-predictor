@@ -1,26 +1,25 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-02T14:11:02
+Generated: 2026-07-03T14:15:39
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Spain vs Austria: Spain, Spain 3 - 1 Austria, home 54.5%, away 22.9%, draw 22.6%, confidence Low
-- Portugal vs Croatia: Portugal, Portugal 2 - 1 Croatia, home 44.6%, away 27.1%, draw 28.2%, confidence Low
-- Switzerland vs Algeria: Draw, Switzerland 2 - 2 Algeria, home 31.5%, away 32.0%, draw 36.4%, confidence Low
+- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
+- Argentina vs Cape Verde: Argentina, Argentina 3 - 0 Cape Verde, home 70.5%, away 8.9%, draw 20.6%, confidence High
+- Colombia vs Ghana: Colombia, Colombia 2 - 0 Ghana, home 67.2%, away 12.2%, draw 20.6%, confidence Medium
 
 Highest Confidence Picks
-- Spain vs Austria: Spain, Spain 3 - 1 Austria, home 54.5%, away 22.9%, draw 22.6%, confidence Low
-- Portugal vs Croatia: Portugal, Portugal 2 - 1 Croatia, home 44.6%, away 27.1%, draw 28.2%, confidence Low
-- Switzerland vs Algeria: Draw, Switzerland 2 - 2 Algeria, home 31.5%, away 32.0%, draw 36.4%, confidence Low
+- Argentina vs Cape Verde: Argentina, Argentina 3 - 0 Cape Verde, home 70.5%, away 8.9%, draw 20.6%, confidence High
+- Colombia vs Ghana: Colombia, Colombia 2 - 0 Ghana, home 67.2%, away 12.2%, draw 20.6%, confidence Medium
+- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
 
 Upset Watch
-- No games available.
+- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
 
 Draw Watch
-- Switzerland vs Algeria: Draw, Switzerland 2 - 2 Algeria, home 31.5%, away 32.0%, draw 36.4%, confidence Low
-- Portugal vs Croatia: Portugal, Portugal 2 - 1 Croatia, home 44.6%, away 27.1%, draw 28.2%, confidence Low
+- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
 
 Injury Risk Games
 - No games available.
