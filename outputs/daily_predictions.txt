@@ -1,25 +1,24 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-03T14:15:39
+Generated: 2026-07-04T13:41:56
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
-- Argentina vs Cape Verde: Argentina, Argentina 3 - 0 Cape Verde, home 70.5%, away 8.9%, draw 20.6%, confidence High
-- Colombia vs Ghana: Colombia, Colombia 2 - 0 Ghana, home 67.2%, away 12.2%, draw 20.6%, confidence Medium
+- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
+- Paraguay vs France: France, Paraguay 0 - 2 France, home 14.1%, away 65.3%, draw 20.6%, confidence Medium
 
 Highest Confidence Picks
-- Argentina vs Cape Verde: Argentina, Argentina 3 - 0 Cape Verde, home 70.5%, away 8.9%, draw 20.6%, confidence High
-- Colombia vs Ghana: Colombia, Colombia 2 - 0 Ghana, home 67.2%, away 12.2%, draw 20.6%, confidence Medium
-- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
+- Paraguay vs France: France, Paraguay 0 - 2 France, home 14.1%, away 65.3%, draw 20.6%, confidence Medium
+- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
 
 Upset Watch
-- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
+- Paraguay vs France: France, Paraguay 0 - 2 France, home 14.1%, away 65.3%, draw 20.6%, confidence Medium
+- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
 
 Draw Watch
-- Australia vs Egypt: Egypt, Australia 0 - 1 Egypt, home 24.4%, away 45.0%, draw 30.6%, confidence Low
+- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
 
 Injury Risk Games
 - No games available.
