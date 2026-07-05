@@ -1,24 +1,23 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-04T13:41:56
+Generated: 2026-07-05T13:48:53
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
-- Paraguay vs France: France, Paraguay 0 - 2 France, home 14.1%, away 65.3%, draw 20.6%, confidence Medium
+- Brazil vs Norway: Brazil, Brazil 3 - 0 Norway, home 69.1%, away 10.3%, draw 20.6%, confidence Medium
+- Mexico vs England: Mexico, Mexico 2 - 0 England, home 46.9%, away 27.7%, draw 25.5%, confidence Low
 
 Highest Confidence Picks
-- Paraguay vs France: France, Paraguay 0 - 2 France, home 14.1%, away 65.3%, draw 20.6%, confidence Medium
-- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
+- Brazil vs Norway: Brazil, Brazil 3 - 0 Norway, home 69.1%, away 10.3%, draw 20.6%, confidence Medium
+- Mexico vs England: Mexico, Mexico 2 - 0 England, home 46.9%, away 27.7%, draw 25.5%, confidence Low
 
 Upset Watch
-- Paraguay vs France: France, Paraguay 0 - 2 France, home 14.1%, away 65.3%, draw 20.6%, confidence Medium
-- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
+- No games available.
 
 Draw Watch
-- Canada vs Morocco: Morocco, Canada 0 - 1 Morocco, home 23.1%, away 46.3%, draw 30.6%, confidence Low
+- Mexico vs England: Mexico, Mexico 2 - 0 England, home 46.9%, away 27.7%, draw 25.5%, confidence Low
 
 Injury Risk Games
 - No games available.
