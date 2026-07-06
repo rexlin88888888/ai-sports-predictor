@@ -1,23 +1,24 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-05T13:48:53
+Generated: 2026-07-06T15:41:33
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Brazil vs Norway: Brazil, Brazil 3 - 0 Norway, home 69.1%, away 10.3%, draw 20.6%, confidence Medium
-- Mexico vs England: Mexico, Mexico 2 - 0 England, home 46.9%, away 27.7%, draw 25.5%, confidence Low
+- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 25.5%, away 51.5%, draw 23.0%, confidence Low
 
 Highest Confidence Picks
-- Brazil vs Norway: Brazil, Brazil 3 - 0 Norway, home 69.1%, away 10.3%, draw 20.6%, confidence Medium
-- Mexico vs England: Mexico, Mexico 2 - 0 England, home 46.9%, away 27.7%, draw 25.5%, confidence Low
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 25.5%, away 51.5%, draw 23.0%, confidence Low
+- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
 
 Upset Watch
-- No games available.
+- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 25.5%, away 51.5%, draw 23.0%, confidence Low
+- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
 
 Draw Watch
-- Mexico vs England: Mexico, Mexico 2 - 0 England, home 46.9%, away 27.7%, draw 25.5%, confidence Low
+- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
 
 Injury Risk Games
 - No games available.
