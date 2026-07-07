@@ -1,24 +1,23 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-06T15:41:33
+Generated: 2026-07-07T14:45:24
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 25.5%, away 51.5%, draw 23.0%, confidence Low
+- Argentina vs Egypt: Argentina, Argentina 3 - 0 Egypt, home 64.6%, away 12.9%, draw 22.5%, confidence Medium
+- Switzerland vs Colombia: Switzerland, Switzerland 2 - 1 Colombia, home 42.8%, away 34.4%, draw 22.8%, confidence Low
 
 Highest Confidence Picks
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 25.5%, away 51.5%, draw 23.0%, confidence Low
-- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
+- Argentina vs Egypt: Argentina, Argentina 3 - 0 Egypt, home 64.6%, away 12.9%, draw 22.5%, confidence Medium
+- Switzerland vs Colombia: Switzerland, Switzerland 2 - 1 Colombia, home 42.8%, away 34.4%, draw 22.8%, confidence Low
 
 Upset Watch
-- United States vs Belgium: Belgium, United States 1 - 2 Belgium, home 25.5%, away 51.5%, draw 23.0%, confidence Low
-- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
+- No games available.
 
 Draw Watch
-- Portugal vs Spain: Spain, Portugal 1 - 2 Spain, home 28.5%, away 40.9%, draw 30.6%, confidence Low
+- No games available.
 
 Injury Risk Games
 - No games available.
