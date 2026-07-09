@@ -1,6 +1,11 @@
-Title: No games on the model board today
+Title: Today's model board has one matchup to watch
 
 Script:
-No games are available today. Check back after the next schedule update.
+Stop scrolling. The model board is live.
+Top watchlist game: France vs Morocco.
+Model pick: France.
+Projected score: France 2 - 1 Morocco.
+Why it matters: France recent goals for 2.20, against 0.80
+Follow for the daily prediction card and result recap.
 
-Hashtags: #SportsAI #ModelPick #SportsPredictions
+Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions

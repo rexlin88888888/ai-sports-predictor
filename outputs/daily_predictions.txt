@@ -1,15 +1,15 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-08T14:23:37
+Generated: 2026-07-09T15:18:10
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- No games available.
+- France vs Morocco: France, France 2 - 1 Morocco, home 56.8%, away 20.0%, draw 23.2%, confidence Medium
 
 Highest Confidence Picks
-- No games available.
+- France vs Morocco: France, France 2 - 1 Morocco, home 56.8%, away 20.0%, draw 23.2%, confidence Medium
 
 Upset Watch
 - No games available.

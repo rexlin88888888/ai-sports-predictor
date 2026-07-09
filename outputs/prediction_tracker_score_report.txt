@@ -1,9 +1,9 @@
 Prediction Tracker Score Report
-Generated: 2026-07-08T14:23:38
+Generated: 2026-07-09T15:24:30
 
 Tracker rows: 31
 ESPN dates checked: 12
-ESPN matches fetched: 37
+ESPN matches fetched: 36
 Updated rows: 0
 Settled rows: 31
 Pending rows: 0
