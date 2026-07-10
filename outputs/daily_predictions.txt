@@ -1,21 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-09T15:18:10
+Generated: 2026-07-10T14:35:57
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- France vs Morocco: France, France 2 - 1 Morocco, home 56.8%, away 20.0%, draw 23.2%, confidence Medium
+- Spain vs Belgium: Spain, Spain 2 - 1 Belgium, home 46.0%, away 26.4%, draw 27.6%, confidence Low
 
 Highest Confidence Picks
-- France vs Morocco: France, France 2 - 1 Morocco, home 56.8%, away 20.0%, draw 23.2%, confidence Medium
+- Spain vs Belgium: Spain, Spain 2 - 1 Belgium, home 46.0%, away 26.4%, draw 27.6%, confidence Low
 
 Upset Watch
 - No games available.
 
 Draw Watch
-- No games available.
+- Spain vs Belgium: Spain, Spain 2 - 1 Belgium, home 46.0%, away 26.4%, draw 27.6%, confidence Low
 
 Injury Risk Games
 - No games available.
