@@ -2,11 +2,12 @@ Title: Today's model board has one matchup to watch
 
 Script:
 Stop scrolling. The model board is live.
-Top watchlist game: Spain vs Belgium.
-Model pick: Spain.
-Projected score: Spain 2 - 1 Belgium.
-Why it matters: Spain recent goals for 3.20, against 0.80
-Draw watchlist: Spain vs Belgium sits at 27.6%.
+Top watchlist game: Argentina vs Switzerland.
+Model pick: Argentina.
+Projected score: Argentina 3 - 1 Switzerland.
+Why it matters: Argentina recent goals for 3.20, against 0.20
+Upset watchlist: England in Norway vs England.
+Draw watchlist: Norway vs England sits at 35.5%.
 Follow for the daily prediction card and result recap.
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions

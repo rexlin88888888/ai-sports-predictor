@@ -1,21 +1,23 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-10T14:35:57
+Generated: 2026-07-11T13:27:58
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Spain vs Belgium: Spain, Spain 2 - 1 Belgium, home 46.0%, away 26.4%, draw 27.6%, confidence Low
+- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
+- Argentina vs Switzerland: Argentina, Argentina 3 - 1 Switzerland, home 62.2%, away 15.8%, draw 22.0%, confidence Medium
 
 Highest Confidence Picks
-- Spain vs Belgium: Spain, Spain 2 - 1 Belgium, home 46.0%, away 26.4%, draw 27.6%, confidence Low
+- Argentina vs Switzerland: Argentina, Argentina 3 - 1 Switzerland, home 62.2%, away 15.8%, draw 22.0%, confidence Medium
+- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
 
 Upset Watch
-- No games available.
+- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
 
 Draw Watch
-- Spain vs Belgium: Spain, Spain 2 - 1 Belgium, home 46.0%, away 26.4%, draw 27.6%, confidence Low
+- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
 
 Injury Risk Games
 - No games available.
