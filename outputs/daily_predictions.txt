@@ -1,23 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-11T13:27:58
+Generated: 2026-07-12T13:29:11
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
-- Argentina vs Switzerland: Argentina, Argentina 3 - 1 Switzerland, home 62.2%, away 15.8%, draw 22.0%, confidence Medium
+- No games available.
 
 Highest Confidence Picks
-- Argentina vs Switzerland: Argentina, Argentina 3 - 1 Switzerland, home 62.2%, away 15.8%, draw 22.0%, confidence Medium
-- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
+- No games available.
 
 Upset Watch
-- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
+- No games available.
 
 Draw Watch
-- Norway vs England: England, Norway 1 - 1 England, home 24.8%, away 39.7%, draw 35.5%, confidence Low
+- No games available.
 
 Injury Risk Games
 - No games available.
