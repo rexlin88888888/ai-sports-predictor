@@ -1,7 +1,7 @@
 {
   "tracker_rows": 31,
   "espn_dates_checked": 12,
-  "espn_matches_fetched": 35,
+  "espn_matches_fetched": 34,
   "updated_rows": 0,
   "settled_rows": 31,
   "pending_rows": 0,
@@ -12,5 +12,5 @@
     "其它原因": 1
   },
   "fetch_errors": {},
-  "generated_at": "2026-07-12T13:29:13"
+  "generated_at": "2026-07-13T14:42:50"
 }
