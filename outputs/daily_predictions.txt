@@ -1,21 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-13T14:42:47
+Generated: 2026-07-14T13:52:57
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- No games available.
+- France vs Spain: Draw, France 2 - 2 Spain, home 33.4%, away 29.6%, draw 37.0%, confidence Low
 
 Highest Confidence Picks
-- No games available.
+- France vs Spain: Draw, France 2 - 2 Spain, home 33.4%, away 29.6%, draw 37.0%, confidence Low
 
 Upset Watch
 - No games available.
 
 Draw Watch
-- No games available.
+- France vs Spain: Draw, France 2 - 2 Spain, home 33.4%, away 29.6%, draw 37.0%, confidence Low
 
 Injury Risk Games
 - No games available.
