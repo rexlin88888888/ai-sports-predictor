@@ -2,11 +2,11 @@ Title: Today's model board has one matchup to watch
 
 Script:
 Stop scrolling. The model board is live.
-Top watchlist game: France vs Spain.
-Model pick: Draw.
-Projected score: France 2 - 2 Spain.
-Why it matters: France recent goals for 2.20, against 0.80
-Draw watchlist: France vs Spain sits at 37.0%.
+Top watchlist game: England vs Argentina.
+Model pick: Argentina.
+Projected score: England 0 - 2 Argentina.
+Why it matters: England recent goals for 1.00, against 1.20
+Upset watchlist: Argentina in England vs Argentina.
 Follow for the daily prediction card and result recap.
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions

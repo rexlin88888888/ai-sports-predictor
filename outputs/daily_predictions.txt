@@ -1,21 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-14T13:52:57
+Generated: 2026-07-15T13:50:54
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- France vs Spain: Draw, France 2 - 2 Spain, home 33.4%, away 29.6%, draw 37.0%, confidence Low
+- England vs Argentina: Argentina, England 0 - 2 Argentina, home 18.2%, away 57.3%, draw 24.5%, confidence Medium
 
 Highest Confidence Picks
-- France vs Spain: Draw, France 2 - 2 Spain, home 33.4%, away 29.6%, draw 37.0%, confidence Low
+- England vs Argentina: Argentina, England 0 - 2 Argentina, home 18.2%, away 57.3%, draw 24.5%, confidence Medium
 
 Upset Watch
-- No games available.
+- England vs Argentina: Argentina, England 0 - 2 Argentina, home 18.2%, away 57.3%, draw 24.5%, confidence Medium
 
 Draw Watch
-- France vs Spain: Draw, France 2 - 2 Spain, home 33.4%, away 29.6%, draw 37.0%, confidence Low
+- No games available.
 
 Injury Risk Games
 - No games available.
