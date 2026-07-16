@@ -1,12 +1,6 @@
-Title: Today's model board has one matchup to watch
+Title: No games on the model board today
 
 Script:
-Stop scrolling. The model board is live.
-Top watchlist game: England vs Argentina.
-Model pick: Argentina.
-Projected score: England 0 - 2 Argentina.
-Why it matters: England recent goals for 1.00, against 1.20
-Upset watchlist: Argentina in England vs Argentina.
-Follow for the daily prediction card and result recap.
+No games are available today. Check back after the next schedule update.
 
-Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions
+Hashtags: #SportsAI #ModelPick #SportsPredictions
