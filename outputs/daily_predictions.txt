@@ -1,15 +1,15 @@
 AI Sports Predictor Daily Report
-Generated: 2026-07-17T13:46:31
+Generated: 2026-07-18T13:23:56
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- No games available.
+- France vs England: France, France 2 - 0 England, home 58.2%, away 17.3%, draw 24.6%, confidence Medium
 
 Highest Confidence Picks
-- No games available.
+- France vs England: France, France 2 - 0 England, home 58.2%, away 17.3%, draw 24.6%, confidence Medium
 
 Upset Watch
 - No games available.
