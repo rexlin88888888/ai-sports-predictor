@@ -1,21 +1,21 @@
 Twitter/X Post
-Today's model pick: France in France vs England.
-Projected score: France 2 - 0 England.
-Watchlist note: France recent goals for 2.20, against 0.80
-Confidence: Medium. Model version: v1.0.0.
+Today's model pick: Draw in Spain vs Argentina.
+Projected score: Spain 2 - 2 Argentina.
+Watchlist note: Spain recent goals for 3.20, against 0.80
+Confidence: Low. Model version: v1.0.0.
 Hashtags: #SportsAI #ModelPick #SportsPredictions
 
 YouTube Shorts Title
-France is today's model pick to watch
+Draw is today's model pick to watch
 
 Instagram Caption
 Today's AI Sports Predictor board is live.
 
-Top model pick: France
-Matchup: France vs England
-Projection: France 2 - 0 England
-Signal: France recent goals for 2.20, against 0.80
+Top model pick: Draw
+Matchup: Spain vs Argentina
+Projection: Spain 2 - 2 Argentina
+Signal: Spain recent goals for 3.20, against 0.80
 
-No major draw watchlist today.
+Draw watchlist: Spain vs Argentina at 36.2%
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #DailySports
