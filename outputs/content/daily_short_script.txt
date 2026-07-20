@@ -1,12 +1,6 @@
-Title: Today's model board has one matchup to watch
+Title: No games on the model board today
 
 Script:
-Stop scrolling. The model board is live.
-Top watchlist game: Spain vs Argentina.
-Model pick: Draw.
-Projected score: Spain 2 - 2 Argentina.
-Why it matters: Spain recent goals for 3.20, against 0.80
-Draw watchlist: Spain vs Argentina sits at 36.2%.
-Follow for the daily prediction card and result recap.
+No games are available today. Check back after the next schedule update.
 
-Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions
+Hashtags: #SportsAI #ModelPick #SportsPredictions
