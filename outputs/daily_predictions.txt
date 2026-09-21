@@ -1,21 +1,27 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-20T15:43:43
+Generated: 2026-09-21T18:03:08
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- No games available.
+- New Caledonia vs Solomon Islands: New Caledonia, New Caledonia 1 - 1 Solomon Islands, home 39.4%, away 30.9%, draw 29.7%, confidence Low
+- Fiji vs Vanuatu: Fiji, Fiji 2 - 0 Vanuatu, home 50.2%, away 21.6%, draw 28.1%, confidence Low
+- Dominica vs Anguilla: Dominica, Dominica 2 - 0 Anguilla, home 47.9%, away 21.6%, draw 30.6%, confidence Low
 
 Highest Confidence Picks
-- No games available.
+- Fiji vs Vanuatu: Fiji, Fiji 2 - 0 Vanuatu, home 50.2%, away 21.6%, draw 28.1%, confidence Low
+- Dominica vs Anguilla: Dominica, Dominica 2 - 0 Anguilla, home 47.9%, away 21.6%, draw 30.6%, confidence Low
+- New Caledonia vs Solomon Islands: New Caledonia, New Caledonia 1 - 1 Solomon Islands, home 39.4%, away 30.9%, draw 29.7%, confidence Low
 
 Upset Watch
 - No games available.
 
 Draw Watch
-- No games available.
+- Dominica vs Anguilla: Dominica, Dominica 2 - 0 Anguilla, home 47.9%, away 21.6%, draw 30.6%, confidence Low
+- New Caledonia vs Solomon Islands: New Caledonia, New Caledonia 1 - 1 Solomon Islands, home 39.4%, away 30.9%, draw 29.7%, confidence Low
+- Fiji vs Vanuatu: Fiji, Fiji 2 - 0 Vanuatu, home 50.2%, away 21.6%, draw 28.1%, confidence Low
 
 Injury Risk Games
 - No games available.
