@@ -1,13 +1,1 @@
-AI Sports Predictor Performance Report
-Generated: 2026-09-21T18:07:32
-
-total predictions: 3
-settled predictions: 0
-pending predictions: 3
-overall accuracy: N/A
-NBA accuracy: N/A
-Football accuracy: N/A
-draw accuracy: N/A
-high confidence accuracy: N/A
-upset alert accuracy: N/A
-best value accuracy: N/A
+No daily predictions found.

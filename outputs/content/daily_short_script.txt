@@ -1,12 +1,6 @@
-Title: Today's model board has one matchup to watch
+Title: No games on the model board today
 
 Script:
-Stop scrolling. The model board is live.
-Top watchlist game: Fiji vs Vanuatu.
-Model pick: Fiji.
-Projected score: Fiji 2 - 0 Vanuatu.
-Why it matters: Fiji recent goals for 1.20, against 1.40
-Draw watchlist: Dominica vs Anguilla sits at 30.6%.
-Follow for the daily prediction card and result recap.
+No games are available today. Check back after the next schedule update.
 
-Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions
+Hashtags: #SportsAI #ModelPick #SportsPredictions
