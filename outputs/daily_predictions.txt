@@ -1,21 +1,25 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-22T16:36:08
+Generated: 2026-09-23T16:27:14
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- No games available.
+- Azerbaijan vs Tajikistan: Tajikistan, Azerbaijan 1 - 2 Tajikistan, home 27.4%, away 44.7%, draw 27.8%, confidence Low
+- Gibraltar vs Sao Tome and Principe: Sao Tome and Principe, Gibraltar 0 - 1 Sao Tome and Principe, home 26.5%, away 41.3%, draw 32.2%, confidence Low
 
 Highest Confidence Picks
-- No games available.
+- Azerbaijan vs Tajikistan: Tajikistan, Azerbaijan 1 - 2 Tajikistan, home 27.4%, away 44.7%, draw 27.8%, confidence Low
+- Gibraltar vs Sao Tome and Principe: Sao Tome and Principe, Gibraltar 0 - 1 Sao Tome and Principe, home 26.5%, away 41.3%, draw 32.2%, confidence Low
 
 Upset Watch
-- No games available.
+- Azerbaijan vs Tajikistan: Tajikistan, Azerbaijan 1 - 2 Tajikistan, home 27.4%, away 44.7%, draw 27.8%, confidence Low
+- Gibraltar vs Sao Tome and Principe: Sao Tome and Principe, Gibraltar 0 - 1 Sao Tome and Principe, home 26.5%, away 41.3%, draw 32.2%, confidence Low
 
 Draw Watch
-- No games available.
+- Gibraltar vs Sao Tome and Principe: Sao Tome and Principe, Gibraltar 0 - 1 Sao Tome and Principe, home 26.5%, away 41.3%, draw 32.2%, confidence Low
+- Azerbaijan vs Tajikistan: Tajikistan, Azerbaijan 1 - 2 Tajikistan, home 27.4%, away 44.7%, draw 27.8%, confidence Low
 
 Injury Risk Games
 - No games available.
