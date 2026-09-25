@@ -1,32 +1,23 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-24T16:48:10
+Generated: 2026-09-25T16:53:01
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Solomon Islands vs Vanuatu: Solomon Islands, Solomon Islands 2 - 0 Vanuatu, home 51.0%, away 21.8%, draw 27.2%, confidence Low
-- Papua New Guinea vs New Caledonia: New Caledonia, Papua New Guinea 1 - 1 New Caledonia, home 29.5%, away 41.8%, draw 28.7%, confidence Low
-- Palestine vs New Zealand: Draw, Palestine 0 - 1 New Zealand, home 26.1%, away 36.7%, draw 37.2%, confidence Low
-- Japan vs Uruguay: Japan, Japan 2 - 0 Uruguay, home 45.0%, away 24.4%, draw 30.6%, confidence Low
-- Korea Republic vs Ecuador: Draw, Korea Republic 0 - 1 Ecuador, home 30.4%, away 32.4%, draw 37.2%, confidence Low
-- China vs Maldives: China, China 2 - 0 Maldives, home 54.4%, away 21.7%, draw 23.9%, confidence Low
-- Uzbekistan vs IR Iran: IR Iran, Uzbekistan 1 - 2 IR Iran, home 23.5%, away 52.8%, draw 23.7%, confidence Low
+- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
+- India vs Panama: Draw, India 1 - 1 Panama, home 29.5%, away 33.3%, draw 37.2%, confidence Low
 
 Highest Confidence Picks
-- China vs Maldives: China, China 2 - 0 Maldives, home 54.4%, away 21.7%, draw 23.9%, confidence Low
-- Uzbekistan vs IR Iran: IR Iran, Uzbekistan 1 - 2 IR Iran, home 23.5%, away 52.8%, draw 23.7%, confidence Low
-- Solomon Islands vs Vanuatu: Solomon Islands, Solomon Islands 2 - 0 Vanuatu, home 51.0%, away 21.8%, draw 27.2%, confidence Low
+- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
+- India vs Panama: Draw, India 1 - 1 Panama, home 29.5%, away 33.3%, draw 37.2%, confidence Low
 
 Upset Watch
-- Uzbekistan vs IR Iran: IR Iran, Uzbekistan 1 - 2 IR Iran, home 23.5%, away 52.8%, draw 23.7%, confidence Low
-- Papua New Guinea vs New Caledonia: New Caledonia, Papua New Guinea 1 - 1 New Caledonia, home 29.5%, away 41.8%, draw 28.7%, confidence Low
+- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
 
 Draw Watch
-- Palestine vs New Zealand: Draw, Palestine 0 - 1 New Zealand, home 26.1%, away 36.7%, draw 37.2%, confidence Low
-- Korea Republic vs Ecuador: Draw, Korea Republic 0 - 1 Ecuador, home 30.4%, away 32.4%, draw 37.2%, confidence Low
-- Japan vs Uruguay: Japan, Japan 2 - 0 Uruguay, home 45.0%, away 24.4%, draw 30.6%, confidence Low
+- India vs Panama: Draw, India 1 - 1 Panama, home 29.5%, away 33.3%, draw 37.2%, confidence Low
 
 Injury Risk Games
 - No games available.
