@@ -1,23 +1,25 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-25T16:53:01
+Generated: 2026-09-26T16:04:09
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
-- India vs Panama: Draw, India 1 - 1 Panama, home 29.5%, away 33.3%, draw 37.2%, confidence Low
+- United States vs Peru: United States, United States 2 - 1 Peru, home 48.7%, away 23.7%, draw 27.6%, confidence Low
+- Canada vs Chile: Chile, Canada 0 - 2 Chile, home 18.5%, away 57.5%, draw 24.0%, confidence Medium
+- Mexico vs Colombia: Mexico, Mexico 2 - 0 Colombia, home 43.0%, away 33.2%, draw 23.8%, confidence Low
 
 Highest Confidence Picks
-- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
-- India vs Panama: Draw, India 1 - 1 Panama, home 29.5%, away 33.3%, draw 37.2%, confidence Low
+- Canada vs Chile: Chile, Canada 0 - 2 Chile, home 18.5%, away 57.5%, draw 24.0%, confidence Medium
+- United States vs Peru: United States, United States 2 - 1 Peru, home 48.7%, away 23.7%, draw 27.6%, confidence Low
+- Mexico vs Colombia: Mexico, Mexico 2 - 0 Colombia, home 43.0%, away 33.2%, draw 23.8%, confidence Low
 
 Upset Watch
-- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
+- Canada vs Chile: Chile, Canada 0 - 2 Chile, home 18.5%, away 57.5%, draw 24.0%, confidence Medium
 
 Draw Watch
-- India vs Panama: Draw, India 1 - 1 Panama, home 29.5%, away 33.3%, draw 37.2%, confidence Low
+- United States vs Peru: United States, United States 2 - 1 Peru, home 48.7%, away 23.7%, draw 27.6%, confidence Low
 
 Injury Risk Games
 - No games available.
