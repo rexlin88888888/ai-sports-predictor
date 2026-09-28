@@ -1,33 +1,29 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-27T16:40:51
+Generated: 2026-09-28T19:26:37
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Cook Islands vs Tahiti: Draw, Cook Islands 1 - 1 Tahiti, home 29.1%, away 34.0%, draw 36.9%, confidence Low
-- Vanuatu vs New Caledonia: New Caledonia, Vanuatu 1 - 1 New Caledonia, home 28.4%, away 42.8%, draw 28.9%, confidence Low
-- Fiji vs Papua New Guinea: Fiji, Fiji 2 - 0 Papua New Guinea, home 49.3%, away 22.7%, draw 28.0%, confidence Low
-- China vs New Zealand: China, China 1 - 1 New Zealand, home 43.2%, away 27.2%, draw 29.7%, confidence Low
-- Seychelles vs Sri Lanka: Draw, Seychelles 0 - 1 Sri Lanka, home 33.5%, away 31.0%, draw 35.5%, confidence Low
-- Malta vs Liechtenstein: Malta, Malta 2 - 1 Liechtenstein, home 53.6%, away 22.7%, draw 23.7%, confidence Low
-- Jordan vs Syria: Jordan, Jordan 2 - 1 Syria, home 45.1%, away 27.6%, draw 27.3%, confidence Low
-- Bolivia vs Paraguay: Draw, Bolivia 1 - 1 Paraguay, home 27.9%, away 34.9%, draw 37.2%, confidence Low
+- Turkmenistan vs Palestine: Turkmenistan, Turkmenistan 2 - 0 Palestine, home 47.1%, away 22.3%, draw 30.6%, confidence Low
+- Japan vs Venezuela: Japan, Japan 2 - 0 Venezuela, home 58.7%, away 15.8%, draw 25.5%, confidence Medium
+- Korea Republic vs Uruguay: Draw, Korea Republic 1 - 1 Uruguay, home 32.6%, away 31.8%, draw 35.5%, confidence Low
+- Tajikistan vs Palestine: Tajikistan, Tajikistan 2 - 0 Palestine, home 52.0%, away 19.2%, draw 28.8%, confidence Low
 - Kyrgyz Republic vs Maldives: Kyrgyz Republic, Kyrgyz Republic 2 - 0 Maldives, home 54.4%, away 21.7%, draw 23.9%, confidence Low
 
 Highest Confidence Picks
+- Japan vs Venezuela: Japan, Japan 2 - 0 Venezuela, home 58.7%, away 15.8%, draw 25.5%, confidence Medium
 - Kyrgyz Republic vs Maldives: Kyrgyz Republic, Kyrgyz Republic 2 - 0 Maldives, home 54.4%, away 21.7%, draw 23.9%, confidence Low
-- Malta vs Liechtenstein: Malta, Malta 2 - 1 Liechtenstein, home 53.6%, away 22.7%, draw 23.7%, confidence Low
-- Fiji vs Papua New Guinea: Fiji, Fiji 2 - 0 Papua New Guinea, home 49.3%, away 22.7%, draw 28.0%, confidence Low
+- Tajikistan vs Palestine: Tajikistan, Tajikistan 2 - 0 Palestine, home 52.0%, away 19.2%, draw 28.8%, confidence Low
 
 Upset Watch
-- Vanuatu vs New Caledonia: New Caledonia, Vanuatu 1 - 1 New Caledonia, home 28.4%, away 42.8%, draw 28.9%, confidence Low
+- No games available.
 
 Draw Watch
-- Bolivia vs Paraguay: Draw, Bolivia 1 - 1 Paraguay, home 27.9%, away 34.9%, draw 37.2%, confidence Low
-- Cook Islands vs Tahiti: Draw, Cook Islands 1 - 1 Tahiti, home 29.1%, away 34.0%, draw 36.9%, confidence Low
-- Seychelles vs Sri Lanka: Draw, Seychelles 0 - 1 Sri Lanka, home 33.5%, away 31.0%, draw 35.5%, confidence Low
+- Korea Republic vs Uruguay: Draw, Korea Republic 1 - 1 Uruguay, home 32.6%, away 31.8%, draw 35.5%, confidence Low
+- Turkmenistan vs Palestine: Turkmenistan, Turkmenistan 2 - 0 Palestine, home 47.1%, away 22.3%, draw 30.6%, confidence Low
+- Tajikistan vs Palestine: Tajikistan, Tajikistan 2 - 0 Palestine, home 52.0%, away 19.2%, draw 28.8%, confidence Low
 
 Injury Risk Games
 - No games available.
