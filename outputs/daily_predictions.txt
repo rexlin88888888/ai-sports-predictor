@@ -1,29 +1,30 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-28T19:26:37
+Generated: 2026-09-29T17:53:25
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Turkmenistan vs Palestine: Turkmenistan, Turkmenistan 2 - 0 Palestine, home 47.1%, away 22.3%, draw 30.6%, confidence Low
-- Japan vs Venezuela: Japan, Japan 2 - 0 Venezuela, home 58.7%, away 15.8%, draw 25.5%, confidence Medium
-- Korea Republic vs Uruguay: Draw, Korea Republic 1 - 1 Uruguay, home 32.6%, away 31.8%, draw 35.5%, confidence Low
-- Tajikistan vs Palestine: Tajikistan, Tajikistan 2 - 0 Palestine, home 52.0%, away 19.2%, draw 28.8%, confidence Low
-- Kyrgyz Republic vs Maldives: Kyrgyz Republic, Kyrgyz Republic 2 - 0 Maldives, home 54.4%, away 21.7%, draw 23.9%, confidence Low
+- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
+- Russia vs IR Iran: IR Iran, Russia 1 - 2 IR Iran, home 30.4%, away 40.2%, draw 29.4%, confidence Low
+- United States vs Chile: Chile, United States 1 - 2 Chile, home 25.4%, away 48.0%, draw 26.6%, confidence Low
+- Mexico vs Peru: Mexico, Mexico 2 - 0 Peru, home 51.7%, away 17.7%, draw 30.6%, confidence Low
 
 Highest Confidence Picks
-- Japan vs Venezuela: Japan, Japan 2 - 0 Venezuela, home 58.7%, away 15.8%, draw 25.5%, confidence Medium
-- Kyrgyz Republic vs Maldives: Kyrgyz Republic, Kyrgyz Republic 2 - 0 Maldives, home 54.4%, away 21.7%, draw 23.9%, confidence Low
-- Tajikistan vs Palestine: Tajikistan, Tajikistan 2 - 0 Palestine, home 52.0%, away 19.2%, draw 28.8%, confidence Low
+- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
+- Mexico vs Peru: Mexico, Mexico 2 - 0 Peru, home 51.7%, away 17.7%, draw 30.6%, confidence Low
+- United States vs Chile: Chile, United States 1 - 2 Chile, home 25.4%, away 48.0%, draw 26.6%, confidence Low
 
 Upset Watch
-- No games available.
+- Australia vs Brazil: Brazil, Australia 0 - 2 Brazil, home 13.2%, away 66.2%, draw 20.6%, confidence Medium
+- United States vs Chile: Chile, United States 1 - 2 Chile, home 25.4%, away 48.0%, draw 26.6%, confidence Low
+- Russia vs IR Iran: IR Iran, Russia 1 - 2 IR Iran, home 30.4%, away 40.2%, draw 29.4%, confidence Low
 
 Draw Watch
-- Korea Republic vs Uruguay: Draw, Korea Republic 1 - 1 Uruguay, home 32.6%, away 31.8%, draw 35.5%, confidence Low
-- Turkmenistan vs Palestine: Turkmenistan, Turkmenistan 2 - 0 Palestine, home 47.1%, away 22.3%, draw 30.6%, confidence Low
-- Tajikistan vs Palestine: Tajikistan, Tajikistan 2 - 0 Palestine, home 52.0%, away 19.2%, draw 28.8%, confidence Low
+- Mexico vs Peru: Mexico, Mexico 2 - 0 Peru, home 51.7%, away 17.7%, draw 30.6%, confidence Low
+- Russia vs IR Iran: IR Iran, Russia 1 - 2 IR Iran, home 30.4%, away 40.2%, draw 29.4%, confidence Low
+- United States vs Chile: Chile, United States 1 - 2 Chile, home 25.4%, away 48.0%, draw 26.6%, confidence Low
 
 Injury Risk Games
 - No games available.
