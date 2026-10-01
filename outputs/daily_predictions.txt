@@ -1,32 +1,23 @@
 AI Sports Predictor Daily Report
-Generated: 2026-09-30T17:48:45
+Generated: 2026-10-01T18:14:31
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Papua New Guinea vs Solomon Islands: Solomon Islands, Papua New Guinea 1 - 1 Solomon Islands, home 29.6%, away 41.8%, draw 28.6%, confidence Low
-- Fiji vs New Caledonia: Draw, Fiji 1 - 1 New Caledonia, home 35.1%, away 27.7%, draw 37.2%, confidence Low
-- Seychelles vs Sri Lanka: Draw, Seychelles 0 - 1 Sri Lanka, home 33.5%, away 31.0%, draw 35.5%, confidence Low
-- Botswana vs Mozambique: Draw, Botswana 1 - 1 Mozambique, home 36.5%, away 26.3%, draw 37.2%, confidence Low
-- Lithuania vs Andorra: Lithuania, Lithuania 0 - 0 Andorra, home 38.7%, away 24.1%, draw 37.2%, confidence Low
-- Mauritius vs Djibouti: Draw, Mauritius 0 - 0 Djibouti, home 35.6%, away 27.2%, draw 37.2%, confidence Low
-- Argentina vs Bolivia: Argentina, Argentina 3 - 0 Bolivia, home 71.6%, away 7.8%, draw 20.6%, confidence High
-- Cook Islands vs Tahiti: Draw, Cook Islands 1 - 1 Tahiti, home 29.1%, away 34.0%, draw 36.9%, confidence Low
+- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
+- Uzbekistan vs Syria: Uzbekistan, Uzbekistan 2 - 0 Syria, home 55.3%, away 20.6%, draw 24.1%, confidence Medium
 
 Highest Confidence Picks
-- Argentina vs Bolivia: Argentina, Argentina 3 - 0 Bolivia, home 71.6%, away 7.8%, draw 20.6%, confidence High
-- Papua New Guinea vs Solomon Islands: Solomon Islands, Papua New Guinea 1 - 1 Solomon Islands, home 29.6%, away 41.8%, draw 28.6%, confidence Low
-- Lithuania vs Andorra: Lithuania, Lithuania 0 - 0 Andorra, home 38.7%, away 24.1%, draw 37.2%, confidence Low
+- Uzbekistan vs Syria: Uzbekistan, Uzbekistan 2 - 0 Syria, home 55.3%, away 20.6%, draw 24.1%, confidence Medium
+- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
 
 Upset Watch
-- Papua New Guinea vs Solomon Islands: Solomon Islands, Papua New Guinea 1 - 1 Solomon Islands, home 29.6%, away 41.8%, draw 28.6%, confidence Low
+- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
 
 Draw Watch
-- Fiji vs New Caledonia: Draw, Fiji 1 - 1 New Caledonia, home 35.1%, away 27.7%, draw 37.2%, confidence Low
-- Botswana vs Mozambique: Draw, Botswana 1 - 1 Mozambique, home 36.5%, away 26.3%, draw 37.2%, confidence Low
-- Lithuania vs Andorra: Lithuania, Lithuania 0 - 0 Andorra, home 38.7%, away 24.1%, draw 37.2%, confidence Low
+- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
 
 Injury Risk Games
 - No games available.
