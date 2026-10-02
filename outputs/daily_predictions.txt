@@ -1,23 +1,29 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-01T18:14:31
+Generated: 2026-10-02T17:39:59
 Model version: v1.0.0
 
 Today's NBA Predictions
 - No games available.
 
 Today's Football Predictions
-- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
-- Uzbekistan vs Syria: Uzbekistan, Uzbekistan 2 - 0 Syria, home 55.3%, away 20.6%, draw 24.1%, confidence Medium
+- Korea Republic vs Venezuela: Korea Republic, Korea Republic 2 - 0 Venezuela, home 48.7%, away 22.0%, draw 29.3%, confidence Low
+- China vs Palestine: China, China 2 - 0 Palestine, home 50.1%, away 20.8%, draw 29.0%, confidence Low
+- Congo DR vs Uganda: Congo DR, Congo DR 2 - 0 Uganda, home 54.2%, away 17.7%, draw 28.1%, confidence Low
+- Mauritius vs Sri Lanka: Draw, Mauritius 0 - 0 Sri Lanka, home 30.0%, away 33.6%, draw 36.5%, confidence Low
+- Colombia vs Paraguay: Colombia, Colombia 2 - 0 Paraguay, home 61.2%, away 17.6%, draw 21.1%, confidence Medium
 
 Highest Confidence Picks
-- Uzbekistan vs Syria: Uzbekistan, Uzbekistan 2 - 0 Syria, home 55.3%, away 20.6%, draw 24.1%, confidence Medium
-- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
+- Colombia vs Paraguay: Colombia, Colombia 2 - 0 Paraguay, home 61.2%, away 17.6%, draw 21.1%, confidence Medium
+- Congo DR vs Uganda: Congo DR, Congo DR 2 - 0 Uganda, home 54.2%, away 17.7%, draw 28.1%, confidence Low
+- China vs Palestine: China, China 2 - 0 Palestine, home 50.1%, away 20.8%, draw 29.0%, confidence Low
 
 Upset Watch
-- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
+- No games available.
 
 Draw Watch
-- Maldives vs Lebanon: Lebanon, Maldives 0 - 2 Lebanon, home 25.5%, away 43.9%, draw 30.6%, confidence Low
+- Mauritius vs Sri Lanka: Draw, Mauritius 0 - 0 Sri Lanka, home 30.0%, away 33.6%, draw 36.5%, confidence Low
+- Korea Republic vs Venezuela: Korea Republic, Korea Republic 2 - 0 Venezuela, home 48.7%, away 22.0%, draw 29.3%, confidence Low
+- China vs Palestine: China, China 2 - 0 Palestine, home 50.1%, away 20.8%, draw 29.0%, confidence Low
 
 Injury Risk Games
 - No games available.
