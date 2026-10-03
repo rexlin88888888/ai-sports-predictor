@@ -1,29 +1,33 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-02T17:39:59
+Generated: 2026-10-03T15:59:24
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- Miami Heat at Toronto Raptors: Toronto Raptors, Toronto Raptors 121 - 119 Miami Heat, home 58.9%, away 41.1%, confidence Low
 
 Today's Football Predictions
-- Korea Republic vs Venezuela: Korea Republic, Korea Republic 2 - 0 Venezuela, home 48.7%, away 22.0%, draw 29.3%, confidence Low
-- China vs Palestine: China, China 2 - 0 Palestine, home 50.1%, away 20.8%, draw 29.0%, confidence Low
-- Congo DR vs Uganda: Congo DR, Congo DR 2 - 0 Uganda, home 54.2%, away 17.7%, draw 28.1%, confidence Low
-- Mauritius vs Sri Lanka: Draw, Mauritius 0 - 0 Sri Lanka, home 30.0%, away 33.6%, draw 36.5%, confidence Low
-- Colombia vs Paraguay: Colombia, Colombia 2 - 0 Paraguay, home 61.2%, away 17.6%, draw 21.1%, confidence Medium
+- Fiji vs Vanuatu: Fiji, Fiji 2 - 0 Vanuatu, home 50.2%, away 21.6%, draw 28.1%, confidence Low
+- Sri Lanka vs Djibouti: Sri Lanka, Sri Lanka 2 - 0 Djibouti, home 45.3%, away 29.5%, draw 25.2%, confidence Low
+- India vs Brazil: Brazil, India 0 - 2 Brazil, home 8.2%, away 71.2%, draw 20.6%, confidence High
+- Russia vs Namibia: Russia, Russia 2 - 0 Namibia, home 66.9%, away 11.2%, draw 21.8%, confidence Medium
+- Canada vs Peru: Canada, Canada 2 - 0 Peru, home 42.1%, away 27.4%, draw 30.6%, confidence Low
+- Ivory Coast vs Cameroon: Ivory Coast, Ivory Coast 2 - 0 Cameroon, home 57.6%, away 17.3%, draw 25.1%, confidence Medium
+- Tunisia vs Mali: Draw, Tunisia 1 - 1 Mali, home 34.5%, away 29.4%, draw 36.0%, confidence Low
+- Argentina vs Burkina Faso: Argentina, Argentina 3 - 1 Burkina Faso, home 66.1%, away 12.8%, draw 21.1%, confidence Medium
+- United States vs Mexico: Draw, United States 1 - 1 Mexico, home 30.9%, away 32.6%, draw 36.5%, confidence Low
 
 Highest Confidence Picks
-- Colombia vs Paraguay: Colombia, Colombia 2 - 0 Paraguay, home 61.2%, away 17.6%, draw 21.1%, confidence Medium
-- Congo DR vs Uganda: Congo DR, Congo DR 2 - 0 Uganda, home 54.2%, away 17.7%, draw 28.1%, confidence Low
-- China vs Palestine: China, China 2 - 0 Palestine, home 50.1%, away 20.8%, draw 29.0%, confidence Low
+- India vs Brazil: Brazil, India 0 - 2 Brazil, home 8.2%, away 71.2%, draw 20.6%, confidence High
+- Russia vs Namibia: Russia, Russia 2 - 0 Namibia, home 66.9%, away 11.2%, draw 21.8%, confidence Medium
+- Argentina vs Burkina Faso: Argentina, Argentina 3 - 1 Burkina Faso, home 66.1%, away 12.8%, draw 21.1%, confidence Medium
 
 Upset Watch
-- No games available.
+- Miami Heat at Toronto Raptors: Toronto Raptors, Toronto Raptors 121 - 119 Miami Heat, home 58.9%, away 41.1%, confidence Low
 
 Draw Watch
-- Mauritius vs Sri Lanka: Draw, Mauritius 0 - 0 Sri Lanka, home 30.0%, away 33.6%, draw 36.5%, confidence Low
-- Korea Republic vs Venezuela: Korea Republic, Korea Republic 2 - 0 Venezuela, home 48.7%, away 22.0%, draw 29.3%, confidence Low
-- China vs Palestine: China, China 2 - 0 Palestine, home 50.1%, away 20.8%, draw 29.0%, confidence Low
+- United States vs Mexico: Draw, United States 1 - 1 Mexico, home 30.9%, away 32.6%, draw 36.5%, confidence Low
+- Tunisia vs Mali: Draw, Tunisia 1 - 1 Mali, home 34.5%, away 29.4%, draw 36.0%, confidence Low
+- Canada vs Peru: Canada, Canada 2 - 0 Peru, home 42.1%, away 27.4%, draw 30.6%, confidence Low
 
 Injury Risk Games
-- No games available.
+- Miami Heat at Toronto Raptors: Toronto Raptors, Toronto Raptors 121 - 119 Miami Heat, home 58.9%, away 41.1%, confidence Low
