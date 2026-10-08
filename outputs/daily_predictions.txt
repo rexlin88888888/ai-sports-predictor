@@ -1,30 +1,31 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-07T18:41:25
+Generated: 2026-10-08T18:39:58
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Minnesota Timberwolves at Indiana Pacers: Minnesota Timberwolves, Indiana Pacers 105 - 117 Minnesota Timberwolves, home 30.0%, away 70.0%, confidence Medium
-- Orlando Magic at Memphis Grizzlies: Orlando Magic, Memphis Grizzlies 94 - 125 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
-- Milwaukee Bucks at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 122 - 95 Milwaukee Bucks, home 68.0%, away 32.0%, confidence Medium
-- Phoenix Suns at Chicago Bulls: Phoenix Suns, Chicago Bulls 112 - 115 Phoenix Suns, home 30.0%, away 70.0%, confidence Medium
-- Golden State Warriors at Portland Trail Blazers: Portland Trail Blazers, Portland Trail Blazers 115 - 106 Golden State Warriors, home 70.0%, away 30.0%, confidence Medium
+- Boston Celtics at Cleveland Cavaliers: Boston Celtics, Cleveland Cavaliers 106 - 110 Boston Celtics, home 47.7%, away 52.3%, confidence Low
+- New Orleans Pelicans at Miami Heat: Miami Heat, Miami Heat 132 - 111 New Orleans Pelicans, home 74.1%, away 25.9%, confidence Medium
+- Philadelphia 76ers at Brooklyn Nets: Philadelphia 76ers, Brooklyn Nets 101 - 108 Philadelphia 76ers, home 31.8%, away 68.2%, confidence Medium
+- Washington Wizards at New York Knicks: New York Knicks, New York Knicks 145 - 82 Washington Wizards, home 80.0%, away 20.0%, confidence Medium
+- Atlanta Hawks at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 127 - 98 Atlanta Hawks, home 76.2%, away 23.8%, confidence Medium
+- Sacramento Kings at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 110 - 100 Sacramento Kings, home 70.0%, away 30.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Minnesota Timberwolves at Indiana Pacers: Minnesota Timberwolves, Indiana Pacers 105 - 117 Minnesota Timberwolves, home 30.0%, away 70.0%, confidence Medium
-- Orlando Magic at Memphis Grizzlies: Orlando Magic, Memphis Grizzlies 94 - 125 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
-- Phoenix Suns at Chicago Bulls: Phoenix Suns, Chicago Bulls 112 - 115 Phoenix Suns, home 30.0%, away 70.0%, confidence Medium
+- Washington Wizards at New York Knicks: New York Knicks, New York Knicks 145 - 82 Washington Wizards, home 80.0%, away 20.0%, confidence Medium
+- Atlanta Hawks at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 127 - 98 Atlanta Hawks, home 76.2%, away 23.8%, confidence Medium
+- New Orleans Pelicans at Miami Heat: Miami Heat, Miami Heat 132 - 111 New Orleans Pelicans, home 74.1%, away 25.9%, confidence Medium
 
 Upset Watch
-- Milwaukee Bucks at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 122 - 95 Milwaukee Bucks, home 68.0%, away 32.0%, confidence Medium
+- Boston Celtics at Cleveland Cavaliers: Boston Celtics, Cleveland Cavaliers 106 - 110 Boston Celtics, home 47.7%, away 52.3%, confidence Low
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Minnesota Timberwolves at Indiana Pacers: Minnesota Timberwolves, Indiana Pacers 105 - 117 Minnesota Timberwolves, home 30.0%, away 70.0%, confidence Medium
-- Orlando Magic at Memphis Grizzlies: Orlando Magic, Memphis Grizzlies 94 - 125 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
-- Milwaukee Bucks at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 122 - 95 Milwaukee Bucks, home 68.0%, away 32.0%, confidence Medium
-- Phoenix Suns at Chicago Bulls: Phoenix Suns, Chicago Bulls 112 - 115 Phoenix Suns, home 30.0%, away 70.0%, confidence Medium
+- Boston Celtics at Cleveland Cavaliers: Boston Celtics, Cleveland Cavaliers 106 - 110 Boston Celtics, home 47.7%, away 52.3%, confidence Low
+- New Orleans Pelicans at Miami Heat: Miami Heat, Miami Heat 132 - 111 New Orleans Pelicans, home 74.1%, away 25.9%, confidence Medium
+- Philadelphia 76ers at Brooklyn Nets: Philadelphia 76ers, Brooklyn Nets 101 - 108 Philadelphia 76ers, home 31.8%, away 68.2%, confidence Medium
+- Washington Wizards at New York Knicks: New York Knicks, New York Knicks 145 - 82 Washington Wizards, home 80.0%, away 20.0%, confidence Medium
