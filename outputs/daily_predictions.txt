@@ -1,31 +1,24 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-08T18:39:58
+Generated: 2026-10-09T18:10:39
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Boston Celtics at Cleveland Cavaliers: Boston Celtics, Cleveland Cavaliers 106 - 110 Boston Celtics, home 47.7%, away 52.3%, confidence Low
-- New Orleans Pelicans at Miami Heat: Miami Heat, Miami Heat 132 - 111 New Orleans Pelicans, home 74.1%, away 25.9%, confidence Medium
-- Philadelphia 76ers at Brooklyn Nets: Philadelphia 76ers, Brooklyn Nets 101 - 108 Philadelphia 76ers, home 31.8%, away 68.2%, confidence Medium
-- Washington Wizards at New York Knicks: New York Knicks, New York Knicks 145 - 82 Washington Wizards, home 80.0%, away 20.0%, confidence Medium
-- Atlanta Hawks at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 127 - 98 Atlanta Hawks, home 76.2%, away 23.8%, confidence Medium
-- Sacramento Kings at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 110 - 100 Sacramento Kings, home 70.0%, away 30.0%, confidence Medium
+- Houston Rockets at Dallas Mavericks: Houston Rockets, Dallas Mavericks 104 - 113 Houston Rockets, home 30.3%, away 69.7%, confidence Medium
+- Memphis Grizzlies at Chicago Bulls: Chicago Bulls, Chicago Bulls 125 - 105 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Washington Wizards at New York Knicks: New York Knicks, New York Knicks 145 - 82 Washington Wizards, home 80.0%, away 20.0%, confidence Medium
-- Atlanta Hawks at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 127 - 98 Atlanta Hawks, home 76.2%, away 23.8%, confidence Medium
-- New Orleans Pelicans at Miami Heat: Miami Heat, Miami Heat 132 - 111 New Orleans Pelicans, home 74.1%, away 25.9%, confidence Medium
+- Houston Rockets at Dallas Mavericks: Houston Rockets, Dallas Mavericks 104 - 113 Houston Rockets, home 30.3%, away 69.7%, confidence Medium
+- Memphis Grizzlies at Chicago Bulls: Chicago Bulls, Chicago Bulls 125 - 105 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
 
 Upset Watch
-- Boston Celtics at Cleveland Cavaliers: Boston Celtics, Cleveland Cavaliers 106 - 110 Boston Celtics, home 47.7%, away 52.3%, confidence Low
+- Memphis Grizzlies at Chicago Bulls: Chicago Bulls, Chicago Bulls 125 - 105 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Boston Celtics at Cleveland Cavaliers: Boston Celtics, Cleveland Cavaliers 106 - 110 Boston Celtics, home 47.7%, away 52.3%, confidence Low
-- New Orleans Pelicans at Miami Heat: Miami Heat, Miami Heat 132 - 111 New Orleans Pelicans, home 74.1%, away 25.9%, confidence Medium
-- Philadelphia 76ers at Brooklyn Nets: Philadelphia 76ers, Brooklyn Nets 101 - 108 Philadelphia 76ers, home 31.8%, away 68.2%, confidence Medium
-- Washington Wizards at New York Knicks: New York Knicks, New York Knicks 145 - 82 Washington Wizards, home 80.0%, away 20.0%, confidence Medium
+- Houston Rockets at Dallas Mavericks: Houston Rockets, Dallas Mavericks 104 - 113 Houston Rockets, home 30.3%, away 69.7%, confidence Medium
+- Memphis Grizzlies at Chicago Bulls: Chicago Bulls, Chicago Bulls 125 - 105 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
