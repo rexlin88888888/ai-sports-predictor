@@ -1,29 +1,31 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-11T17:32:59
+Generated: 2026-10-12T21:06:21
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Dallas Mavericks at Houston Rockets: Houston Rockets, Houston Rockets 115 - 102 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
-- Orlando Magic at Cleveland Cavaliers: Orlando Magic, Cleveland Cavaliers 106 - 109 Orlando Magic, home 48.4%, away 51.6%, confidence Low
-- Milwaukee Bucks at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 126 - 92 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
-- Chicago Bulls at Denver Nuggets: Denver Nuggets, Denver Nuggets 126 - 105 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
+- London Lions at Portland Trail Blazers: London Lions, Portland Trail Blazers 113 - 115 London Lions, home 43.9%, away 56.1%, confidence Low
+- Oklahoma City Thunder at Atlanta Hawks: Oklahoma City Thunder, Atlanta Hawks 107 - 114 Oklahoma City Thunder, home 36.6%, away 63.4%, confidence Medium
+- Brooklyn Nets at Washington Wizards: Brooklyn Nets, Washington Wizards 105 - 114 Brooklyn Nets, home 30.1%, away 69.9%, confidence Medium
+- Minnesota Timberwolves at New York Knicks: New York Knicks, New York Knicks 131 - 94 Minnesota Timberwolves, home 80.0%, away 20.0%, confidence Medium
+- San Antonio Spurs at Utah Jazz: San Antonio Spurs, Utah Jazz 99 - 137 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Dallas Mavericks at Houston Rockets: Houston Rockets, Houston Rockets 115 - 102 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
-- Milwaukee Bucks at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 126 - 92 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
-- Chicago Bulls at Denver Nuggets: Denver Nuggets, Denver Nuggets 126 - 105 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
+- Minnesota Timberwolves at New York Knicks: New York Knicks, New York Knicks 131 - 94 Minnesota Timberwolves, home 80.0%, away 20.0%, confidence Medium
+- San Antonio Spurs at Utah Jazz: San Antonio Spurs, Utah Jazz 99 - 137 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
+- Brooklyn Nets at Washington Wizards: Brooklyn Nets, Washington Wizards 105 - 114 Brooklyn Nets, home 30.1%, away 69.9%, confidence Medium
 
 Upset Watch
-- Orlando Magic at Cleveland Cavaliers: Orlando Magic, Cleveland Cavaliers 106 - 109 Orlando Magic, home 48.4%, away 51.6%, confidence Low
+- Oklahoma City Thunder at Atlanta Hawks: Oklahoma City Thunder, Atlanta Hawks 107 - 114 Oklahoma City Thunder, home 36.6%, away 63.4%, confidence Medium
+- London Lions at Portland Trail Blazers: London Lions, Portland Trail Blazers 113 - 115 London Lions, home 43.9%, away 56.1%, confidence Low
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Dallas Mavericks at Houston Rockets: Houston Rockets, Houston Rockets 115 - 102 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
-- Orlando Magic at Cleveland Cavaliers: Orlando Magic, Cleveland Cavaliers 106 - 109 Orlando Magic, home 48.4%, away 51.6%, confidence Low
-- Milwaukee Bucks at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 126 - 92 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
-- Chicago Bulls at Denver Nuggets: Denver Nuggets, Denver Nuggets 126 - 105 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
+- London Lions at Portland Trail Blazers: London Lions, Portland Trail Blazers 113 - 115 London Lions, home 43.9%, away 56.1%, confidence Low
+- Oklahoma City Thunder at Atlanta Hawks: Oklahoma City Thunder, Atlanta Hawks 107 - 114 Oklahoma City Thunder, home 36.6%, away 63.4%, confidence Medium
+- Brooklyn Nets at Washington Wizards: Brooklyn Nets, Washington Wizards 105 - 114 Brooklyn Nets, home 30.1%, away 69.9%, confidence Medium
+- Minnesota Timberwolves at New York Knicks: New York Knicks, New York Knicks 131 - 94 Minnesota Timberwolves, home 80.0%, away 20.0%, confidence Medium
