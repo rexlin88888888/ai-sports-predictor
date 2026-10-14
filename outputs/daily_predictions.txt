@@ -1,31 +1,34 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-13T19:05:00
+Generated: 2026-10-14T16:51:24
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Cleveland Cavaliers at Orlando Magic: Orlando Magic, Orlando Magic 111 - 103 Cleveland Cavaliers, home 63.9%, away 36.1%, confidence Medium
-- New York Knicks at Toronto Raptors: New York Knicks, Toronto Raptors 99 - 126 New York Knicks, home 28.0%, away 72.0%, confidence Medium
-- Indiana Pacers at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 123 - 98 Indiana Pacers, home 68.0%, away 32.0%, confidence Medium
-- Golden State Warriors at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 109 - 102 Golden State Warriors, home 68.8%, away 31.2%, confidence Medium
-- Portland Trail Blazers at Sacramento Kings: Portland Trail Blazers, Sacramento Kings 105 - 115 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
+- Brooklyn Nets at Miami Heat: Miami Heat, Miami Heat 132 - 98 Brooklyn Nets, home 80.0%, away 20.0%, confidence Medium
+- Charlotte Hornets at Boston Celtics: Charlotte Hornets, Boston Celtics 101 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
+- Phoenix Suns at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 128 - 97 Phoenix Suns, home 77.0%, away 23.0%, confidence Medium
+- New Orleans Pelicans at Dallas Mavericks: New Orleans Pelicans, Dallas Mavericks 117 - 119 New Orleans Pelicans, home 43.7%, away 56.3%, confidence Low
+- Chicago Bulls at Milwaukee Bucks: Milwaukee Bucks, Milwaukee Bucks 113 - 111 Chicago Bulls, home 52.3%, away 47.7%, confidence Low
+- Detroit Pistons at Minnesota Timberwolves: Detroit Pistons, Minnesota Timberwolves 108 - 111 Detroit Pistons, home 44.1%, away 55.9%, confidence Low
+- Denver Nuggets at LA Clippers: LA Clippers, LA Clippers 118 - 109 Denver Nuggets, home 66.6%, away 33.4%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- New York Knicks at Toronto Raptors: New York Knicks, Toronto Raptors 99 - 126 New York Knicks, home 28.0%, away 72.0%, confidence Medium
-- Portland Trail Blazers at Sacramento Kings: Portland Trail Blazers, Sacramento Kings 105 - 115 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
-- Golden State Warriors at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 109 - 102 Golden State Warriors, home 68.8%, away 31.2%, confidence Medium
+- Brooklyn Nets at Miami Heat: Miami Heat, Miami Heat 132 - 98 Brooklyn Nets, home 80.0%, away 20.0%, confidence Medium
+- Phoenix Suns at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 128 - 97 Phoenix Suns, home 77.0%, away 23.0%, confidence Medium
+- Charlotte Hornets at Boston Celtics: Charlotte Hornets, Boston Celtics 101 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
 
 Upset Watch
-- Indiana Pacers at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 123 - 98 Indiana Pacers, home 68.0%, away 32.0%, confidence Medium
-- Cleveland Cavaliers at Orlando Magic: Orlando Magic, Orlando Magic 111 - 103 Cleveland Cavaliers, home 63.9%, away 36.1%, confidence Medium
+- Denver Nuggets at LA Clippers: LA Clippers, LA Clippers 118 - 109 Denver Nuggets, home 66.6%, away 33.4%, confidence Medium
+- New Orleans Pelicans at Dallas Mavericks: New Orleans Pelicans, Dallas Mavericks 117 - 119 New Orleans Pelicans, home 43.7%, away 56.3%, confidence Low
+- Detroit Pistons at Minnesota Timberwolves: Detroit Pistons, Minnesota Timberwolves 108 - 111 Detroit Pistons, home 44.1%, away 55.9%, confidence Low
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Cleveland Cavaliers at Orlando Magic: Orlando Magic, Orlando Magic 111 - 103 Cleveland Cavaliers, home 63.9%, away 36.1%, confidence Medium
-- New York Knicks at Toronto Raptors: New York Knicks, Toronto Raptors 99 - 126 New York Knicks, home 28.0%, away 72.0%, confidence Medium
-- Indiana Pacers at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 123 - 98 Indiana Pacers, home 68.0%, away 32.0%, confidence Medium
-- Golden State Warriors at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 109 - 102 Golden State Warriors, home 68.8%, away 31.2%, confidence Medium
+- Brooklyn Nets at Miami Heat: Miami Heat, Miami Heat 132 - 98 Brooklyn Nets, home 80.0%, away 20.0%, confidence Medium
+- Charlotte Hornets at Boston Celtics: Charlotte Hornets, Boston Celtics 101 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
+- Phoenix Suns at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 128 - 97 Phoenix Suns, home 77.0%, away 23.0%, confidence Medium
+- New Orleans Pelicans at Dallas Mavericks: New Orleans Pelicans, Dallas Mavericks 117 - 119 New Orleans Pelicans, home 43.7%, away 56.3%, confidence Low
