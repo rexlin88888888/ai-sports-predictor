@@ -1,34 +1,24 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-14T16:51:24
+Generated: 2026-10-15T16:36:57
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Brooklyn Nets at Miami Heat: Miami Heat, Miami Heat 132 - 98 Brooklyn Nets, home 80.0%, away 20.0%, confidence Medium
-- Charlotte Hornets at Boston Celtics: Charlotte Hornets, Boston Celtics 101 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
-- Phoenix Suns at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 128 - 97 Phoenix Suns, home 77.0%, away 23.0%, confidence Medium
-- New Orleans Pelicans at Dallas Mavericks: New Orleans Pelicans, Dallas Mavericks 117 - 119 New Orleans Pelicans, home 43.7%, away 56.3%, confidence Low
-- Chicago Bulls at Milwaukee Bucks: Milwaukee Bucks, Milwaukee Bucks 113 - 111 Chicago Bulls, home 52.3%, away 47.7%, confidence Low
-- Detroit Pistons at Minnesota Timberwolves: Detroit Pistons, Minnesota Timberwolves 108 - 111 Detroit Pistons, home 44.1%, away 55.9%, confidence Low
-- Denver Nuggets at LA Clippers: LA Clippers, LA Clippers 118 - 109 Denver Nuggets, home 66.6%, away 33.4%, confidence Medium
+- Toronto Raptors at New York Knicks: New York Knicks, New York Knicks 129 - 97 Toronto Raptors, home 80.0%, away 20.0%, confidence Medium
+- Oklahoma City Thunder at Houston Rockets: Oklahoma City Thunder, Houston Rockets 106 - 107 Oklahoma City Thunder, home 34.0%, away 66.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Brooklyn Nets at Miami Heat: Miami Heat, Miami Heat 132 - 98 Brooklyn Nets, home 80.0%, away 20.0%, confidence Medium
-- Phoenix Suns at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 128 - 97 Phoenix Suns, home 77.0%, away 23.0%, confidence Medium
-- Charlotte Hornets at Boston Celtics: Charlotte Hornets, Boston Celtics 101 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
+- Toronto Raptors at New York Knicks: New York Knicks, New York Knicks 129 - 97 Toronto Raptors, home 80.0%, away 20.0%, confidence Medium
+- Oklahoma City Thunder at Houston Rockets: Oklahoma City Thunder, Houston Rockets 106 - 107 Oklahoma City Thunder, home 34.0%, away 66.0%, confidence Medium
 
 Upset Watch
-- Denver Nuggets at LA Clippers: LA Clippers, LA Clippers 118 - 109 Denver Nuggets, home 66.6%, away 33.4%, confidence Medium
-- New Orleans Pelicans at Dallas Mavericks: New Orleans Pelicans, Dallas Mavericks 117 - 119 New Orleans Pelicans, home 43.7%, away 56.3%, confidence Low
-- Detroit Pistons at Minnesota Timberwolves: Detroit Pistons, Minnesota Timberwolves 108 - 111 Detroit Pistons, home 44.1%, away 55.9%, confidence Low
+- Oklahoma City Thunder at Houston Rockets: Oklahoma City Thunder, Houston Rockets 106 - 107 Oklahoma City Thunder, home 34.0%, away 66.0%, confidence Medium
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Brooklyn Nets at Miami Heat: Miami Heat, Miami Heat 132 - 98 Brooklyn Nets, home 80.0%, away 20.0%, confidence Medium
-- Charlotte Hornets at Boston Celtics: Charlotte Hornets, Boston Celtics 101 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
-- Phoenix Suns at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 128 - 97 Phoenix Suns, home 77.0%, away 23.0%, confidence Medium
-- New Orleans Pelicans at Dallas Mavericks: New Orleans Pelicans, Dallas Mavericks 117 - 119 New Orleans Pelicans, home 43.7%, away 56.3%, confidence Low
+- Toronto Raptors at New York Knicks: New York Knicks, New York Knicks 129 - 97 Toronto Raptors, home 80.0%, away 20.0%, confidence Medium
+- Oklahoma City Thunder at Houston Rockets: Oklahoma City Thunder, Houston Rockets 106 - 107 Oklahoma City Thunder, home 34.0%, away 66.0%, confidence Medium
