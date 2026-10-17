@@ -1,12 +1,6 @@
-Title: Today's model board has one matchup to watch
+Title: No games on the model board today
 
 Script:
-Stop scrolling. The model board is live.
-Top watchlist game: Sacramento Kings at San Antonio Spurs.
-Model pick: San Antonio Spurs.
-Projected score: San Antonio Spurs 132 - 91 Sacramento Kings.
-Why it matters: Model favors San Antonio Spurs mainly because of team strength (+21.6 rating edge).
-Upset watchlist: New Orleans Pelicans in Washington Wizards at New Orleans Pelicans.
-Follow for the daily prediction card and result recap.
+No games are available today. Check back after the next schedule update.
 
-Hashtags: #SportsAI #ModelPick #SportsPredictions #NBAPicks #FootballPredictions
+Hashtags: #SportsAI #ModelPick #SportsPredictions

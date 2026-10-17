@@ -1,39 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-16T16:21:51
+Generated: 2026-10-17T15:15:29
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Miami Heat at Orlando Magic: Orlando Magic, Orlando Magic 120 - 118 Miami Heat, home 55.0%, away 45.0%, confidence Low
-- Boston Celtics at Philadelphia 76ers: Boston Celtics, Philadelphia 76ers 95 - 112 Boston Celtics, home 32.5%, away 67.5%, confidence Medium
-- Toronto Raptors at Detroit Pistons: Detroit Pistons, Detroit Pistons 111 - 108 Toronto Raptors, home 69.2%, away 30.8%, confidence Medium
-- Milwaukee Bucks at Indiana Pacers: Indiana Pacers, Indiana Pacers 111 - 108 Milwaukee Bucks, home 52.9%, away 47.1%, confidence Low
-- Atlanta Hawks at Dallas Mavericks: Atlanta Hawks, Dallas Mavericks 112 - 113 Atlanta Hawks, home 30.0%, away 70.0%, confidence Medium
-- Sacramento Kings at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 132 - 91 Sacramento Kings, home 80.0%, away 20.0%, confidence Medium
-- Charlotte Hornets at Memphis Grizzlies: Charlotte Hornets, Memphis Grizzlies 89 - 135 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
-- Washington Wizards at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 130 - 103 Washington Wizards, home 68.0%, away 32.0%, confidence Medium
-- Minnesota Timberwolves at Chicago Bulls: Minnesota Timberwolves, Chicago Bulls 108 - 120 Minnesota Timberwolves, home 30.0%, away 70.0%, confidence Medium
-- Portland Trail Blazers at Golden State Warriors: Portland Trail Blazers, Golden State Warriors 107 - 114 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
-- Utah Jazz at Phoenix Suns: Phoenix Suns, Phoenix Suns 122 - 111 Utah Jazz, home 70.0%, away 30.0%, confidence Medium
-- Denver Nuggets at Los Angeles Lakers: Denver Nuggets, Los Angeles Lakers 102 - 113 Denver Nuggets, home 41.4%, away 58.6%, confidence Low
+- No games available.
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Sacramento Kings at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 132 - 91 Sacramento Kings, home 80.0%, away 20.0%, confidence Medium
-- Atlanta Hawks at Dallas Mavericks: Atlanta Hawks, Dallas Mavericks 112 - 113 Atlanta Hawks, home 30.0%, away 70.0%, confidence Medium
-- Charlotte Hornets at Memphis Grizzlies: Charlotte Hornets, Memphis Grizzlies 89 - 135 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
+- No games available.
 
 Upset Watch
-- Washington Wizards at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 130 - 103 Washington Wizards, home 68.0%, away 32.0%, confidence Medium
-- Boston Celtics at Philadelphia 76ers: Boston Celtics, Philadelphia 76ers 95 - 112 Boston Celtics, home 32.5%, away 67.5%, confidence Medium
-- Denver Nuggets at Los Angeles Lakers: Denver Nuggets, Los Angeles Lakers 102 - 113 Denver Nuggets, home 41.4%, away 58.6%, confidence Low
+- No games available.
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Miami Heat at Orlando Magic: Orlando Magic, Orlando Magic 120 - 118 Miami Heat, home 55.0%, away 45.0%, confidence Low
-- Boston Celtics at Philadelphia 76ers: Boston Celtics, Philadelphia 76ers 95 - 112 Boston Celtics, home 32.5%, away 67.5%, confidence Medium
-- Toronto Raptors at Detroit Pistons: Detroit Pistons, Detroit Pistons 111 - 108 Toronto Raptors, home 69.2%, away 30.8%, confidence Medium
-- Milwaukee Bucks at Indiana Pacers: Indiana Pacers, Indiana Pacers 111 - 108 Milwaukee Bucks, home 52.9%, away 47.1%, confidence Low
+- No games available.
