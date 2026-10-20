@@ -1,21 +1,27 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-19T18:32:10
+Generated: 2026-10-20T16:36:10
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- Boston Celtics at Detroit Pistons: Detroit Pistons, Detroit Pistons 109 - 104 Boston Celtics, home 64.9%, away 35.1%, confidence Low
+- Philadelphia 76ers at New York Knicks: New York Knicks, New York Knicks 132 - 89 Philadelphia 76ers, home 80.0%, away 20.0%, confidence Medium
+- Oklahoma City Thunder at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 120 - 103 Oklahoma City Thunder, home 70.0%, away 30.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- No games available.
+- Philadelphia 76ers at New York Knicks: New York Knicks, New York Knicks 132 - 89 Philadelphia 76ers, home 80.0%, away 20.0%, confidence Medium
+- Oklahoma City Thunder at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 120 - 103 Oklahoma City Thunder, home 70.0%, away 30.0%, confidence Medium
+- Boston Celtics at Detroit Pistons: Detroit Pistons, Detroit Pistons 109 - 104 Boston Celtics, home 64.9%, away 35.1%, confidence Low
 
 Upset Watch
-- No games available.
+- Boston Celtics at Detroit Pistons: Detroit Pistons, Detroit Pistons 109 - 104 Boston Celtics, home 64.9%, away 35.1%, confidence Low
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- No games available.
+- Boston Celtics at Detroit Pistons: Detroit Pistons, Detroit Pistons 109 - 104 Boston Celtics, home 64.9%, away 35.1%, confidence Low
+- Philadelphia 76ers at New York Knicks: New York Knicks, New York Knicks 132 - 89 Philadelphia 76ers, home 80.0%, away 20.0%, confidence Medium
+- Oklahoma City Thunder at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 120 - 103 Oklahoma City Thunder, home 70.0%, away 30.0%, confidence Medium
