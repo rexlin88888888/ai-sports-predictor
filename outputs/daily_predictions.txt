@@ -1,25 +1,39 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-22T16:54:02
+Generated: 2026-10-23T16:45:49
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Cleveland Cavaliers at Philadelphia 76ers: Cleveland Cavaliers, Philadelphia 76ers 108 - 110 Cleveland Cavaliers, home 42.7%, away 57.3%, confidence Low
-- Denver Nuggets at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 113 - 110 Denver Nuggets, home 65.1%, away 34.9%, confidence Medium
+- Chicago Bulls at Milwaukee Bucks: Milwaukee Bucks, Milwaukee Bucks 113 - 111 Chicago Bulls, home 52.3%, away 47.7%, confidence Low
+- New York Knicks at Boston Celtics: New York Knicks, Boston Celtics 95 - 124 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Atlanta Hawks at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 124 - 98 Atlanta Hawks, home 70.0%, away 30.0%, confidence Medium
+- Dallas Mavericks at Indiana Pacers: Dallas Mavericks, Indiana Pacers 112 - 113 Dallas Mavericks, home 44.1%, away 55.9%, confidence Low
+- Minnesota Timberwolves at Orlando Magic: Orlando Magic, Orlando Magic 111 - 105 Minnesota Timberwolves, home 60.8%, away 39.2%, confidence Medium
+- Toronto Raptors at Washington Wizards: Toronto Raptors, Washington Wizards 97 - 130 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
+- Detroit Pistons at Miami Heat: Detroit Pistons, Miami Heat 119 - 121 Detroit Pistons, home 48.3%, away 51.7%, confidence Low
+- Houston Rockets at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 119 - 98 Houston Rockets, home 80.0%, away 20.0%, confidence Medium
+- New Orleans Pelicans at Utah Jazz: New Orleans Pelicans, Utah Jazz 117 - 123 New Orleans Pelicans, home 34.8%, away 65.2%, confidence Medium
+- Memphis Grizzlies at Golden State Warriors: Golden State Warriors, Golden State Warriors 124 - 100 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
+- LA Clippers at Los Angeles Lakers: LA Clippers, Los Angeles Lakers 98 - 115 LA Clippers, home 30.0%, away 70.0%, confidence Medium
+- Portland Trail Blazers at Sacramento Kings: Portland Trail Blazers, Sacramento Kings 105 - 115 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Denver Nuggets at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 113 - 110 Denver Nuggets, home 65.1%, away 34.9%, confidence Medium
-- Cleveland Cavaliers at Philadelphia 76ers: Cleveland Cavaliers, Philadelphia 76ers 108 - 110 Cleveland Cavaliers, home 42.7%, away 57.3%, confidence Low
+- Houston Rockets at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 119 - 98 Houston Rockets, home 80.0%, away 20.0%, confidence Medium
+- New York Knicks at Boston Celtics: New York Knicks, Boston Celtics 95 - 124 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Atlanta Hawks at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 124 - 98 Atlanta Hawks, home 70.0%, away 30.0%, confidence Medium
 
 Upset Watch
-- Denver Nuggets at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 113 - 110 Denver Nuggets, home 65.1%, away 34.9%, confidence Medium
-- Cleveland Cavaliers at Philadelphia 76ers: Cleveland Cavaliers, Philadelphia 76ers 108 - 110 Cleveland Cavaliers, home 42.7%, away 57.3%, confidence Low
+- Memphis Grizzlies at Golden State Warriors: Golden State Warriors, Golden State Warriors 124 - 100 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
+- New Orleans Pelicans at Utah Jazz: New Orleans Pelicans, Utah Jazz 117 - 123 New Orleans Pelicans, home 34.8%, away 65.2%, confidence Medium
+- Minnesota Timberwolves at Orlando Magic: Orlando Magic, Orlando Magic 111 - 105 Minnesota Timberwolves, home 60.8%, away 39.2%, confidence Medium
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Cleveland Cavaliers at Philadelphia 76ers: Cleveland Cavaliers, Philadelphia 76ers 108 - 110 Cleveland Cavaliers, home 42.7%, away 57.3%, confidence Low
-- Denver Nuggets at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 113 - 110 Denver Nuggets, home 65.1%, away 34.9%, confidence Medium
+- Chicago Bulls at Milwaukee Bucks: Milwaukee Bucks, Milwaukee Bucks 113 - 111 Chicago Bulls, home 52.3%, away 47.7%, confidence Low
+- New York Knicks at Boston Celtics: New York Knicks, Boston Celtics 95 - 124 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Atlanta Hawks at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 124 - 98 Atlanta Hawks, home 70.0%, away 30.0%, confidence Medium
+- Dallas Mavericks at Indiana Pacers: Dallas Mavericks, Indiana Pacers 112 - 113 Dallas Mavericks, home 44.1%, away 55.9%, confidence Low
