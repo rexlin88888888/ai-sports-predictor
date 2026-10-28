@@ -1,7 +1,7 @@
 Twitter/X Post
-Today's model pick: New York Knicks in Detroit Pistons at New York Knicks.
-Projected score: New York Knicks 125 - 95 Detroit Pistons.
-Watchlist note: Model favors New York Knicks mainly because of recent form (+24.0 rating edge).
+Today's model pick: New York Knicks in New York Knicks at Chicago Bulls.
+Projected score: Chicago Bulls 90 - 140 New York Knicks.
+Watchlist note: Model favors New York Knicks mainly because of recent form (+30.0 rating edge).
 Confidence: Medium. Model version: v1.0.0.
 Hashtags: #SportsAI #ModelPick #SportsPredictions
 
@@ -12,9 +12,9 @@ Instagram Caption
 Today's AI Sports Predictor board is live.
 
 Top model pick: New York Knicks
-Matchup: Detroit Pistons at New York Knicks
-Projection: New York Knicks 125 - 95 Detroit Pistons
-Signal: Model favors New York Knicks mainly because of recent form (+24.0 rating edge).
+Matchup: New York Knicks at Chicago Bulls
+Projection: Chicago Bulls 90 - 140 New York Knicks
+Signal: Model favors New York Knicks mainly because of recent form (+30.0 rating edge).
 
 No major draw watchlist today.
 
