@@ -1,32 +1,31 @@
 AI Sports Predictor Daily Report
-Generated: 2026-10-31T17:02:38
+Generated: 2026-11-01T17:47:42
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Portland Trail Blazers at Utah Jazz: Portland Trail Blazers, Utah Jazz 110 - 123 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
-- Philadelphia 76ers at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 123 - 90 Philadelphia 76ers, home 70.0%, away 30.0%, confidence Medium
-- Atlanta Hawks at New Orleans Pelicans: Atlanta Hawks, New Orleans Pelicans 115 - 117 Atlanta Hawks, home 30.8%, away 69.2%, confidence Medium
-- Sacramento Kings at Memphis Grizzlies: Sacramento Kings, Memphis Grizzlies 104 - 119 Sacramento Kings, home 30.0%, away 70.0%, confidence Medium
-- Cleveland Cavaliers at Milwaukee Bucks: Cleveland Cavaliers, Milwaukee Bucks 103 - 114 Cleveland Cavaliers, home 30.0%, away 70.0%, confidence Medium
-- Minnesota Timberwolves at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 124 - 101 Minnesota Timberwolves, home 74.1%, away 25.9%, confidence Medium
-- Oklahoma City Thunder at Houston Rockets: Oklahoma City Thunder, Houston Rockets 106 - 107 Oklahoma City Thunder, home 34.0%, away 66.0%, confidence Medium
+- Boston Celtics at Orlando Magic: Orlando Magic, Orlando Magic 106 - 105 Boston Celtics, home 54.6%, away 45.4%, confidence Low
+- Brooklyn Nets at Indiana Pacers: Indiana Pacers, Indiana Pacers 113 - 104 Brooklyn Nets, home 51.7%, away 48.3%, confidence Low
+- LA Clippers at Golden State Warriors: LA Clippers, Golden State Warriors 102 - 121 LA Clippers, home 30.0%, away 70.0%, confidence Medium
+- Toronto Raptors at Los Angeles Lakers: Toronto Raptors, Los Angeles Lakers 101 - 111 Toronto Raptors, home 40.5%, away 59.5%, confidence Low
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Minnesota Timberwolves at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 124 - 101 Minnesota Timberwolves, home 74.1%, away 25.9%, confidence Medium
-- Portland Trail Blazers at Utah Jazz: Portland Trail Blazers, Utah Jazz 110 - 123 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
-- Philadelphia 76ers at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 123 - 90 Philadelphia 76ers, home 70.0%, away 30.0%, confidence Medium
+- LA Clippers at Golden State Warriors: LA Clippers, Golden State Warriors 102 - 121 LA Clippers, home 30.0%, away 70.0%, confidence Medium
+- Toronto Raptors at Los Angeles Lakers: Toronto Raptors, Los Angeles Lakers 101 - 111 Toronto Raptors, home 40.5%, away 59.5%, confidence Low
+- Boston Celtics at Orlando Magic: Orlando Magic, Orlando Magic 106 - 105 Boston Celtics, home 54.6%, away 45.4%, confidence Low
 
 Upset Watch
-- Oklahoma City Thunder at Houston Rockets: Oklahoma City Thunder, Houston Rockets 106 - 107 Oklahoma City Thunder, home 34.0%, away 66.0%, confidence Medium
+- Toronto Raptors at Los Angeles Lakers: Toronto Raptors, Los Angeles Lakers 101 - 111 Toronto Raptors, home 40.5%, away 59.5%, confidence Low
+- Boston Celtics at Orlando Magic: Orlando Magic, Orlando Magic 106 - 105 Boston Celtics, home 54.6%, away 45.4%, confidence Low
+- Brooklyn Nets at Indiana Pacers: Indiana Pacers, Indiana Pacers 113 - 104 Brooklyn Nets, home 51.7%, away 48.3%, confidence Low
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Portland Trail Blazers at Utah Jazz: Portland Trail Blazers, Utah Jazz 110 - 123 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
-- Philadelphia 76ers at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 123 - 90 Philadelphia 76ers, home 70.0%, away 30.0%, confidence Medium
-- Atlanta Hawks at New Orleans Pelicans: Atlanta Hawks, New Orleans Pelicans 115 - 117 Atlanta Hawks, home 30.8%, away 69.2%, confidence Medium
-- Sacramento Kings at Memphis Grizzlies: Sacramento Kings, Memphis Grizzlies 104 - 119 Sacramento Kings, home 30.0%, away 70.0%, confidence Medium
+- Boston Celtics at Orlando Magic: Orlando Magic, Orlando Magic 106 - 105 Boston Celtics, home 54.6%, away 45.4%, confidence Low
+- Brooklyn Nets at Indiana Pacers: Indiana Pacers, Indiana Pacers 113 - 104 Brooklyn Nets, home 51.7%, away 48.3%, confidence Low
+- LA Clippers at Golden State Warriors: LA Clippers, Golden State Warriors 102 - 121 LA Clippers, home 30.0%, away 70.0%, confidence Medium
+- Toronto Raptors at Los Angeles Lakers: Toronto Raptors, Los Angeles Lakers 101 - 111 Toronto Raptors, home 40.5%, away 59.5%, confidence Low
