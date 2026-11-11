@@ -1,33 +1,37 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-10T19:30:21
+Generated: 2026-11-11T19:25:31
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Milwaukee Bucks at New York Knicks: New York Knicks, New York Knicks 137 - 84 Milwaukee Bucks, home 80.0%, away 20.0%, confidence Medium
-- Boston Celtics at Philadelphia 76ers: Boston Celtics, Philadelphia 76ers 102 - 111 Boston Celtics, home 42.2%, away 57.8%, confidence Low
-- LA Clippers at Phoenix Suns: LA Clippers, Phoenix Suns 104 - 120 LA Clippers, home 33.4%, away 66.6%, confidence Medium
-- Miami Heat at Utah Jazz: Miami Heat, Utah Jazz 112 - 135 Miami Heat, home 28.0%, away 72.0%, confidence Medium
-- Orlando Magic at Sacramento Kings: Orlando Magic, Sacramento Kings 101 - 113 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
+- Washington Wizards at Indiana Pacers: Indiana Pacers, Indiana Pacers 123 - 103 Washington Wizards, home 69.6%, away 30.4%, confidence Medium
+- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
+- Boston Celtics at Toronto Raptors: Toronto Raptors, Toronto Raptors 110 - 107 Boston Celtics, home 57.2%, away 42.8%, confidence Low
+- San Antonio Spurs at Chicago Bulls: San Antonio Spurs, Chicago Bulls 98 - 133 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
+- Denver Nuggets at Memphis Grizzlies: Denver Nuggets, Memphis Grizzlies 96 - 131 Denver Nuggets, home 32.0%, away 68.0%, confidence Medium
+- Los Angeles Lakers at Milwaukee Bucks: Los Angeles Lakers, Milwaukee Bucks 102 - 105 Los Angeles Lakers, home 30.0%, away 70.0%, confidence Medium
+- Brooklyn Nets at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 119 - 104 Brooklyn Nets, home 68.0%, away 32.0%, confidence Medium
+- Orlando Magic at Utah Jazz: Orlando Magic, Utah Jazz 106 - 121 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
+- Golden State Warriors at Houston Rockets: Houston Rockets, Houston Rockets 114 - 99 Golden State Warriors, home 70.0%, away 30.0%, confidence Medium
 - Oklahoma City Thunder at Portland Trail Blazers: Oklahoma City Thunder, Portland Trail Blazers 108 - 113 Oklahoma City Thunder, home 37.9%, away 62.1%, confidence Medium
 
 Today's Football Predictions
-- No games available.
+- Vietnam vs Chinese Taipei: Vietnam, Vietnam 1 - 1 Chinese Taipei, home 42.0%, away 27.4%, draw 30.6%, confidence Low
 
 Highest Confidence Picks
-- Milwaukee Bucks at New York Knicks: New York Knicks, New York Knicks 137 - 84 Milwaukee Bucks, home 80.0%, away 20.0%, confidence Medium
-- Miami Heat at Utah Jazz: Miami Heat, Utah Jazz 112 - 135 Miami Heat, home 28.0%, away 72.0%, confidence Medium
-- Orlando Magic at Sacramento Kings: Orlando Magic, Sacramento Kings 101 - 113 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
+- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
+- San Antonio Spurs at Chicago Bulls: San Antonio Spurs, Chicago Bulls 98 - 133 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
+- Los Angeles Lakers at Milwaukee Bucks: Los Angeles Lakers, Milwaukee Bucks 102 - 105 Los Angeles Lakers, home 30.0%, away 70.0%, confidence Medium
 
 Upset Watch
-- LA Clippers at Phoenix Suns: LA Clippers, Phoenix Suns 104 - 120 LA Clippers, home 33.4%, away 66.6%, confidence Medium
+- Denver Nuggets at Memphis Grizzlies: Denver Nuggets, Memphis Grizzlies 96 - 131 Denver Nuggets, home 32.0%, away 68.0%, confidence Medium
+- Brooklyn Nets at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 119 - 104 Brooklyn Nets, home 68.0%, away 32.0%, confidence Medium
 - Oklahoma City Thunder at Portland Trail Blazers: Oklahoma City Thunder, Portland Trail Blazers 108 - 113 Oklahoma City Thunder, home 37.9%, away 62.1%, confidence Medium
-- Boston Celtics at Philadelphia 76ers: Boston Celtics, Philadelphia 76ers 102 - 111 Boston Celtics, home 42.2%, away 57.8%, confidence Low
 
 Draw Watch
-- No games available.
+- Vietnam vs Chinese Taipei: Vietnam, Vietnam 1 - 1 Chinese Taipei, home 42.0%, away 27.4%, draw 30.6%, confidence Low
 
 Injury Risk Games
-- Milwaukee Bucks at New York Knicks: New York Knicks, New York Knicks 137 - 84 Milwaukee Bucks, home 80.0%, away 20.0%, confidence Medium
-- Boston Celtics at Philadelphia 76ers: Boston Celtics, Philadelphia 76ers 102 - 111 Boston Celtics, home 42.2%, away 57.8%, confidence Low
-- LA Clippers at Phoenix Suns: LA Clippers, Phoenix Suns 104 - 120 LA Clippers, home 33.4%, away 66.6%, confidence Medium
-- Miami Heat at Utah Jazz: Miami Heat, Utah Jazz 112 - 135 Miami Heat, home 28.0%, away 72.0%, confidence Medium
+- Washington Wizards at Indiana Pacers: Indiana Pacers, Indiana Pacers 123 - 103 Washington Wizards, home 69.6%, away 30.4%, confidence Medium
+- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
+- Boston Celtics at Toronto Raptors: Toronto Raptors, Toronto Raptors 110 - 107 Boston Celtics, home 57.2%, away 42.8%, confidence Low
+- San Antonio Spurs at Chicago Bulls: San Antonio Spurs, Chicago Bulls 98 - 133 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
