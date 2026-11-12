@@ -1,37 +1,34 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-11T19:25:31
+Generated: 2026-11-12T19:43:06
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Washington Wizards at Indiana Pacers: Indiana Pacers, Indiana Pacers 123 - 103 Washington Wizards, home 69.6%, away 30.4%, confidence Medium
-- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
-- Boston Celtics at Toronto Raptors: Toronto Raptors, Toronto Raptors 110 - 107 Boston Celtics, home 57.2%, away 42.8%, confidence Low
-- San Antonio Spurs at Chicago Bulls: San Antonio Spurs, Chicago Bulls 98 - 133 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
-- Denver Nuggets at Memphis Grizzlies: Denver Nuggets, Memphis Grizzlies 96 - 131 Denver Nuggets, home 32.0%, away 68.0%, confidence Medium
-- Los Angeles Lakers at Milwaukee Bucks: Los Angeles Lakers, Milwaukee Bucks 102 - 105 Los Angeles Lakers, home 30.0%, away 70.0%, confidence Medium
-- Brooklyn Nets at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 119 - 104 Brooklyn Nets, home 68.0%, away 32.0%, confidence Medium
-- Orlando Magic at Utah Jazz: Orlando Magic, Utah Jazz 106 - 121 Orlando Magic, home 30.0%, away 70.0%, confidence Medium
-- Golden State Warriors at Houston Rockets: Houston Rockets, Houston Rockets 114 - 99 Golden State Warriors, home 70.0%, away 30.0%, confidence Medium
-- Oklahoma City Thunder at Portland Trail Blazers: Oklahoma City Thunder, Portland Trail Blazers 108 - 113 Oklahoma City Thunder, home 37.9%, away 62.1%, confidence Medium
+- Toronto Raptors at Philadelphia 76ers: Toronto Raptors, Philadelphia 76ers 98 - 116 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
+- Detroit Pistons at Washington Wizards: Detroit Pistons, Washington Wizards 92 - 128 Detroit Pistons, home 30.0%, away 70.0%, confidence Medium
+- Dallas Mavericks at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 119 - 106 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
+- Charlotte Hornets at Phoenix Suns: Charlotte Hornets, Phoenix Suns 100 - 122 Charlotte Hornets, home 31.3%, away 68.7%, confidence Medium
 
 Today's Football Predictions
-- Vietnam vs Chinese Taipei: Vietnam, Vietnam 1 - 1 Chinese Taipei, home 42.0%, away 27.4%, draw 30.6%, confidence Low
+- New Zealand vs India: New Zealand, New Zealand 1 - 1 India, home 44.4%, away 26.7%, draw 28.9%, confidence Low
+- Uzbekistan vs Russia: Draw, Uzbekistan 1 - 1 Russia, home 26.7%, away 36.0%, draw 37.2%, confidence Low
+- Lithuania vs Suriname: Suriname, Lithuania 0 - 1 Suriname, home 18.5%, away 57.7%, draw 23.8%, confidence Medium
+- Malta vs Eswatini: Draw, Malta 1 - 1 Eswatini, home 33.2%, away 32.5%, draw 34.3%, confidence Low
 
 Highest Confidence Picks
-- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
-- San Antonio Spurs at Chicago Bulls: San Antonio Spurs, Chicago Bulls 98 - 133 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
-- Los Angeles Lakers at Milwaukee Bucks: Los Angeles Lakers, Milwaukee Bucks 102 - 105 Los Angeles Lakers, home 30.0%, away 70.0%, confidence Medium
+- Toronto Raptors at Philadelphia 76ers: Toronto Raptors, Philadelphia 76ers 98 - 116 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
+- Detroit Pistons at Washington Wizards: Detroit Pistons, Washington Wizards 92 - 128 Detroit Pistons, home 30.0%, away 70.0%, confidence Medium
+- Dallas Mavericks at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 119 - 106 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
 
 Upset Watch
-- Denver Nuggets at Memphis Grizzlies: Denver Nuggets, Memphis Grizzlies 96 - 131 Denver Nuggets, home 32.0%, away 68.0%, confidence Medium
-- Brooklyn Nets at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 119 - 104 Brooklyn Nets, home 68.0%, away 32.0%, confidence Medium
-- Oklahoma City Thunder at Portland Trail Blazers: Oklahoma City Thunder, Portland Trail Blazers 108 - 113 Oklahoma City Thunder, home 37.9%, away 62.1%, confidence Medium
+- Lithuania vs Suriname: Suriname, Lithuania 0 - 1 Suriname, home 18.5%, away 57.7%, draw 23.8%, confidence Medium
 
 Draw Watch
-- Vietnam vs Chinese Taipei: Vietnam, Vietnam 1 - 1 Chinese Taipei, home 42.0%, away 27.4%, draw 30.6%, confidence Low
+- Uzbekistan vs Russia: Draw, Uzbekistan 1 - 1 Russia, home 26.7%, away 36.0%, draw 37.2%, confidence Low
+- Malta vs Eswatini: Draw, Malta 1 - 1 Eswatini, home 33.2%, away 32.5%, draw 34.3%, confidence Low
+- New Zealand vs India: New Zealand, New Zealand 1 - 1 India, home 44.4%, away 26.7%, draw 28.9%, confidence Low
 
 Injury Risk Games
-- Washington Wizards at Indiana Pacers: Indiana Pacers, Indiana Pacers 123 - 103 Washington Wizards, home 69.6%, away 30.4%, confidence Medium
-- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
-- Boston Celtics at Toronto Raptors: Toronto Raptors, Toronto Raptors 110 - 107 Boston Celtics, home 57.2%, away 42.8%, confidence Low
-- San Antonio Spurs at Chicago Bulls: San Antonio Spurs, Chicago Bulls 98 - 133 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
+- Toronto Raptors at Philadelphia 76ers: Toronto Raptors, Philadelphia 76ers 98 - 116 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
+- Detroit Pistons at Washington Wizards: Detroit Pistons, Washington Wizards 92 - 128 Detroit Pistons, home 30.0%, away 70.0%, confidence Medium
+- Dallas Mavericks at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 119 - 106 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
+- Charlotte Hornets at Phoenix Suns: Charlotte Hornets, Phoenix Suns 100 - 122 Charlotte Hornets, home 31.3%, away 68.7%, confidence Medium
