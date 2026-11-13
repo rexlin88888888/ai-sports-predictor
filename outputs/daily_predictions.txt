@@ -1,34 +1,48 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-12T19:43:06
+Generated: 2026-11-13T19:25:21
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Toronto Raptors at Philadelphia 76ers: Toronto Raptors, Philadelphia 76ers 98 - 116 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
-- Detroit Pistons at Washington Wizards: Detroit Pistons, Washington Wizards 92 - 128 Detroit Pistons, home 30.0%, away 70.0%, confidence Medium
-- Dallas Mavericks at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 119 - 106 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
-- Charlotte Hornets at Phoenix Suns: Charlotte Hornets, Phoenix Suns 100 - 122 Charlotte Hornets, home 31.3%, away 68.7%, confidence Medium
+- New York Knicks at Indiana Pacers: New York Knicks, Indiana Pacers 88 - 137 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Milwaukee Bucks at Orlando Magic: Orlando Magic, Orlando Magic 115 - 97 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
+- Cleveland Cavaliers at Miami Heat: Miami Heat, Miami Heat 125 - 109 Cleveland Cavaliers, home 64.9%, away 35.1%, confidence Medium
+- Atlanta Hawks at Chicago Bulls: Atlanta Hawks, Chicago Bulls 112 - 117 Atlanta Hawks, home 30.0%, away 70.0%, confidence Medium
+- Memphis Grizzlies at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 129 - 103 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
+- Utah Jazz at Houston Rockets: Houston Rockets, Houston Rockets 123 - 102 Utah Jazz, home 69.7%, away 30.3%, confidence Medium
+- Golden State Warriors at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 130 - 94 Golden State Warriors, home 80.0%, away 20.0%, confidence Medium
+- Portland Trail Blazers at Sacramento Kings: Portland Trail Blazers, Sacramento Kings 105 - 115 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
+- Oklahoma City Thunder at LA Clippers: LA Clippers, LA Clippers 113 - 109 Oklahoma City Thunder, home 52.7%, away 47.3%, confidence Low
 
 Today's Football Predictions
-- New Zealand vs India: New Zealand, New Zealand 1 - 1 India, home 44.4%, away 26.7%, draw 28.9%, confidence Low
-- Uzbekistan vs Russia: Draw, Uzbekistan 1 - 1 Russia, home 26.7%, away 36.0%, draw 37.2%, confidence Low
-- Lithuania vs Suriname: Suriname, Lithuania 0 - 1 Suriname, home 18.5%, away 57.7%, draw 23.8%, confidence Medium
-- Malta vs Eswatini: Draw, Malta 1 - 1 Eswatini, home 33.2%, away 32.5%, draw 34.3%, confidence Low
+- Singapore vs Paraguay: Paraguay, Singapore 1 - 1 Paraguay, home 29.1%, away 39.2%, draw 31.8%, confidence Low
+- United Arab Emirates vs Honduras: United Arab Emirates, United Arab Emirates 2 - 0 Honduras, home 55.9%, away 19.3%, draw 24.8%, confidence Medium
+- Saudi Arabia vs Korea Republic: Korea Republic, Saudi Arabia 0 - 1 Korea Republic, home 23.4%, away 51.9%, draw 24.7%, confidence Low
+- Qatar vs Australia: Australia, Qatar 1 - 1 Australia, home 29.9%, away 40.5%, draw 29.6%, confidence Low
+- Iraq vs Lebanon: Draw, Iraq 0 - 1 Lebanon, home 30.2%, away 32.8%, draw 37.0%, confidence Low
+- Kuwait vs Syria: Kuwait, Kuwait 2 - 1 Syria, home 41.4%, away 27.7%, draw 30.9%, confidence Low
+- Jordan vs Indonesia: Draw, Jordan 2 - 2 Indonesia, home 33.3%, away 29.9%, draw 36.8%, confidence Low
+- Argentina vs Uruguay: Argentina, Argentina 3 - 0 Uruguay, home 62.7%, away 13.6%, draw 23.7%, confidence Medium
+- Colombia vs Chile: Chile, Colombia 1 - 2 Chile, home 30.7%, away 45.1%, draw 24.2%, confidence Low
+- Ecuador vs Costa Rica: Ecuador, Ecuador 2 - 0 Costa Rica, home 63.1%, away 13.7%, draw 23.3%, confidence Medium
+- Peru vs Bolivia: Peru, Peru 1 - 1 Bolivia, home 50.5%, away 24.8%, draw 24.8%, confidence Low
 
 Highest Confidence Picks
-- Toronto Raptors at Philadelphia 76ers: Toronto Raptors, Philadelphia 76ers 98 - 116 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
-- Detroit Pistons at Washington Wizards: Detroit Pistons, Washington Wizards 92 - 128 Detroit Pistons, home 30.0%, away 70.0%, confidence Medium
-- Dallas Mavericks at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 119 - 106 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
+- Golden State Warriors at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 130 - 94 Golden State Warriors, home 80.0%, away 20.0%, confidence Medium
+- New York Knicks at Indiana Pacers: New York Knicks, Indiana Pacers 88 - 137 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Milwaukee Bucks at Orlando Magic: Orlando Magic, Orlando Magic 115 - 97 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
 
 Upset Watch
-- Lithuania vs Suriname: Suriname, Lithuania 0 - 1 Suriname, home 18.5%, away 57.7%, draw 23.8%, confidence Medium
+- Memphis Grizzlies at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 129 - 103 Memphis Grizzlies, home 68.0%, away 32.0%, confidence Medium
+- Cleveland Cavaliers at Miami Heat: Miami Heat, Miami Heat 125 - 109 Cleveland Cavaliers, home 64.9%, away 35.1%, confidence Medium
+- Oklahoma City Thunder at LA Clippers: LA Clippers, LA Clippers 113 - 109 Oklahoma City Thunder, home 52.7%, away 47.3%, confidence Low
 
 Draw Watch
-- Uzbekistan vs Russia: Draw, Uzbekistan 1 - 1 Russia, home 26.7%, away 36.0%, draw 37.2%, confidence Low
-- Malta vs Eswatini: Draw, Malta 1 - 1 Eswatini, home 33.2%, away 32.5%, draw 34.3%, confidence Low
-- New Zealand vs India: New Zealand, New Zealand 1 - 1 India, home 44.4%, away 26.7%, draw 28.9%, confidence Low
+- Iraq vs Lebanon: Draw, Iraq 0 - 1 Lebanon, home 30.2%, away 32.8%, draw 37.0%, confidence Low
+- Jordan vs Indonesia: Draw, Jordan 2 - 2 Indonesia, home 33.3%, away 29.9%, draw 36.8%, confidence Low
+- Singapore vs Paraguay: Paraguay, Singapore 1 - 1 Paraguay, home 29.1%, away 39.2%, draw 31.8%, confidence Low
 
 Injury Risk Games
-- Toronto Raptors at Philadelphia 76ers: Toronto Raptors, Philadelphia 76ers 98 - 116 Toronto Raptors, home 30.0%, away 70.0%, confidence Medium
-- Detroit Pistons at Washington Wizards: Detroit Pistons, Washington Wizards 92 - 128 Detroit Pistons, home 30.0%, away 70.0%, confidence Medium
-- Dallas Mavericks at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 119 - 106 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
-- Charlotte Hornets at Phoenix Suns: Charlotte Hornets, Phoenix Suns 100 - 122 Charlotte Hornets, home 31.3%, away 68.7%, confidence Medium
+- New York Knicks at Indiana Pacers: New York Knicks, Indiana Pacers 88 - 137 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Milwaukee Bucks at Orlando Magic: Orlando Magic, Orlando Magic 115 - 97 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
+- Cleveland Cavaliers at Miami Heat: Miami Heat, Miami Heat 125 - 109 Cleveland Cavaliers, home 64.9%, away 35.1%, confidence Medium
+- Atlanta Hawks at Chicago Bulls: Atlanta Hawks, Chicago Bulls 112 - 117 Atlanta Hawks, home 30.0%, away 70.0%, confidence Medium
