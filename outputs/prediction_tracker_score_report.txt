@@ -1,5 +1,5 @@
 Prediction Tracker Score Report
-Generated: 2026-11-16T21:57:32
+Generated: 2026-11-17T20:49:47
 
 Tracker rows: 31
 ESPN dates checked: 12

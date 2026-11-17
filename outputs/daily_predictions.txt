@@ -1,35 +1,51 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-16T21:49:03
+Generated: 2026-11-17T20:40:25
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Orlando Magic at Boston Celtics: Boston Celtics, Boston Celtics 108 - 103 Orlando Magic, home 56.5%, away 43.5%, confidence Low
-- Chicago Bulls at Cleveland Cavaliers: Cleveland Cavaliers, Cleveland Cavaliers 121 - 105 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
-- Memphis Grizzlies at Washington Wizards: Washington Wizards, Washington Wizards 116 - 112 Memphis Grizzlies, home 53.3%, away 46.7%, confidence Low
-- Philadelphia 76ers at Brooklyn Nets: Philadelphia 76ers, Brooklyn Nets 101 - 106 Philadelphia 76ers, home 38.7%, away 61.3%, confidence Low
-- Houston Rockets at Miami Heat: Miami Heat, Miami Heat 120 - 108 Houston Rockets, home 66.7%, away 33.3%, confidence Medium
+- New York Knicks at Toronto Raptors: New York Knicks, Toronto Raptors 99 - 126 New York Knicks, home 28.0%, away 72.0%, confidence Medium
 - Portland Trail Blazers at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 113 - 110 Portland Trail Blazers, home 66.2%, away 33.8%, confidence Medium
-- Golden State Warriors at New Orleans Pelicans: New Orleans Pelicans, New Orleans Pelicans 117 - 112 Golden State Warriors, home 62.7%, away 37.3%, confidence Low
-- Phoenix Suns at Denver Nuggets: Denver Nuggets, Denver Nuggets 119 - 107 Phoenix Suns, home 66.7%, away 33.3%, confidence Medium
+- Detroit Pistons at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 118 - 101 Detroit Pistons, home 76.5%, away 23.5%, confidence Medium
+- Utah Jazz at LA Clippers: LA Clippers, LA Clippers 132 - 102 Utah Jazz, home 70.0%, away 30.0%, confidence Medium
+- Charlotte Hornets at Los Angeles Lakers: Charlotte Hornets, Los Angeles Lakers 95 - 115 Charlotte Hornets, home 30.0%, away 70.0%, confidence Medium
 
 Today's Football Predictions
-- Andorra vs Azerbaijan: Draw, Andorra 1 - 1 Azerbaijan, home 30.7%, away 33.7%, draw 35.5%, confidence Low
+- Tahiti vs Cook Islands: Tahiti, Tahiti 1 - 1 Cook Islands, home 44.5%, away 24.9%, draw 30.6%, confidence Low
+- Malaysia vs Yemen: Malaysia, Malaysia 2 - 0 Yemen, home 52.4%, away 21.1%, draw 26.5%, confidence Low
+- Singapore vs Brazil: Brazil, Singapore 0 - 3 Brazil, home 9.2%, away 70.2%, draw 20.6%, confidence High
+- China vs Bahrain: China, China 2 - 0 Bahrain, home 45.5%, away 23.9%, draw 30.6%, confidence Low
+- Kyrgyz Republic vs Vietnam: Draw, Kyrgyz Republic 1 - 1 Vietnam, home 30.6%, away 32.2%, draw 37.2%, confidence Low
+- Lebanon vs Palestine: Lebanon, Lebanon 2 - 0 Palestine, home 49.2%, away 20.2%, draw 30.6%, confidence Low
+- Japan vs Paraguay: Japan, Japan 2 - 0 Paraguay, home 57.4%, away 18.4%, draw 24.2%, confidence Medium
+- Qatar vs Korea Republic: Korea Republic, Qatar 1 - 1 Korea Republic, home 27.0%, away 49.0%, draw 24.0%, confidence Low
+- United Arab Emirates vs Syria: United Arab Emirates, United Arab Emirates 2 - 0 Syria, home 57.9%, away 18.3%, draw 23.8%, confidence Medium
+- Saudi Arabia vs Uzbekistan: Uzbekistan, Saudi Arabia 0 - 1 Uzbekistan, home 24.3%, away 45.1%, draw 30.6%, confidence Low
+- Jordan vs Australia: Draw, Jordan 1 - 1 Australia, home 30.2%, away 32.9%, draw 36.9%, confidence Low
+- Russia vs Venezuela: Russia, Russia 2 - 0 Venezuela, home 55.9%, away 18.0%, draw 26.1%, confidence Medium
+- Iraq vs IR Iran: IR Iran, Iraq 0 - 2 IR Iran, home 17.0%, away 59.1%, draw 23.9%, confidence Medium
+- Kuwait vs Honduras: Kuwait, Kuwait 2 - 1 Honduras, home 40.4%, away 30.3%, draw 29.3%, confidence Low
+- Argentina vs Costa Rica: Argentina, Argentina 3 - 0 Costa Rica, home 71.2%, away 8.2%, draw 20.6%, confidence High
+- Chile vs Colombia: Chile, Chile 2 - 0 Colombia, home 50.2%, away 25.6%, draw 24.2%, confidence Low
+- Ecuador vs Bolivia: Ecuador, Ecuador 2 - 0 Bolivia, home 61.4%, away 15.7%, draw 23.0%, confidence Medium
+- Uruguay vs Dominican Republic: Uruguay, Uruguay 2 - 0 Dominican Republic, home 64.7%, away 14.5%, draw 20.8%, confidence Medium
 
 Highest Confidence Picks
-- Chicago Bulls at Cleveland Cavaliers: Cleveland Cavaliers, Cleveland Cavaliers 121 - 105 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
-- Houston Rockets at Miami Heat: Miami Heat, Miami Heat 120 - 108 Houston Rockets, home 66.7%, away 33.3%, confidence Medium
-- Phoenix Suns at Denver Nuggets: Denver Nuggets, Denver Nuggets 119 - 107 Phoenix Suns, home 66.7%, away 33.3%, confidence Medium
+- Argentina vs Costa Rica: Argentina, Argentina 3 - 0 Costa Rica, home 71.2%, away 8.2%, draw 20.6%, confidence High
+- Singapore vs Brazil: Brazil, Singapore 0 - 3 Brazil, home 9.2%, away 70.2%, draw 20.6%, confidence High
+- Detroit Pistons at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 118 - 101 Detroit Pistons, home 76.5%, away 23.5%, confidence Medium
 
 Upset Watch
-- Houston Rockets at Miami Heat: Miami Heat, Miami Heat 120 - 108 Houston Rockets, home 66.7%, away 33.3%, confidence Medium
-- Phoenix Suns at Denver Nuggets: Denver Nuggets, Denver Nuggets 119 - 107 Phoenix Suns, home 66.7%, away 33.3%, confidence Medium
 - Portland Trail Blazers at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 113 - 110 Portland Trail Blazers, home 66.2%, away 33.8%, confidence Medium
+- Iraq vs IR Iran: IR Iran, Iraq 0 - 2 IR Iran, home 17.0%, away 59.1%, draw 23.9%, confidence Medium
+- Qatar vs Korea Republic: Korea Republic, Qatar 1 - 1 Korea Republic, home 27.0%, away 49.0%, draw 24.0%, confidence Low
 
 Draw Watch
-- Andorra vs Azerbaijan: Draw, Andorra 1 - 1 Azerbaijan, home 30.7%, away 33.7%, draw 35.5%, confidence Low
+- Kyrgyz Republic vs Vietnam: Draw, Kyrgyz Republic 1 - 1 Vietnam, home 30.6%, away 32.2%, draw 37.2%, confidence Low
+- Jordan vs Australia: Draw, Jordan 1 - 1 Australia, home 30.2%, away 32.9%, draw 36.9%, confidence Low
+- Saudi Arabia vs Uzbekistan: Uzbekistan, Saudi Arabia 0 - 1 Uzbekistan, home 24.3%, away 45.1%, draw 30.6%, confidence Low
 
 Injury Risk Games
-- Orlando Magic at Boston Celtics: Boston Celtics, Boston Celtics 108 - 103 Orlando Magic, home 56.5%, away 43.5%, confidence Low
-- Chicago Bulls at Cleveland Cavaliers: Cleveland Cavaliers, Cleveland Cavaliers 121 - 105 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
-- Memphis Grizzlies at Washington Wizards: Washington Wizards, Washington Wizards 116 - 112 Memphis Grizzlies, home 53.3%, away 46.7%, confidence Low
-- Philadelphia 76ers at Brooklyn Nets: Philadelphia 76ers, Brooklyn Nets 101 - 106 Philadelphia 76ers, home 38.7%, away 61.3%, confidence Low
+- New York Knicks at Toronto Raptors: New York Knicks, Toronto Raptors 99 - 126 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Portland Trail Blazers at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 113 - 110 Portland Trail Blazers, home 66.2%, away 33.8%, confidence Medium
+- Detroit Pistons at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 118 - 101 Detroit Pistons, home 76.5%, away 23.5%, confidence Medium
+- Utah Jazz at LA Clippers: LA Clippers, LA Clippers 132 - 102 Utah Jazz, home 70.0%, away 30.0%, confidence Medium
