@@ -1,21 +1,21 @@
 Twitter/X Post
-Today's model pick: Argentina in Argentina vs Costa Rica.
-Projected score: Argentina 3 - 0 Costa Rica.
-Watchlist note: Argentina recent goals for 3.20, against 0.20
-Confidence: High. Model version: v1.0.0.
+Today's model pick: Miami Heat in Milwaukee Bucks at Miami Heat.
+Projected score: Miami Heat 130 - 102 Milwaukee Bucks.
+Watchlist note: Model favors Miami Heat mainly because of injury availability (+13.1 rating edge).
+Confidence: Medium. Model version: v1.0.0.
 Hashtags: #SportsAI #ModelPick #SportsPredictions
 
 YouTube Shorts Title
-Argentina is today's model pick to watch
+Miami Heat is today's model pick to watch
 
 Instagram Caption
 Today's AI Sports Predictor board is live.
 
-Top model pick: Argentina
-Matchup: Argentina vs Costa Rica
-Projection: Argentina 3 - 0 Costa Rica
-Signal: Argentina recent goals for 3.20, against 0.20
+Top model pick: Miami Heat
+Matchup: Milwaukee Bucks at Miami Heat
+Projection: Miami Heat 130 - 102 Milwaukee Bucks
+Signal: Model favors Miami Heat mainly because of injury availability (+13.1 rating edge).
 
-Draw watchlist: Kyrgyz Republic vs Vietnam at 37.2%
+No major draw watchlist today.
 
 Hashtags: #SportsAI #ModelPick #SportsPredictions #DailySports

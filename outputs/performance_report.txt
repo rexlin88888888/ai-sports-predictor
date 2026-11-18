@@ -1,9 +1,9 @@
 AI Sports Predictor Performance Report
-Generated: 2026-11-17T20:49:46
+Generated: 2026-11-18T20:18:00
 
-total predictions: 23
+total predictions: 12
 settled predictions: 0
-pending predictions: 23
+pending predictions: 12
 overall accuracy: N/A
 NBA accuracy: N/A
 Football accuracy: N/A
