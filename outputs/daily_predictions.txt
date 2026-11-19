@@ -1,39 +1,29 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-18T20:13:18
+Generated: 2026-11-19T20:15:29
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Memphis Grizzlies at Cleveland Cavaliers: Cleveland Cavaliers, Cleveland Cavaliers 129 - 94 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
-- Houston Rockets at Indiana Pacers: Houston Rockets, Indiana Pacers 101 - 113 Houston Rockets, home 30.0%, away 70.0%, confidence Medium
-- Milwaukee Bucks at Miami Heat: Miami Heat, Miami Heat 130 - 102 Milwaukee Bucks, home 80.0%, away 20.0%, confidence Medium
-- Philadelphia 76ers at Orlando Magic: Orlando Magic, Orlando Magic 113 - 95 Philadelphia 76ers, home 70.0%, away 30.0%, confidence Medium
-- Chicago Bulls at Brooklyn Nets: Brooklyn Nets, Brooklyn Nets 114 - 112 Chicago Bulls, home 54.1%, away 45.9%, confidence Low
-- Washington Wizards at Toronto Raptors: Toronto Raptors, Toronto Raptors 133 - 94 Washington Wizards, home 70.0%, away 30.0%, confidence Medium
-- Detroit Pistons at New Orleans Pelicans: Detroit Pistons, New Orleans Pelicans 106 - 117 Detroit Pistons, home 31.9%, away 68.1%, confidence Medium
-- Atlanta Hawks at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 117 - 104 Atlanta Hawks, home 65.0%, away 35.0%, confidence Medium
-- Golden State Warriors at Dallas Mavericks: Golden State Warriors, Dallas Mavericks 114 - 116 Golden State Warriors, home 46.3%, away 53.7%, confidence Low
-- Boston Celtics at Denver Nuggets: Denver Nuggets, Denver Nuggets 113 - 107 Boston Celtics, home 56.4%, away 43.6%, confidence Low
-- Utah Jazz at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 117 - 105 Utah Jazz, home 66.9%, away 33.1%, confidence Medium
-- Phoenix Suns at Sacramento Kings: Phoenix Suns, Sacramento Kings 108 - 112 Phoenix Suns, home 30.0%, away 70.0%, confidence Medium
+- Golden State Warriors at Memphis Grizzlies: Golden State Warriors, Memphis Grizzlies 102 - 122 Golden State Warriors, home 30.0%, away 70.0%, confidence Medium
+- Portland Trail Blazers at Milwaukee Bucks: Portland Trail Blazers, Milwaukee Bucks 104 - 114 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
+- New York Knicks at Minnesota Timberwolves: New York Knicks, Minnesota Timberwolves 97 - 128 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- LA Clippers at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 121 - 106 LA Clippers, home 72.5%, away 27.5%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Milwaukee Bucks at Miami Heat: Miami Heat, Miami Heat 130 - 102 Milwaukee Bucks, home 80.0%, away 20.0%, confidence Medium
-- Memphis Grizzlies at Cleveland Cavaliers: Cleveland Cavaliers, Cleveland Cavaliers 129 - 94 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
-- Houston Rockets at Indiana Pacers: Houston Rockets, Indiana Pacers 101 - 113 Houston Rockets, home 30.0%, away 70.0%, confidence Medium
+- LA Clippers at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 121 - 106 LA Clippers, home 72.5%, away 27.5%, confidence Medium
+- New York Knicks at Minnesota Timberwolves: New York Knicks, Minnesota Timberwolves 97 - 128 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- Golden State Warriors at Memphis Grizzlies: Golden State Warriors, Memphis Grizzlies 102 - 122 Golden State Warriors, home 30.0%, away 70.0%, confidence Medium
 
 Upset Watch
-- Utah Jazz at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 117 - 105 Utah Jazz, home 66.9%, away 33.1%, confidence Medium
-- Atlanta Hawks at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 117 - 104 Atlanta Hawks, home 65.0%, away 35.0%, confidence Medium
-- Boston Celtics at Denver Nuggets: Denver Nuggets, Denver Nuggets 113 - 107 Boston Celtics, home 56.4%, away 43.6%, confidence Low
+- No games available.
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Memphis Grizzlies at Cleveland Cavaliers: Cleveland Cavaliers, Cleveland Cavaliers 129 - 94 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
-- Houston Rockets at Indiana Pacers: Houston Rockets, Indiana Pacers 101 - 113 Houston Rockets, home 30.0%, away 70.0%, confidence Medium
-- Milwaukee Bucks at Miami Heat: Miami Heat, Miami Heat 130 - 102 Milwaukee Bucks, home 80.0%, away 20.0%, confidence Medium
-- Philadelphia 76ers at Orlando Magic: Orlando Magic, Orlando Magic 113 - 95 Philadelphia 76ers, home 70.0%, away 30.0%, confidence Medium
+- Golden State Warriors at Memphis Grizzlies: Golden State Warriors, Memphis Grizzlies 102 - 122 Golden State Warriors, home 30.0%, away 70.0%, confidence Medium
+- Portland Trail Blazers at Milwaukee Bucks: Portland Trail Blazers, Milwaukee Bucks 104 - 114 Portland Trail Blazers, home 30.0%, away 70.0%, confidence Medium
+- New York Knicks at Minnesota Timberwolves: New York Knicks, Minnesota Timberwolves 97 - 128 New York Knicks, home 28.0%, away 72.0%, confidence Medium
+- LA Clippers at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 121 - 106 LA Clippers, home 72.5%, away 27.5%, confidence Medium
