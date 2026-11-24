@@ -1,37 +1,29 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-23T23:37:53
+Generated: 2026-11-24T22:07:36
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Memphis Grizzlies at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 138 - 86 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
-- Portland Trail Blazers at Philadelphia 76ers: Portland Trail Blazers, Philadelphia 76ers 104 - 111 Portland Trail Blazers, home 37.7%, away 62.3%, confidence Low
-- Oklahoma City Thunder at Indiana Pacers: Oklahoma City Thunder, Indiana Pacers 101 - 120 Oklahoma City Thunder, home 32.0%, away 68.0%, confidence Medium
-- Milwaukee Bucks at Toronto Raptors: Toronto Raptors, Toronto Raptors 121 - 98 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
-- Brooklyn Nets at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 120 - 97 Brooklyn Nets, home 70.0%, away 30.0%, confidence Medium
-- Cleveland Cavaliers at Chicago Bulls: Cleveland Cavaliers, Chicago Bulls 108 - 118 Cleveland Cavaliers, home 30.0%, away 70.0%, confidence Medium
-- Phoenix Suns at New Orleans Pelicans: Phoenix Suns, New Orleans Pelicans 116 - 118 Phoenix Suns, home 42.0%, away 58.0%, confidence Low
-- LA Clippers at Houston Rockets: LA Clippers, Houston Rockets 105 - 111 LA Clippers, home 35.8%, away 64.2%, confidence Low
-- Utah Jazz at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 117 - 105 Utah Jazz, home 66.9%, away 33.1%, confidence Medium
-- San Antonio Spurs at Sacramento Kings: San Antonio Spurs, Sacramento Kings 94 - 129 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
+- Detroit Pistons at Orlando Magic: Orlando Magic, Orlando Magic 107 - 105 Detroit Pistons, home 54.0%, away 46.0%, confidence Low
+- Boston Celtics at Washington Wizards: Boston Celtics, Washington Wizards 94 - 126 Boston Celtics, home 32.0%, away 68.0%, confidence Medium
+- Dallas Mavericks at Denver Nuggets: Denver Nuggets, Denver Nuggets 123 - 105 Dallas Mavericks, home 68.0%, away 32.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- San Antonio Spurs at Sacramento Kings: San Antonio Spurs, Sacramento Kings 94 - 129 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
-- Memphis Grizzlies at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 138 - 86 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
-- Milwaukee Bucks at Toronto Raptors: Toronto Raptors, Toronto Raptors 121 - 98 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
+- Boston Celtics at Washington Wizards: Boston Celtics, Washington Wizards 94 - 126 Boston Celtics, home 32.0%, away 68.0%, confidence Medium
+- Dallas Mavericks at Denver Nuggets: Denver Nuggets, Denver Nuggets 123 - 105 Dallas Mavericks, home 68.0%, away 32.0%, confidence Medium
+- Detroit Pistons at Orlando Magic: Orlando Magic, Orlando Magic 107 - 105 Detroit Pistons, home 54.0%, away 46.0%, confidence Low
 
 Upset Watch
-- Oklahoma City Thunder at Indiana Pacers: Oklahoma City Thunder, Indiana Pacers 101 - 120 Oklahoma City Thunder, home 32.0%, away 68.0%, confidence Medium
-- Utah Jazz at Los Angeles Lakers: Los Angeles Lakers, Los Angeles Lakers 117 - 105 Utah Jazz, home 66.9%, away 33.1%, confidence Medium
-- LA Clippers at Houston Rockets: LA Clippers, Houston Rockets 105 - 111 LA Clippers, home 35.8%, away 64.2%, confidence Low
+- Boston Celtics at Washington Wizards: Boston Celtics, Washington Wizards 94 - 126 Boston Celtics, home 32.0%, away 68.0%, confidence Medium
+- Dallas Mavericks at Denver Nuggets: Denver Nuggets, Denver Nuggets 123 - 105 Dallas Mavericks, home 68.0%, away 32.0%, confidence Medium
+- Detroit Pistons at Orlando Magic: Orlando Magic, Orlando Magic 107 - 105 Detroit Pistons, home 54.0%, away 46.0%, confidence Low
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Memphis Grizzlies at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 138 - 86 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
-- Portland Trail Blazers at Philadelphia 76ers: Portland Trail Blazers, Philadelphia 76ers 104 - 111 Portland Trail Blazers, home 37.7%, away 62.3%, confidence Low
-- Oklahoma City Thunder at Indiana Pacers: Oklahoma City Thunder, Indiana Pacers 101 - 120 Oklahoma City Thunder, home 32.0%, away 68.0%, confidence Medium
-- Milwaukee Bucks at Toronto Raptors: Toronto Raptors, Toronto Raptors 121 - 98 Milwaukee Bucks, home 70.0%, away 30.0%, confidence Medium
+- Detroit Pistons at Orlando Magic: Orlando Magic, Orlando Magic 107 - 105 Detroit Pistons, home 54.0%, away 46.0%, confidence Low
+- Boston Celtics at Washington Wizards: Boston Celtics, Washington Wizards 94 - 126 Boston Celtics, home 32.0%, away 68.0%, confidence Medium
+- Dallas Mavericks at Denver Nuggets: Denver Nuggets, Denver Nuggets 123 - 105 Dallas Mavericks, home 68.0%, away 32.0%, confidence Medium
