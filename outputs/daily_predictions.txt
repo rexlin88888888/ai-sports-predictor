@@ -1,36 +1,21 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-25T21:23:38
+Generated: 2026-11-26T21:09:31
 Model version: v1.0.0
 
 Today's NBA Predictions
-- Miami Heat at Philadelphia 76ers: Miami Heat, Philadelphia 76ers 105 - 124 Miami Heat, home 30.4%, away 69.6%, confidence Medium
-- Chicago Bulls at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 130 - 97 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
-- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
-- Minnesota Timberwolves at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 114 - 106 Minnesota Timberwolves, home 62.3%, away 37.7%, confidence Medium
-- LA Clippers at Memphis Grizzlies: LA Clippers, Memphis Grizzlies 93 - 134 LA Clippers, home 30.0%, away 70.0%, confidence Medium
-- Brooklyn Nets at Milwaukee Bucks: Milwaukee Bucks, Milwaukee Bucks 110 - 103 Brooklyn Nets, home 56.5%, away 43.5%, confidence Low
-- Phoenix Suns at Houston Rockets: Houston Rockets, Houston Rockets 111 - 103 Phoenix Suns, home 62.4%, away 37.6%, confidence Low
-- Sacramento Kings at Golden State Warriors: Golden State Warriors, Golden State Warriors 112 - 107 Sacramento Kings, home 65.7%, away 34.3%, confidence Low
-- San Antonio Spurs at Portland Trail Blazers: San Antonio Spurs, Portland Trail Blazers 103 - 122 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
+- No games available.
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
-- San Antonio Spurs at Portland Trail Blazers: San Antonio Spurs, Portland Trail Blazers 103 - 122 San Antonio Spurs, home 28.0%, away 72.0%, confidence Medium
-- Chicago Bulls at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 130 - 97 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
+- No games available.
 
 Upset Watch
-- Sacramento Kings at Golden State Warriors: Golden State Warriors, Golden State Warriors 112 - 107 Sacramento Kings, home 65.7%, away 34.3%, confidence Low
-- Phoenix Suns at Houston Rockets: Houston Rockets, Houston Rockets 111 - 103 Phoenix Suns, home 62.4%, away 37.6%, confidence Low
-- Minnesota Timberwolves at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 114 - 106 Minnesota Timberwolves, home 62.3%, away 37.7%, confidence Medium
+- No games available.
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- Miami Heat at Philadelphia 76ers: Miami Heat, Philadelphia 76ers 105 - 124 Miami Heat, home 30.4%, away 69.6%, confidence Medium
-- Chicago Bulls at Charlotte Hornets: Charlotte Hornets, Charlotte Hornets 130 - 97 Chicago Bulls, home 70.0%, away 30.0%, confidence Medium
-- Cleveland Cavaliers at New York Knicks: New York Knicks, New York Knicks 133 - 91 Cleveland Cavaliers, home 80.0%, away 20.0%, confidence Medium
-- Minnesota Timberwolves at Oklahoma City Thunder: Oklahoma City Thunder, Oklahoma City Thunder 114 - 106 Minnesota Timberwolves, home 62.3%, away 37.7%, confidence Medium
+- No games available.
