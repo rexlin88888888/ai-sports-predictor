@@ -1,21 +1,37 @@
 AI Sports Predictor Daily Report
-Generated: 2026-11-26T21:09:31
+Generated: 2026-11-27T20:54:25
 Model version: v1.0.0
 
 Today's NBA Predictions
-- No games available.
+- Miami Heat at New York Knicks: New York Knicks, New York Knicks 135 - 104 Miami Heat, home 80.0%, away 20.0%, confidence Medium
+- Milwaukee Bucks at Detroit Pistons: Detroit Pistons, Detroit Pistons 118 - 94 Milwaukee Bucks, home 68.0%, away 32.0%, confidence Medium
+- Philadelphia 76ers at Indiana Pacers: Philadelphia 76ers, Indiana Pacers 108 - 110 Philadelphia 76ers, home 30.0%, away 70.0%, confidence Medium
+- Brooklyn Nets at Toronto Raptors: Toronto Raptors, Toronto Raptors 122 - 95 Brooklyn Nets, home 70.0%, away 30.0%, confidence Medium
+- Atlanta Hawks at Boston Celtics: Boston Celtics, Boston Celtics 113 - 104 Atlanta Hawks, home 62.5%, away 37.5%, confidence Medium
+- Memphis Grizzlies at Minnesota Timberwolves: Minnesota Timberwolves, Minnesota Timberwolves 130 - 95 Memphis Grizzlies, home 70.0%, away 30.0%, confidence Medium
+- Dallas Mavericks at Phoenix Suns: Phoenix Suns, Phoenix Suns 115 - 110 Dallas Mavericks, home 70.0%, away 30.0%, confidence Medium
+- Los Angeles Lakers at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 122 - 92 Los Angeles Lakers, home 80.0%, away 20.0%, confidence Medium
+- Denver Nuggets at Utah Jazz: Denver Nuggets, Utah Jazz 109 - 127 Denver Nuggets, home 30.0%, away 70.0%, confidence Medium
+- New Orleans Pelicans at LA Clippers: LA Clippers, LA Clippers 126 - 105 New Orleans Pelicans, home 70.0%, away 30.0%, confidence Medium
+- Golden State Warriors at Portland Trail Blazers: Portland Trail Blazers, Portland Trail Blazers 115 - 106 Golden State Warriors, home 70.0%, away 30.0%, confidence Medium
 
 Today's Football Predictions
 - No games available.
 
 Highest Confidence Picks
-- No games available.
+- Miami Heat at New York Knicks: New York Knicks, New York Knicks 135 - 104 Miami Heat, home 80.0%, away 20.0%, confidence Medium
+- Los Angeles Lakers at San Antonio Spurs: San Antonio Spurs, San Antonio Spurs 122 - 92 Los Angeles Lakers, home 80.0%, away 20.0%, confidence Medium
+- Philadelphia 76ers at Indiana Pacers: Philadelphia 76ers, Indiana Pacers 108 - 110 Philadelphia 76ers, home 30.0%, away 70.0%, confidence Medium
 
 Upset Watch
-- No games available.
+- Milwaukee Bucks at Detroit Pistons: Detroit Pistons, Detroit Pistons 118 - 94 Milwaukee Bucks, home 68.0%, away 32.0%, confidence Medium
+- Atlanta Hawks at Boston Celtics: Boston Celtics, Boston Celtics 113 - 104 Atlanta Hawks, home 62.5%, away 37.5%, confidence Medium
 
 Draw Watch
 - No games available.
 
 Injury Risk Games
-- No games available.
+- Miami Heat at New York Knicks: New York Knicks, New York Knicks 135 - 104 Miami Heat, home 80.0%, away 20.0%, confidence Medium
+- Milwaukee Bucks at Detroit Pistons: Detroit Pistons, Detroit Pistons 118 - 94 Milwaukee Bucks, home 68.0%, away 32.0%, confidence Medium
+- Philadelphia 76ers at Indiana Pacers: Philadelphia 76ers, Indiana Pacers 108 - 110 Philadelphia 76ers, home 30.0%, away 70.0%, confidence Medium
+- Brooklyn Nets at Toronto Raptors: Toronto Raptors, Toronto Raptors 122 - 95 Brooklyn Nets, home 70.0%, away 30.0%, confidence Medium
